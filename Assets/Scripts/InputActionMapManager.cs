@@ -12,7 +12,9 @@ public class InputActionMapManager : MonoBehaviour
 
     private InputActionMap currentActionMap;
 
-    void Awake()
+    public bool IsInputActive { get => input.enabled; }
+
+    private void Awake()
     {
         foreach (string actionMap in persistentActionMaps)
         {
@@ -24,17 +26,17 @@ public class InputActionMapManager : MonoBehaviour
 
     public void EnableInput()
     {
-        input.ActivateInput();
+        input.enabled = true;
     }
 
     public void DisableInput()
     {
-        input.DeactivateInput();
+        input.enabled = false;
     }
 
     public void SwitchInputActionMapTo(string actionMap)
     {
-        if (currentActionMap.name == actionMap || persistentActionMaps.Contains(actionMap))
+        if (!IsInputActive || currentActionMap.name == actionMap || persistentActionMaps.Contains(actionMap))
         {
             return;
         }

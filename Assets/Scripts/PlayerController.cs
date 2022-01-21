@@ -2,16 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerController : ActorController
 {
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private InputActionMapManager actionMapManager;
 
     private float moveInput;
 
+    protected override void Start()
+    {
+        base.Start();
+        if (photonView.IsMine)
+        {
+            actionMapManager.EnableInput();
+        }
+        else
+        {
+            actionMapManager.DisableInput();
+        }
+    }
+
     void FixedUpdate()
     {
-        if (combat.CombatStateMachine.CurrState == null && movement.MovementStateMachine.CurrState is GroundedState groundedState)
+        if (actionMapManager.IsInputActive && combat.CombatStateMachine.CurrState == null && movement.MovementStateMachine.CurrState is GroundedState groundedState)
         {
             groundedState.PostMoveRequest(moveInput);
         }
