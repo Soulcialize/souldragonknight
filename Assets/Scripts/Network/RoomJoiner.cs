@@ -14,10 +14,4 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
         Debug.Log($"Joining room ({roomNameInputField})");
         PhotonNetwork.JoinRoom(roomNameInputField.text);
     }
-
-    public override void OnJoinedRoom()
-    {
-        base.OnJoinedRoom();
-        PhotonNetwork.LoadLevel(roomSceneName);
-    }
 }
