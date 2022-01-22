@@ -94,9 +94,6 @@ MonoBehaviour:
   combat: {fileID: 0}
   collider2d: {fileID: 5719776775921641126}
   speed: 2
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7971022244780696080
 GameObject:
   m_ObjectHideFlags: 0

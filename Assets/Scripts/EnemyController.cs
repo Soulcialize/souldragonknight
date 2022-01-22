@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyController : ActorController
 {
     [SerializeField] private float speed;
-    [SerializeField] private LayerMask playerLayerMask;
+    
+    private LayerMask playerLayerMask;
 
     protected override void Start()
     {
@@ -25,5 +26,10 @@ public class EnemyController : ActorController
                 playerHit.Die();
             }
         }
+    }
+
+    public void SetPlayerLayerMask(LayerMask layerMask)
+    {
+        playerLayerMask = layerMask;
     }
 }
