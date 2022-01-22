@@ -46,7 +46,7 @@ public abstract class ActorController : MonoBehaviour
         else
         {
             // grounded
-            ((GroundedState)movement.MovementStateMachine.CurrState)?.PostMoveRequest(0f);
+            movement.Move(0);
             combat.Hurt();
         }
     }
@@ -60,7 +60,7 @@ public abstract class ActorController : MonoBehaviour
         else
         {
             // grounded
-            ((GroundedState)movement.MovementStateMachine.CurrState)?.PostMoveRequest(0f);
+            movement.Move(0);
             combat.Die();
         }
     }

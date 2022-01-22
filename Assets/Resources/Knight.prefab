@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 8467129993064936351}
   - component: {fileID: 8467129993064936350}
   - component: {fileID: 8467129993064936345}
+  - component: {fileID: 2751280035215190437}
   - component: {fileID: 8467129993064936344}
   - component: {fileID: 8467129993064936346}
   - component: {fileID: 8467129993064936347}
@@ -273,8 +274,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8467129993064936344}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 2751280035215190437}
+        m_TargetAssemblyTypeName: PlayerInputEventReceiver, Assembly-CSharp
         m_MethodName: OnJumpGrounded
         m_Mode: 0
         m_Arguments:
@@ -289,8 +290,8 @@ MonoBehaviour:
     m_ActionName: Grounded/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8467129993064936344}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 2751280035215190437}
+        m_TargetAssemblyTypeName: PlayerInputEventReceiver, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -309,8 +310,8 @@ MonoBehaviour:
     m_ActionName: Airborne/New action
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8467129993064936344}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 2751280035215190437}
+        m_TargetAssemblyTypeName: PlayerInputEventReceiver, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -343,6 +344,21 @@ MonoBehaviour:
   input: {fileID: 8467129993064936350}
   persistentActionMaps:
   - Move
+--- !u!114 &2751280035215190437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467129993064936348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d75cb04c25b84045911867a1d94abe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 8467129993013754318}
+  actionMapManager: {fileID: 8467129993064936345}
+  player: {fileID: 8467129993064936344}
 --- !u!114 &8467129993064936344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +374,6 @@ MonoBehaviour:
   movement: {fileID: 8467129993064936346}
   combat: {fileID: 8467129993064936347}
   collider2d: {fileID: 8467129993814986188}
-  photonView: {fileID: 8467129993013754318}
-  actionMapManager: {fileID: 8467129993064936345}
 --- !u!114 &8467129993064936346
 MonoBehaviour:
   m_ObjectHideFlags: 0

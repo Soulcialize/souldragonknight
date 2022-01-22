@@ -92,6 +92,11 @@ public class Movement : MonoBehaviour
         anim.gameObject.transform.localScale = localScale;
     }
 
+    public void Move(float direction)
+    {
+        ((GroundedState)MovementStateMachine.CurrState).PostMoveRequest(direction);
+    }
+
     public void JumpGrounded()
     {
         ((GroundedState)MovementStateMachine.CurrState).PostJumpRequest();

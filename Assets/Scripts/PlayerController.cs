@@ -6,52 +6,34 @@ using Photon.Pun;
 
 public class PlayerController : ActorController
 {
-    [SerializeField] private PhotonView photonView;
-    [SerializeField] private InputActionMapManager actionMapManager;
-
-    private float moveInput;
+    private float moveDirection;
 
     protected override void Start()
     {
         base.Start();
-        if (photonView.IsMine)
+    }
+
+    private void FixedUpdate()
+    {
+        if (combat.CombatStateMachine.CurrState == null && movement.MovementStateMachine.CurrState is GroundedState)
         {
-            actionMapManager.EnableInput();
-        }
-        else
-        {
-            actionMapManager.DisableInput();
+            movement.Move(moveDirection);
         }
     }
 
-    void FixedUpdate()
+    public void Move(float direction)
     {
-        if (actionMapManager.IsInputActive && combat.CombatStateMachine.CurrState == null && movement.MovementStateMachine.CurrState is GroundedState groundedState)
-        {
-            groundedState.PostMoveRequest(moveInput);
-        }
+        moveDirection = direction;
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void JumpGrounded()
     {
-        moveInput = context.ReadValue<float>();
+        movement.JumpGrounded();
     }
 
-    public void OnJumpGrounded(InputAction.CallbackContext context)
+    public void Attack()
     {
-        if (context.performed && combat.CombatStateMachine.CurrState == null)
-        {
-            actionMapManager.SwitchInputActionMapTo("Airborne");
-            movement.JumpGrounded();
-        }
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.performed && movement.MovementStateMachine.CurrState is GroundedState)
-        {
-            combat.Attack(movement.IsFacingRight);
-        }
+        combat.Attack(movement.IsFacingRight);
     }
 
     public void OnExecuteAttackEffect()
