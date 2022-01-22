@@ -93,7 +93,12 @@ MonoBehaviour:
   movement: {fileID: 0}
   combat: {fileID: 0}
   collider2d: {fileID: 5719776775921641126}
+  spriteRenderer: {fileID: 7971022244991002644}
   speed: 2
+  type: 1
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7971022244780696080
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +111,7 @@ GameObject:
   - component: {fileID: 7971022244780696095}
   - component: {fileID: 7971022244780696093}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Dragon Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

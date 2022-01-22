@@ -96,14 +96,9 @@ public class AttackState : CombatState
 
         foreach (ActorController actor in actorsHit)
         {
-            if (actor is PlayerController)
+            if (actor is EnemyController)
             {
-                // actor.Die();
-            }
-            else
-            {
-                actor.Hurt();
-                actor.Movement.KnockBack(owner.HurtKnockbackForce, !owner.GetComponent<Movement>().IsFacingRight);
+                actor.Die();
             }
         }
     }

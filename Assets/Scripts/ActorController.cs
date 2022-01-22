@@ -37,21 +37,7 @@ public abstract class ActorController : MonoBehaviour
         return collider.transform.parent.parent.GetComponentInChildren<ActorController>();
     }
 
-    public void Hurt()
-    {
-        if (movement.MovementStateMachine.CurrState is AirborneState)
-        {
-            // blink
-        }
-        else
-        {
-            // grounded
-            movement.Move(0);
-            combat.Hurt();
-        }
-    }
-
-    public void Die()
+    public virtual void Die()
     {
         if (movement.MovementStateMachine.CurrState is AirborneState)
         {

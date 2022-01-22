@@ -317,15 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899792576278cb54b93714f370a70dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7971022244780696080, guid: c402b2479c395d14a837c6a545131e5a, type: 3}
+  knightEnemyPrefab: {fileID: 7971022244780696080, guid: c402b2479c395d14a837c6a545131e5a, type: 3}
   knightEnemySpawnPoint: {fileID: 1827047516}
-  knightLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  dragonEnemyPrefab: {fileID: 7971022244780696080, guid: 67aee5f71b3161e428760d52482b8008, type: 3}
   dragonEnemySpawnPoint: {fileID: 958492834}
-  dragonLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
   minTimeBetweenSpawns: 1
   maxTimeBetweenSpawns: 3
 --- !u!1 &430788456

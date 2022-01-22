@@ -5,25 +5,21 @@ using Photon.Pun;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-
-    [Space(10)]
-
+    [SerializeField] private GameObject knightEnemyPrefab;
     [SerializeField] private Transform knightEnemySpawnPoint;
-    [SerializeField] private LayerMask knightLayerMask;
 
     [Space(10)]
 
+    [SerializeField] private GameObject dragonEnemyPrefab;
     [SerializeField] private Transform dragonEnemySpawnPoint;
-    [SerializeField] private LayerMask dragonLayerMask;
 
     [Space(10)]
 
     [SerializeField] private float minTimeBetweenSpawns;
     [SerializeField] private float maxTimeBetweenSpawns;
 
+    private GameObject enemyPrefab;
     private Vector2 spawnPoint;
-    private LayerMask playerLayerMask;
 
     private float timeOfNextSpawn;
 
@@ -32,13 +28,13 @@ public class EnemySpawner : MonoBehaviour
     {
         if (PhotonNetwork.NickName == "Knight")
         {
+            enemyPrefab = knightEnemyPrefab;
             spawnPoint = knightEnemySpawnPoint.position;
-            playerLayerMask = knightLayerMask;
         }
         else
         {
+            enemyPrefab = dragonEnemyPrefab;
             spawnPoint = dragonEnemySpawnPoint.position;
-            playerLayerMask = dragonLayerMask;
         }
 
         timeOfNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
@@ -53,7 +49,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         timeOfNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
-        GameObject enemyObj = PhotonNetwork.Instantiate(enemyPrefab.name, spawnPoint, Quaternion.identity);
-        enemyObj.GetComponentInChildren<EnemyController>().SetPlayerLayerMask(playerLayerMask);
+        PhotonNetwork.Instantiate(enemyPrefab.name, spawnPoint, Quaternion.identity);
     }
 }
