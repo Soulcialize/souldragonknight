@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
 public class PlayerInputEventHandler : MonoBehaviour
 {
@@ -37,10 +35,7 @@ public class PlayerInputEventHandler : MonoBehaviour
     {
         float moveInput = context.ReadValue<float>();
         player.Move(moveInput);
-        if (photonView.IsMine)
-        {
-            PlayerInputPhotonEventSender.Instance.SendMoveInputEvent(photonView.ViewID, moveInput);
-        }
+        PlayerInputPhotonEventSender.Instance.SendMoveInputEvent(photonView.ViewID, moveInput);
     }
 
     public void OnJumpGrounded(InputAction.CallbackContext context)
@@ -49,10 +44,7 @@ public class PlayerInputEventHandler : MonoBehaviour
         {
             actionMapManager.SwitchInputActionMapTo("Airborne");
             player.JumpGrounded();
-            if (photonView.IsMine)
-            {
-                PlayerInputPhotonEventSender.Instance.SendJumpInputEvent(photonView.ViewID);
-            }
+            PlayerInputPhotonEventSender.Instance.SendJumpInputEvent(photonView.ViewID);
         }
     }
 
@@ -61,10 +53,7 @@ public class PlayerInputEventHandler : MonoBehaviour
         if (context.performed && player.Movement.MovementStateMachine.CurrState is GroundedState)
         {
             player.Attack();
-            if (photonView.IsMine)
-            {
-                PlayerInputPhotonEventSender.Instance.SendAttackInputEvent(photonView.ViewID);
-            }
+            PlayerInputPhotonEventSender.Instance.SendAttackInputEvent(photonView.ViewID);
         }
     }
 }
