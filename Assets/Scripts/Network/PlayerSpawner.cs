@@ -6,14 +6,13 @@ using Photon.Pun;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private Transform knightSpawnPoint;
+    [SerializeField] private Transform dragonSpawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"spawning player");
-        PhotonNetwork.Instantiate(
-            playerPrefab.name,
-            playerPrefab.transform.position + new Vector3(Random.Range(-1f, 1f), playerPrefab.transform.position.y, playerPrefab.transform.position.z),
-            playerPrefab.transform.rotation);
+        Transform spawnPoint = PhotonNetwork.NickName == "Knight" ? knightSpawnPoint : dragonSpawnPoint;
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, playerPrefab.transform.rotation);
     }
 }
