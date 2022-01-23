@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minTimeBetweenSpawns;
     [SerializeField] private float maxTimeBetweenSpawns;
 
-    private EnemyController.Type typeToSpawn;
+    private GameManager.PlayerType targetType;
     private float timeOfNextSpawn;
 
     private void Awake()
@@ -40,15 +40,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PhotonNetwork.NickName == "Knight")
-        {
-            typeToSpawn = EnemyController.Type.KNIGHT;
-        }
-        else
-        {
-            typeToSpawn = EnemyController.Type.DRAGON;
-        }
-
+        targetType = GameManager.Instance.CurrPlayerType;
         timeOfNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
     }
 
@@ -61,17 +53,17 @@ public class EnemySpawner : MonoBehaviour
         }
 
         timeOfNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
-        Spawn(typeToSpawn);
+        Spawn(targetType);
     }
 
-    public GameObject Spawn(EnemyController.Type type)
+    public GameObject Spawn(GameManager.PlayerType targetType)
     {
         GameObject enemyObj = null;
-        if (type == EnemyController.Type.KNIGHT)
+        if (targetType == GameManager.PlayerType.KNIGHT)
         {
             enemyObj = PhotonNetwork.Instantiate(knightEnemyPrefab.name, knightEnemySpawnPoint.position, Quaternion.identity);
         }
-        else if (type == EnemyController.Type.DRAGON)
+        else if (targetType == GameManager.PlayerType.DRAGON)
         {
             enemyObj = PhotonNetwork.Instantiate(dragonEnemyPrefab.name, dragonEnemySpawnPoint.position, Quaternion.identity);
         }

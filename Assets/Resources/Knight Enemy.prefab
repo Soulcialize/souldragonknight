@@ -95,7 +95,7 @@ MonoBehaviour:
   collider2d: {fileID: 5719776775921641126}
   spriteRenderer: {fileID: 7971022244991002644}
   speed: 2
-  type: 0
+  targetType: 0
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128

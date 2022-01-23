@@ -5,14 +5,12 @@ using Photon.Pun;
 
 public class EnemyController : ActorController
 {
-    public enum Type { KNIGHT, DRAGON }
-
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed;
 
     [Space(10)]
 
-    [SerializeField] private Type type;
+    [SerializeField] private GameManager.PlayerType targetType;
     [SerializeField] private LayerMask playerLayerMask;
 
     private bool isDying = false;
@@ -21,8 +19,7 @@ public class EnemyController : ActorController
     {
         base.Start();
         GetComponentInParent<Rigidbody2D>().velocity = new Vector2(-1f * speed, 0f);
-        if (PhotonNetwork.NickName == "Knight" && type == Type.KNIGHT
-            || PhotonNetwork.NickName == "Dragon" && type == Type.DRAGON)
+        if (GameManager.Instance.CurrPlayerType == targetType)
         {
             spriteRenderer.enabled = false;
         }

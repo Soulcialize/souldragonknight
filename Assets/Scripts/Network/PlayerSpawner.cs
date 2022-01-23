@@ -12,7 +12,7 @@ public class PlayerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Transform spawnPoint = PhotonNetwork.NickName == "Knight" ? knightSpawnPoint : dragonSpawnPoint;
+        Transform spawnPoint = GameManager.Instance.CurrPlayerType == GameManager.PlayerType.KNIGHT ? knightSpawnPoint : dragonSpawnPoint;
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, playerPrefab.transform.rotation);
     }
 }

@@ -12,7 +12,6 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log($"Creating room ({roomNameInputField})");
-        PhotonNetwork.NickName = "Knight";
         PhotonNetwork.CreateRoom(roomNameInputField.text);
     }
 
