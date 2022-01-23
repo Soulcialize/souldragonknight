@@ -242,8 +242,6 @@ GameObject:
   m_Component:
   - component: {fileID: 277649509}
   - component: {fileID: 277649510}
-  - component: {fileID: 277649512}
-  - component: {fileID: 277649511}
   - component: {fileID: 277649513}
   - component: {fileID: 277649514}
   m_Layer: 0
@@ -282,30 +280,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 8467129993013754317, guid: c8e42754dfb81b5449648246260b0c2d, type: 3}
   knightSpawnPoint: {fileID: 430788457}
   dragonSpawnPoint: {fileID: 724465293}
---- !u!114 &277649511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277649508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84773535fcd365c4ba0cbd5266467751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &277649512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277649508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93aba4b6c4f57eb44b828bc31611bda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &277649513
 MonoBehaviour:
   m_ObjectHideFlags: 0
