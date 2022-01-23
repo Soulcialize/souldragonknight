@@ -40,12 +40,12 @@ public class PlayerInputPhotonEventReceiver : MonoBehaviourPunCallbacks
         PhotonNetwork.NetworkingClient.EventReceived -= ReceiveAttackInputEvent;
     }
 
-    public void AddPlayer(int viewId, PlayerController player)
+    public void AddPlayerViewId(int viewId, PlayerController player)
     {
         viewIdToPlayerDictionary.Add(viewId, player);
     }
 
-    public void RemovePlayer(int viewId)
+    public void RemovePlayerViewId(int viewId)
     {
         viewIdToPlayerDictionary.Remove(viewId);
     }

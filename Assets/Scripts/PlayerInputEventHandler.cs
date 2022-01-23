@@ -19,7 +19,7 @@ public class PlayerInputEventHandler : MonoBehaviour
         else
         {
             actionMapManager.DisableInput();
-            PlayerInputPhotonEventReceiver.Instance.AddPlayer(photonView.ViewID, player);
+            PlayerInputPhotonEventReceiver.Instance.AddPlayerViewId(photonView.ViewID, player);
         }
     }
 
@@ -27,7 +27,7 @@ public class PlayerInputEventHandler : MonoBehaviour
     {
         if (!photonView.IsMine)
         {
-            PlayerInputPhotonEventReceiver.Instance.RemovePlayer(photonView.ViewID);
+            PlayerInputPhotonEventReceiver.Instance.RemovePlayerViewId(photonView.ViewID);
         }
     }
 
