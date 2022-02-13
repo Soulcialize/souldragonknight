@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Movement movement;
 
     private InputAction moveAction;
+    private InputAction jumpAction;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         }
 
         moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
     }
 
     private void OnEnable()
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
         if (playerInput.inputIsActive)
         {
             moveAction.performed += HandleMoveInput;
+            jumpAction.performed += HandleJumpInput;
         }
     }
 
@@ -36,11 +39,17 @@ public class PlayerController : MonoBehaviour
         if (playerInput.inputIsActive)
         {
             moveAction.performed -= HandleMoveInput;
+            jumpAction.performed -= HandleJumpInput;
         }
     }
 
     private void HandleMoveInput(InputAction.CallbackContext context)
     {
         movement.MoveHorizontally(context.ReadValue<float>());
+    }
+
+    private void HandleJumpInput(InputAction.CallbackContext context)
+    {
+        movement.Jump();
     }
 }
