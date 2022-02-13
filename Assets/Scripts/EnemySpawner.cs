@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time < timeOfNextSpawn)
+        if (PhotonNetwork.CurrentRoom.PlayerCount < 2 || Time.time < timeOfNextSpawn)
         {
             return;
         }
@@ -60,11 +61,11 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemyObj = null;
         if (targetType == GameManager.PlayerType.KNIGHT)
         {
-            enemyObj = Instantiate(knightEnemyPrefab, knightEnemySpawnPoint.position, Quaternion.identity);
+            enemyObj = PhotonNetwork.Instantiate(knightEnemyPrefab.name, knightEnemySpawnPoint.position, Quaternion.identity);
         }
         else if (targetType == GameManager.PlayerType.DRAGON)
         {
-            enemyObj = Instantiate(dragonEnemyPrefab, dragonEnemySpawnPoint.position, Quaternion.identity);
+            enemyObj = PhotonNetwork.Instantiate(dragonEnemyPrefab.name, dragonEnemySpawnPoint.position, Quaternion.identity);
         }
 
         return enemyObj;

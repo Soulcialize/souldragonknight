@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,5 +25,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // first player to join: knight; second player to join: dragon
+        playerType = PhotonNetwork.CurrentRoom.PlayerCount % 2 == 0 ? PlayerType.DRAGON : PlayerType.KNIGHT;
     }
 }

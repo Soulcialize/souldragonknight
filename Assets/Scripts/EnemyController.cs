@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemyController : ActorController
 {
@@ -11,7 +12,6 @@ public class EnemyController : ActorController
 
     [SerializeField] private GameManager.PlayerType targetType;
     [SerializeField] private LayerMask playerLayerMask;
-    [SerializeField] private bool isHiddenFromTarget;
 
     private bool isDying = false;
 
@@ -19,7 +19,10 @@ public class EnemyController : ActorController
     {
         base.Start();
         GetComponentInParent<Rigidbody2D>().velocity = new Vector2(-1f * speed, 0f);
-        spriteRenderer.enabled = !isHiddenFromTarget || GameManager.Instance.CurrPlayerType != targetType;
+        if (GameManager.Instance.CurrPlayerType == targetType)
+        {
+            spriteRenderer.enabled = false;
+        }
     }
 
     private void Update()
