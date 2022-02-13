@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class Movement : MonoBehaviour
+public class GroundMovement : Movement
 {
-    [SerializeField] private PhotonView photonView;
-    [SerializeField] private Rigidbody2D rigidbody2d;
-    [SerializeField] private Animator animator;
-    [SerializeField] private SurfaceDetector groundDetector;
+    [SerializeField] protected SurfaceDetector groundDetector;
 
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
@@ -18,18 +14,14 @@ public class Movement : MonoBehaviour
 
     private bool isAirborne;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         isAirborne = !groundDetector.IsInContact;
     }
 
-    private void FixedUpdate()
+    protected override void UpdateMovement()
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-
         if (isAirborne)
         {
             if (rigidbody2d.velocity.y <= jumpForce / 2f)

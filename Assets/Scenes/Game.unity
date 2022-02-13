@@ -344,7 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cabc1c1244dfe49b8f4114b2e40072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5696632616774609732, guid: d92136aa6e1dd884aa99b51f2b950227, type: 3}
+  knightPrefab: {fileID: 5696632616774609732, guid: d92136aa6e1dd884aa99b51f2b950227, type: 3}
+  dragonPrefab: {fileID: 4470413134207635880, guid: 9a8705b2cb40d94409b88940b0d7828a, type: 3}
 --- !u!4 &765560305
 Transform:
   m_ObjectHideFlags: 0

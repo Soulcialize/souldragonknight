@@ -87,14 +87,14 @@ GameObject:
   - component: {fileID: 5696632616774609753}
   - component: {fileID: 6393426157099837368}
   - component: {fileID: 5696632616774609755}
-  - component: {fileID: 5696632616774609757}
-  - component: {fileID: 5696632616774609754}
+  - component: {fileID: 8730972490635118285}
+  - component: {fileID: 6669902685249964190}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
   - component: {fileID: -8030419580977392626}
   - component: {fileID: -1146367745408281114}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,12 +261,24 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d519e172-e91c-40e2-88ec-bc64a1099e2a
     m_ActionName: Ground/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cc55719b-1860-4f3f-bb65-153fbe6f1db3
+    m_ActionName: Ground/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7faa9f1a-4525-45ab-80cf-54a5660b4324
+    m_ActionName: Air/Move[/Keyboard/a,/Keyboard/d,/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3de466d3-d303-4b88-89b4-61fd737d03f7
+    m_ActionName: Air/MoveAirVertical[/Keyboard/s,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5696632616774609757
+--- !u!114 &8730972490635118285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,13 +287,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5696632616774609732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f133be2d7d17b0140bbd2051be5416c7, type: 3}
+  m_Script: {fileID: 11500000, guid: ad60a83a81348bf40a231591d7687bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
   playerInput: {fileID: 5696632616774609755}
-  movement: {fileID: 5696632616774609754}
---- !u!114 &5696632616774609754
+  movement: {fileID: 6669902685249964190}
+--- !u!114 &6669902685249964190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,14 +302,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5696632616774609732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101e5f844ddd21f4588d242d51a48264, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 6393426157099837368}
   groundDetector: {fileID: 2344377606277045393}
-  horizontalMoveSpeed: 6
+  horizontalMoveSpeed: 8
   jumpForce: 12
 --- !u!114 &5696632616774609759
 MonoBehaviour:

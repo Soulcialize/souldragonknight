@@ -5,10 +5,18 @@ using Photon.Pun;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject knightPrefab;
+    [SerializeField] private GameObject dragonPrefab;
 
     private void Start()
     {
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector2.zero, playerPrefab.transform.rotation);
+        if (PhotonNetwork.CurrentRoom.PlayerCount % 2 == 0)
+        {
+            PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-6f, 2f), dragonPrefab.transform.rotation);
+        }
+        else
+        {
+            PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-7f, -0.5f), knightPrefab.transform.rotation);
+        }
     }
 }
