@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 4470413134207635881}
   - component: {fileID: 4470413134207635892}
   - component: {fileID: 4470413134207635895}
+  - component: {fileID: 3533750638843532997}
   - component: {fileID: 4470413134207635893}
   - component: {fileID: 4470413134207635902}
   - component: {fileID: 4470413134207635889}
   - component: {fileID: 4470413134207635888}
   - component: {fileID: 4470413134207635891}
   - component: {fileID: 4470413134207635890}
+  - component: {fileID: 8489899154768126579}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -107,14 +109,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.84, y: 3.84}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 3.84, y: 3.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.84, y: 3.84}
+  m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
 --- !u!50 &4470413134207635895
 Rigidbody2D:
@@ -137,6 +139,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3533750638843532997
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470413134207635880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 613c6d1d98ae935488883c5b5c34905e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4470413134207635893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 4470413134207635888}
   rigidbody2d: {fileID: 4470413134207635895}
-  animator: {fileID: 0}
+  animator: {fileID: 3533750638843532997}
   movementSpeed: 6
 --- !u!114 &4470413134207635888
 MonoBehaviour:
@@ -219,6 +240,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4470413134207635891}
   - {fileID: 4470413134207635890}
+  - {fileID: 8489899154768126579}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -240,7 +262,7 @@ MonoBehaviour:
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 5
+    InterpolateLerpSpeed: 10
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
@@ -271,3 +293,24 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &8489899154768126579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470413134207635880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: isFlying
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0

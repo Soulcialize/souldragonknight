@@ -24,4 +24,14 @@ public abstract class Movement : MonoBehaviour
     }
 
     protected abstract void UpdateMovement();
+
+    protected void FlipDirection(float toDirection)
+    {
+        Vector3 localScale = transform.localScale;
+        if (toDirection < 0f && localScale.x > 0f || toDirection > 0f && localScale.x < 0f)
+        {
+            localScale.x = -localScale.x;
+            transform.localScale = localScale;
+        }
+    }
 }

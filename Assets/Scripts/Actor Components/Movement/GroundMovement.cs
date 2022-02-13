@@ -12,17 +12,17 @@ public class GroundMovement : Movement
     private float horizontalMoveDirection;
     private bool isJumpRequestPosted;
 
-    private bool isAirborne;
+    public bool IsAirborne { get; private set; }
 
     protected override void Start()
     {
         base.Start();
-        isAirborne = !groundDetector.IsInContact;
+        IsAirborne = !groundDetector.IsInContact;
     }
 
     protected override void UpdateMovement()
     {
-        if (isAirborne)
+        if (IsAirborne)
         {
             if (rigidbody2d.velocity.y <= jumpForce / 2f)
             {
@@ -30,7 +30,7 @@ public class GroundMovement : Movement
                 animator.SetBool("isFalling", true);
                 if (groundDetector.IsInContact)
                 {
-                    isAirborne = false;
+                    IsAirborne = false;
                     animator.SetBool("isFalling", false);
                     animator.SetBool("isRunning", horizontalMoveDirection != 0f);
                 }
@@ -40,7 +40,7 @@ public class GroundMovement : Movement
         {
             if (isJumpRequestPosted)
             {
-                isAirborne = true;
+                IsAirborne = true;
                 isJumpRequestPosted = false;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
                 animator.SetBool("isJumping", true);
@@ -56,25 +56,18 @@ public class GroundMovement : Movement
     {
         horizontalMoveDirection = direction;
 
-        if (isAirborne)
+        if (IsAirborne)
         {
             return;
         }
 
         animator.SetBool("isRunning", direction != 0f);
-
-        // handle direction to face
-        Vector3 localScale = transform.localScale;
-        if (direction < 0f && localScale.x > 0f || direction > 0f && localScale.x < 0f)
-        {
-            localScale.x = -localScale.x;
-            transform.localScale = localScale;
-        }
+        FlipDirection(direction);
     }
 
     public void Jump()
     {
-        if (!isAirborne)
+        if (!IsAirborne)
         {
             isJumpRequestPosted = true;
         }
