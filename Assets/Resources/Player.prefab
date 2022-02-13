@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f133be2d7d17b0140bbd2051be5416c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
   playerInput: {fileID: 5696632616774609755}
   movement: {fileID: 5696632616774609754}
 --- !u!114 &5696632616774609754

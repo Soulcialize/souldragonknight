@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Movement movement;
 
@@ -12,17 +14,29 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (!photonView.IsMine)
+        {
+            playerInput.DeactivateInput();
+            return;
+        }
+
         moveAction = playerInput.actions["Move"];
     }
 
     private void OnEnable()
     {
-        moveAction.performed += HandleMoveInput;
+        if (playerInput.inputIsActive)
+        {
+            moveAction.performed += HandleMoveInput;
+        }
     }
 
     private void OnDisable()
     {
-        moveAction.performed -= HandleMoveInput;
+        if (playerInput.inputIsActive)
+        {
+            moveAction.performed -= HandleMoveInput;
+        }
     }
 
     private void HandleMoveInput(InputAction.CallbackContext context)
