@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Animator animator;
     [SerializeField] private SurfaceDetector groundDetector;
@@ -23,6 +25,11 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (isAirborne)
         {
             if (rigidbody2d.velocity.y <= jumpForce / 2f)

@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 5696632616774609754}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
+  - component: {fileID: -8030419580977392626}
   - component: {fileID: -1146367745408281114}
   m_Layer: 0
   m_Name: Player
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101e5f844ddd21f4588d242d51a48264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 6393426157099837368}
   groundDetector: {fileID: 2344377606277045393}
@@ -317,6 +319,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5696632616774609756}
+  - {fileID: -8030419580977392626}
   - {fileID: -1146367745408281114}
   sceneViewId: 0
   InstantiationId: 0
@@ -337,9 +340,9 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 10
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
@@ -354,6 +357,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-8030419580977392626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &-1146367745408281114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,8 +389,14 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: isRunning
+  - Type: 4
+    SynchronizeType: 2
+    Name: isJumping
+  - Type: 4
+    SynchronizeType: 2
+    Name: isFalling
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
