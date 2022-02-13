@@ -5,6 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private Animator animator;
+
     [SerializeField] private float horizontalMoveSpeed;
 
     private float horizontalMoveDirection;
@@ -17,5 +19,15 @@ public class Movement : MonoBehaviour
     public void MoveHorizontally(float direction)
     {
         horizontalMoveDirection = direction;
+
+        animator.SetBool("isRunning", direction != 0f);
+
+        // handle direction to face
+        Vector3 localScale = transform.localScale;
+        if (direction < 0f && localScale.x > 0f || direction > 0f && localScale.x < 0f)
+        {
+            localScale.x = -localScale.x;
+            transform.localScale = localScale;
+        }
     }
 }
