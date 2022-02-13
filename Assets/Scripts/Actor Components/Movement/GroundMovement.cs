@@ -33,6 +33,7 @@ public class GroundMovement : Movement
                     IsAirborne = false;
                     animator.SetBool("isFalling", false);
                     animator.SetBool("isRunning", horizontalMoveDirection != 0f);
+                    FlipDirection(horizontalMoveDirection);
                 }
             }
         }
