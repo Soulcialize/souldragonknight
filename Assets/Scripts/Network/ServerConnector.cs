@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class ServerConnector : MonoBehaviourPunCallbacks
 {
     [SerializeField] private string lobbySceneName;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
     }

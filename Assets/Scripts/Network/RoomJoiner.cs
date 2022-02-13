@@ -11,7 +11,7 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        Debug.Log($"Joining room ({roomNameInputField})");
+        Debug.Log($"Joining room ({roomNameInputField.text})");
         PhotonNetwork.JoinRoom(roomNameInputField.text);
     }
 }
