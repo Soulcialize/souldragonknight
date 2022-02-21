@@ -9,7 +9,7 @@ public class EscapeMenu : MonoBehaviour
     [SerializeField] protected PlayerInput playerInput;
 
     private InputAction menuAction;
-    private static bool isMenuOpen = false;
+    public static bool isMenuOpen = false;
 
     protected virtual void Awake()
     {

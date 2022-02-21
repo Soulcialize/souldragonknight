@@ -18,6 +18,17 @@ public abstract class PlayerController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (EscapeMenu.isMenuOpen)
+        {
+            playerInput.DeactivateInput();
+        } else
+        {
+            playerInput.ActivateInput();
+        }
+    }
+
     protected virtual void OnEnable()
     {
         if (playerInput.inputIsActive)
