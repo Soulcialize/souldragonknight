@@ -1682,7 +1682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNameInputField: {fileID: 511988680}
-  roomSceneName: Game
+  roomSceneName: Test
 --- !u!114 &1933529984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNameInputField: {fileID: 511988680}
-  roomSceneName: Game
+  roomSceneName: Test
 --- !u!1 &2013224611
 GameObject:
   m_ObjectHideFlags: 0
