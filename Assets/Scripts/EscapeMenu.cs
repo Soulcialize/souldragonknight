@@ -6,12 +6,11 @@ using Photon.Pun;
 
 public class EscapeMenu : MonoBehaviour
 {
-    [SerializeField] protected GameObject escapeMenuUi;
     [SerializeField] protected PlayerInput playerInput;
-    [SerializeField] private string roomSceneName;
-    [SerializeField] private string mainMenuSceneName;
+    [SerializeField] private GameObject escapeMenuUi;
 
     private InputAction menuAction;
+
     public static bool isMenuOpen = false;
 
     protected virtual void Awake()
@@ -29,10 +28,7 @@ public class EscapeMenu : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        if (playerInput.inputIsActive)
-        {
-            UnbindInputActionHandlers();
-        }
+        UnbindInputActionHandlers();
     }
 
     protected void BindInputActionHandlers()
@@ -42,34 +38,30 @@ public class EscapeMenu : MonoBehaviour
 
     protected void UnbindInputActionHandlers()
     {
-        menuAction.performed += HandleMenuInput;
+        menuAction.performed -= HandleMenuInput;
     }
 
     private void HandleMenuInput(InputAction.CallbackContext context)
     {
         if (isMenuOpen)
         {
-            escapeMenuUi.SetActive(false);
-        } else
-        {
-            escapeMenuUi.SetActive(true);
+            CloseMenu();
         }
-        isMenuOpen = !isMenuOpen;
-    }
-
-    public void RestartLevel()
-    {
-        /*if (PhotonNetwork.IsMasterClient)
+        else
         {
-            PhotonNetwork.LoadLevel(roomSceneName);
-            isMenuOpen = !isMenuOpen;
-        }*/
-
-        Debug.Log("Restarting level...");
+            OpenMenu();
+        }     
     }
 
-    public void ReturnToMainMenu()
+    public void OpenMenu()
     {
-        Debug.Log("Exiting room...");
+        escapeMenuUi.SetActive(true);
+        isMenuOpen = true;
+    }
+
+    public void CloseMenu()
+    {
+        escapeMenuUi.SetActive(false);
+        isMenuOpen = false;
     }
 }

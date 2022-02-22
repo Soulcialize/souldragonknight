@@ -22,10 +22,10 @@ public abstract class PlayerController : MonoBehaviour
     {
         if (EscapeMenu.isMenuOpen)
         {
-            playerInput.DeactivateInput();
+            playerInput.currentActionMap.Disable();
         } else
         {
-            playerInput.ActivateInput();
+            playerInput.currentActionMap.Enable();
         }
     }
 
