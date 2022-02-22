@@ -1,49 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Photon.Pun;
+using UnityEngine.Events;
 
 public class EscapeMenu : MonoBehaviour
 {
-    [SerializeField] protected PlayerInput playerInput;
-    [SerializeField] private GameObject escapeMenuUi;
+    public static EscapeMenu Instance { get; private set; }
 
-    private InputAction menuAction;
+    [SerializeField] private GameObject escapeMenuUiObject;
+    [SerializeField] private UnityEvent escapeMenuOpenEvent;
+    [SerializeField] private UnityEvent escapeMenuCloseEvent;
 
-    public static bool isMenuOpen = false;
+    public bool IsMenuOpen { get; private set; }
+    public UnityEvent EscapeMenuOpenEvent { get => escapeMenuOpenEvent; }
+    public UnityEvent EscapeMenuCloseEvent { get => escapeMenuCloseEvent; }
 
-    protected virtual void Awake()
+    private void Awake()
     {
-        menuAction = playerInput.actions["Menu"];
-    }
-
-    protected virtual void OnEnable()
-    {
-        if (playerInput.inputIsActive)
+        if (Instance != null && Instance != this)
         {
-            BindInputActionHandlers();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
         }
     }
 
-    protected virtual void OnDisable()
+    public void ToggleMenu()
     {
-        UnbindInputActionHandlers();
-    }
-
-    protected void BindInputActionHandlers()
-    {
-        menuAction.performed += HandleMenuInput;
-    }
-
-    protected void UnbindInputActionHandlers()
-    {
-        menuAction.performed -= HandleMenuInput;
-    }
-
-    private void HandleMenuInput(InputAction.CallbackContext context)
-    {
-        if (isMenuOpen)
+        if (IsMenuOpen)
         {
             CloseMenu();
         }
@@ -55,13 +41,15 @@ public class EscapeMenu : MonoBehaviour
 
     public void OpenMenu()
     {
-        escapeMenuUi.SetActive(true);
-        isMenuOpen = true;
+        escapeMenuUiObject.SetActive(true);
+        IsMenuOpen = true;
+        escapeMenuOpenEvent.Invoke();
     }
 
     public void CloseMenu()
     {
-        escapeMenuUi.SetActive(false);
-        isMenuOpen = false;
+        escapeMenuUiObject.SetActive(false);
+        IsMenuOpen = false;
+        escapeMenuCloseEvent.Invoke();
     }
 }

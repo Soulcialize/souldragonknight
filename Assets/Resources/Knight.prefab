@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
   playerInput: {fileID: 5696632616774609755}
+  persistentActionMaps: []
   movement: {fileID: 6669902685249964190}
   combat: {fileID: 4305109986236622591}
 --- !u!114 &6669902685249964190

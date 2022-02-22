@@ -8,6 +8,9 @@ public abstract class PlayerController : MonoBehaviour
 {
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected PlayerInput playerInput;
+    [SerializeField] protected List<string> persistentActionMaps;
+
+    private InputAction menuAction;
 
     protected virtual void Awake()
     {
@@ -16,36 +19,56 @@ public abstract class PlayerController : MonoBehaviour
             playerInput.DeactivateInput();
             return;
         }
-    }
 
-    private void Update()
-    {
-        if (EscapeMenu.isMenuOpen)
+        persistentActionMaps = new List<string>() { "Ui" };
+        foreach (string actionMapName in persistentActionMaps)
         {
-            playerInput.currentActionMap.Disable();
-        } else
-        {
-            playerInput.currentActionMap.Enable();
+            playerInput.actions.FindActionMap(actionMapName).Enable();
         }
+
+        menuAction = playerInput.actions["Menu"];
     }
 
     protected virtual void OnEnable()
     {
-        if (playerInput.inputIsActive)
+        if (photonView.IsMine)
         {
+            BindGeneralInputActionHandlers();
             BindInputActionHandlers();
+
+            EscapeMenu.Instance.EscapeMenuOpenEvent.AddListener(playerInput.DeactivateInput);
+            EscapeMenu.Instance.EscapeMenuCloseEvent.AddListener(playerInput.ActivateInput);
         }
     }
 
     protected virtual void OnDisable()
     {
-        if (playerInput.inputIsActive)
+        if (photonView.IsMine)
         {
+            UnbindGeneralInputActionHandlers();
             UnbindInputActionHandlers();
+
+            EscapeMenu.Instance.EscapeMenuOpenEvent.RemoveListener(playerInput.DeactivateInput);
+            EscapeMenu.Instance.EscapeMenuCloseEvent.RemoveListener(playerInput.ActivateInput);
         }
+    }
+
+    protected virtual void BindGeneralInputActionHandlers()
+    {
+        menuAction.performed += HandleToggleMenuInput;
+    }
+
+    protected virtual void UnbindGeneralInputActionHandlers()
+    {
+        menuAction.performed -= HandleToggleMenuInput;
     }
 
     protected abstract void BindInputActionHandlers();
 
     protected abstract void UnbindInputActionHandlers();
+
+    private void HandleToggleMenuInput(InputAction.CallbackContext context)
+    {
+        EscapeMenu.Instance.ToggleMenu();
+    }
 }
