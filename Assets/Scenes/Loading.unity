@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobbySceneName: Lobby
+  connectionFailedSceneName: ConnectionFailed
 --- !u!1 &796766798
 GameObject:
   m_ObjectHideFlags: 0
