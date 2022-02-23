@@ -18,22 +18,12 @@ public class PlayerSpawner : MonoBehaviour
             SpawnKnight();
             RoomManager.UpdateRoomPropsMissingPlayer(PlayerType.DRAGON);
             SetPlayerProps(PlayerType.KNIGHT);
-
-            return;
-        }
-
-        PlayerType missingType = (PlayerType) PhotonNetwork.CurrentRoom.CustomProperties["MissingPlayer"];
-
-        if (missingType.Equals(PlayerType.KNIGHT))
-        {
-            SpawnKnight();
-            RoomManager.UpdateRoomPropsMissingPlayer(PlayerType.DRAGON);
-        }
+        } 
         else
         {
-            SpawnDragon();
+            SpawnPlayer();
         }
-        SetPlayerProps(missingType);
+ 
     }
 
     private void SpawnKnight()
@@ -44,6 +34,38 @@ public class PlayerSpawner : MonoBehaviour
     private void SpawnDragon()
     {
         PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-6f, 2f), dragonPrefab.transform.rotation);
+    }
+
+    private void SpawnPlayerType(PlayerType playerType)
+    {
+        if (playerType.Equals(PlayerType.KNIGHT))
+        {
+            SpawnKnight();
+            RoomManager.UpdateRoomPropsMissingPlayer(PlayerType.DRAGON);
+        } 
+        else
+        {
+            SpawnDragon();
+            RoomManager.UpdateRoomPropsMissingPlayer(PlayerType.KNIGHT);
+        }
+    }
+
+    private void SpawnPlayer()
+    {
+        try
+        {
+            PlayerType playerType = (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties["PlayerType"];
+
+            SpawnPlayerType(playerType);
+            SetPlayerProps(playerType);
+        }
+        catch
+        {
+            PlayerType missingType = (PlayerType)PhotonNetwork.CurrentRoom.CustomProperties["MissingPlayer"];
+
+            SpawnPlayerType(missingType);
+            SetPlayerProps(missingType);
+        }
     }
 
     private void SetPlayerProps(PlayerType playerType)

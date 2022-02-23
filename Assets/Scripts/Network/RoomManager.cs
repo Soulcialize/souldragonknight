@@ -31,8 +31,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.DestroyAll();
-            PhotonNetwork.LoadLevel(gameSceneName);
+            base.photonView.RPC("RPC_LoadLevel", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    public void RPC_LoadLevel()
+    {
+        PhotonNetwork.LoadLevel(gameSceneName);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
