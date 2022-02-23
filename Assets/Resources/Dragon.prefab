@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 4470413134207635888}
   playerInput: {fileID: 4470413134207635893}
+  persistentActionMaps: []
   movement: {fileID: 4470413134207635889}
 --- !u!114 &4470413134207635889
 MonoBehaviour:
