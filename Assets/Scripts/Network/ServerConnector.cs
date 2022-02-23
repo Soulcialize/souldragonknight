@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class ServerConnector : MonoBehaviourPunCallbacks
 {
     [SerializeField] private string lobbySceneName;
+    [SerializeField] private string connectionFailedSceneName;
 
     private void Start()
     {
@@ -24,4 +26,11 @@ public class ServerConnector : MonoBehaviourPunCallbacks
         base.OnJoinedLobby();
         SceneManager.LoadScene(lobbySceneName);
     }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        base.OnDisconnected(cause);
+        SceneManager.LoadScene(connectionFailedSceneName);
+    }
+
 }
