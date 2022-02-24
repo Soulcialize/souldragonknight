@@ -9,21 +9,12 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    public enum PlayerType { DRAGON, KNIGHT };
-
     [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
 
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-    }
-
-    public static void UpdateRoomPropsMissingPlayer(PlayerType playerType)
-    {
-        Hashtable hash = new Hashtable();
-        hash.Add("MissingPlayer", playerType);
-        PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
     }
 
     public void RestartLevel()
@@ -43,20 +34,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        PlayerType playerType = (PlayerType) otherPlayer.CustomProperties["PlayerType"];
-        UpdateRoomPropsMissingPlayer(playerType);
-
         base.OnPlayerLeftRoom(otherPlayer);
     }
 
     public void LeaveRoom()
     {
+        Hashtable playerProperties = PhotonNetwork.LocalPlayer.CustomProperties;
+        playerProperties.Remove(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+
         PhotonNetwork.LeaveRoom();
     }
 
     public override void OnLeftRoom()
     {
-        SceneManager.LoadScene(mainMenuSceneName);
         base.OnLeftRoom();
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }
