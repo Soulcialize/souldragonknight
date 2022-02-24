@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 
 public class RoomCreator : MonoBehaviourPunCallbacks
@@ -12,11 +13,9 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log($"Creating room ({roomNameInputField.text})");
-        PhotonNetwork.CreateRoom(roomNameInputField.text);
-    }
 
-    public override void OnJoinedRoom()
-    {
-        PhotonNetwork.LoadLevel(roomSceneName);
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
     }
 }
