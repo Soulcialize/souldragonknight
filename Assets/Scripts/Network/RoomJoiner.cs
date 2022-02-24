@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 
 public class RoomJoiner : MonoBehaviourPunCallbacks
@@ -13,5 +14,10 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
     {
         Debug.Log($"Joining room ({roomNameInputField.text})");
         PhotonNetwork.JoinRoom(roomNameInputField.text);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        PhotonNetwork.LoadLevel(roomSceneName);
     }
 }
