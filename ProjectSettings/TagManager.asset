@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Dragon
+    uniqueID: 4215315617
+    locked: 0
   - name: Knight
     uniqueID: 2967941379
     locked: 0
