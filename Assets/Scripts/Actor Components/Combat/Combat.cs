@@ -14,6 +14,7 @@ public class Combat : MonoBehaviour
     private bool isFacingRight;
 
     public bool IsAttacking { get; private set; }
+    public bool IsHurt { get; private set; }
 
     public void Attack(bool isFacingRight)
     {
@@ -24,14 +25,12 @@ public class Combat : MonoBehaviour
 
     public void ExecuteAttackEffect()
     {
-        print(isFacingRight);
         Collider2D[] hits = Physics2D.OverlapBoxAll(
             (isFacingRight ? attackEffectArea.RightOrigin : attackEffectArea.LeftOrigin).position,
             attackEffectArea.Size,
             attackEffectArea.LeftOrigin.eulerAngles.z,
             attackEffectLayer);
 
-        print($"hits: {hits.Length}");
         foreach (Collider2D hit in hits)
         {
             ActorController actorHit = hit.GetComponent<ActorController>();
@@ -51,5 +50,13 @@ public class Combat : MonoBehaviour
     public void Hurt()
     {
         Debug.Log($"{gameObject.name} hurt");
+        IsHurt = true;
+        animator.SetBool("isHurt", IsHurt);
+    }
+
+    public void OnHurtEnd()
+    {
+        IsHurt = false;
+        animator.SetBool("isHurt", false);
     }
 }
