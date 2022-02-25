@@ -31,9 +31,9 @@ namespace CombatStates
         public void ExecuteAttackEffect()
         {
             Collider2D[] hits = Physics2D.OverlapBoxAll(
-                (isFacingRight ? owner.AttackEffectArea.RightOrigin : owner.AttackEffectArea.LeftOrigin).position,
+                owner.AttackEffectArea.transform.position,
                 owner.AttackEffectArea.Size,
-                owner.AttackEffectArea.LeftOrigin.eulerAngles.z,
+                owner.AttackEffectArea.transform.eulerAngles.z,
                 owner.AttackEffectLayer);
 
             foreach (Collider2D hit in hits)

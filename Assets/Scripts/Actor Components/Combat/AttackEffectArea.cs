@@ -5,12 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class AttackEffectArea : MonoBehaviour
 {
-    [SerializeField] private Transform leftOrigin;
-    public Transform LeftOrigin { get => leftOrigin; }
-
-    [SerializeField] private Transform rightOrigin;
-    public Transform RightOrigin { get => rightOrigin; }
-
     [SerializeField] private Vector2 size;
     public Vector2 Size { get => size; }
 
@@ -20,8 +14,7 @@ public class AttackEffectArea : MonoBehaviour
     {
         if (drawAreas)
         {
-            Gizmos.DrawWireCube(leftOrigin.position, size);
-            Gizmos.DrawWireCube(rightOrigin.position, size);
+            Gizmos.DrawWireCube(transform.position, size);
         }
     }
 }

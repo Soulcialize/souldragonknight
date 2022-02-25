@@ -44,7 +44,8 @@ public abstract class Movement : MonoBehaviour
         {
             localScale.x = -localScale.x;
             transform.localScale = localScale;
-            IsFacingRight = !IsFacingRight;
         }
+
+        IsFacingRight = localScale.x > 0f;
     }
 }
