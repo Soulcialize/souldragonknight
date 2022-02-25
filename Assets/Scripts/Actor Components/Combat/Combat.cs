@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StateMachines;
+using CombatStates;
 
 public class Combat : MonoBehaviour
 {
@@ -11,52 +13,49 @@ public class Combat : MonoBehaviour
     [SerializeField] private AttackEffectArea attackEffectArea;
     [SerializeField] private LayerMask attackEffectLayer;
 
-    private bool isFacingRight;
+    public Animator Animator { get => animator; }
 
-    public bool IsAttacking { get; private set; }
-    public bool IsHurt { get; private set; }
+    public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
+    public LayerMask AttackEffectLayer { get => attackEffectLayer; }
+
+    public CombatStateMachine CombatStateMachine { get; private set; }
+
+    private void Awake()
+    {
+        CombatStateMachine = new CombatStateMachine();
+    }
 
     public void Attack(bool isFacingRight)
     {
-        IsAttacking = true;
-        this.isFacingRight = isFacingRight;
-        animator.SetBool("isAttacking", IsAttacking);
+        CombatStateMachine.ChangeState(new AttackState(this, isFacingRight));
     }
 
     public void ExecuteAttackEffect()
     {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(
-            (isFacingRight ? attackEffectArea.RightOrigin : attackEffectArea.LeftOrigin).position,
-            attackEffectArea.Size,
-            attackEffectArea.LeftOrigin.eulerAngles.z,
-            attackEffectLayer);
-
-        foreach (Collider2D hit in hits)
+        if (CombatStateMachine.CurrState is AttackState attackState)
         {
-            ActorController actorHit = hit.GetComponent<ActorController>();
-            if (actorHit != null)
-            {
-                actorHit.Combat.Hurt();
-            }
+            attackState.ExecuteAttackEffect();
         }
     }
 
     public void OnAttackEnd()
     {
-        IsAttacking = false;
-        animator.SetBool("isAttacking", IsAttacking);
+        if (CombatStateMachine.CurrState is AttackState)
+        {
+            CombatStateMachine.Exit();
+        }
     }
 
     public void Hurt()
     {
-        Debug.Log($"{gameObject.name} hurt");
-        IsHurt = true;
-        animator.SetBool("isHurt", IsHurt);
+        CombatStateMachine.ChangeState(new HurtState(this));
     }
 
     public void OnHurtEnd()
     {
-        IsHurt = false;
-        animator.SetBool("isHurt", false);
+        if (CombatStateMachine.CurrState is HurtState)
+        {
+            CombatStateMachine.Exit();
+        }
     }
 }

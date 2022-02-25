@@ -35,7 +35,7 @@ public class KnightPlayerController : PlayerController
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
     {
-        if (!combat.IsAttacking)
+        if (combat.CombatStateMachine.CurrState == null)
         {
             movement.UpdateHorizontalMovement(context.ReadValue<float>());
         }
@@ -43,7 +43,7 @@ public class KnightPlayerController : PlayerController
 
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (!combat.IsAttacking)
+        if (combat.CombatStateMachine.CurrState == null)
         {
             movement.Jump();
         }
