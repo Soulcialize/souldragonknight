@@ -222,6 +222,9 @@ MonoBehaviour:
   animator: {fileID: 3533750638843532997}
   isDefaultFacingRight: 1
   movementSpeed: 6
+  enterAirborneStateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4470413134207635888
 MonoBehaviour:
   m_ObjectHideFlags: 0

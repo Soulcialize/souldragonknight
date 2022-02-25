@@ -1,28 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using StateMachines;
+using AirMovementStates;
 
 public class AirMovement : Movement
 {
     [SerializeField] private float movementSpeed;
 
-    private float horizontalMoveDirection;
-    private float verticalMoveDirection;
+    [Space(10)]
+
+    [SerializeField] private UnityEvent enterAirborneStateEvent;
+
+    private float cachedHorizontalMoveDirection;
+    private float cachedVerticalMoveDirection;
+
+    public float MovementSpeed { get => movementSpeed; }
+
+    public UnityEvent EnterAirborneStateEvent { get => enterAirborneStateEvent; }
+
+    public AirMovementStateMachine MovementStateMachine { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        MovementStateMachine = new AirMovementStateMachine();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        enterAirborneStateEvent.AddListener(HandleEnterAirborneStateEvent);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        enterAirborneStateEvent.RemoveListener(HandleEnterAirborneStateEvent);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        MovementStateMachine.ChangeState(new AirborneState(this));
+    }
 
     protected override void UpdateMovement()
     {
-        rigidbody2d.velocity = new Vector2(horizontalMoveDirection, verticalMoveDirection).normalized * movementSpeed;
-        animator.SetBool("isFlying", rigidbody2d.velocity != Vector2.zero);
+        MovementStateMachine.Update();
     }
 
-    public void MoveHorizontally(float direction)
+    public void UpdateHorizontalMovement(float direction)
     {
-        horizontalMoveDirection = direction;
-        FlipDirection(direction);
+        cachedHorizontalMoveDirection = direction;
+        if (MovementStateMachine.CurrState is AirborneState airborneState)
+        {
+            airborneState.UpdateHorizontalMovement(direction);
+        }
     }
 
-    public void MoveVertically(float direction)
+    public void UpdateVerticalMovement(float direction)
     {
-        verticalMoveDirection = direction;
+        cachedVerticalMoveDirection = direction;
+        if (MovementStateMachine.CurrState is AirborneState airborneState)
+        {
+            airborneState.UpdateVerticalMovement(direction);
+        }
+    }
+
+    private void HandleEnterAirborneStateEvent()
+    {
+        AirborneState airborneState = (AirborneState)MovementStateMachine.CurrState;
+        airborneState.UpdateHorizontalMovement(cachedHorizontalMoveDirection);
+        airborneState.UpdateVerticalMovement(cachedVerticalMoveDirection);
     }
 }
