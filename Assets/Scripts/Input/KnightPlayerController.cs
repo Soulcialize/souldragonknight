@@ -37,7 +37,7 @@ public class KnightPlayerController : PlayerController
     {
         if (!combat.IsAttacking)
         {
-            movement.MoveHorizontally(context.ReadValue<float>());
+            movement.UpdateHorizontalMovement(context.ReadValue<float>());
         }
     }
 
@@ -51,9 +51,9 @@ public class KnightPlayerController : PlayerController
 
     private void HandleAttackInput(InputAction.CallbackContext context)
     {
-        if (!movement.IsAirborne)
+        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
-            movement.MoveHorizontally(0f);
+            movement.UpdateHorizontalMovement(0f);
             combat.Attack(movement.IsFacingRight);
         }
     }

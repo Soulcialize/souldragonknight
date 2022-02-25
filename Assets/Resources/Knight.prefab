@@ -433,6 +433,9 @@ MonoBehaviour:
   groundDetector: {fileID: 2344377606277045393}
   horizontalMoveSpeed: 8
   jumpForce: 12
+  enterGroundedStateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4305109986236622591
 MonoBehaviour:
   m_ObjectHideFlags: 0
