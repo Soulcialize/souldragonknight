@@ -302,6 +302,18 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isHurt
+  - Type: 4
+    SynchronizeType: 2
+    Name: isRunning
+  - Type: 4
+    SynchronizeType: 2
+    Name: isJumping
+  - Type: 4
+    SynchronizeType: 2
+    Name: isFalling
+  - Type: 4
+    SynchronizeType: 2
+    Name: isAttacking
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
