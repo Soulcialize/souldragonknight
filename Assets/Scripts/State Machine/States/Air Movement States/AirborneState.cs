@@ -13,7 +13,8 @@ namespace AirMovementStates
 
         public override void Enter()
         {
-            owner.EnterAirborneStateEvent.Invoke();
+            UpdateHorizontalMovement(owner.CachedHorizontalMoveDirection);
+            UpdateVerticalMovement(owner.CachedVerticalMoveDirection);
         }
 
         public override void Execute()

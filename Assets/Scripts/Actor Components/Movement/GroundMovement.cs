@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using StateMachines;
 using GroundMovementStates;
 
@@ -11,18 +10,11 @@ public class GroundMovement : Movement
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
-    [Space(10)]
-
-    [SerializeField] private UnityEvent enterGroundedStateEvent;
-
-    private float cachedHorizontalMovementDirection;
-
     public SurfaceDetector GroundDetector { get => groundDetector; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
 
-    public UnityEvent EnterGroundedStateEvent { get => enterGroundedStateEvent; }
-
+    public float CachedHorizontalMovementDirection { get; private set; }
     public GroundMovementStateMachine MovementStateMachine { get; private set; }
 
     protected override void Awake()
@@ -34,13 +26,11 @@ public class GroundMovement : Movement
     protected override void OnEnable()
     {
         base.OnEnable();
-        enterGroundedStateEvent.AddListener(HandleEnterGroundedStateEvent);
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        enterGroundedStateEvent.RemoveListener(HandleEnterGroundedStateEvent);
     }
 
     protected override void Start()
@@ -63,7 +53,7 @@ public class GroundMovement : Movement
 
     public void UpdateHorizontalMovement(float direction)
     {
-        cachedHorizontalMovementDirection = direction;
+        CachedHorizontalMovementDirection = direction;
         if (MovementStateMachine.CurrState is GroundedState groundedState)
         {
             groundedState.UpdateHorizontalMovement(direction);
@@ -76,10 +66,5 @@ public class GroundMovement : Movement
         {
             groundedState.PostJumpRequest();
         }
-    }
-
-    private void HandleEnterGroundedStateEvent()
-    {
-        ((GroundedState)MovementStateMachine.CurrState).UpdateHorizontalMovement(cachedHorizontalMovementDirection);
     }
 }

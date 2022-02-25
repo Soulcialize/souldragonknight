@@ -14,7 +14,7 @@ namespace GroundMovementStates
 
         public override void Enter()
         {
-            owner.EnterGroundedStateEvent.Invoke();
+            UpdateHorizontalMovement(owner.CachedHorizontalMovementDirection);
         }
 
         public override void Execute()
