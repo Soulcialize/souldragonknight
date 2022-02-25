@@ -41,6 +41,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - LoadLevel
   - RPC_LoadLevel
+  - RPC_IndicatorUpdate
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

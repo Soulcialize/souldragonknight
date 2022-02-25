@@ -13,17 +13,15 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button startGameButton;
     [SerializeField] private string gameSceneName;
-    [SerializeField] private GameObject yourRoleIndicatorKnight;
-    [SerializeField] private GameObject yourRoleIndicatorDragon;
-    [SerializeField] private GameObject partnerRoleIndicatorKnight;
-    [SerializeField] private GameObject partnerRoleIndicatorDragon;
+    [SerializeField] private GameObject[] yourRoleIndicator;
+    [SerializeField] private GameObject[] partnerRoleIndicator;
 
     public void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
-        SetIndicator();
+        photonView.RPC("RPC_IndicatorUpdate", RpcTarget.All, PhotonNetwork.LocalPlayer, playerType);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
@@ -34,7 +32,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         print($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
         startGameButton.interactable = CanStartGame();
-        SetIndicator();
+        photonView.RPC("RPC_IndicatorUpdate", RpcTarget.All, targetPlayer, playerType);
     }
 
     private bool CanStartGame()
@@ -57,58 +55,18 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         return selectedRoles.Count == System.Enum.GetValues(typeof(PlayerType)).Length;
     }
 
-    private void SetIndicator()
+    [PunRPC]
+    private void RPC_IndicatorUpdate(Player player, PlayerType type)
     {
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        if (player == PhotonNetwork.LocalPlayer)
         {
-            if (player == PhotonNetwork.LocalPlayer)
-            {
-                object playerTypeObj = player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-                if (playerTypeObj == null)
-                {
-                    break;
-                }
-                if ((PlayerType) playerTypeObj == PlayerType.KNIGHT)
-                {
-                    yourRoleIndicatorKnight.SetActive(true);
-                }
-                else
-                {
-                    yourRoleIndicatorKnight.SetActive(false);
-                }
-                if ((PlayerType)playerTypeObj == PlayerType.DRAGON)
-                {
-                    yourRoleIndicatorDragon.SetActive(true);
-                }
-                else
-                {
-                    yourRoleIndicatorDragon.SetActive(false);
-                }
-            }
-            else
-            {
-                object playerTypeObj = player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-                if (playerTypeObj == null)
-                {
-                    break;
-                }
-                if ((PlayerType)playerTypeObj == PlayerType.KNIGHT)
-                {
-                    partnerRoleIndicatorKnight.SetActive(true);
-                }
-                else
-                {
-                    partnerRoleIndicatorKnight.SetActive(false);
-                }
-                if ((PlayerType)playerTypeObj == PlayerType.DRAGON)
-                {
-                    partnerRoleIndicatorDragon.SetActive(true);
-                }
-                else
-                {
-                    partnerRoleIndicatorDragon.SetActive(false);
-                }
-            }
+            yourRoleIndicator[(int) type].SetActive(true);
+            yourRoleIndicator[1-(int) type].SetActive(false);
+        }
+        else
+        {
+            partnerRoleIndicator[(int) type].SetActive(true);
+            partnerRoleIndicator[1 - (int) type].SetActive(false);
         }
     }
 
