@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public abstract class PlayerController : MonoBehaviour
+public abstract class PlayerController : ActorController
 {
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected PlayerInput playerInput;
-    [SerializeField] protected List<string> persistentActionMaps;
+    [SerializeField] protected List<string> persistentActionMaps = new List<string>();
 
     private InputAction menuAction;
 
@@ -20,7 +20,7 @@ public abstract class PlayerController : MonoBehaviour
             return;
         }
 
-        persistentActionMaps = new List<string>() { "Ui" };
+        persistentActionMaps.AddRange(new List<string>() { "Ui" });
         foreach (string actionMapName in persistentActionMaps)
         {
             playerInput.actions.FindActionMap(actionMapName).Enable();

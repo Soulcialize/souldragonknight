@@ -8,11 +8,14 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
+    [SerializeField] private bool isDefaultFacingRight = true;
 
+    public bool IsFacingRight { get; private set; }
 
     protected virtual void Start()
     {
-
+        FlipDirection(isDefaultFacingRight ? 1f : -1f);
+        IsFacingRight = isDefaultFacingRight;
     }
 
     protected virtual void FixedUpdate()
@@ -32,6 +35,7 @@ public abstract class Movement : MonoBehaviour
         {
             localScale.x = -localScale.x;
             transform.localScale = localScale;
+            IsFacingRight = !IsFacingRight;
         }
     }
 }

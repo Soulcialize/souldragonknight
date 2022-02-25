@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class KnightPlayerController : PlayerController
 {
     [SerializeField] private GroundMovement movement;
-    [SerializeField] private Combat combat;
 
     private InputAction moveGroundAction;
     private InputAction jumpAction;
@@ -55,7 +54,7 @@ public class KnightPlayerController : PlayerController
         if (!movement.IsAirborne)
         {
             movement.MoveHorizontally(0f);
-            combat.Attack();
+            combat.Attack(movement.IsFacingRight);
         }
     }
 }

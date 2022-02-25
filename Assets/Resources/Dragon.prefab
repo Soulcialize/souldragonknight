@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4470413134207635891}
   - component: {fileID: 4470413134207635890}
   - component: {fileID: 8489899154768126579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec708e1a0f3cb56468a85431b54c8e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combat: {fileID: 0}
   photonView: {fileID: 4470413134207635888}
   playerInput: {fileID: 4470413134207635893}
   persistentActionMaps: []
@@ -219,6 +220,7 @@ MonoBehaviour:
   photonView: {fileID: 4470413134207635888}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3533750638843532997}
+  isDefaultFacingRight: 1
   movementSpeed: 6
 --- !u!114 &4470413134207635888
 MonoBehaviour:
