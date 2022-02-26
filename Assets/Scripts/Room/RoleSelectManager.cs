@@ -13,6 +13,8 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button startGameButton;
     [SerializeField] private string gameSceneName;
+    [SerializeField] private GameObject[] yourRoleIndicator;
+    [SerializeField] private GameObject[] partnerRoleIndicator;
 
     public void SelectRole(PlayerType playerType)
     {
@@ -29,6 +31,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         print($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
         startGameButton.interactable = CanStartGame();
+        IndicatorUpdate(targetPlayer, playerType);
     }
 
     private bool CanStartGame()
@@ -49,6 +52,20 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
         // check if every role has been selected
         return selectedRoles.Count == System.Enum.GetValues(typeof(PlayerType)).Length;
+    }
+
+    private void IndicatorUpdate(Player player, PlayerType type)
+    {
+        if (player == PhotonNetwork.LocalPlayer)
+        {
+            yourRoleIndicator[(int) type].SetActive(true);
+            yourRoleIndicator[1-(int) type].SetActive(false);
+        }
+        else
+        {
+            partnerRoleIndicator[(int) type].SetActive(true);
+            partnerRoleIndicator[1 - (int) type].SetActive(false);
+        }
     }
 
     public void StartGame()
