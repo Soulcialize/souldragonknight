@@ -19,12 +19,12 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        try
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(RoomManager.ROOM_PROPERTIES_STATUS_KEY))
         {
-            bool HasGameStarted = (bool)PhotonNetwork.
+            bool hasGameStarted = (bool)PhotonNetwork.
                 CurrentRoom.CustomProperties[RoomManager.ROOM_PROPERTIES_STATUS_KEY];
 
-            if (HasGameStarted)
+            if (hasGameStarted)
             {
                 PhotonNetwork.LoadLevel(gameSceneName);
             } else
@@ -32,7 +32,7 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
                 PhotonNetwork.LoadLevel(roomSceneName);
             }
         }
-        catch
+        else
         {
             PhotonNetwork.LoadLevel(roomSceneName);
         }

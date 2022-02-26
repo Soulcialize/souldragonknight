@@ -29,12 +29,12 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        try
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey(PLAYER_PROPERTIES_TYPE_KEY))
         {
             SpawnPlayer((PlayerType)PhotonNetwork.
                 LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY]);
         }
-        catch
+        else
         {
             PlayerType playerType = (PlayerType)PhotonNetwork.
                 CurrentRoom.CustomProperties[RoomManager.ROOM_PROPERTIES_MISSING_TYPE_KEY];
