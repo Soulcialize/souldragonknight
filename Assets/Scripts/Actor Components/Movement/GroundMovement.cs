@@ -1,76 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StateMachines;
+using GroundMovementStates;
 
 public class GroundMovement : Movement
 {
     [SerializeField] protected SurfaceDetector groundDetector;
-
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
-    private float horizontalMoveDirection;
-    private bool isJumpRequestPosted;
+    public SurfaceDetector GroundDetector { get => groundDetector; }
+    public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
+    public float JumpForce { get => jumpForce; }
 
-    public bool IsAirborne { get; private set; }
+    public float CachedHorizontalMovementDirection { get; private set; }
+    public GroundMovementStateMachine MovementStateMachine { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        MovementStateMachine = new GroundMovementStateMachine();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+    }
 
     protected override void Start()
     {
         base.Start();
-        IsAirborne = !groundDetector.IsInContact;
+        if (groundDetector.IsInContact)
+        {
+            MovementStateMachine.ChangeState(new GroundedState(this));
+        }
+        else
+        {
+            MovementStateMachine.ChangeState(new AirborneState(this));
+        }
     }
 
     protected override void UpdateMovement()
     {
-        if (IsAirborne)
-        {
-            if (rigidbody2d.velocity.y <= jumpForce / 2f)
-            {
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", true);
-                if (groundDetector.IsInContact)
-                {
-                    IsAirborne = false;
-                    animator.SetBool("isFalling", false);
-                    animator.SetBool("isRunning", horizontalMoveDirection != 0f);
-                    FlipDirection(horizontalMoveDirection);
-                }
-            }
-        }
-        else
-        {
-            if (isJumpRequestPosted)
-            {
-                IsAirborne = true;
-                isJumpRequestPosted = false;
-                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
-                animator.SetBool("isJumping", true);
-            }
-            else
-            {
-                rigidbody2d.velocity = new Vector2(horizontalMoveDirection * horizontalMoveSpeed, rigidbody2d.velocity.y);
-            }
-        }
+        MovementStateMachine.Update();
     }
 
-    public void MoveHorizontally(float direction)
+    public void UpdateHorizontalMovement(float direction)
     {
-        horizontalMoveDirection = direction;
-
-        if (IsAirborne)
+        CachedHorizontalMovementDirection = direction;
+        if (MovementStateMachine.CurrState is GroundedState groundedState)
         {
-            return;
+            groundedState.UpdateHorizontalMovement(direction);
         }
-
-        animator.SetBool("isRunning", direction != 0f);
-        FlipDirection(direction);
     }
 
     public void Jump()
     {
-        if (!IsAirborne)
+        if (MovementStateMachine.CurrState is GroundedState groundedState)
         {
-            isJumpRequestPosted = true;
+            groundedState.PostJumpRequest();
         }
     }
 }

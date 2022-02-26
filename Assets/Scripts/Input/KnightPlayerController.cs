@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class KnightPlayerController : PlayerController
 {
     [SerializeField] private GroundMovement movement;
-    [SerializeField] private Combat combat;
 
     private InputAction moveGroundAction;
     private InputAction jumpAction;
@@ -36,15 +35,15 @@ public class KnightPlayerController : PlayerController
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
     {
-        if (!combat.IsAttacking)
+        if (combat.CombatStateMachine.CurrState == null)
         {
-            movement.MoveHorizontally(context.ReadValue<float>());
+            movement.UpdateHorizontalMovement(context.ReadValue<float>());
         }
     }
 
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (!combat.IsAttacking)
+        if (combat.CombatStateMachine.CurrState == null)
         {
             movement.Jump();
         }
@@ -52,10 +51,10 @@ public class KnightPlayerController : PlayerController
 
     private void HandleAttackInput(InputAction.CallbackContext context)
     {
-        if (!movement.IsAirborne)
+        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
-            movement.MoveHorizontally(0f);
-            combat.Attack();
+            movement.UpdateHorizontalMovement(0f);
+            combat.Attack(movement.IsFacingRight);
         }
     }
 }

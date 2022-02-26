@@ -26,5 +26,13 @@ public class RoomCreator : MonoBehaviourPunCallbacks
         if (returnCode == 32766) {
             errorMessage.GetComponent<Text>().text = "A lobby with that name already exists!";
         }
+
+    }
+    
+    public override void OnCreatedRoom()
+    {
+        base.OnCreatedRoom();
+
+        RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, false);
     }
 }
