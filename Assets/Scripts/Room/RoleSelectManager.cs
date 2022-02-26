@@ -21,7 +21,6 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
-        photonView.RPC("RPC_IndicatorUpdate", RpcTarget.All, PhotonNetwork.LocalPlayer, playerType);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
@@ -32,7 +31,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         print($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
         startGameButton.interactable = CanStartGame();
-        photonView.RPC("RPC_IndicatorUpdate", RpcTarget.All, targetPlayer, playerType);
+        IndicatorUpdate(targetPlayer, playerType);
     }
 
     private bool CanStartGame()
@@ -55,8 +54,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         return selectedRoles.Count == System.Enum.GetValues(typeof(PlayerType)).Length;
     }
 
-    [PunRPC]
-    private void RPC_IndicatorUpdate(Player player, PlayerType type)
+    private void IndicatorUpdate(Player player, PlayerType type)
     {
         if (player == PhotonNetwork.LocalPlayer)
         {
