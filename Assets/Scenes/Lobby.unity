@@ -1440,6 +1440,7 @@ MonoBehaviour:
   roomNameInputField: {fileID: 511988680}
   roomSceneName: Room
   errorMessage: {fileID: 1313256923}
+  gameSceneName: Test
 --- !u!4 &1538132808
 Transform:
   m_ObjectHideFlags: 0
