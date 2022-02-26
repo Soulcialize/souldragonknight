@@ -18,4 +18,11 @@ public class RoomCreator : MonoBehaviourPunCallbacks
         roomOptions.MaxPlayers = 2;
         PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
     }
+
+    public override void OnCreatedRoom()
+    {
+        base.OnCreatedRoom();
+
+        RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, false);
+    }
 }
