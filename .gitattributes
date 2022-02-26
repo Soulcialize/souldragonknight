@@ -51,3 +51,5 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+*.anim linguist-generated
+*.controller linguist-generated

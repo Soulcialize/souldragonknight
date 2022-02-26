@@ -31,11 +31,11 @@ public class DragonPlayerController : PlayerController
 
     private void HandleMoveAirHorizontalInput(InputAction.CallbackContext context)
     {
-        movement.MoveHorizontally(context.ReadValue<float>());
+        movement.UpdateHorizontalMovement(context.ReadValue<float>());
     }
 
     private void HandleMoveAirVerticalInput(InputAction.CallbackContext context)
     {
-        movement.MoveVertically(context.ReadValue<float>());
+        movement.UpdateVerticalMovement(context.ReadValue<float>());
     }
 }

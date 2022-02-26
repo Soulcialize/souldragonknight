@@ -17,6 +17,9 @@ public class PlayerSpawner : MonoBehaviour
     private void SpawnKnight()
     {
         PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-7f, -0.5f), knightPrefab.transform.rotation);
+
+        // TODO: spawn enemies in separate script
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy").name, new Vector2(6f, 2f), Quaternion.identity);
     }
 
     private void SpawnDragon()
