@@ -9,6 +9,7 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField roomNameInputField;
     [SerializeField] private string roomSceneName;
+    [SerializeField] private string gameSceneName;
 
     public void JoinRoom()
     {
@@ -18,6 +19,22 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel(roomSceneName);
+        try
+        {
+            bool HasGameStarted = (bool)PhotonNetwork.
+                CurrentRoom.CustomProperties[RoomManager.ROOM_PROPERTIES_STATUS_KEY];
+
+            if (HasGameStarted)
+            {
+                PhotonNetwork.LoadLevel(gameSceneName);
+            } else
+            {
+                PhotonNetwork.LoadLevel(roomSceneName);
+            }
+        }
+        catch
+        {
+            PhotonNetwork.LoadLevel(roomSceneName);
+        }
     }
 }

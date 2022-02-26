@@ -1683,6 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomNameInputField: {fileID: 511988680}
   roomSceneName: Room
+  gameSceneName: Test
 --- !u!114 &1933529984
 MonoBehaviour:
   m_ObjectHideFlags: 0

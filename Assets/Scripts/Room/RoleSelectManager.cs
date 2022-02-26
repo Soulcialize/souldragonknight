@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
-using Photon.Realtime;
 
 public class RoleSelectManager : MonoBehaviourPunCallbacks
 {
@@ -16,7 +16,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
 
-    public void SelectRole(PlayerType playerType)
+    public static void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
@@ -28,7 +28,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
         PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-        print($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
+        Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
         startGameButton.interactable = CanStartGame();
         IndicatorUpdate(targetPlayer, playerType);
@@ -71,6 +71,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         photonView.RPC("RPC_LoadLevel", RpcTarget.All);
+        RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, true);
     }
 
     [PunRPC]
