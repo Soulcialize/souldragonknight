@@ -7,8 +7,11 @@ using TMPro;
 
 public class RoomCreator : MonoBehaviourPunCallbacks
 {
+    public static readonly int LOBBY_ALREADY_EXISTS_ERROR_NAME = 32766;
+
     [SerializeField] private TMP_InputField roomNameInputField;
     [SerializeField] private string roomSceneName;
+    [SerializeField] private TextMeshProUGUI errorMessage;
 
     public void CreateRoom()
     {
@@ -25,4 +28,13 @@ public class RoomCreator : MonoBehaviourPunCallbacks
 
         RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, false);
     }
+
+    public override void OnCreateRoomFailed(short returnCode, string message) {
+        base.OnCreateRoomFailed(returnCode, message);
+        if (returnCode == LOBBY_ALREADY_EXISTS_ERROR_NAME) {
+            errorMessage.text = "A lobby with that name already exists!";
+        }
+
+    }
+    
 }
