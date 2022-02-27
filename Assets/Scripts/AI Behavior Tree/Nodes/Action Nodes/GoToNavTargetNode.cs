@@ -5,13 +5,18 @@ using AiBehaviorTreeBlackboards;
 
 namespace AiBehaviorTreeNodes
 {
+    /// <summary>
+    /// Action node that moves the actor to the navigation target stored on the blackboard.
+    /// </summary>
+    /// <remarks>
+    /// <br><b>Success</b>: When the actor reaches the navigation target position.</br>
+    /// <br><b>Failure</b>: -</br>
+    /// <br><b>Running</b>: While the actor is still navigating towards the target position.</br>
+    /// </remarks>
     public class GoToNavTargetNode : MovementNode
     {
         private readonly bool useStoppingDistance;
 
-        /// <summary>
-        /// Moves the actor toward the navigation target position recorded on the blackboard.
-        /// </summary>
         /// <param name="ownerMovement">The actor's movement component.</param>
         /// <param name="useStoppingDistance">
         /// If true, this node returns success when the actor is within

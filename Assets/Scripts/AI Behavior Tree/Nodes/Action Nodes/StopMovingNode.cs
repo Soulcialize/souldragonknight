@@ -4,6 +4,14 @@ using UnityEngine;
 
 namespace AiBehaviorTreeNodes
 {
+    /// <summary>
+    /// Action node that stops the actor at its current position.
+    /// </summary>
+    /// <remarks>
+    /// <br><b>Success</b>: Always.</br>
+    /// <br><b>Failure</b>: -</br>
+    /// <br><b>Running</b>: -</br>
+    /// </remarks>
     public class StopMovingNode : MovementNode
     {
         public StopMovingNode(Movement ownerMovement) : base(ownerMovement) { }

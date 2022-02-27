@@ -5,6 +5,14 @@ using AiBehaviorTreeBlackboards;
 
 namespace AiBehaviorTreeNodes
 {
+    /// <summary>
+    /// Action node that sets the stored combat target's position as the navigation target.
+    /// </summary>
+    /// <remarks>
+    /// <br><b>Success</b>: Always.</br>
+    /// <br><b>Failure</b>: -</br>
+    /// <br><b>Running</b>: -</br>
+    /// </remarks>
     public class SetCombatTargetPosNode : BehaviorNode
     {
         public override NodeState Execute()
