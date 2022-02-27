@@ -48,4 +48,10 @@ public abstract class Movement : MonoBehaviour
 
         IsFacingRight = localScale.x > 0f;
     }
+
+    public float GetStoppingDistanceFromNavTarget()
+    {
+        // TODO: make this value a serialized field once we're sure no one else is modifying prefabs
+        return 1.4f;
+    }
 }

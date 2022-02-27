@@ -7,13 +7,16 @@ namespace AiBehaviorTrees
 {
     public static class CombatTreeConstructor
     {
-        public static BehaviorTree ConstructGroundCombatTree()
+        public static BehaviorTree ConstructGroundCombatTree(GroundMovement movement)
         {
             return new BehaviorTree(
                 BehaviorTree.Function.COMBAT,
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    new GetVisibleCombatTargetNode()
+                    new GetVisibleCombatTargetNode(),
+                    new SetCombatTargetPosNode(),
+                    new GoToNavTargetNode(movement, true),
+                    new StopMovingNode(movement)
                 }));
         }
     }

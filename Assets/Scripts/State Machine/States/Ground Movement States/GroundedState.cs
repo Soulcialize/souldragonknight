@@ -44,7 +44,7 @@ namespace GroundMovementStates
 
         public void UpdateHorizontalMovement(float direction)
         {
-            horizontalMoveDirection = direction;
+            horizontalMoveDirection = Mathf.Clamp(direction, -1f, 1f);
         }
 
         public void PostJumpRequest()
