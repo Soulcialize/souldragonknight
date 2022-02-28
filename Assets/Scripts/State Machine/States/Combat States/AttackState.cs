@@ -6,12 +6,7 @@ namespace CombatStates
 {
     public class AttackState : CombatState
     {
-        private readonly bool isFacingRight;
-
-        public AttackState(Combat owner, bool isFacingRight) : base(owner)
-        {
-            this.isFacingRight = isFacingRight;
-        }
+        public AttackState(Combat owner) : base(owner) { }
 
         public override void Enter()
         {

@@ -54,7 +54,7 @@ public class KnightPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
             movement.UpdateHorizontalMovement(0f);
-            combat.Attack(movement.IsFacingRight);
+            combat.Attack();
         }
     }
 }

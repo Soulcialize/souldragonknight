@@ -18,6 +18,9 @@ public class Combat : MonoBehaviour
     public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
 
+    // TODO: get this value from a serialized field in the inspector
+    public float MinTimeBetweenAttacks { get => 3f; }
+
     public CombatStateMachine CombatStateMachine { get; private set; }
 
     private void Awake()
@@ -25,9 +28,9 @@ public class Combat : MonoBehaviour
         CombatStateMachine = new CombatStateMachine();
     }
 
-    public void Attack(bool isFacingRight)
+    public void Attack()
     {
-        CombatStateMachine.ChangeState(new AttackState(this, isFacingRight));
+        CombatStateMachine.ChangeState(new AttackState(this));
     }
 
     public void ExecuteAttackEffect()
