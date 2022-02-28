@@ -17,9 +17,14 @@ namespace AiBehaviorTreeNodes
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: -</br>
     /// </remarks>
-    public class FaceNavTargetNode : MovementNode
+    public class FaceNavTargetNode : BehaviorNode
     {
-        public FaceNavTargetNode(Movement ownerMovement) : base(ownerMovement) { }
+        private readonly Movement ownerMovement;
+
+        public FaceNavTargetNode(Movement ownerMovement)
+        {
+            this.ownerMovement = ownerMovement;
+        }
 
         public override NodeState Execute()
         {

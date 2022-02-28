@@ -12,13 +12,18 @@ namespace AiBehaviorTreeNodes
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: -</br>
     /// </remarks>
-    public class StopMovingNode : MovementNode
+    public class StopMovingNode : BehaviorNode
     {
-        public StopMovingNode(Movement ownerMovement) : base(ownerMovement) { }
+        private readonly Movement ownerMovement;
+
+        public StopMovingNode(Movement ownerMovement)
+        {
+            this.ownerMovement = ownerMovement;
+        }
 
         public override NodeState Execute()
         {
-            UpdateMovement(Vector2.zero);
+            ownerMovement.UpdateMovement(Vector2.zero);
             return NodeState.SUCCESS;
         }
     }

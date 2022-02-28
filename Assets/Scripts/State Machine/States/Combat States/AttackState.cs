@@ -36,6 +36,7 @@ namespace CombatStates
                 ActorController actorHit = hit.GetComponent<ActorController>();
                 if (actorHit != null)
                 {
+                    actorHit.Movement.UpdateMovement(Vector2.zero);
                     actorHit.Combat.Hurt();
                 }
             }

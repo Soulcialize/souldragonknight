@@ -13,8 +13,9 @@ namespace AiBehaviorTreeNodes
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: While the actor is still navigating towards the target position.</br>
     /// </remarks>
-    public class GoToNavTargetNode : MovementNode
+    public class GoToNavTargetNode : BehaviorNode
     {
+        private readonly Movement ownerMovement;
         private readonly bool useStoppingDistance;
 
         /// <param name="ownerMovement">The actor's movement component.</param>
@@ -23,8 +24,9 @@ namespace AiBehaviorTreeNodes
         /// its stopping distance (retrieved from the movement component) from the target position.
         /// Else, this node only returns success when the actor is almost exactly at the target position.
         /// </param>
-        public GoToNavTargetNode(Movement ownerMovement, bool useStoppingDistance) : base(ownerMovement)
+        public GoToNavTargetNode(Movement ownerMovement, bool useStoppingDistance)
         {
+            this.ownerMovement = ownerMovement;
             this.useStoppingDistance = useStoppingDistance;
         }
 
@@ -40,7 +42,7 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
-            UpdateMovement(navTargetPos - currentPos);
+            ownerMovement.UpdateMovement(navTargetPos - currentPos);
             return NodeState.RUNNING;
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using StateMachines;
 
 public abstract class Movement : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public abstract class Movement : MonoBehaviour
     public Animator Animator { get => animator; }
 
     public bool IsFacingRight { get; private set; }
+    public Vector2 CachedMovementDirection { get; protected set; }
+
+    public abstract MovementStateMachine MovementStateMachine { get; }
 
     protected virtual void Awake() { }
 
@@ -33,11 +37,13 @@ public abstract class Movement : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            UpdateMovement();
+            UpdateMovementStateMachine();
         }
     }
 
-    protected abstract void UpdateMovement();
+    protected abstract void UpdateMovementStateMachine();
+
+    public abstract void UpdateMovement(Vector2 direction);
 
     public void FlipDirection(float toDirection)
     {

@@ -7,6 +7,8 @@ public class KnightEnemyController : EnemyController
 {
     [SerializeField] private GroundMovement movement;
 
+    public override Movement Movement { get => movement; }
+
     public BehaviorTreesManager BehaviorTreesManager { get; private set; }
 
     private void Awake()

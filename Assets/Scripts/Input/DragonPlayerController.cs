@@ -10,6 +10,8 @@ public class DragonPlayerController : PlayerController
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
 
+    public override Movement Movement { get => movement; }
+
     protected override void Awake()
     {
         base.Awake();

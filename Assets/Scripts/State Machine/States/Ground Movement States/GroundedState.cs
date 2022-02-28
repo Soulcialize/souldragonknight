@@ -14,7 +14,7 @@ namespace GroundMovementStates
 
         public override void Enter()
         {
-            UpdateHorizontalMovement(owner.CachedHorizontalMovementDirection);
+            UpdateHorizontalMovement(owner.CachedMovementDirection.x);
         }
 
         public override void Execute()

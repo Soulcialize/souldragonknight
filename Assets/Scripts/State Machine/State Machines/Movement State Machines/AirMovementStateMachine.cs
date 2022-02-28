@@ -5,7 +5,7 @@ using AirMovementStates;
 
 namespace StateMachines
 {
-    public class AirMovementStateMachine : StateMachine
+    public class AirMovementStateMachine : MovementStateMachine
     {
         public AirMovementStateMachine()
         {

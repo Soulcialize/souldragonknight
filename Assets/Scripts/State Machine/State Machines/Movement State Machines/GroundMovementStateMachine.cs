@@ -5,7 +5,7 @@ using GroundMovementStates;
 
 namespace StateMachines
 {
-    public class GroundMovementStateMachine : StateMachine
+    public class GroundMovementStateMachine : MovementStateMachine
     {
         public GroundMovementStateMachine()
         {

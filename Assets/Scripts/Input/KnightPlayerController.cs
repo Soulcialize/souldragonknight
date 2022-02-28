@@ -11,6 +11,8 @@ public class KnightPlayerController : PlayerController
     private InputAction jumpAction;
     private InputAction attackAction;
 
+    public override Movement Movement { get => movement; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,7 +39,7 @@ public class KnightPlayerController : PlayerController
     {
         if (combat.CombatStateMachine.CurrState == null)
         {
-            movement.UpdateHorizontalMovement(context.ReadValue<float>());
+            movement.UpdateMovement(new Vector2(context.ReadValue<float>(), 0f));
         }
     }
 
@@ -53,7 +55,7 @@ public class KnightPlayerController : PlayerController
     {
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
-            movement.UpdateHorizontalMovement(0f);
+            movement.UpdateMovement(Vector2.zero);
             combat.Attack();
         }
     }
