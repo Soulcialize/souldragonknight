@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public abstract class Movement : MonoBehaviour
 {
+    public enum Direction { LEFT, RIGHT }
+
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
@@ -23,7 +25,7 @@ public abstract class Movement : MonoBehaviour
 
     protected virtual void Start()
     {
-        FlipDirection(isDefaultFacingRight ? 1f : -1f);
+        FlipDirection(isDefaultFacingRight ? Direction.RIGHT : Direction.LEFT);
         IsFacingRight = isDefaultFacingRight;
     }
 
@@ -47,6 +49,23 @@ public abstract class Movement : MonoBehaviour
         }
 
         IsFacingRight = localScale.x > 0f;
+    }
+
+    public void FlipDirection(Direction toDirection)
+    {
+        switch (toDirection)
+        {
+            case Direction.LEFT:
+                FlipDirection(-1f);
+                break;
+            case Direction.RIGHT:
+                FlipDirection(1f);
+                break;
+            default:
+                throw new System.ArgumentException("Direction " +
+                    $"{System.Enum.GetName(typeof(Direction), toDirection)} " +
+                    "is not a valid direction to flip towards");
+        }
     }
 
     public float GetStoppingDistanceFromNavTarget()

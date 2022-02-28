@@ -18,6 +18,7 @@ namespace AiBehaviorTrees
                     new SetCombatTargetPosNode(),
                     new GoToNavTargetNode(movement, true),
                     new StopMovingNode(movement),
+                    new FaceNavTargetNode(movement),
                     new UpdateTimeVariableNode(CombatBlackboardKeys.TIME_SINCE_LAST_ATTACK),
                     new AttackTargetNode(combat)
                 }));
