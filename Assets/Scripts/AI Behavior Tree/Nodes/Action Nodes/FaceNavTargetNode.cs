@@ -28,7 +28,7 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            Vector2 navTargetPos = (Vector3)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
+            Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
             Vector2 currentPos = ownerMovement.transform.position;
 
             if (navTargetPos.x > currentPos.x && !ownerMovement.IsFacingRight)

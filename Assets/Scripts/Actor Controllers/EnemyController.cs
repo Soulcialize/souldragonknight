@@ -6,7 +6,7 @@ public abstract class EnemyController : ActorController
 {
     public BehaviorTreesManager BehaviorTreesManager { get; private set; }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         BehaviorTreesManager = InitializeBehaviorTreesManager();
     }

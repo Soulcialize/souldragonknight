@@ -6,19 +6,25 @@ using AiBehaviorTreeBlackboards;
 namespace AiBehaviorTreeNodes
 {
     /// <summary>
-    /// Action node that sets the stored combat target's position as the navigation target.
+    /// Action node that makes the actor ready an attack.
     /// </summary>
     /// <remarks>
     /// <br><b>Success</b>: Always.</br>
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: -</br>
     /// </remarks>
-    public class SetCombatTargetPosNode : BehaviorNode
+    public class ReadyAttackNode : BehaviorNode
     {
+        private readonly Combat ownerCombat;
+
+        public ReadyAttackNode(Combat ownerCombat)
+        {
+            this.ownerCombat = ownerCombat;
+        }
+
         public override NodeState Execute()
         {
-            GameObject target = (GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
-            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)target.transform.position);
+            ownerCombat.ReadyAttack();
             return NodeState.SUCCESS;
         }
     }

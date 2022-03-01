@@ -10,7 +10,7 @@ namespace CombatStates
 
         public override void ExecuteAttackEffect()
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }

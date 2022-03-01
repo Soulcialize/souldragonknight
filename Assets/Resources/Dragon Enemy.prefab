@@ -188,7 +188,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 6640825776839569097}
   isDefaultFacingRight: 0
-  movementSpeed: 2
+  movementSpeed: 4
 --- !u!114 &3667998177489575439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
+  readyAttackDistance: 7
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +298,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isFlying
+  - Type: 4
+    SynchronizeType: 2
+    Name: isReadyingAttack
+  - Type: 4
+    SynchronizeType: 2
+    Name: isAttacking
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

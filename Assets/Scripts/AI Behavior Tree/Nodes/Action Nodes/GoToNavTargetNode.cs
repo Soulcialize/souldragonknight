@@ -32,7 +32,7 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            Vector2 navTargetPos = (Vector3)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
+            Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
             Vector2 currentPos = ownerMovement.transform.position;
 
             float distanceToTarget = Mathf.Abs(currentPos.x - navTargetPos.x);

@@ -21,7 +21,22 @@ public abstract class Combat : MonoBehaviour
         CombatStateMachine = new CombatStateMachine();
     }
 
+    protected virtual void Update()
+    {
+        CombatStateMachine.Update();
+    }
+
     protected abstract AttackState GetNewAttackState();
+
+    public void ReadyAttack()
+    {
+        CombatStateMachine.ChangeState(new ReadyAttackState(this));
+    }
+
+    public void OnReadyAttackEnd()
+    {
+        Attack();
+    }
 
     public void Attack()
     {
