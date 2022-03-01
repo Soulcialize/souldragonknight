@@ -8,7 +8,7 @@ namespace AiBehaviorTrees
 {
     public static class CombatTreeConstructor
     {
-        public static BehaviorTree ConstructGroundCombatTree(Movement movement, Combat combat)
+        public static BehaviorTree ConstructGroundCombatTree(Movement movement, MeleeCombat combat)
         {
             return new BehaviorTree(
                 BehaviorTree.Function.COMBAT,
@@ -20,7 +20,7 @@ namespace AiBehaviorTrees
                     new StopMovingNode(movement),
                     new FaceNavTargetNode(movement),
                     new UpdateTimeVariableNode(CombatBlackboardKeys.TIME_SINCE_LAST_ATTACK),
-                    new AttackTargetNode(combat)
+                    new AttackMeleeTargetNode(combat)
                 }));
         }
 

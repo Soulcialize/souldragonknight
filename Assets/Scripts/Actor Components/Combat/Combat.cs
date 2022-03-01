@@ -4,33 +4,28 @@ using UnityEngine;
 using StateMachines;
 using CombatStates;
 
-public class Combat : MonoBehaviour
+public abstract class Combat : MonoBehaviour
 {
     [SerializeField] protected Animator animator;
 
-    [Space(10)]
-
-    [SerializeField] private AttackEffectArea attackEffectArea;
     [SerializeField] private LayerMask attackEffectLayer;
 
     public Animator Animator { get => animator; }
 
-    public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
-
-    // TODO: get this value from a serialized field in the inspector
-    public float MinTimeBetweenAttacks { get => 3f; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         CombatStateMachine = new CombatStateMachine();
     }
 
+    protected abstract AttackState GetNewAttackState();
+
     public void Attack()
     {
-        CombatStateMachine.ChangeState(new AttackState(this));
+        CombatStateMachine.ChangeState(GetNewAttackState());
     }
 
     public void ExecuteAttackEffect()

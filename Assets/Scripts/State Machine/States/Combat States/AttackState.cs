@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class AttackState : CombatState
+    public abstract class AttackState : CombatState
     {
         public AttackState(Combat owner) : base(owner) { }
 
@@ -23,23 +23,6 @@ namespace CombatStates
             owner.Animator.SetBool("isAttacking", false);
         }
 
-        public void ExecuteAttackEffect()
-        {
-            Collider2D[] hits = Physics2D.OverlapBoxAll(
-                owner.AttackEffectArea.transform.position,
-                owner.AttackEffectArea.Size,
-                owner.AttackEffectArea.transform.eulerAngles.z,
-                owner.AttackEffectLayer);
-
-            foreach (Collider2D hit in hits)
-            {
-                ActorController actorHit = hit.GetComponent<ActorController>();
-                if (actorHit != null)
-                {
-                    actorHit.Movement.UpdateMovement(Vector2.zero);
-                    actorHit.Combat.Hurt();
-                }
-            }
-        }
+        public abstract void ExecuteAttackEffect();
     }
 }

@@ -6,7 +6,7 @@ using AiBehaviorTreeBlackboards;
 namespace AiBehaviorTreeNodes
 {
     /// <summary>
-    /// Action node that makes the actor attack after a delay.
+    /// Action node that makes the actor start a melee attack after a delay.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -17,11 +17,11 @@ namespace AiBehaviorTreeNodes
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: While the minimum time has not passed.</br>
     /// </remarks>
-    public class AttackTargetNode : BehaviorNode
+    public class AttackMeleeTargetNode : BehaviorNode
     {
-        private readonly Combat ownerCombat;
+        private readonly MeleeCombat ownerCombat;
 
-        public AttackTargetNode(Combat ownerCombat)
+        public AttackMeleeTargetNode(MeleeCombat ownerCombat)
         {
             this.ownerCombat = ownerCombat;
         }

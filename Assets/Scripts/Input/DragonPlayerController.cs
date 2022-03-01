@@ -6,11 +6,13 @@ using UnityEngine.InputSystem;
 public class DragonPlayerController : PlayerController
 {
     [SerializeField] private AirMovement movement;
+    [SerializeField] private Combat combat;
 
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
 
     public override Movement Movement { get => movement; }
+    public override Combat Combat { get => combat; }
 
     protected override void Awake()
     {

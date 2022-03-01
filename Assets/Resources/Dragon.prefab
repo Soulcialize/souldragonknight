@@ -200,11 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec708e1a0f3cb56468a85431b54c8e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combat: {fileID: 0}
   photonView: {fileID: 4470413134207635888}
   playerInput: {fileID: 4470413134207635893}
   persistentActionMaps: []
   movement: {fileID: 4470413134207635889}
+  combat: {fileID: 0}
 --- !u!114 &4470413134207635889
 MonoBehaviour:
   m_ObjectHideFlags: 0

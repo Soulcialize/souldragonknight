@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6640825776839569097}
   - component: {fileID: 6640825776839568948}
   - component: {fileID: 6640825776839569099}
-  - component: {fileID: 6640825776839569098}
+  - component: {fileID: 3667998177489575439}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c567662eb43d40bf4ec11668de947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combat: {fileID: 6640825776839569098}
   movement: {fileID: 6640825776839569099}
+  combat: {fileID: 3667998177489575439}
 --- !u!114 &6640825776839569099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   animator: {fileID: 6640825776839569097}
   isDefaultFacingRight: 0
   movementSpeed: 2
---- !u!114 &6640825776839569098
+--- !u!114 &3667998177489575439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,11 +198,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640825776839569100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
+  m_Script: {fileID: 11500000, guid: abc03f5762a3eee4da8a2c96b3a22382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6640825776839569097}
-  attackEffectArea: {fileID: 0}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
