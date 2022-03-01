@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using AiBehaviorTrees;
 
-public class KnightEnemyController : EnemyController
+public class DragonEnemyController : EnemyController
 {
-    [SerializeField] private GroundMovement movement;
+    [SerializeField] private AirMovement movement;
 
     public override Movement Movement { get => movement; }
 
@@ -16,7 +16,7 @@ public class KnightEnemyController : EnemyController
             {
                 // construct behavior trees
                 {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructGroundCombatTree(movement, combat)
+                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructAirCombatTree(movement, combat)
                 }
             },
             BehaviorTree.Function.COMBAT);
