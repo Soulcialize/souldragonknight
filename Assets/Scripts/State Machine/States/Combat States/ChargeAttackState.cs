@@ -52,20 +52,17 @@ namespace CombatStates
         {
             actorHit.Movement.UpdateMovement(Vector2.zero);
             actorHit.Combat.Hurt();
-            owner.CombatStateMachine.Exit();
         }
 
         public void HandleCollision(Collision2D collision)
         {
-            if (owner.AttackEffectLayer == (owner.AttackEffectLayer | (1 << collision.gameObject.layer)))
+            if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, owner.AttackEffectLayer))
             {
                 actorHit = collision.gameObject.GetComponent<ActorController>();
                 ExecuteAttackEffect();
             }
-            else
-            {
-                owner.CombatStateMachine.Exit();
-            }
+
+            owner.CombatStateMachine.Exit();
         }
     }
 }
