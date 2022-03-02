@@ -5,18 +5,18 @@ using CombatStates;
 
 namespace AiBehaviorTreeNodes
 {
-    public class HasLockedChargeDirection : BehaviorNode
+    public class HasLockedTargetPositionNode : BehaviorNode
     {
-        private readonly TouchCombat ownerCombat;
+        private readonly ChargeCombat ownerCombat;
 
-        public HasLockedChargeDirection(TouchCombat ownerCombat)
+        public HasLockedTargetPositionNode(ChargeCombat ownerCombat)
         {
             this.ownerCombat = ownerCombat;
         }
 
         public override NodeState Execute()
         {
-            return ((ReadyTouchAttackState)ownerCombat.CombatStateMachine.CurrState).HasLockedTargetPosition
+            return ((ReadyChargeAttackState)ownerCombat.CombatStateMachine.CurrState).HasLockedTargetPosition
                 ? NodeState.SUCCESS
                 : NodeState.FAILURE;
         }

@@ -39,7 +39,7 @@ namespace AiBehaviorTrees
                 }));
         }
 
-        public static BehaviorTree ConstructAirCombatTree(Movement movement, TouchCombat combat)
+        public static BehaviorTree ConstructAirCombatTree(Movement movement, ChargeCombat combat)
         {
             return new BehaviorTree(
                 BehaviorTree.Function.COMBAT,
@@ -59,7 +59,7 @@ namespace AiBehaviorTrees
                                 new SelectorNode(new List<BehaviorNode>()
                                 {
                                     // turn to face combat target if charge direction not yet locked
-                                    new HasLockedChargeDirection(combat),
+                                    new HasLockedTargetPositionNode(combat),
                                     new FaceNavTargetNode(movement)
                                 }),
                                 new AttackNode(combat)

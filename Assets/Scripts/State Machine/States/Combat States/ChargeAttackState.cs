@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class TouchAttackState : AttackState
+    public class ChargeAttackState : AttackState
     {
-        private new readonly TouchCombat owner;
+        private new readonly ChargeCombat owner;
         private readonly Transform ownerTransform;
         private readonly Vector2 targetPosition;
 
@@ -16,7 +16,7 @@ namespace CombatStates
 
         private ActorController actorHit;
 
-        public TouchAttackState(TouchCombat owner, Vector2 targetPosition) : base(owner)
+        public ChargeAttackState(ChargeCombat owner, Vector2 targetPosition) : base(owner)
         {
             this.owner = owner;
             ownerTransform = owner.transform;

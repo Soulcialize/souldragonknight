@@ -15,9 +15,9 @@ namespace AiBehaviorTreeNodes
     /// </remarks>
     public class SetReadyAttackPosNode : BehaviorNode
     {
-        private readonly TouchCombat ownerCombat;
+        private readonly ChargeCombat ownerCombat;
 
-        public SetReadyAttackPosNode(TouchCombat ownerCombat)
+        public SetReadyAttackPosNode(ChargeCombat ownerCombat)
         {
             this.ownerCombat = ownerCombat;
         }

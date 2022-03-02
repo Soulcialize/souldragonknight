@@ -6,7 +6,7 @@ using AiBehaviorTrees;
 public class DragonEnemyController : EnemyController
 {
     [SerializeField] private AirMovement movement;
-    [SerializeField] private TouchCombat combat;
+    [SerializeField] private ChargeCombat combat;
 
     public override Movement Movement { get => movement; }
     public override Combat Combat { get => combat; }

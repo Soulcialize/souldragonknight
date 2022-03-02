@@ -8,8 +8,6 @@ namespace StateMachines
     {
         protected Dictionary<Type, HashSet<Type>> transitions = new Dictionary<Type, HashSet<Type>>();
 
-
-
         public State CurrState { get; private set; }
 
         private bool CanTransitionTo(State newState)

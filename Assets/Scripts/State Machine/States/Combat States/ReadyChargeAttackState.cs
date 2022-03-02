@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class ReadyTouchAttackState : ReadyAttackState
+    public class ReadyChargeAttackState : ReadyAttackState
     {
         private readonly Transform target;
 
         public bool HasLockedTargetPosition { get; private set; }
         public Vector2 TargetPosition { get; private set; }
 
-        public ReadyTouchAttackState(Combat owner, Transform target) : base(owner)
+        public ReadyChargeAttackState(Combat owner, Transform target) : base(owner)
         {
             this.target = target;
             HasLockedTargetPosition = false;
