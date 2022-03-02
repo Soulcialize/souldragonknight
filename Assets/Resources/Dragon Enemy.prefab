@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -79651679
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dff013c39a5dd9141b8f889d165e70ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
       m_Calls: []
   readyAttackDistance: 7
   chargeSpeed: 20
+  chargeCollisionLayerName: Projectile
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0

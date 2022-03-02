@@ -17,6 +17,12 @@ namespace CombatStates
             HasLockedTargetPosition = false;
         }
 
+        public override void Execute()
+        {
+            base.Execute();
+            owner.Rigidbody2d.velocity = Vector2.zero;
+        }
+
         public void LockTargetPosition()
         {
             Debug.Log($"{owner.name}: target position locked");
