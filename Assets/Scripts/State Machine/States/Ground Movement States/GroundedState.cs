@@ -8,6 +8,7 @@ namespace GroundMovementStates
     {
         public GroundedState(GroundMovement owner) : base(owner) { }
 
+        private bool isMoveRequestPending = false;
         private float horizontalMoveDirection = 0f;
 
         private bool isJumpRequestPending = false;
@@ -29,8 +30,9 @@ namespace GroundMovementStates
                 owner.Rigidbody2d.velocity = new Vector2(owner.Rigidbody2d.velocity.x, owner.JumpForce);
                 owner.MovementStateMachine.ChangeState(new AirborneState(owner));
             }
-            else
+            else if (isMoveRequestPending)
             {
+                isMoveRequestPending = false;
                 owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection * owner.HorizontalMoveSpeed, owner.Rigidbody2d.velocity.y);
                 owner.Animator.SetBool("isRunning", horizontalMoveDirection != 0f);
                 owner.FlipDirection(horizontalMoveDirection);
@@ -44,6 +46,7 @@ namespace GroundMovementStates
 
         public void UpdateHorizontalMovement(float direction)
         {
+            isMoveRequestPending = true;
             horizontalMoveDirection = Mathf.Clamp(direction, -1f, 1f);
         }
 

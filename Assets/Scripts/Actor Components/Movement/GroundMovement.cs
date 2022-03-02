@@ -47,11 +47,6 @@ public class GroundMovement : Movement
         }
     }
 
-    protected override void UpdateMovementStateMachine()
-    {
-        MovementStateMachine.Update();
-    }
-
     public override void UpdateMovement(Vector2 direction)
     {
         CachedMovementDirection = direction;

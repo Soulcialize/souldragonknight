@@ -11,9 +11,13 @@ public abstract class EnemyController : ActorController
         BehaviorTreesManager = InitializeBehaviorTreesManager();
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
-        BehaviorTreesManager.UpdateActiveTree();
+        base.Update();
+        if (photonView.IsMine)
+        {
+            BehaviorTreesManager.UpdateActiveTree();
+        }
     }
 
     protected abstract BehaviorTreesManager InitializeBehaviorTreesManager();

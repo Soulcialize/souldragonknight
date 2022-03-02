@@ -6,7 +6,6 @@ using Photon.Pun;
 
 public abstract class PlayerController : ActorController
 {
-    [SerializeField] protected PhotonView photonView;
     [SerializeField] protected PlayerInput playerInput;
     [SerializeField] protected List<string> persistentActionMaps = new List<string>();
 

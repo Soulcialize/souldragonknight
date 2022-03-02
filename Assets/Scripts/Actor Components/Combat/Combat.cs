@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using StateMachines;
+using UnityEngine.Events;
 using CombatStates;
 
 public abstract class Combat : MonoBehaviour
 {
+    [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
-
     [SerializeField] private LayerMask attackEffectLayer;
 
-    public Animator Animator { get => animator; }
+    [Space(10)]
 
+    [SerializeField] private UnityEvent readyAttackEndEvent;
+
+    public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
+    public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
+
+    public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 
@@ -21,27 +27,22 @@ public abstract class Combat : MonoBehaviour
         CombatStateMachine = new CombatStateMachine();
     }
 
-    protected virtual void Update()
+    protected virtual void OnDisable()
     {
-        CombatStateMachine.Update();
+        readyAttackEndEvent.RemoveAllListeners();
     }
 
-    protected abstract AttackState GetNewAttackState();
-
-    public void ReadyAttack()
+    public virtual void ReadyAttack(Transform target)
     {
         CombatStateMachine.ChangeState(new ReadyAttackState(this));
     }
 
     public void OnReadyAttackEnd()
     {
-        Attack();
+        readyAttackEndEvent.Invoke();
     }
 
-    public void Attack()
-    {
-        CombatStateMachine.ChangeState(GetNewAttackState());
-    }
+    public abstract void Attack();
 
     public void ExecuteAttackEffect()
     {

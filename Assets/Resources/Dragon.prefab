@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4470413134207635893}
   - component: {fileID: 4470413134207635902}
   - component: {fileID: 4470413134207635889}
+  - component: {fileID: 4134346279605602543}
   - component: {fileID: 4470413134207635888}
   - component: {fileID: 4470413134207635891}
   - component: {fileID: 4470413134207635890}
@@ -204,7 +205,7 @@ MonoBehaviour:
   playerInput: {fileID: 4470413134207635893}
   persistentActionMaps: []
   movement: {fileID: 4470413134207635889}
-  combat: {fileID: 0}
+  combat: {fileID: 4134346279605602543}
 --- !u!114 &4470413134207635889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,11 +218,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 4470413134207635888}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3533750638843532997}
   isDefaultFacingRight: 1
   movementSpeed: 6
+--- !u!114 &4134346279605602543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470413134207635880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc03f5762a3eee4da8a2c96b3a22382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 4470413134207635895}
+  animator: {fileID: 3533750638843532997}
+  attackEffectLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  readyAttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  readyAttackDistance: 0
+  chargeSpeed: 0
 --- !u!114 &4470413134207635888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +336,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isFlying
+  - Type: 4
+    SynchronizeType: 2
+    Name: isHurt
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

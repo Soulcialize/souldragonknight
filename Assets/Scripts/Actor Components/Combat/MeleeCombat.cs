@@ -11,8 +11,8 @@ public class MeleeCombat : Combat
     public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
     public float MinTimeBetweenAttacks { get => minTimeBetweenAttacks; }
 
-    protected override AttackState GetNewAttackState()
+    public override void Attack()
     {
-        return new MeleeAttackState(this);
+        CombatStateMachine.ChangeState(new MeleeAttackState(this));
     }
 }

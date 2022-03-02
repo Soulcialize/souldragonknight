@@ -36,11 +36,6 @@ public class AirMovement : Movement
         MovementStateMachine.ChangeState(new AirborneState(this));
     }
 
-    protected override void UpdateMovementStateMachine()
-    {
-        MovementStateMachine.Update();
-    }
-
     public override void UpdateMovement(Vector2 direction)
     {
         CachedMovementDirection = direction;

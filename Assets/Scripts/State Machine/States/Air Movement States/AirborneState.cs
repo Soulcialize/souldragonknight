@@ -6,6 +6,7 @@ namespace AirMovementStates
 {
     public class AirborneState : AirMovementState
     {
+        private bool isMoveRequestPending = false;
         private Vector2 moveDirection;
 
         public AirborneState(AirMovement owner) : base(owner) { }
@@ -18,9 +19,13 @@ namespace AirMovementStates
 
         public override void Execute()
         {
-            owner.Rigidbody2d.velocity = moveDirection.normalized * owner.MovementSpeed;
-            owner.Animator.SetBool("isFlying", moveDirection.x != 0f || moveDirection.y != 0f);
-            owner.FlipDirection(moveDirection.x);
+            if (isMoveRequestPending)
+            {
+                isMoveRequestPending = false;
+                owner.Rigidbody2d.velocity = moveDirection.normalized * owner.MovementSpeed;
+                owner.Animator.SetBool("isFlying", moveDirection.x != 0f || moveDirection.y != 0f);
+                owner.FlipDirection(moveDirection.x);
+            }
         }
 
         public override void Exit()
@@ -30,11 +35,13 @@ namespace AirMovementStates
 
         public void UpdateHorizontalMovement(float direction)
         {
+            isMoveRequestPending = true;
             moveDirection = new Vector2(direction, moveDirection.y);
         }
 
         public void UpdateVerticalMovement(float direction)
         {
+            isMoveRequestPending = true;
             moveDirection = new Vector2(moveDirection.x, direction);
         }
     }

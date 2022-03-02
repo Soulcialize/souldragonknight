@@ -12,6 +12,8 @@ public class KnightPlayerController : PlayerController
     private InputAction jumpAction;
     private InputAction attackAction;
 
+    private float movementInput = 0f;
+
     public override Movement Movement { get => movement; }
     public override Combat Combat { get => combat; }
 
@@ -21,6 +23,15 @@ public class KnightPlayerController : PlayerController
         moveGroundAction = playerInput.actions["MoveGround"];
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (combat.CombatStateMachine.CurrState == null)
+        {
+            movement.UpdateMovement(new Vector2(movementInput, 0f));
+        }
     }
 
     protected override void BindInputActionHandlers()
@@ -39,10 +50,7 @@ public class KnightPlayerController : PlayerController
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
     {
-        if (combat.CombatStateMachine.CurrState == null)
-        {
-            movement.UpdateMovement(new Vector2(context.ReadValue<float>(), 0f));
-        }
+        movementInput = context.ReadValue<float>();
     }
 
     private void HandleJumpInput(InputAction.CallbackContext context)

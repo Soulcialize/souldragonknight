@@ -8,11 +8,35 @@ namespace StateMachines
     {
         protected Dictionary<Type, HashSet<Type>> transitions = new Dictionary<Type, HashSet<Type>>();
 
+
+
         public State CurrState { get; private set; }
 
         private bool CanTransitionTo(State newState)
         {
-            return CurrState == null || transitions[CurrState.GetType()].Contains(newState.GetType());
+            if (CurrState == null)
+            {
+                return true;
+            }
+
+            // TODO: clean this up
+            foreach (Type fromStateType in transitions.Keys)
+            {
+                if (fromStateType.IsAssignableFrom(CurrState.GetType()))
+                {
+                    foreach (Type toStateType in transitions[fromStateType])
+                    {
+                        if (toStateType.IsAssignableFrom(newState.GetType()))
+                        {
+                            return true;
+                        }
+                    }
+
+                    break;
+                }
+            }
+
+            return false;
         }
 
         public void ChangeState(State newState)

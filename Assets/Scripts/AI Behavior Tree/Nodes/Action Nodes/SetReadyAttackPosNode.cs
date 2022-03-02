@@ -24,9 +24,20 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            Transform target = ((GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform;
-            Vector2 directionToTarget = (target.position - ownerCombat.transform.position).normalized;
-            Vector2 readyAttackPos = (Vector2)target.position + -directionToTarget * ownerCombat.ReadyAttackDistance;
+            Vector2 targetPos = ((GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform.position;
+            Vector2 currentPos = ownerCombat.transform.position;
+
+            Vector2 readyAttackPos;
+            if (Vector2.Distance(currentPos, targetPos) <= ownerCombat.ReadyAttackDistance)
+            {
+                readyAttackPos = currentPos;
+            }
+            else
+            {
+                Vector2 directionToTarget = (targetPos - currentPos).normalized;
+                readyAttackPos = targetPos + -directionToTarget * ownerCombat.ReadyAttackDistance;
+            }
+
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, readyAttackPos);
             return NodeState.SUCCESS;
         }

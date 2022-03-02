@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
   - component: {fileID: 6640825776839568950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dragon Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -79651679
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dff013c39a5dd9141b8f889d165e70ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c567662eb43d40bf4ec11668de947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
   movement: {fileID: 6640825776839569099}
   combat: {fileID: 3667998177489575439}
 --- !u!114 &6640825776839569099
@@ -184,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 6640825776839568949}
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 6640825776839569097}
   isDefaultFacingRight: 0
@@ -201,11 +201,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc03f5762a3eee4da8a2c96b3a22382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 6640825776839569097}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
+  readyAttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   readyAttackDistance: 7
+  chargeSpeed: 20
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0

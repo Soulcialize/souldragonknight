@@ -16,12 +16,26 @@ namespace AiBehaviorTrees
                 new SequenceNode(new List<BehaviorNode>()
                 {
                     new GetVisibleCombatTargetNode(combat),
-                    new UntilFailNode(new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState))),
-                    new SetCombatTargetPosNode(),
-                    new GoToNavTargetNode(movement, true),
-                    new StopMovingNode(movement),
-                    new FaceNavTargetNode(movement),
-                    new ReadyAttackNode(combat)
+                    new SelectorNode(new List<BehaviorNode>()
+                    {
+                        // in combat state, engaging target
+                        new SequenceNode(new List<BehaviorNode>()
+                        {
+                            // in ready-attack state
+                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new AttackNode(combat)
+                        }),
+                        new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
+                        // chasing target
+                        new SequenceNode(new List<BehaviorNode>()
+                        {
+                            new SetCombatTargetPosNode(),
+                            new GoToNavTargetNode(movement, true),
+                            new StopMovingNode(movement),
+                            new FaceNavTargetNode(movement),
+                            new ReadyAttackNode(combat)
+                        })
+                    })
                 }));
         }
 
@@ -38,16 +52,20 @@ namespace AiBehaviorTrees
                         new SequenceNode(new List<BehaviorNode>()
                         {
                             new SetCombatTargetPosNode(),
-                            new SelectorNode(new List<BehaviorNode>()
+                            new SequenceNode(new List<BehaviorNode>()
                             {
-                                new SequenceNode(new List<BehaviorNode>()
+                                // in ready-attack state
+                                new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                                new SelectorNode(new List<BehaviorNode>()
                                 {
-                                    new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                                    // turn to face combat target if charge direction not yet locked
+                                    new HasLockedChargeDirection(combat),
                                     new FaceNavTargetNode(movement)
                                 }),
-                                new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
+                                new AttackNode(combat)
                             })
                         }),
+                        new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {

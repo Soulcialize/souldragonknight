@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using StateMachines;
 
 public abstract class Movement : MonoBehaviour
 {
     public enum Direction { LEFT, RIGHT }
 
-    [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private bool isDefaultFacingRight = true;
@@ -32,16 +30,6 @@ public abstract class Movement : MonoBehaviour
         FlipDirection(isDefaultFacingRight ? Direction.RIGHT : Direction.LEFT);
         IsFacingRight = isDefaultFacingRight;
     }
-
-    protected virtual void FixedUpdate()
-    {
-        if (photonView.IsMine)
-        {
-            UpdateMovementStateMachine();
-        }
-    }
-
-    protected abstract void UpdateMovementStateMachine();
 
     public abstract void UpdateMovement(Vector2 direction);
 

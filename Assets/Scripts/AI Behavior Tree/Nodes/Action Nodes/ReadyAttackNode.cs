@@ -15,7 +15,7 @@ namespace AiBehaviorTreeNodes
     /// </remarks>
     public class ReadyAttackNode : BehaviorNode
     {
-        private readonly Combat ownerCombat;
+        protected readonly Combat ownerCombat;
 
         public ReadyAttackNode(Combat ownerCombat)
         {
@@ -24,8 +24,17 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            ownerCombat.ReadyAttack();
+            Blackboard.SetData(CombatBlackboardKeys.HAS_READIED_ATTACK, false);
+            ownerCombat.ReadyAttackEndEvent.RemoveListener(SetAttackReadied);
+            ownerCombat.ReadyAttackEndEvent.AddListener(SetAttackReadied);
+
+            ownerCombat.ReadyAttack(((GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform);
             return NodeState.SUCCESS;
+        }
+
+        private void SetAttackReadied()
+        {
+            Blackboard.SetData(CombatBlackboardKeys.HAS_READIED_ATTACK, true);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             // TODO: use viewcone detection instead of radial grab
-            Collider2D targetCollider = Physics2D.OverlapCircle(ownerCombat.transform.position, 100f, ownerCombat.AttackEffectLayer);
+            Collider2D targetCollider = Physics2D.OverlapCircle(ownerCombat.transform.position, 1000f, ownerCombat.AttackEffectLayer);
             Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetCollider.gameObject);
             return NodeState.SUCCESS;
         }

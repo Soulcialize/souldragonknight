@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03161e5860888a843957e3108a9cb20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 5693331145748344914}
   movement: {fileID: 5693331145748344913}
   combat: {fileID: 6045176360427638502}
 --- !u!114 &5693331145748344913
@@ -186,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 5693331145748344914}
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 5693331145748344918}
   isDefaultFacingRight: 0
@@ -205,10 +205,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4cb9e87f7ea8948a542c2b5e142915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 5693331145748344918}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
+  readyAttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   attackEffectArea: {fileID: 5693331146226388544}
   minTimeBetweenAttacks: 3
 --- !u!114 &5693331145748344914

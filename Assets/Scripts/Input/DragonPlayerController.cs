@@ -11,6 +11,9 @@ public class DragonPlayerController : PlayerController
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
 
+    private float horizontalMovementInput = 0f;
+    private float verticalMovementInput = 0f;
+
     public override Movement Movement { get => movement; }
     public override Combat Combat { get => combat; }
 
@@ -19,6 +22,15 @@ public class DragonPlayerController : PlayerController
         base.Awake();
         moveAirHorizontalAction = playerInput.actions["MoveAirHorizontal"];
         moveAirVerticalAction = playerInput.actions["MoveAirVertical"];
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (combat.CombatStateMachine.CurrState == null)
+        {
+            movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
+        }
     }
 
     protected override void BindInputActionHandlers()
@@ -35,11 +47,11 @@ public class DragonPlayerController : PlayerController
 
     private void HandleMoveAirHorizontalInput(InputAction.CallbackContext context)
     {
-        movement.UpdateHorizontalMovement(context.ReadValue<float>());
+        horizontalMovementInput = context.ReadValue<float>();
     }
 
     private void HandleMoveAirVerticalInput(InputAction.CallbackContext context)
     {
-        movement.UpdateVerticalMovement(context.ReadValue<float>());
+        verticalMovementInput = context.ReadValue<float>();
     }
 }
