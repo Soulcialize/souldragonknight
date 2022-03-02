@@ -9,6 +9,7 @@ public class RangedProjectile : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxDistance;
     [SerializeField] private LayerMask actorTargetsLayer;
+    [SerializeField] private LayerMask obstaclesLayer;
 
     private Vector2 startPos;
     private Vector2 direction;
@@ -60,15 +61,18 @@ public class RangedProjectile : MonoBehaviour
         PhotonNetwork.Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
             ActorController actorHit = collision.gameObject.GetComponent<ActorController>();
             actorHit.Movement.UpdateMovement(Vector2.zero);
             actorHit.Combat.Hurt();
+            EndLifecycle();
         }
-
-        EndLifecycle();
+        else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
+        {
+            EndLifecycle();
+        }
     }
 }
