@@ -10,6 +10,7 @@ public class DragonPlayerController : PlayerController
 
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
+    private InputAction rangedAttackAction;
 
     private float horizontalMovementInput = 0f;
     private float verticalMovementInput = 0f;
@@ -22,6 +23,7 @@ public class DragonPlayerController : PlayerController
         base.Awake();
         moveAirHorizontalAction = playerInput.actions["MoveAirHorizontal"];
         moveAirVerticalAction = playerInput.actions["MoveAirVertical"];
+        rangedAttackAction = playerInput.actions["RangedAttack"];
     }
 
     protected override void FixedUpdate()
@@ -37,12 +39,14 @@ public class DragonPlayerController : PlayerController
     {
         moveAirHorizontalAction.performed += HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed += HandleMoveAirVerticalInput;
+        rangedAttackAction.performed += HandleRangedAttackInput;
     }
 
     protected override void UnbindInputActionHandlers()
     {
         moveAirHorizontalAction.performed -= HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed -= HandleMoveAirVerticalInput;
+        rangedAttackAction.performed -= HandleRangedAttackInput;
     }
 
     private void HandleMoveAirHorizontalInput(InputAction.CallbackContext context)
@@ -53,5 +57,10 @@ public class DragonPlayerController : PlayerController
     private void HandleMoveAirVerticalInput(InputAction.CallbackContext context)
     {
         verticalMovementInput = context.ReadValue<float>();
+    }
+
+    private void HandleRangedAttackInput(InputAction.CallbackContext context)
+    {
+        combat.Attack();
     }
 }
