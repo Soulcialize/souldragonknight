@@ -15,4 +15,17 @@ public class MeleeCombat : Combat
     {
         CombatStateMachine.ChangeState(new MeleeAttackState(this));
     }
+
+    public void StartBlock()
+    {
+        CombatStateMachine.ChangeState(new BlockState(this));
+    }
+
+    public void EndBlock()
+    {
+        if (CombatStateMachine.CurrState is BlockState blockState)
+        {
+            CombatStateMachine.Exit();
+        }
+    }
 }

@@ -11,6 +11,8 @@ public class KnightPlayerController : PlayerController
     private InputAction moveGroundAction;
     private InputAction jumpAction;
     private InputAction attackAction;
+    private InputAction blockStartAction;
+    private InputAction blockEndAction;
 
     private float movementInput = 0f;
 
@@ -23,6 +25,8 @@ public class KnightPlayerController : PlayerController
         moveGroundAction = playerInput.actions["MoveGround"];
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];
+        blockStartAction = playerInput.actions["BlockStart"];
+        blockEndAction = playerInput.actions["BlockEnd"];
     }
 
     protected override void FixedUpdate()
@@ -39,6 +43,8 @@ public class KnightPlayerController : PlayerController
         moveGroundAction.performed += HandleMoveGroundInput;
         jumpAction.performed += HandleJumpInput;
         attackAction.performed += HandleAttackInput;
+        blockStartAction.performed += HandleBlockStartInput;
+        blockEndAction.performed += HandleBlockEndInput;
     }
 
     protected override void UnbindInputActionHandlers()
@@ -46,6 +52,8 @@ public class KnightPlayerController : PlayerController
         moveGroundAction.performed -= HandleMoveGroundInput;
         jumpAction.performed -= HandleJumpInput;
         attackAction.performed -= HandleAttackInput;
+        blockStartAction.performed -= HandleBlockStartInput;
+        blockEndAction.performed += HandleBlockEndInput;
     }
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
@@ -68,5 +76,19 @@ public class KnightPlayerController : PlayerController
             movement.UpdateMovement(Vector2.zero);
             combat.Attack();
         }
+    }
+
+    private void HandleBlockStartInput(InputAction.CallbackContext context)
+    {
+        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
+        {
+            movement.UpdateMovement(Vector2.zero);
+            combat.StartBlock();
+        }
+    }
+
+    private void HandleBlockEndInput(InputAction.CallbackContext context)
+    {
+        combat.EndBlock();
     }
 }
