@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class DragonProjectile : MonoBehaviour
+public class RangedProjectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private float speed;
@@ -56,7 +57,7 @@ public class DragonProjectile : MonoBehaviour
 
     private void EndLifecycle()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
