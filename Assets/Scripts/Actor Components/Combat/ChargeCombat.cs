@@ -9,11 +9,9 @@ public class ChargeCombat : Combat
     [SerializeField] private float readyAttackDistance;
     [SerializeField] private float chargeSpeed;
 
-    [Tooltip("The layer to switch this actor to while charging.")]
-    [SerializeField] private string chargeCollisionLayerName;
-
     public float ReadyAttackDistance { get => readyAttackDistance; }
     public float ChargeSpeed { get => chargeSpeed; }
+
 
     public override void ReadyAttack(Transform target)
     {
@@ -23,7 +21,7 @@ public class ChargeCombat : Combat
     public override void Attack()
     {
         Vector2 targetPosition = ((ReadyChargeAttackState)CombatStateMachine.CurrState).TargetPosition;
-        CombatStateMachine.ChangeState(new ChargeAttackState(this, targetPosition, chargeCollisionLayerName));
+        CombatStateMachine.ChangeState(new ChargeAttackState(this, targetPosition));
     }
 
     public void OnLockTargetPosition()
