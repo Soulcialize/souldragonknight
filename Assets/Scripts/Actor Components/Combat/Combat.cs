@@ -12,11 +12,19 @@ public abstract class Combat : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private float knockbackSpeed;
+    [SerializeField] private float knockbackDistance;
+
+    [Space(10)]
+
     [SerializeField] private UnityEvent readyAttackEndEvent;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
+
+    public float KnockbackSpeed { get => knockbackSpeed; }
+    public float KnockbackDistance { get => knockbackDistance; }
 
     public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
 

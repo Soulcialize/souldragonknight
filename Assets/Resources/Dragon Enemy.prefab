@@ -206,6 +206,8 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
+  knockbackSpeed: 0
+  knockbackDistance: 0
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []

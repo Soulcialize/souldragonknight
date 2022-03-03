@@ -43,6 +43,12 @@ namespace CombatStates
                             ((MeleeCombat)actorHit.Combat).KnockbackDuringBlock(new Vector2(actorHit.Movement.IsFacingRight ? -1f : 1f, 0f));
                         }
                     }
+                    else if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is ReadyAttackState)
+                    {
+                        Vector2 ownerKnockbackDirection = new Vector2(actorHit.Movement.IsFacingRight ? 1f : -1f, 0f);
+                        owner.Clash(ownerKnockbackDirection);
+                        ((MeleeCombat)actorHit.Combat).Clash(-ownerKnockbackDirection);
+                    }
                     else
                     {
                         actorHit.Movement.UpdateMovement(Vector2.zero);

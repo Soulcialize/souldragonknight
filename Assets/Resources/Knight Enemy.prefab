@@ -210,13 +210,14 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
+  knockbackSpeed: 10
+  knockbackDistance: 1.2
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
   attackEffectArea: {fileID: 5693331146226388544}
   minTimeBetweenAttacks: 3
-  blockKnockbackSpeed: 10
-  blockKnockbackDistance: 1.2
+  postClashKnockbackRecoveryTime: 1
 --- !u!114 &5693331145748344914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +328,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isStunned
+  - Type: 4
+    SynchronizeType: 2
+    Name: isClashing
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

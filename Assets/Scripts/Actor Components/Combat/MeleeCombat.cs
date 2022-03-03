@@ -7,13 +7,11 @@ public class MeleeCombat : Combat
 {
     [SerializeField] private AttackEffectArea attackEffectArea;
     [SerializeField] private float minTimeBetweenAttacks;
-    [SerializeField] private float blockKnockbackSpeed;
-    [SerializeField] private float blockKnockbackDistance;
+    [SerializeField] private float postClashKnockbackRecoveryTime;
 
     public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
     public float MinTimeBetweenAttacks { get => minTimeBetweenAttacks; }
-    public float BlockKnockbackSpeed { get => blockKnockbackSpeed; }
-    public float BlockKnockbackDistance { get => blockKnockbackDistance; }
+    public float PostClashKnockbackRecoveryTime { get => postClashKnockbackRecoveryTime; }
 
     public override void Attack()
     {
@@ -25,6 +23,11 @@ public class MeleeCombat : Combat
         {
             CombatStateMachine.ChangeState(new MeleeAttackState(this, Time.time));
         }
+    }
+
+    public void Clash(Vector2 knockbackDirection)
+    {
+        CombatStateMachine.ChangeState(new ClashState(this, knockbackDirection));
     }
 
     public void StartBlock()
