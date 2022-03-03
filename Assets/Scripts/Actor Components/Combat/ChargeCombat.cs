@@ -8,10 +8,11 @@ public class ChargeCombat : Combat
     [Tooltip("Distance from the target at which to ready attack.")]
     [SerializeField] private float readyAttackDistance;
     [SerializeField] private float chargeSpeed;
+    [SerializeField] private float chargeRecoveryTime;
 
     public float ReadyAttackDistance { get => readyAttackDistance; }
     public float ChargeSpeed { get => chargeSpeed; }
-
+    public float ChargeRecoveryTime { get => chargeRecoveryTime; }
 
     public override void ReadyAttack(Transform target)
     {

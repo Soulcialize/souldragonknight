@@ -14,6 +14,9 @@ namespace CombatStates
         private Vector2 chargeDirection;
         private float chargeDistance;
 
+        private bool hasChargeEnded = false;
+        private float timeSinceChargeEnded = 0f;
+
         private ActorController actorHit;
 
         public ChargeAttackState(ChargeCombat owner, Vector2 targetPosition) : base(owner)
@@ -35,17 +38,36 @@ namespace CombatStates
         public override void Execute()
         {
             base.Execute();
-            owner.Rigidbody2d.velocity = chargeDirection * owner.ChargeSpeed;
-            if (Vector2.Distance(startPos, ownerTransform.position) >= chargeDistance)
+
+            if (hasChargeEnded)
             {
-                owner.Rigidbody2d.velocity = Vector2.zero;
-                owner.CombatStateMachine.Exit();
+                if (timeSinceChargeEnded > owner.ChargeRecoveryTime)
+                {
+                    owner.CombatStateMachine.Exit();
+                }
+                else
+                {
+                    timeSinceChargeEnded += Time.deltaTime;
+                }
+            }
+            else
+            {
+                owner.Rigidbody2d.velocity = chargeDirection * owner.ChargeSpeed;
+                if (Vector2.Distance(startPos, ownerTransform.position) >= chargeDistance)
+                {
+                    EndCharge();
+                }
             }
         }
 
         public override void Exit()
         {
             base.Exit();
+        }
+
+        private void EndCharge()
+        {
+            hasChargeEnded = true;
             owner.Rigidbody2d.velocity = Vector2.zero;
         }
 
@@ -63,7 +85,7 @@ namespace CombatStates
                 ExecuteAttackEffect();
             }
 
-            owner.CombatStateMachine.Exit();
+            EndCharge();
         }
     }
 }

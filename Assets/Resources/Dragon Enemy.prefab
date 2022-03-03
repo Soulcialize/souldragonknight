@@ -235,6 +235,7 @@ MonoBehaviour:
       m_Calls: []
   readyAttackDistance: 7
   chargeSpeed: 20
+  chargeRecoveryTime: 2
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
