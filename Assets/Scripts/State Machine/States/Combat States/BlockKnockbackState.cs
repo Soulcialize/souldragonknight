@@ -30,7 +30,7 @@ namespace CombatStates
         protected override void EndKnockback()
         {
             base.EndKnockback();
-            if (!owner.KnockbackCollisionDetector.IsInContact)
+            if (!owner.WallCollisionDetector.IsInContact)
             {
                 owner.CombatStateMachine.ChangeState(new BlockState(owner, originalBlockStartTime));
             }

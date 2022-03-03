@@ -12,7 +12,9 @@ public abstract class Combat : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField] private SurfaceDetector knockbackCollisionDetector;
+    [SerializeField] private SurfaceDetector wallCollisionDetector;
+    [SerializeField] private float dodgeSpeed;
+    [SerializeField] private float dodgeDistance;
     [SerializeField] private float knockbackSpeed;
     [SerializeField] private float knockbackDistance;
 
@@ -26,7 +28,9 @@ public abstract class Combat : MonoBehaviour
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
 
-    public SurfaceDetector KnockbackCollisionDetector { get => knockbackCollisionDetector; }
+    public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
+    public float DodgeSpeed { get => dodgeSpeed; }
+    public float DodgeDistance { get => dodgeDistance; }
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
 
@@ -73,6 +77,11 @@ public abstract class Combat : MonoBehaviour
         {
             CombatStateMachine.Exit();
         }
+    }
+
+    public void Dodge(Vector2 direction)
+    {
+        CombatStateMachine.ChangeState(new DodgeState(this, direction));
     }
 
     public void Stun()

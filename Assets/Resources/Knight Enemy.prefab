@@ -246,7 +246,9 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
-  knockbackCollisionDetector: {fileID: 3776096321984719771}
+  wallCollisionDetector: {fileID: 3776096321984719771}
+  dodgeSpeed: 10
+  dodgeDistance: 1.2
   knockbackSpeed: 10
   knockbackDistance: 1.2
   readyAttackEvent:
@@ -520,7 +522,7 @@ GameObject:
   - component: {fileID: 4708964969509287605}
   - component: {fileID: 3776096321984719771}
   m_Layer: 0
-  m_Name: Knockback Collision Detector
+  m_Name: Wall Collision Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7469574417147423826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.218, y: -0.53, z: 0}
+  m_LocalPosition: {x: 0.015, y: -0.511, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5693331145748344923}
@@ -564,7 +566,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.53}
+  m_Size: {x: 0.53, y: 1.275}
   m_EdgeRadius: 0
 --- !u!114 &3776096321984719771
 MonoBehaviour:

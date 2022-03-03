@@ -14,7 +14,7 @@ namespace CombatStates
 
         public CombatKnockbackState(Combat owner, Vector2 direction) : base(owner)
         {
-            this.direction = direction;
+            this.direction = direction.normalized;
         }
 
         public override void Enter()
@@ -27,9 +27,10 @@ namespace CombatStates
             if (!hasKnockbackEnded)
             {
                 owner.Rigidbody2d.velocity = direction * owner.KnockbackSpeed;
-                if (owner.KnockbackCollisionDetector.IsInContact)
+                if (owner.WallCollisionDetector.IsInContact)
                 {
-                    HandleCollisionDuringKnockback();
+                    EndKnockback();
+                    owner.Stun();
                 }
                 else if (Vector2.Distance(startPos, owner.transform.position) > owner.KnockbackDistance)
                 {
@@ -41,12 +42,6 @@ namespace CombatStates
         public override void Exit()
         {
 
-        }
-
-        public void HandleCollisionDuringKnockback()
-        {
-            EndKnockback();
-            owner.Stun();
         }
 
         protected virtual void EndKnockback()

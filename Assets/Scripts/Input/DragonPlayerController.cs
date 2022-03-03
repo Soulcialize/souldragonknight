@@ -11,6 +11,7 @@ public class DragonPlayerController : PlayerController
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
     private InputAction rangedAttackAction;
+    private InputAction dodgeAction;
 
     private float horizontalMovementInput = 0f;
     private float verticalMovementInput = 0f;
@@ -24,6 +25,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction = playerInput.actions["MoveAirHorizontal"];
         moveAirVerticalAction = playerInput.actions["MoveAirVertical"];
         rangedAttackAction = playerInput.actions["RangedAttack"];
+        dodgeAction = playerInput.actions["AirDodge"];
     }
 
     protected override void FixedUpdate()
@@ -40,6 +42,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction.performed += HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed += HandleMoveAirVerticalInput;
         rangedAttackAction.performed += HandleRangedAttackInput;
+        dodgeAction.performed += HandleDodgeInput;
     }
 
     protected override void UnbindInputActionHandlers()
@@ -47,6 +50,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction.performed -= HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed -= HandleMoveAirVerticalInput;
         rangedAttackAction.performed -= HandleRangedAttackInput;
+        dodgeAction.performed -= HandleDodgeInput;
     }
 
     private void HandleMoveAirHorizontalInput(InputAction.CallbackContext context)
@@ -65,6 +69,23 @@ public class DragonPlayerController : PlayerController
         {
             movement.UpdateMovement(Vector2.zero);
             combat.Attack();
+        }
+    }
+
+    private void HandleDodgeInput(InputAction.CallbackContext context)
+    {
+        if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
+        {
+            movement.UpdateMovement(Vector2.zero);
+
+            Vector2 direction = new Vector2(horizontalMovementInput, verticalMovementInput);
+            if (direction == Vector2.zero)
+            {
+                // if not moving, dodge upwards
+                direction.y = 1f;
+            }
+
+            combat.Dodge(direction);
         }
     }
 }
