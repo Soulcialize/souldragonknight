@@ -16,28 +16,45 @@ public class ChargeVisualsAdjuster : MonoBehaviour
     [SerializeField] private Color normalColor;
     [SerializeField] private Color chargeColor;
 
+    [Space(10)]
+
+    [Tooltip("Time taken to deflate back to normal if inflation is interrupted.")]
+    [SerializeField] private float interruptDeflationTime;
+
     private Coroutine adjustVisualsCoroutine;
 
-    public void InflateToCharge()
+    private void StopRunningCoroutine()
     {
         if (adjustVisualsCoroutine != null)
         {
             StopCoroutine(adjustVisualsCoroutine);
         }
+    }
 
+    public void InflateToCharge()
+    {
+        StopRunningCoroutine();
         adjustVisualsCoroutine = StartCoroutine(
             AdjustVisualsForCharge(normalColor, chargeColor, normalSize, chargeSize, combat.LockTargetPositionTime));
     }
 
     public void DeflateFromCharge()
     {
-        if (adjustVisualsCoroutine != null)
-        {
-            StopCoroutine(adjustVisualsCoroutine);
-        }
-
+        StopRunningCoroutine();
         adjustVisualsCoroutine = StartCoroutine(
             AdjustVisualsForCharge(chargeColor, normalColor, chargeSize, normalSize, combat.ChargeRecoveryTime));
+    }
+
+    public void InterruptInflation()
+    {
+        StopRunningCoroutine();
+        
+        // we need to grab the absolute value of the scale's x value (i.e. ignore direction the actor is facing)
+        Vector3 startSize = transform.localScale;
+        startSize.x = Mathf.Abs(startSize.x);
+
+        adjustVisualsCoroutine = StartCoroutine(
+            AdjustVisualsForCharge(spriteRenderer.color, normalColor, startSize, normalSize, interruptDeflationTime));
     }
 
     private IEnumerator AdjustVisualsForCharge(
@@ -54,7 +71,11 @@ public class ChargeVisualsAdjuster : MonoBehaviour
             photonView.RPC("RPC_AdjustColor", RpcTarget.Others, tempColor.r, tempColor.g, tempColor.b, tempColor.a);
 
             Vector3 tempScale = Vector3.Lerp(initialScale, targetScale, timePassed / duration);
-            tempScale.x *= Mathf.Sign(transform.localScale.x);
+            if (Mathf.Sign(tempScale.x) != Mathf.Sign(transform.localScale.x))
+            {
+                tempScale.x = -tempScale.x;
+            }
+
             transform.localScale = tempScale;
 
             yield return null;
@@ -64,7 +85,11 @@ public class ChargeVisualsAdjuster : MonoBehaviour
         photonView.RPC("RPC_AdjustColor", RpcTarget.Others, targetColor.r, targetColor.g, targetColor.b, targetColor.a);
         spriteRenderer.color = targetColor;
 
-        targetScale.x *= Mathf.Sign(transform.localScale.x);
+        if (Mathf.Sign(targetScale.x) != Mathf.Sign(transform.localScale.x))
+        {
+            targetScale.x = -targetScale.x;
+        }
+
         transform.localScale = targetScale;
     }
 
