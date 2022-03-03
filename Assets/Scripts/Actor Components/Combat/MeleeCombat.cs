@@ -13,7 +13,14 @@ public class MeleeCombat : Combat
 
     public override void Attack()
     {
-        CombatStateMachine.ChangeState(new MeleeAttackState(this));
+        if (CombatStateMachine.CurrState is ReadyAttackState readyAttackState)
+        {
+            CombatStateMachine.ChangeState(new MeleeAttackState(this, readyAttackState.StartTime));
+        }
+        else
+        {
+            CombatStateMachine.ChangeState(new MeleeAttackState(this, Time.time));
+        }
     }
 
     public void StartBlock()
@@ -23,7 +30,7 @@ public class MeleeCombat : Combat
 
     public void EndBlock()
     {
-        if (CombatStateMachine.CurrState is BlockState blockState)
+        if (CombatStateMachine.CurrState is BlockState)
         {
             CombatStateMachine.Exit();
         }

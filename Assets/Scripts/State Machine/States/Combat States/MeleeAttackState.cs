@@ -7,10 +7,12 @@ namespace CombatStates
     public class MeleeAttackState : AttackState
     {
         private new readonly MeleeCombat owner;
+        private readonly float readyAttackStartTime;
 
-        public MeleeAttackState(MeleeCombat owner) : base(owner)
+        public MeleeAttackState(MeleeCombat owner, float readyAttackStartTime) : base(owner)
         {
             this.owner = owner;
+            this.readyAttackStartTime = readyAttackStartTime;
         }
 
         public override void ExecuteAttackEffect()
@@ -26,8 +28,22 @@ namespace CombatStates
                 ActorController actorHit = hit.GetComponent<ActorController>();
                 if (actorHit != null)
                 {
-                    actorHit.Movement.UpdateMovement(Vector2.zero);
-                    actorHit.Combat.Hurt();
+                    bool isActorHitFacingOwner =
+                        actorHit.Movement.IsFacingRight && owner.transform.position.x > actorHit.transform.position.x
+                        || !actorHit.Movement.IsFacingRight && owner.transform.position.x < actorHit.transform.position.x;
+
+                    if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is BlockState blockState)
+                    {
+                        if (blockState.StartTime >= readyAttackStartTime)
+                        {
+                            owner.Stun();
+                        }
+                    }
+                    else
+                    {
+                        actorHit.Movement.UpdateMovement(Vector2.zero);
+                        actorHit.Combat.Hurt();
+                    }
                 }
             }
         }
