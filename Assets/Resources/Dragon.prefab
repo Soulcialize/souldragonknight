@@ -267,6 +267,9 @@ MonoBehaviour:
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  hurtEvent:
+    m_PersistentCalls:
+      m_Calls: []
   projectilePrefab: {fileID: 2451902509671687090, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
   projectileOrigin: {fileID: 8972197996417656447}
 --- !u!114 &4470413134207635888

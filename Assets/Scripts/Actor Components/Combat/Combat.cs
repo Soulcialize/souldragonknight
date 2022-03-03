@@ -19,6 +19,7 @@ public abstract class Combat : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private UnityEvent readyAttackEndEvent;
+    [SerializeField] private UnityEvent hurtEvent;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
@@ -29,6 +30,7 @@ public abstract class Combat : MonoBehaviour
     public float KnockbackDistance { get => knockbackDistance; }
 
     public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
+    public UnityEvent HurtEvent { get => hurtEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 
@@ -86,6 +88,7 @@ public abstract class Combat : MonoBehaviour
     public void Hurt()
     {
         CombatStateMachine.ChangeState(new HurtState(this));
+        hurtEvent.Invoke();
     }
 
     public void OnHurtEnd()

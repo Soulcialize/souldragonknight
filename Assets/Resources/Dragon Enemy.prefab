@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6640825776839568948}
   - component: {fileID: 6640825776839569099}
   - component: {fileID: 3667998177489575439}
+  - component: {fileID: 7404829110624881476}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
@@ -192,6 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 6640825776839568949}
+  visibility: {fileID: 7404829110624881476}
+  hurtRevealDuration: 0.6
   movement: {fileID: 6640825776839569099}
   combat: {fileID: 3667998177489575439}
 --- !u!114 &6640825776839569099
@@ -233,9 +236,25 @@ MonoBehaviour:
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  hurtEvent:
+    m_PersistentCalls:
+      m_Calls: []
   readyAttackDistance: 7
   chargeSpeed: 20
   chargeRecoveryTime: 2
+--- !u!114 &7404829110624881476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871c65cdc75e72345ba7ab47a3c13620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6640825776839569101}
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0

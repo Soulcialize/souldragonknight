@@ -439,6 +439,9 @@ MonoBehaviour:
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  hurtEvent:
+    m_PersistentCalls:
+      m_Calls: []
   attackEffectArea: {fileID: 5822808363884121821}
   minTimeBetweenAttacks: 0
   postClashKnockbackRecoveryTime: 1
