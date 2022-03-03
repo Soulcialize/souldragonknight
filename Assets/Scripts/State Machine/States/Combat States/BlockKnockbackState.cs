@@ -29,8 +29,11 @@ namespace CombatStates
 
         protected override void EndKnockback()
         {
-            base.Enter();
-            owner.CombatStateMachine.ChangeState(new BlockState(owner, originalBlockStartTime));
+            base.EndKnockback();
+            if (!owner.KnockbackCollisionDetector.IsInContact)
+            {
+                owner.CombatStateMachine.ChangeState(new BlockState(owner, originalBlockStartTime));
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ public abstract class Combat : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private SurfaceDetector knockbackCollisionDetector;
     [SerializeField] private float knockbackSpeed;
     [SerializeField] private float knockbackDistance;
 
@@ -23,6 +24,7 @@ public abstract class Combat : MonoBehaviour
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
 
+    public SurfaceDetector KnockbackCollisionDetector { get => knockbackCollisionDetector; }
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
 

@@ -27,9 +27,12 @@ namespace CombatStates
             if (!hasKnockbackEnded)
             {
                 owner.Rigidbody2d.velocity = direction * owner.KnockbackSpeed;
-                if (Vector2.Distance(startPos, owner.transform.position) > owner.KnockbackDistance)
+                if (owner.KnockbackCollisionDetector.IsInContact)
                 {
-                    owner.Rigidbody2d.velocity = Vector2.zero;
+                    HandleCollisionDuringKnockback();
+                }
+                else if (Vector2.Distance(startPos, owner.transform.position) > owner.KnockbackDistance)
+                {
                     EndKnockback();
                 }
             }
@@ -40,9 +43,16 @@ namespace CombatStates
 
         }
 
+        public void HandleCollisionDuringKnockback()
+        {
+            EndKnockback();
+            owner.Stun();
+        }
+
         protected virtual void EndKnockback()
         {
             hasKnockbackEnded = true;
+            owner.Rigidbody2d.velocity = Vector2.zero;
         }
     }
 }

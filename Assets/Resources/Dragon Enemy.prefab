@@ -206,6 +206,7 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
+  knockbackCollisionDetector: {fileID: 0}
   knockbackSpeed: 0
   knockbackDistance: 0
   readyAttackEndEvent:
