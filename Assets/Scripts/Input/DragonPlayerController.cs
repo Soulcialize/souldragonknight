@@ -61,6 +61,10 @@ public class DragonPlayerController : PlayerController
 
     private void HandleRangedAttackInput(InputAction.CallbackContext context)
     {
-        combat.Attack();
+        if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
+        {
+            movement.UpdateMovement(Vector2.zero);
+            combat.Attack();
+        }
     }
 }
