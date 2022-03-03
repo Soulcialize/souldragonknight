@@ -59,7 +59,7 @@ namespace CombatStates
         {
             if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, owner.AttackEffectLayer))
             {
-                actorHit = collision.gameObject.GetComponent<ActorController>();
+                actorHit = ActorController.GetActorFromCollider(collision.collider);
                 ExecuteAttackEffect();
             }
 

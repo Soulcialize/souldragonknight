@@ -25,7 +25,7 @@ namespace CombatStates
 
             foreach (Collider2D hit in hits)
             {
-                ActorController actorHit = hit.GetComponent<ActorController>();
+                ActorController actorHit = ActorController.GetActorFromCollider(hit);
                 if (actorHit != null)
                 {
                     bool isActorHitFacingOwner =

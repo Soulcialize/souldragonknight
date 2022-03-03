@@ -65,7 +65,7 @@ public class RangedProjectile : MonoBehaviour
     {
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
-            ActorController actorHit = collision.gameObject.GetComponent<ActorController>();
+            ActorController actorHit = ActorController.GetActorFromCollider(collision);
             actorHit.Movement.UpdateMovement(Vector2.zero);
             actorHit.Combat.Hurt();
             EndLifecycle();

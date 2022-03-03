@@ -10,6 +10,11 @@ public abstract class ActorController : MonoBehaviour
     public abstract Movement Movement { get; }
     public abstract Combat Combat { get; }
 
+    public static ActorController GetActorFromCollider(Collider2D collider)
+    {
+        return collider.GetComponentInParent<ActorController>();
+    }
+
     protected virtual void Update()
     {
         if (photonView.IsMine)
