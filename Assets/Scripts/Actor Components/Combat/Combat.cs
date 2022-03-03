@@ -10,7 +10,7 @@ public abstract class Combat : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] private LayerMask attackEffectLayer;
 
-    [Space(10)]
+    [Header("Dodge & Knockback")]
 
     [SerializeField] private SurfaceDetector wallCollisionDetector;
     [SerializeField] private float dodgeSpeed;
@@ -18,7 +18,7 @@ public abstract class Combat : MonoBehaviour
     [SerializeField] private float knockbackSpeed;
     [SerializeField] private float knockbackDistance;
 
-    [Space(10)]
+    [Header("General Combat Events")]
 
     [SerializeField] private UnityEvent readyAttackEvent;
     [SerializeField] private UnityEvent readyAttackEndEvent;

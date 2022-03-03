@@ -6,6 +6,8 @@ using CombatStates;
 
 public class ChargeCombat : Combat
 {
+    [Header("Charge Combat")]
+
     [Tooltip("Distance from the target at which to ready attack.")]
     [SerializeField] private float readyAttackDistance;
     [SerializeField] private float lockTargetPositionTime;

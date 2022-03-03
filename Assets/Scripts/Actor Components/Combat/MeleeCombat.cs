@@ -5,6 +5,8 @@ using CombatStates;
 
 public class MeleeCombat : Combat
 {
+    [Header("Melee Combat")]
+
     [SerializeField] private AttackEffectArea attackEffectArea;
     [SerializeField] private float minTimeBetweenAttacks;
     [SerializeField] private float postClashKnockbackRecoveryTime;

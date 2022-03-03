@@ -5,6 +5,8 @@ using CombatStates;
 
 public class RangedCombat : Combat
 {
+    [Header("Ranged Combat")]
+
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
 
