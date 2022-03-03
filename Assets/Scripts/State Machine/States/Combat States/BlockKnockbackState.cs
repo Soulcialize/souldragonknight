@@ -22,7 +22,7 @@ namespace CombatStates
         public override void Enter()
         {
             startPos = owner.transform.position;
-            owner.Animator.SetBool("isBlocking", true);
+            owner.Animator.SetBool("isBlockKnockback", true);
         }
 
         public override void Execute()
@@ -37,7 +37,7 @@ namespace CombatStates
 
         public override void Exit()
         {
-            owner.Animator.SetBool("isBlocking", false);
+            owner.Animator.SetBool("isBlockKnockback", false);
         }
     }
 }

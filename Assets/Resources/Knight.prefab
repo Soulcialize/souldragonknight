@@ -499,6 +499,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isBlocking
+  - Type: 4
+    SynchronizeType: 2
+    Name: isBlockKnockback
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
