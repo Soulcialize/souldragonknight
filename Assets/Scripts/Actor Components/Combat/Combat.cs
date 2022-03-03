@@ -60,6 +60,19 @@ public abstract class Combat : MonoBehaviour
         }
     }
 
+    public void Stun()
+    {
+        CombatStateMachine.ChangeState(new StunState(this));
+    }
+
+    public void OnStunEnd()
+    {
+        if (CombatStateMachine.CurrState is StunState)
+        {
+            CombatStateMachine.Exit();
+        }
+    }
+
     public void Hurt()
     {
         CombatStateMachine.ChangeState(new HurtState(this));

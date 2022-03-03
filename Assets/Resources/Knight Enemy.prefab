@@ -322,6 +322,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isReadyingAttack
+  - Type: 4
+    SynchronizeType: 2
+    Name: isStunned
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
