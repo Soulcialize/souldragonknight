@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5500594af778ead42b71a872e488a471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 330416023049157660}
   rigidbody2d: {fileID: 2451902509671687101}
   speed: 20
   maxDistance: 20

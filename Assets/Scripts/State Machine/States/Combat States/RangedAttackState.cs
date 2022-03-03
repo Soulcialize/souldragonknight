@@ -25,7 +25,7 @@ namespace CombatStates
             RangedProjectile projectile = PhotonNetwork.Instantiate(
                 projectilePrefab.name,
                 projectileOrigin,
-                Quaternion.identity).GetComponent<RangedProjectile>();
+                RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
             projectile.Direction = attackDirection;
             projectile.Enable();

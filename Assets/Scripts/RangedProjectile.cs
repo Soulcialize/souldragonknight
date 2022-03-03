@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class RangedProjectile : MonoBehaviour
 {
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private float speed;
     [SerializeField] private float maxDistance;
@@ -20,8 +21,14 @@ public class RangedProjectile : MonoBehaviour
         set
         {
             direction = value.normalized;
-            RotateToDirection();
+            transform.rotation = GetRotationForDirection(direction);
         }
+    }
+
+    public static Quaternion GetRotationForDirection(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     /// <summary>
@@ -33,6 +40,7 @@ public class RangedProjectile : MonoBehaviour
     /// </remarks>
     public void Enable()
     {
+        enabled = photonView.IsMine;
         gameObject.SetActive(true);
     }
 
@@ -48,12 +56,6 @@ public class RangedProjectile : MonoBehaviour
         {
             EndLifecycle();
         }
-    }
-
-    private void RotateToDirection()
-    {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void EndLifecycle()
