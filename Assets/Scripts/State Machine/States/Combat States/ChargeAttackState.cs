@@ -80,7 +80,12 @@ namespace CombatStates
 
         public void HandleCollision(Collision2D collision)
         {
-            if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, owner.AttackEffectLayer))
+            if (hasChargeEnded)
+            {
+                return;
+            }
+
+            if ( GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, owner.AttackEffectLayer))
             {
                 actorHit = ActorController.GetActorFromCollider(collision.collider);
                 ExecuteAttackEffect();
