@@ -140,7 +140,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0.6698113, g: 0.25591847, b: 0.25591847, a: 1}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5693331145748344914}
-  hideVisibility: 0
+  hideVisibility: 1
   visibility: {fileID: 7653389214318838471}
   hurtRevealDuration: 0.8
   movement: {fileID: 5693331145748344913}

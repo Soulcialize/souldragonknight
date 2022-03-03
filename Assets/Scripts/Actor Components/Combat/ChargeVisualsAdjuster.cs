@@ -68,7 +68,7 @@ public class ChargeVisualsAdjuster : MonoBehaviour
             Color tempColor = Color.Lerp(initialColor, targetColor, timePassed / duration);
             tempColor.a = spriteRenderer.color.a;
             spriteRenderer.color = tempColor;
-            photonView.RPC("RPC_AdjustColor", RpcTarget.Others, tempColor.r, tempColor.g, tempColor.b, tempColor.a);
+            photonView.RPC("RPC_AdjustColor", RpcTarget.Others, tempColor.r, tempColor.g, tempColor.b);
 
             Vector3 tempScale = Vector3.Lerp(initialScale, targetScale, timePassed / duration);
             if (Mathf.Sign(tempScale.x) != Mathf.Sign(transform.localScale.x))
@@ -82,7 +82,7 @@ public class ChargeVisualsAdjuster : MonoBehaviour
         }
 
         targetColor.a = spriteRenderer.color.a;
-        photonView.RPC("RPC_AdjustColor", RpcTarget.Others, targetColor.r, targetColor.g, targetColor.b, targetColor.a);
+        photonView.RPC("RPC_AdjustColor", RpcTarget.Others, targetColor.r, targetColor.g, targetColor.b);
         spriteRenderer.color = targetColor;
 
         if (Mathf.Sign(targetScale.x) != Mathf.Sign(transform.localScale.x))
@@ -94,8 +94,8 @@ public class ChargeVisualsAdjuster : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_AdjustColor(float r, float g, float b, float a)
+    private void RPC_AdjustColor(float r, float g, float b)
     {
-        spriteRenderer.color = new Color(r, g, b, a);
+        spriteRenderer.color = new Color(r, g, b, spriteRenderer.color.a);
     }
 }
