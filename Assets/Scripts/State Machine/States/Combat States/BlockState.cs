@@ -6,13 +6,22 @@ namespace CombatStates
 {
     public class BlockState : CombatState
     {
-        public float StartTime { get; private set; }
+        private readonly float startTime;
 
-        public BlockState(MeleeCombat owner) : base(owner) { }
+        public float StartTime { get => startTime; }
+
+        public BlockState(MeleeCombat owner) : base(owner)
+        {
+            startTime = Time.time;
+        }
+
+        public BlockState(MeleeCombat owner, float startTime) : base(owner)
+        {
+            this.startTime = startTime;
+        }
 
         public override void Enter()
         {
-            StartTime = Time.time;
             owner.Animator.SetBool("isBlocking", true);
         }
 

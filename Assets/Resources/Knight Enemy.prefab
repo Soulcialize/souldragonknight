@@ -215,6 +215,8 @@ MonoBehaviour:
       m_Calls: []
   attackEffectArea: {fileID: 5693331146226388544}
   minTimeBetweenAttacks: 3
+  blockKnockbackSpeed: 10
+  blockKnockbackDistance: 1.2
 --- !u!114 &5693331145748344914
 MonoBehaviour:
   m_ObjectHideFlags: 0

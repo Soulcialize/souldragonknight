@@ -38,6 +38,10 @@ namespace CombatStates
                         {
                             owner.Stun();
                         }
+                        else
+                        {
+                            ((MeleeCombat)actorHit.Combat).KnockbackDuringBlock(new Vector2(actorHit.Movement.IsFacingRight ? -1f : 1f, 0f));
+                        }
                     }
                     else
                     {
