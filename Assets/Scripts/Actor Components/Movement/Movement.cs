@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using StateMachines;
 
 public abstract class Movement : MonoBehaviour
 {
-    [SerializeField] protected PhotonView photonView;
+    public enum Direction { LEFT, RIGHT }
+
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private bool isDefaultFacingRight = true;
@@ -14,6 +15,9 @@ public abstract class Movement : MonoBehaviour
     public Animator Animator { get => animator; }
 
     public bool IsFacingRight { get; private set; }
+    public Vector2 CachedMovementDirection { get; protected set; }
+
+    public abstract MovementStateMachine MovementStateMachine { get; }
 
     protected virtual void Awake() { }
 
@@ -23,19 +27,11 @@ public abstract class Movement : MonoBehaviour
 
     protected virtual void Start()
     {
-        FlipDirection(isDefaultFacingRight ? 1f : -1f);
+        FlipDirection(isDefaultFacingRight ? Direction.RIGHT : Direction.LEFT);
         IsFacingRight = isDefaultFacingRight;
     }
 
-    protected virtual void FixedUpdate()
-    {
-        if (photonView.IsMine)
-        {
-            UpdateMovement();
-        }
-    }
-
-    protected abstract void UpdateMovement();
+    public abstract void UpdateMovement(Vector2 direction);
 
     public void FlipDirection(float toDirection)
     {
@@ -47,5 +43,28 @@ public abstract class Movement : MonoBehaviour
         }
 
         IsFacingRight = localScale.x > 0f;
+    }
+
+    public void FlipDirection(Direction toDirection)
+    {
+        switch (toDirection)
+        {
+            case Direction.LEFT:
+                FlipDirection(-1f);
+                break;
+            case Direction.RIGHT:
+                FlipDirection(1f);
+                break;
+            default:
+                throw new System.ArgumentException("Direction " +
+                    $"{System.Enum.GetName(typeof(Direction), toDirection)} " +
+                    "is not a valid direction to flip towards");
+        }
+    }
+
+    public float GetStoppingDistanceFromNavTarget()
+    {
+        // TODO: make this value a serialized field once we're sure no one else is modifying prefabs
+        return 1.4f;
     }
 }

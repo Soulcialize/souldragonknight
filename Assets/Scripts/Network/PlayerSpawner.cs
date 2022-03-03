@@ -16,15 +16,20 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnKnight()
     {
-        PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-7f, -0.5f), knightPrefab.transform.rotation);
+        PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-3f, 1.56f), knightPrefab.transform.rotation);
 
-        // TODO: spawn enemies in separate script
-        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy").name, new Vector2(6f, 2f), Quaternion.identity);
+        // TODO: consider doing this stuff in other scripts
+        BackgroundManager.Instance.ActivateSoulWorldBackground();
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy").name, new Vector2(6f, 1.56f), Quaternion.identity);
     }
 
     private void SpawnDragon()
     {
-        PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-6f, 2f), dragonPrefab.transform.rotation);
+        PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-5f, 4f), dragonPrefab.transform.rotation);
+
+        // TODO: consider doing this stuff in other scripts
+        BackgroundManager.Instance.ActivateRealWorldBackground();
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy").name, new Vector2(6f, 5f), Quaternion.identity);
     }
 
     private void SpawnPlayer()

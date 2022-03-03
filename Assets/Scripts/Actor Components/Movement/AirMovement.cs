@@ -8,16 +8,16 @@ public class AirMovement : Movement
 {
     [SerializeField] private float movementSpeed;
 
+    private AirMovementStateMachine movementStateMachine;
+
     public float MovementSpeed { get => movementSpeed; }
 
-    public float CachedHorizontalMoveDirection { get; private set; }
-    public float CachedVerticalMoveDirection { get; private set; }
-    public AirMovementStateMachine MovementStateMachine { get; private set; }
+    public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
     protected override void Awake()
     {
         base.Awake();
-        MovementStateMachine = new AirMovementStateMachine();
+        movementStateMachine = new AirMovementStateMachine();
     }
 
     protected override void OnEnable()
@@ -36,14 +36,19 @@ public class AirMovement : Movement
         MovementStateMachine.ChangeState(new AirborneState(this));
     }
 
-    protected override void UpdateMovement()
+    public override void UpdateMovement(Vector2 direction)
     {
-        MovementStateMachine.Update();
+        CachedMovementDirection = direction;
+        if (MovementStateMachine.CurrState is AirborneState airborneState)
+        {
+            airborneState.UpdateHorizontalMovement(direction.x);
+            airborneState.UpdateVerticalMovement(direction.y);
+        }
     }
 
     public void UpdateHorizontalMovement(float direction)
     {
-        CachedHorizontalMoveDirection = direction;
+        CachedMovementDirection = new Vector2(direction, CachedMovementDirection.y);
         if (MovementStateMachine.CurrState is AirborneState airborneState)
         {
             airborneState.UpdateHorizontalMovement(direction);
@@ -52,7 +57,7 @@ public class AirMovement : Movement
 
     public void UpdateVerticalMovement(float direction)
     {
-        CachedVerticalMoveDirection = direction;
+        CachedMovementDirection = new Vector2(CachedMovementDirection.x, direction);
         if (MovementStateMachine.CurrState is AirborneState airborneState)
         {
             airborneState.UpdateVerticalMovement(direction);

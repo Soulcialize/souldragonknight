@@ -10,17 +10,18 @@ public class GroundMovement : Movement
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
+    private GroundMovementStateMachine movementStateMachine;
+
     public SurfaceDetector GroundDetector { get => groundDetector; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
 
-    public float CachedHorizontalMovementDirection { get; private set; }
-    public GroundMovementStateMachine MovementStateMachine { get; private set; }
+    public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
     protected override void Awake()
     {
         base.Awake();
-        MovementStateMachine = new GroundMovementStateMachine();
+        movementStateMachine = new GroundMovementStateMachine();
     }
 
     protected override void OnEnable()
@@ -46,17 +47,12 @@ public class GroundMovement : Movement
         }
     }
 
-    protected override void UpdateMovement()
+    public override void UpdateMovement(Vector2 direction)
     {
-        MovementStateMachine.Update();
-    }
-
-    public void UpdateHorizontalMovement(float direction)
-    {
-        CachedHorizontalMovementDirection = direction;
+        CachedMovementDirection = direction;
         if (MovementStateMachine.CurrState is GroundedState groundedState)
         {
-            groundedState.UpdateHorizontalMovement(direction);
+            groundedState.UpdateHorizontalMovement(direction.x);
         }
     }
 

@@ -16,7 +16,7 @@ TagManager:
   - Dragon
   - KnightEnemy
   - DragonEnemy
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 2997534731
     locked: 0
   - name: Dragon
     uniqueID: 4215315617

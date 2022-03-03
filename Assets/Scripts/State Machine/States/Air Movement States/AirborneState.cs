@@ -6,22 +6,26 @@ namespace AirMovementStates
 {
     public class AirborneState : AirMovementState
     {
-        private float horizontalMoveDirection = 0f;
-        private float verticalMoveDirection = 0f;
+        private bool isMoveRequestPending = false;
+        private Vector2 moveDirection;
 
         public AirborneState(AirMovement owner) : base(owner) { }
 
         public override void Enter()
         {
-            UpdateHorizontalMovement(owner.CachedHorizontalMoveDirection);
-            UpdateVerticalMovement(owner.CachedVerticalMoveDirection);
+            UpdateHorizontalMovement(moveDirection.x);
+            UpdateVerticalMovement(moveDirection.y);
         }
 
         public override void Execute()
         {
-            owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection, verticalMoveDirection).normalized * owner.MovementSpeed;
-            owner.Animator.SetBool("isFlying", horizontalMoveDirection != 0f || verticalMoveDirection != 0f);
-            owner.FlipDirection(horizontalMoveDirection);
+            if (isMoveRequestPending)
+            {
+                isMoveRequestPending = false;
+                owner.Rigidbody2d.velocity = moveDirection.normalized * owner.MovementSpeed;
+                owner.Animator.SetBool("isFlying", moveDirection.x != 0f || moveDirection.y != 0f);
+                owner.FlipDirection(moveDirection.x);
+            }
         }
 
         public override void Exit()
@@ -31,12 +35,14 @@ namespace AirMovementStates
 
         public void UpdateHorizontalMovement(float direction)
         {
-            horizontalMoveDirection = direction;
+            isMoveRequestPending = true;
+            moveDirection = new Vector2(direction, moveDirection.y);
         }
 
         public void UpdateVerticalMovement(float direction)
         {
-            verticalMoveDirection = direction;
+            isMoveRequestPending = true;
+            moveDirection = new Vector2(moveDirection.x, direction);
         }
     }
 }

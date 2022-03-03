@@ -12,7 +12,7 @@ public class SurfaceDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsLayerInLayerMask(other.gameObject.layer, surfacesLayerMask))
+        if (GeneralUtility.IsLayerInLayerMask(other.gameObject.layer, surfacesLayerMask))
         {
             numCollidersInContact++;
         }
@@ -20,14 +20,9 @@ public class SurfaceDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (IsLayerInLayerMask(other.gameObject.layer, surfacesLayerMask))
+        if (GeneralUtility.IsLayerInLayerMask(other.gameObject.layer, surfacesLayerMask))
         {
             numCollidersInContact--;
         }
-    }
-
-    private bool IsLayerInLayerMask(int layer, LayerMask layerMask)
-    {
-        return layerMask == (layerMask | (1 << layer));
     }
 }
