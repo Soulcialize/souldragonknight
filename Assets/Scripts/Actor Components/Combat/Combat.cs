@@ -18,6 +18,7 @@ public abstract class Combat : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private UnityEvent readyAttackEvent;
     [SerializeField] private UnityEvent readyAttackEndEvent;
     [SerializeField] private UnityEvent hurtEvent;
 
@@ -29,6 +30,7 @@ public abstract class Combat : MonoBehaviour
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
 
+    public UnityEvent ReadyAttackEvent { get => readyAttackEvent; }
     public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
     public UnityEvent HurtEvent { get => hurtEvent; }
 
@@ -47,6 +49,7 @@ public abstract class Combat : MonoBehaviour
     public virtual void ReadyAttack(Transform target)
     {
         CombatStateMachine.ChangeState(new ReadyAttackState(this));
+        readyAttackEvent.Invoke();
     }
 
     public void OnReadyAttackEnd()

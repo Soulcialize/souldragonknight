@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.27
 --- !u!1 &6640825776839569100
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6640825776839568948}
   - component: {fileID: 6640825776839569099}
   - component: {fileID: 3667998177489575439}
+  - component: {fileID: 7122373227875185747}
   - component: {fileID: 7404829110624881476}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
@@ -193,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 6640825776839568949}
+  hideVisibility: 0
   visibility: {fileID: 7404829110624881476}
   hurtRevealDuration: 0.6
   movement: {fileID: 6640825776839569099}
@@ -233,6 +235,21 @@ MonoBehaviour:
   knockbackCollisionDetector: {fileID: 0}
   knockbackSpeed: 0
   knockbackDistance: 0
+  readyAttackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7122373227875185747}
+        m_TargetAssemblyTypeName: ChargeVisualsAdjuster, Assembly-CSharp
+        m_MethodName: InflateToCharge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -240,8 +257,43 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   readyAttackDistance: 7
+  lockTargetPositionTime: 2.5
   chargeSpeed: 20
   chargeRecoveryTime: 2
+  chargeEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7122373227875185747}
+        m_TargetAssemblyTypeName: ChargeVisualsAdjuster, Assembly-CSharp
+        m_MethodName: DeflateFromCharge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7122373227875185747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdef1d00466cd264c892387e792a6945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
+  spriteRenderer: {fileID: 6640825776839569101}
+  combat: {fileID: 3667998177489575439}
+  normalSize: {x: 1, y: 1, z: 1}
+  chargeSize: {x: 1.5, y: 1.5, z: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  chargeColor: {r: 0.7372549, g: 0.18431373, b: 0.18431373, a: 1}
 --- !u!114 &7404829110624881476
 MonoBehaviour:
   m_ObjectHideFlags: 0

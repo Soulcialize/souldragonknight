@@ -436,6 +436,9 @@ MonoBehaviour:
   knockbackCollisionDetector: {fileID: 47246515022818543}
   knockbackSpeed: 10
   knockbackDistance: 1.2
+  readyAttackEvent:
+    m_PersistentCalls:
+      m_Calls: []
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []

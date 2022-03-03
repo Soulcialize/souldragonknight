@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5693331145748344914}
+  hideVisibility: 0
   visibility: {fileID: 7653389214318838471}
   hurtRevealDuration: 0.8
   movement: {fileID: 5693331145748344913}
@@ -248,6 +249,9 @@ MonoBehaviour:
   knockbackCollisionDetector: {fileID: 3776096321984719771}
   knockbackSpeed: 10
   knockbackDistance: 1.2
+  readyAttackEvent:
+    m_PersistentCalls:
+      m_Calls: []
   readyAttackEndEvent:
     m_PersistentCalls:
       m_Calls: []

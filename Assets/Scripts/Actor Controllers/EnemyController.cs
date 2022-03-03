@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyController : ActorController
 {
+    [SerializeField] private bool hideVisibility;
     [SerializeField] protected Visibility visibility;
     [SerializeField] protected float hurtRevealDuration;
 
@@ -11,19 +12,29 @@ public abstract class EnemyController : ActorController
 
     protected virtual void OnEnable()
     {
-        Combat.HurtEvent.AddListener(HandleHurtEvent);
+        if (photonView.IsMine)
+        {
+            Combat.HurtEvent.AddListener(HandleHurtEvent);
+        }
     }
 
     protected virtual void OnDisable()
     {
-        Combat.HurtEvent.RemoveListener(HandleHurtEvent);
+        if (photonView.IsMine)
+        {
+            Combat.HurtEvent.RemoveListener(HandleHurtEvent);
+        }
     }
 
     protected virtual void Start()
     {
         if (photonView.IsMine)
         {
-            visibility.Hide();
+            if (hideVisibility)
+            {
+                visibility.Hide();
+            }
+
             BehaviorTreesManager = InitializeBehaviorTreesManager();
         }
     }
@@ -41,6 +52,9 @@ public abstract class EnemyController : ActorController
 
     protected virtual void HandleHurtEvent()
     {
-        visibility.RevealBriefly(hurtRevealDuration);
+        if (hideVisibility)
+        {
+            visibility.RevealBriefly(hurtRevealDuration);
+        }
     }
 }

@@ -69,6 +69,7 @@ namespace CombatStates
         {
             hasChargeEnded = true;
             owner.Rigidbody2d.velocity = Vector2.zero;
+            owner.ChargeEndEvent.Invoke();
         }
 
         public override void ExecuteAttackEffect()
