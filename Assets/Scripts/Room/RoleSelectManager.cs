@@ -16,6 +16,17 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
 
+    private void Start()
+    {
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            object playerTypeObj = player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+            if (playerTypeObj != null)
+            {
+                IndicatorUpdate(player, (PlayerType)playerTypeObj);
+            }
+        }
+    }
     public static void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
