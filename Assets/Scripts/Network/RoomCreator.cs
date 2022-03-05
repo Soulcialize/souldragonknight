@@ -25,8 +25,7 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
-
-        RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, false);
+        LevelSelectManager.SetLevelsCleared(0);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message) {

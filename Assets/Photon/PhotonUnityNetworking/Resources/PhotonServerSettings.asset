@@ -44,6 +44,8 @@ MonoBehaviour:
   - RPC_IndicatorUpdate
   - RPC_AdjustColor
   - RPC_LoadLevelSelect
+  - RPC_LoadGameLevel
+  - RPC_LoadRoomLevel
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

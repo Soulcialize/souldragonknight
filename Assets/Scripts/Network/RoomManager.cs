@@ -9,10 +9,10 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static readonly string ROOM_PROPERTIES_MISSING_TYPE_KEY = "MissingType";
-    public static readonly string ROOM_PROPERTIES_STATUS_KEY = "HasGameStarted";
 
     [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
+    [SerializeField] private string roomSceneName;
 
     public static void UpdateRoomProperty(string key, object value)
     {
@@ -26,14 +26,20 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.DestroyAll();
-            base.photonView.RPC("RPC_LoadLevel", RpcTarget.All);
+            photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
         }
     }
 
     [PunRPC]
-    public void RPC_LoadLevel()
+    public void RPC_LoadGameLevel()
     {
         PhotonNetwork.LoadLevel(gameSceneName);
+    }
+
+    [PunRPC]
+    public void RPC_LoadRoomLevel()
+    {
+        PhotonNetwork.LoadLevel(roomSceneName);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -43,6 +49,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         UpdateRoomProperty(ROOM_PROPERTIES_MISSING_TYPE_KEY, 
             otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
 
+        photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
         base.OnPlayerLeftRoom(otherPlayer);
     }
 

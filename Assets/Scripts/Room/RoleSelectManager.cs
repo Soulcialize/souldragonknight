@@ -71,7 +71,6 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     public void MoveToLevelSelect()
     {
         photonView.RPC("RPC_LoadLevelSelect", RpcTarget.All);
-        //RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, true);
     }
 
     [PunRPC]
