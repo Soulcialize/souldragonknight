@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 73208750}
   - component: {fileID: 73208749}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: Level Select Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2129010574}
         m_TargetAssemblyTypeName: RoleSelectManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: MoveToLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1815,7 +1815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Select Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2546,8 +2546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87aa2e8e2e051064193c214544d7a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameButton: {fileID: 73208751}
-  gameSceneName: Test
+  levelSelectButton: {fileID: 73208751}
+  levelSelectSceneName: LevelSelect
   yourRoleIndicator:
   - {fileID: 1357137120}
   - {fileID: 1699733281}

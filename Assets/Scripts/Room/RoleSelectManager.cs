@@ -11,8 +11,8 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 {
     public enum PlayerType { KNIGHT, DRAGON };
 
-    [SerializeField] private Button startGameButton;
-    [SerializeField] private string gameSceneName;
+    [SerializeField] private Button levelSelectButton;
+    [SerializeField] private string levelSelectSceneName;
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
 
@@ -30,11 +30,11 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
         Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
-        startGameButton.interactable = CanStartGame();
+        levelSelectButton.interactable = CanPickLevel();
         IndicatorUpdate(targetPlayer, playerType);
     }
 
-    private bool CanStartGame()
+    private bool CanPickLevel()
     {
         HashSet<PlayerType> selectedRoles = new HashSet<PlayerType>();
 
@@ -68,15 +68,15 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void StartGame()
+    public void MoveToLevelSelect()
     {
-        photonView.RPC("RPC_LoadLevel", RpcTarget.All);
-        RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, true);
+        photonView.RPC("RPC_LoadLevelSelect", RpcTarget.All);
+        //RoomManager.UpdateRoomProperty(RoomManager.ROOM_PROPERTIES_STATUS_KEY, true);
     }
 
     [PunRPC]
-    private void RPC_LoadLevel()
+    private void RPC_LoadLevelSelect()
     {
-        PhotonNetwork.LoadLevel(gameSceneName);
+        PhotonNetwork.LoadLevel(levelSelectSceneName);
     }
 }
