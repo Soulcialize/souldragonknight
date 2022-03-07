@@ -28,7 +28,6 @@ namespace CombatStates
                 RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
             projectile.Direction = attackDirection;
-            projectile.Enable();
         }
     }
 }
