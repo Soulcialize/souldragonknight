@@ -8,11 +8,12 @@ public class MeleeCombat : Combat
     [Header("Melee Combat")]
 
     [SerializeField] private AttackEffectArea attackEffectArea;
-    [SerializeField] private float minTimeBetweenAttacks;
+    [Tooltip("Distance from target before a clash occurs to prevent target running past.")]
+    [SerializeField] private float distanceBeforePreemptiveClash;
     [SerializeField] private float postClashKnockbackRecoveryTime;
 
     public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
-    public float MinTimeBetweenAttacks { get => minTimeBetweenAttacks; }
+    public float DistanceBeforePreemptiveClash { get => distanceBeforePreemptiveClash; }
     public float PostClashKnockbackRecoveryTime { get => postClashKnockbackRecoveryTime; }
 
     public override void Attack()

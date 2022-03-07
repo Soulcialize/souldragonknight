@@ -23,7 +23,15 @@ namespace AiBehaviorTrees
                         {
                             // in ready-attack state
                             new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
-                            new AttackNode(combat)
+                            new SelectorNode(new List<BehaviorNode>()
+                            {
+                                new SequenceNode(new List<BehaviorNode>()
+                                {
+                                    new IsCombatTargetMovingPastNode(combat),
+                                    new StartClashNode(movement, combat)
+                                }),
+                                new AttackNode(combat)
+                            })
                         }),
                         new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
                         // chasing target

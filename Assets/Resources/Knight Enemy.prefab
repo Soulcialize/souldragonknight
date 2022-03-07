@@ -261,7 +261,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackEffectArea: {fileID: 5693331146226388544}
-  minTimeBetweenAttacks: 3
+  distanceBeforePreemptiveClash: 0.3
   postClashKnockbackRecoveryTime: 1
 --- !u!114 &7653389214318838471
 MonoBehaviour:
