@@ -23,6 +23,12 @@ namespace AiBehaviorTrees
                         {
                             // in ready-attack state
                             new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new InverterNode(new SequenceNode(new List<BehaviorNode>()
+                            {
+                                // exit ready-attack state if target no longer in range
+                                new InverterNode(new IsCombatTargetInRangeNode(movement)),
+                                new ExitCombatStateMachineNode(combat)
+                            })),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
