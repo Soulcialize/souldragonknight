@@ -19,7 +19,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         int levelsCleared = (int)PhotonNetwork.CurrentRoom.CustomProperties[ROOM_PROPERTIES_LEVELS_CLEARED];
-        Debug.Log(levelsCleared);
 
         for (int i = 0; i <= levelsCleared; i++)
         {
@@ -70,6 +69,13 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         return selectedLevels.Count == 1;
     }
 
+    private void ResetLevelChoice()
+    {
+        Hashtable playerProperties = new Hashtable();
+        playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = null;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+    }
+
     public void StartGame()
     {
         // TODO: Change when more levels are added.
@@ -81,5 +87,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     private void RPC_LoadGameLevel()
     {
         PhotonNetwork.LoadLevel(gameSceneName);
+        ResetLevelChoice();
     }
 }
