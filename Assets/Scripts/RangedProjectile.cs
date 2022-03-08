@@ -31,19 +31,6 @@ public class RangedProjectile : MonoBehaviour
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    /// <summary>
-    /// Enables the projectile.
-    /// </summary>
-    /// <remarks>
-    /// The projectile object starts disabled.
-    /// It should only be enabled after its <c>Direction</c> has been set post-instantiation.
-    /// </remarks>
-    public void Enable()
-    {
-        enabled = photonView.IsMine;
-        gameObject.SetActive(true);
-    }
-
     private void Start()
     {
         startPos = transform.position;
@@ -51,25 +38,32 @@ public class RangedProjectile : MonoBehaviour
 
     private void Update()
     {
-        rigidbody2d.velocity = Direction * speed;
-        if (Vector2.Distance(startPos, transform.position) > maxDistance)
+        if (photonView.IsMine)
         {
-            EndLifecycle();
+            rigidbody2d.velocity = Direction * speed;
+            if (Vector2.Distance(startPos, transform.position) > maxDistance)
+            {
+                EndLifecycle();
+            }
         }
     }
 
     private void EndLifecycle()
     {
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
-            ActorController actorHit = ActorController.GetActorFromCollider(collision);
-            actorHit.Movement.UpdateMovement(Vector2.zero);
-            actorHit.Combat.Hurt();
+            if (photonView.IsMine)
+            {
+                ActorController actorHit = ActorController.GetActorFromCollider(collision);
+                actorHit.Movement.UpdateMovement(Vector2.zero);
+                actorHit.Combat.Hurt();
+            }
+
             EndLifecycle();
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
