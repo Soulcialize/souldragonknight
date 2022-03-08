@@ -919,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSceneName: Test
   mainMenuSceneName: Lobby
+  roomSceneName: Room
 --- !u!114 &765560307
 MonoBehaviour:
   m_ObjectHideFlags: 0
