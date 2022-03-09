@@ -50,11 +50,22 @@ public class RangedProjectile : MonoBehaviour
 
     private void EndLifecycle()
     {
+        photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void RPC_EndProjectileLifecycle()
+    {
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
             if (photonView.IsMine)

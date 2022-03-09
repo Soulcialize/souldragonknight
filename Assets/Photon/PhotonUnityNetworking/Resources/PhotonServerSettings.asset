@@ -46,6 +46,7 @@ MonoBehaviour:
   - RPC_LoadLevelSelect
   - RPC_LoadGameLevel
   - RPC_LoadRoomLevel
+  - RPC_EndLifecycle
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
