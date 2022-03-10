@@ -397,6 +397,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isDodging
+  - Type: 4
+    SynchronizeType: 2
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
