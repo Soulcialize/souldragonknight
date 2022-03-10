@@ -23,4 +23,10 @@ public class DragonEnemyController : EnemyController
             },
             BehaviorTree.Function.COMBAT);
     }
+
+    protected override void HandleDeathEvent()
+    {
+        base.HandleDeathEvent();
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
 }
