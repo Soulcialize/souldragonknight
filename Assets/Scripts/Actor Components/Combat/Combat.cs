@@ -10,6 +10,10 @@ public abstract class Combat : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] private LayerMask attackEffectLayer;
 
+    [Header("Combat Stats")]
+
+    [SerializeField] private Health health;
+
     [Header("Dodge & Knockback")]
 
     [SerializeField] private SurfaceDetector wallCollisionDetector;
@@ -23,6 +27,7 @@ public abstract class Combat : MonoBehaviour
     [SerializeField] private UnityEvent readyAttackEvent;
     [SerializeField] private UnityEvent readyAttackEndEvent;
     [SerializeField] private UnityEvent hurtEvent;
+    [SerializeField] private UnityEvent deathEvent;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
@@ -37,6 +42,7 @@ public abstract class Combat : MonoBehaviour
     public UnityEvent ReadyAttackEvent { get => readyAttackEvent; }
     public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
     public UnityEvent HurtEvent { get => hurtEvent; }
+    public UnityEvent DeathEvent { get => deathEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 
@@ -99,8 +105,12 @@ public abstract class Combat : MonoBehaviour
 
     public void Hurt()
     {
-        CombatStateMachine.ChangeState(new HurtState(this));
-        hurtEvent.Invoke();
+        if (!(CombatStateMachine.CurrState is DeathState))
+        {
+            CombatStateMachine.ChangeState(new HurtState(this));
+            hurtEvent.Invoke();
+            health.Decrement();
+        }
     }
 
     public void OnHurtEnd()
@@ -109,5 +119,16 @@ public abstract class Combat : MonoBehaviour
         {
             CombatStateMachine.Exit();
         }
+
+        if (health.IsZero())
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        CombatStateMachine.ChangeState(new DeathState(this));
+        deathEvent.Invoke();
     }
 }

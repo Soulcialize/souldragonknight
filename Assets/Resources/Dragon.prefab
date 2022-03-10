@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 4470413134207635902}
   - component: {fileID: 4470413134207635889}
   - component: {fileID: 4908856890641534133}
+  - component: {fileID: 6446500998015482331}
   - component: {fileID: 4470413134207635888}
   - component: {fileID: 4470413134207635891}
   - component: {fileID: 4470413134207635890}
@@ -262,6 +263,7 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 1024
+  health: {fileID: 6446500998015482331}
   wallCollisionDetector: {fileID: 7163776362713714178}
   dodgeSpeed: 20
   dodgeDistance: 4
@@ -276,8 +278,24 @@ MonoBehaviour:
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   projectilePrefab: {fileID: 2451902509671687090, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
   projectileOrigin: {fileID: 8972197996417656447}
+--- !u!114 &6446500998015482331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470413134207635880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2f6eff6a7c9f4e8d0e3da4a091335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!114 &4470413134207635888
 MonoBehaviour:
   m_ObjectHideFlags: 0

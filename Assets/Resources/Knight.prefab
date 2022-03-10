@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 8730972490635118285}
   - component: {fileID: 6669902685249964190}
   - component: {fileID: 1530853809338003501}
+  - component: {fileID: 5726660194417758549}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
   - component: {fileID: -8030419580977392626}
@@ -376,6 +377,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8e34ec73-50aa-47db-a2e5-8ac6c24c4d43
     m_ActionName: Ui/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 240b0724-e651-4dd4-88de-fd7fb3c104b4
+    m_ActionName: Ground/BlockStart[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 64402ca2-4469-4af1-9d19-ba301261dfa8
+    m_ActionName: Ground/BlockEnd[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d5d1934-7a21-4cc5-b305-441e8f55d2b9
+    m_ActionName: Air/RangedAttack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17bfe6fe-b339-46ab-93c2-0a26674f5966
+    m_ActionName: Air/AirDodge[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
@@ -433,6 +450,7 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 512
+  health: {fileID: 5726660194417758549}
   wallCollisionDetector: {fileID: 47246515022818543}
   dodgeSpeed: 10
   dodgeDistance: 1.2
@@ -447,9 +465,25 @@ MonoBehaviour:
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   attackEffectArea: {fileID: 5822808363884121821}
   minTimeBetweenAttacks: 0
   postClashKnockbackRecoveryTime: 1
+--- !u!114 &5726660194417758549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2f6eff6a7c9f4e8d0e3da4a091335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!114 &5696632616774609759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +600,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isStunned
+  - Type: 4
+    SynchronizeType: 0
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
