@@ -7,9 +7,9 @@ namespace AiBehaviorTreeNodes
 {
     public class HasLockedTargetPositionNode : BehaviorNode
     {
-        private readonly ChargeCombat ownerCombat;
+        private readonly Combat ownerCombat;
 
-        public HasLockedTargetPositionNode(ChargeCombat ownerCombat)
+        public HasLockedTargetPositionNode(Combat ownerCombat)
         {
             this.ownerCombat = ownerCombat;
         }

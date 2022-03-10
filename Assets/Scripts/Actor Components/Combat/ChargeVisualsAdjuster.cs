@@ -7,7 +7,7 @@ public class ChargeVisualsAdjuster : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private ChargeCombat combat;
+    [SerializeField] private ChargeAttackAbility chargeAttackAbility;
 
     [Space(10)]
 
@@ -35,14 +35,14 @@ public class ChargeVisualsAdjuster : MonoBehaviour
     {
         StopRunningCoroutine();
         adjustVisualsCoroutine = StartCoroutine(
-            AdjustVisualsForCharge(normalColor, chargeColor, normalSize, chargeSize, combat.LockTargetPositionTime));
+            AdjustVisualsForCharge(normalColor, chargeColor, normalSize, chargeSize, chargeAttackAbility.LockTargetPositionTime));
     }
 
     public void DeflateFromCharge()
     {
         StopRunningCoroutine();
         adjustVisualsCoroutine = StartCoroutine(
-            AdjustVisualsForCharge(chargeColor, normalColor, chargeSize, normalSize, combat.ChargeRecoveryTime));
+            AdjustVisualsForCharge(chargeColor, normalColor, chargeSize, normalSize, chargeAttackAbility.ChargeRecoveryTime));
     }
 
     public void InterruptInflation()

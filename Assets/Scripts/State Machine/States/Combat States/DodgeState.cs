@@ -7,12 +7,16 @@ namespace CombatStates
     public class DodgeState : CombatState
     {
         private readonly Vector2 direction;
+        private readonly float speed;
+        private readonly float distance;
 
         private Vector2 startPos;
 
-        public DodgeState(Combat owner, Vector2 direction) : base(owner)
+        public DodgeState(Combat owner, Vector2 direction, float speed, float distance) : base(owner)
         {
             this.direction = direction.normalized;
+            this.speed = speed;
+            this.distance = distance;
         }
 
         public override void Enter()
@@ -23,9 +27,9 @@ namespace CombatStates
 
         public override void Execute()
         {
-            owner.Rigidbody2d.velocity = direction * owner.DodgeSpeed;
+            owner.Rigidbody2d.velocity = direction * speed;
             if (owner.WallCollisionDetector.IsInContact
-                || Vector2.Distance(startPos, owner.transform.position) > owner.DodgeDistance)
+                || Vector2.Distance(startPos, owner.transform.position) > distance)
             {
                 EndDodge();
             }

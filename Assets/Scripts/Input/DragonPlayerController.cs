@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class DragonPlayerController : PlayerController
 {
     [SerializeField] private AirMovement movement;
-    [SerializeField] private Combat combat;
 
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
@@ -17,7 +16,6 @@ public class DragonPlayerController : PlayerController
     private float verticalMovementInput = 0f;
 
     public override Movement Movement { get => movement; }
-    public override Combat Combat { get => combat; }
 
     protected override void Awake()
     {
@@ -68,7 +66,8 @@ public class DragonPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
         {
             movement.UpdateMovement(Vector2.zero);
-            combat.Attack();
+            Vector2 direction = movement.IsFacingRight ? Vector2.right : Vector2.left;
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED, direction);
         }
     }
 
@@ -85,7 +84,7 @@ public class DragonPlayerController : PlayerController
                 direction.y = 1f;
             }
 
-            combat.Dodge(direction);
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.DODGE, direction);
         }
     }
 }

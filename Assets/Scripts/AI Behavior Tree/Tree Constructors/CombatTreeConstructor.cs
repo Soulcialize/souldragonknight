@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using CombatStates;
 using AiBehaviorTreeNodes;
-using AiBehaviorTreeBlackboards;
 
 namespace AiBehaviorTrees
 {
     public static class CombatTreeConstructor
     {
-        public static BehaviorTree ConstructGroundCombatTree(Movement movement, MeleeCombat combat)
+        public static BehaviorTree ConstructGroundCombatTree(Movement movement, Combat combat)
         {
             return new BehaviorTree(
                 BehaviorTree.Function.COMBAT,
@@ -28,16 +27,7 @@ namespace AiBehaviorTrees
                                 // exit ready-attack state if target no longer in range
                                 new InverterNode(new IsCombatTargetInRangeNode(movement)),
                                 new ExitCombatStateMachineNode(combat)
-                            })),
-                            new SelectorNode(new List<BehaviorNode>()
-                            {
-                                new SequenceNode(new List<BehaviorNode>()
-                                {
-                                    new IsCombatTargetMovingPastNode(combat),
-                                    new StartClashNode(movement, combat)
-                                }),
-                                new AttackNode(combat)
-                            })
+                            }))
                         }),
                         new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
                         // chasing target
@@ -47,13 +37,13 @@ namespace AiBehaviorTrees
                             new GoToNavTargetNode(movement, true),
                             new StopMovingNode(movement),
                             new FaceNavTargetNode(movement),
-                            new ReadyAttackNode(combat)
+                            new StartMeleeAttackNode(combat)
                         })
                     })
                 }));
         }
 
-        public static BehaviorTree ConstructAirCombatTree(Movement movement, ChargeCombat combat)
+        public static BehaviorTree ConstructAirCombatTree(Movement movement, Combat combat)
         {
             return new BehaviorTree(
                 BehaviorTree.Function.COMBAT,
@@ -75,18 +65,17 @@ namespace AiBehaviorTrees
                                     // turn to face combat target if charge direction not yet locked
                                     new HasLockedTargetPositionNode(combat),
                                     new FaceNavTargetNode(movement)
-                                }),
-                                new AttackNode(combat)
+                                })
                             })
                         }),
                         new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetReadyAttackPosNode(combat),
+                            new SetChargeReadyAttackPosNode(combat),
                             new GoToNavTargetNode(movement, false),
                             new StopMovingNode(movement),
-                            new ReadyAttackNode(combat)
+                            new StartChargeAttackNode(combat)
                         })
                     })
                 }));

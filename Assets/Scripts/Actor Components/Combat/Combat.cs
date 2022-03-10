@@ -4,38 +4,46 @@ using UnityEngine;
 using UnityEngine.Events;
 using CombatStates;
 
-public abstract class Combat : MonoBehaviour
+public class Combat : MonoBehaviour
 {
+    [System.Serializable]
+    private class SerializedCombatAbility
+    {
+        [SerializeField] private CombatAbilityIdentifier abilityIdentifier;
+        [SerializeField] private CombatAbility ability;
+
+        public CombatAbilityIdentifier AbilityIdentifier { get => abilityIdentifier; }
+        public CombatAbility Ability { get => ability; }
+    }
+
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private LayerMask attackEffectLayer;
+    [SerializeField] private List<SerializedCombatAbility> combatAbilities;
 
-    [Header("Dodge & Knockback")]
+    [Header("Knockback")]
 
     [SerializeField] private SurfaceDetector wallCollisionDetector;
-    [SerializeField] private float dodgeSpeed;
-    [SerializeField] private float dodgeDistance;
     [SerializeField] private float knockbackSpeed;
     [SerializeField] private float knockbackDistance;
+    [SerializeField] private float postClashKnockbackRecoveryTime;
 
     [Header("General Combat Events")]
 
-    [SerializeField] private UnityEvent readyAttackEvent;
-    [SerializeField] private UnityEvent readyAttackEndEvent;
     [SerializeField] private UnityEvent hurtEvent;
+
+    private Dictionary<CombatAbilityIdentifier, CombatAbility> identifierToAbilityDictionary
+        = new Dictionary<CombatAbilityIdentifier, CombatAbility>();
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
 
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
-    public float DodgeSpeed { get => dodgeSpeed; }
-    public float DodgeDistance { get => dodgeDistance; }
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
+    public float PostClashKnockbackRecoveryTime { get => postClashKnockbackRecoveryTime; }
 
-    public UnityEvent ReadyAttackEvent { get => readyAttackEvent; }
-    public UnityEvent ReadyAttackEndEvent { get => readyAttackEndEvent; }
     public UnityEvent HurtEvent { get => hurtEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
@@ -43,25 +51,28 @@ public abstract class Combat : MonoBehaviour
     protected virtual void Awake()
     {
         CombatStateMachine = new CombatStateMachine();
+        foreach (SerializedCombatAbility serializedAbility in combatAbilities)
+        {
+            identifierToAbilityDictionary.Add(serializedAbility.AbilityIdentifier, serializedAbility.Ability);
+        }
     }
 
-    protected virtual void OnDisable()
+    public CombatAbility GetCombatAbility(CombatAbilityIdentifier ability)
     {
-        readyAttackEndEvent.RemoveAllListeners();
+        return identifierToAbilityDictionary[ability];
     }
 
-    public virtual void ReadyAttack(Transform target)
+    public void ExecuteCombatAbility(CombatAbilityIdentifier ability, params object[] parameters)
     {
-        CombatStateMachine.ChangeState(new ReadyAttackState(this));
-        readyAttackEvent.Invoke();
+        identifierToAbilityDictionary[ability].Execute(this, parameters);
     }
 
-    public void OnReadyAttackEnd()
+    public void EndCombatAbility(CombatAbilityIdentifier ability)
     {
-        readyAttackEndEvent.Invoke();
+        identifierToAbilityDictionary[ability].End(this);
     }
 
-    public abstract void Attack();
+    public virtual void Attack() { }
 
     public void ExecuteAttackEffect()
     {
@@ -79,9 +90,9 @@ public abstract class Combat : MonoBehaviour
         }
     }
 
-    public void Dodge(Vector2 direction)
+    public void Clash(Vector2 knockbackDirection)
     {
-        CombatStateMachine.ChangeState(new DodgeState(this, direction));
+        CombatStateMachine.ChangeState(new ClashState(this, knockbackDirection));
     }
 
     public void Stun()

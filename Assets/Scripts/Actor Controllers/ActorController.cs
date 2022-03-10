@@ -6,9 +6,10 @@ using Photon.Pun;
 public abstract class ActorController : MonoBehaviour
 {
     [SerializeField] protected PhotonView photonView;
+    [SerializeField] protected Combat combat;
 
     public abstract Movement Movement { get; }
-    public abstract Combat Combat { get; }
+    public Combat Combat { get => combat; }
 
     public static ActorController GetActorFromCollider(Collider2D collider)
     {

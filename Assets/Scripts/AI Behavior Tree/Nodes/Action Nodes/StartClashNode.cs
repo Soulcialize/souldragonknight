@@ -8,9 +8,9 @@ namespace AiBehaviorTreeNodes
     public class StartClashNode : BehaviorNode
     {
         private readonly Movement ownerMovement;
-        private readonly MeleeCombat ownerCombat;
+        private readonly Combat ownerCombat;
 
-        public StartClashNode(Movement ownerMovement, MeleeCombat ownerCombat)
+        public StartClashNode(Movement ownerMovement, Combat ownerCombat)
         {
             this.ownerMovement = ownerMovement;
             this.ownerCombat = ownerCombat;
@@ -18,7 +18,7 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            MeleeCombat targetCombat = ((GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).GetComponent<MeleeCombat>();
+            Combat targetCombat = ((GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).GetComponent<ActorController>().Combat;
             if (targetCombat == null)
             {
                 return NodeState.FAILURE;

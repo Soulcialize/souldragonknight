@@ -10,14 +10,9 @@ namespace CombatStates
 
         public float StartTime { get => startTime; }
 
-        public BlockState(MeleeCombat owner) : base(owner)
+        public BlockState(Combat owner) : base(owner)
         {
             startTime = Time.time;
-        }
-
-        public BlockState(MeleeCombat owner, float startTime) : base(owner)
-        {
-            this.startTime = startTime;
         }
 
         public override void Enter()
@@ -33,6 +28,11 @@ namespace CombatStates
         public override void Exit()
         {
             owner.Animator.SetBool("isBlocking", false);
+        }
+
+        public void Knockback(Vector2 direction)
+        {
+            owner.CombatStateMachine.ChangeState(new BlockKnockbackState(owner, direction));
         }
     }
 }

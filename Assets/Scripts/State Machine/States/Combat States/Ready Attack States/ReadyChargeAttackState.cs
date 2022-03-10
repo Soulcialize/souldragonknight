@@ -1,37 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatStates
 {
     public class ReadyChargeAttackState : ReadyAttackState
     {
-        private new readonly ChargeCombat owner;
         private readonly Transform target;
-
-        private float startTime;
+        private readonly float lockTargetPositionTime;
+        private readonly UnityEvent readyChargeStartEvent;
 
         public bool HasLockedTargetPosition { get; private set; }
         public Vector2 TargetPosition { get; private set; }
 
-        public ReadyChargeAttackState(ChargeCombat owner, Transform target) : base(owner)
+        public ReadyChargeAttackState(
+            Combat owner, Transform target,
+            float lockTargetPositionTime, float readyDuration,
+            UnityAction<Combat> readyCallback, UnityEvent readyChargeStartEvent) : base(owner, readyDuration, readyCallback)
         {
-            this.owner = owner;
             this.target = target;
+            this.lockTargetPositionTime = lockTargetPositionTime;
+            this.readyChargeStartEvent = readyChargeStartEvent;
+
             HasLockedTargetPosition = false;
         }
 
         public override void Enter()
         {
             base.Enter();
-            startTime = Time.time;
+            readyChargeStartEvent.Invoke();
         }
 
         public override void Execute()
         {
             base.Execute();
             owner.Rigidbody2d.velocity = Vector2.zero;
-            if (!HasLockedTargetPosition && Time.time - startTime >= owner.LockTargetPositionTime)
+            if (!HasLockedTargetPosition && Time.time - StartTime >= lockTargetPositionTime)
             {
                 LockTargetPosition();
             }

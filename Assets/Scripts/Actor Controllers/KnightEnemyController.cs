@@ -6,10 +6,8 @@ using AiBehaviorTrees;
 public class KnightEnemyController : EnemyController
 {
     [SerializeField] private GroundMovement movement;
-    [SerializeField] private MeleeCombat combat;
 
     public override Movement Movement { get => movement; }
-    public override Combat Combat { get => combat; }
 
     protected override BehaviorTreesManager InitializeBehaviorTreesManager()
     {

@@ -13,13 +13,15 @@ namespace AiBehaviorTreeNodes
     /// <br><b>Failure</b>: -</br>
     /// <br><b>Running</b>: -</br>
     /// </remarks>
-    public class SetReadyAttackPosNode : BehaviorNode
+    public class SetChargeReadyAttackPosNode : BehaviorNode
     {
-        private readonly ChargeCombat ownerCombat;
+        private readonly Combat ownerCombat;
+        private readonly ChargeAttackAbility chargeAttackAbility;
 
-        public SetReadyAttackPosNode(ChargeCombat ownerCombat)
+        public SetChargeReadyAttackPosNode(Combat ownerCombat)
         {
             this.ownerCombat = ownerCombat;
+            chargeAttackAbility = (ChargeAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_CHARGE);
         }
 
         public override NodeState Execute()
@@ -28,14 +30,14 @@ namespace AiBehaviorTreeNodes
             Vector2 currentPos = ownerCombat.transform.position;
 
             Vector2 readyAttackPos;
-            if (Vector2.Distance(currentPos, targetPos) <= ownerCombat.ReadyAttackDistance)
+            if (Vector2.Distance(currentPos, targetPos) <= chargeAttackAbility.ReadyAttackDistance)
             {
                 readyAttackPos = currentPos;
             }
             else
             {
                 Vector2 directionToTarget = (targetPos - currentPos).normalized;
-                readyAttackPos = targetPos + -directionToTarget * ownerCombat.ReadyAttackDistance;
+                readyAttackPos = targetPos + -directionToTarget * chargeAttackAbility.ReadyAttackDistance;
             }
 
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, readyAttackPos);

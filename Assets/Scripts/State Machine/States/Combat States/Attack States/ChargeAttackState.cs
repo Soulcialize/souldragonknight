@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatStates
 {
     public class ChargeAttackState : AttackState
     {
-        private new readonly ChargeCombat owner;
         private readonly Transform ownerTransform;
         private readonly Vector2 targetPosition;
+        private readonly float speed;
+        private readonly float recoveryTime;
+        private readonly UnityEvent chargeEndEvent;
 
         private Vector2 startPos;
         private Vector2 chargeDirection;
@@ -19,11 +22,15 @@ namespace CombatStates
 
         private ActorController actorHit;
 
-        public ChargeAttackState(ChargeCombat owner, Vector2 targetPosition) : base(owner)
+        public ChargeAttackState(
+            Combat owner, Vector2 targetPosition,
+            float speed, float recoveryTime, UnityEvent chargeEndEvent) : base(owner)
         {
-            this.owner = owner;
             ownerTransform = owner.transform;
             this.targetPosition = targetPosition;
+            this.speed = speed;
+            this.recoveryTime = recoveryTime;
+            this.chargeEndEvent = chargeEndEvent;
         }
 
         public override void Enter()
@@ -41,7 +48,7 @@ namespace CombatStates
 
             if (hasChargeEnded)
             {
-                if (timeSinceChargeEnded > owner.ChargeRecoveryTime)
+                if (timeSinceChargeEnded > recoveryTime)
                 {
                     owner.CombatStateMachine.Exit();
                 }
@@ -52,7 +59,7 @@ namespace CombatStates
             }
             else
             {
-                owner.Rigidbody2d.velocity = chargeDirection * owner.ChargeSpeed;
+                owner.Rigidbody2d.velocity = chargeDirection * speed;
                 if (Vector2.Distance(startPos, ownerTransform.position) >= chargeDistance)
                 {
                     EndCharge();
@@ -69,7 +76,7 @@ namespace CombatStates
         {
             hasChargeEnded = true;
             owner.Rigidbody2d.velocity = Vector2.zero;
-            owner.ChargeEndEvent.Invoke();
+            chargeEndEvent.Invoke();
         }
 
         public override void ExecuteAttackEffect()

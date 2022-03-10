@@ -6,14 +6,7 @@ namespace CombatStates
 {
     public class BlockKnockbackState : CombatKnockbackState
     {
-        private new readonly MeleeCombat owner;
-        private readonly float originalBlockStartTime;
-
-        public BlockKnockbackState(MeleeCombat owner, Vector2 direction, float originalBlockStartTime) : base(owner, direction)
-        {
-            this.owner = owner;
-            this.originalBlockStartTime = originalBlockStartTime;
-        }
+        public BlockKnockbackState(Combat owner, Vector2 direction) : base(owner, direction) { }
 
         public override void Enter()
         {
@@ -32,7 +25,7 @@ namespace CombatStates
             base.EndKnockback();
             if (!owner.WallCollisionDetector.IsInContact)
             {
-                owner.CombatStateMachine.ChangeState(new BlockState(owner, originalBlockStartTime));
+                owner.CombatStateMachine.ChangeState(new BlockState(owner));
             }
         }
     }

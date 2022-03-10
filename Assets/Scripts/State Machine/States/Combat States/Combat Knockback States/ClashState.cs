@@ -6,14 +6,9 @@ namespace CombatStates
 {
     public class ClashState : CombatKnockbackState
     {
-        private new readonly MeleeCombat owner;
-
         private float timeSinceKnockbackEnded = 0f;
 
-        public ClashState(MeleeCombat owner, Vector2 knockbackDirection) : base(owner, knockbackDirection)
-        {
-            this.owner = owner;
-        }
+        public ClashState(Combat owner, Vector2 knockbackDirection) : base(owner, knockbackDirection) { }
 
         public override void Enter()
         {
