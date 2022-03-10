@@ -62,6 +62,7 @@ public abstract class EnemyController : ActorController
 
     protected virtual void HandleDeathEvent()
     {
-        
+        visibility.Reveal();
+        hideVisibility = false;
     }
 }

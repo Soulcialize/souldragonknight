@@ -107,9 +107,18 @@ public abstract class Combat : MonoBehaviour
     {
         if (!(CombatStateMachine.CurrState is DeathState))
         {
-            CombatStateMachine.ChangeState(new HurtState(this));
-            hurtEvent.Invoke();
             health.Decrement();
+
+            if (!health.IsZero())
+            {
+                CombatStateMachine.ChangeState(new HurtState(this));
+                hurtEvent.Invoke();
+            }
+            else
+            {
+                CombatStateMachine.ChangeState(new DeathState(this));
+                deathEvent.Invoke();
+            }
         }
     }
 
@@ -119,16 +128,5 @@ public abstract class Combat : MonoBehaviour
         {
             CombatStateMachine.Exit();
         }
-
-        if (health.IsZero())
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        CombatStateMachine.ChangeState(new DeathState(this));
-        deathEvent.Invoke();
     }
 }
