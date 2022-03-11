@@ -45,6 +45,15 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         IndicatorUpdate(targetPlayer, playerType);
     }
 
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+
+        PlayerType playerType = (PlayerType)otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+        levelSelectButton.interactable = CanPickLevel();
+        partnerRoleIndicator[(int)playerType].SetActive(false);
+    }
+
     private bool CanPickLevel()
     {
         HashSet<PlayerType> selectedRoles = new HashSet<PlayerType>();
@@ -69,13 +78,13 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         if (player == PhotonNetwork.LocalPlayer)
         {
-            yourRoleIndicator[(int) type].SetActive(true);
-            yourRoleIndicator[1-(int) type].SetActive(false);
+            yourRoleIndicator[(int)type].SetActive(true);
+            yourRoleIndicator[1-(int)type].SetActive(false);
         }
         else
         {
-            partnerRoleIndicator[(int) type].SetActive(true);
-            partnerRoleIndicator[1 - (int) type].SetActive(false);
+            partnerRoleIndicator[(int)type].SetActive(true);
+            partnerRoleIndicator[1 - (int)type].SetActive(false);
         }
     }
 

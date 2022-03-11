@@ -29,4 +29,9 @@ public class LevelButton : MonoBehaviourPunCallbacks
             partnerIndicator.SetActive(isSameNumber);
         }
     }
+
+    public void DisablePartnerIndicator()
+    {
+        partnerIndicator.SetActive(false);
+    }
 }
