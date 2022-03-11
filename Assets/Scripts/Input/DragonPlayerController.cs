@@ -36,6 +36,25 @@ public class DragonPlayerController : PlayerController
             movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
         }
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (photonView.IsMine)
+        {
+            Combat.DeathEvent.AddListener(HandleDeathEvent);
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        if (photonView.IsMine)
+        {
+            Combat.DeathEvent.RemoveListener(HandleDeathEvent);
+        }
+    }
 
     protected override void BindInputActionHandlers()
     {
@@ -87,5 +106,9 @@ public class DragonPlayerController : PlayerController
 
             combat.Dodge(direction);
         }
+    }
+    protected void HandleDeathEvent()
+    {
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }
