@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startButton: {fileID: 861749501}
   gameSceneName: Test
+  roleSelectSceneName: Room
   levelSelectButtons:
   - {fileID: 207128677}
   - {fileID: 1430567192}

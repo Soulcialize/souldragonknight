@@ -49,9 +49,12 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerLeftRoom(otherPlayer);
 
-        PlayerType playerType = (PlayerType)otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-        levelSelectButton.interactable = CanPickLevel();
-        partnerRoleIndicator[(int)playerType].SetActive(false);
+        if (otherPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
+        {
+            PlayerType playerType = (PlayerType)otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+            levelSelectButton.interactable = CanPickLevel();
+            partnerRoleIndicator[(int)playerType].SetActive(false);
+        }
     }
 
     private bool CanPickLevel()

@@ -14,6 +14,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button startButton;
     [SerializeField] private string gameSceneName;
+    [SerializeField] private string roleSelectSceneName;
     [SerializeField] private LevelButton[] levelSelectButtons;
 
     private void Start()
@@ -65,9 +66,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerLeftRoom(otherPlayer);
 
-        int levelNumber = (int)otherPlayer.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
-        startButton.interactable = CanStart();
-        levelSelectButtons[levelNumber - 1].DisablePartnerIndicator();
+        PhotonNetwork.LoadLevel(roleSelectSceneName);
     }
 
     private bool CanStart()
