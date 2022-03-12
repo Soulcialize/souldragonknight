@@ -301,7 +301,6 @@ MonoBehaviour:
   wallCollisionDetector: {fileID: 3776096321984719771}
   knockbackSpeed: 10
   knockbackDistance: 1.2
-  postClashKnockbackRecoveryTime: 1
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -444,9 +443,6 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isStunned
-  - Type: 4
-    SynchronizeType: 2
-    Name: isClashing
   - Type: 4
     SynchronizeType: 2
     Name: isDead

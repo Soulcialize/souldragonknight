@@ -332,7 +332,6 @@ MonoBehaviour:
   wallCollisionDetector: {fileID: 8923394087307039422}
   knockbackSpeed: 0
   knockbackDistance: 0
-  postClashKnockbackRecoveryTime: 0
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []

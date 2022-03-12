@@ -30,7 +30,6 @@ public class Combat : MonoBehaviour
     [SerializeField] private SurfaceDetector wallCollisionDetector;
     [SerializeField] private float knockbackSpeed;
     [SerializeField] private float knockbackDistance;
-    [SerializeField] private float postClashKnockbackRecoveryTime;
 
     [Header("General Combat Events")]
 
@@ -49,7 +48,6 @@ public class Combat : MonoBehaviour
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
-    public float PostClashKnockbackRecoveryTime { get => postClashKnockbackRecoveryTime; }
 
     public UnityEvent HurtEvent { get => hurtEvent; }
     public UnityEvent DeathEvent { get => deathEvent; }
@@ -96,11 +94,6 @@ public class Combat : MonoBehaviour
         {
             CombatStateMachine.Exit();
         }
-    }
-
-    public void Clash(Vector2 knockbackDirection)
-    {
-        CombatStateMachine.ChangeState(new ClashState(this, knockbackDirection));
     }
 
     public void Stun()
