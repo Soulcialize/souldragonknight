@@ -72,10 +72,9 @@ namespace AiBehaviorTrees
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetChargeReadyAttackPosNode(combat),
+                            new SetCombatTargetPosNode(),
                             new GoToNavTargetNode(movement, false),
-                            new StopMovingNode(movement),
-                            new StartChargeAttackNode(combat)
+                            new StopMovingNode(movement)
                         })
                     })
                 }));
