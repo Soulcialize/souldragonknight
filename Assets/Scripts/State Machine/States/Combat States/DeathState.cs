@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class HurtState : CombatState
+    public class DeathState : CombatState
     {
-        public HurtState(Combat owner) : base(owner) { }
+        public DeathState(Combat owner) : base(owner) { }
 
         public override void Enter()
         {
-            Debug.Log($"{owner.gameObject.name} hurt");
-            owner.Animator.SetBool("isHurt", true);
+            Debug.Log($"{owner.gameObject.name} died");
+            owner.Animator.SetBool("isDead", true);
         }
 
         public override void Execute()
@@ -21,7 +21,7 @@ namespace CombatStates
 
         public override void Exit()
         {
-            owner.Animator.SetBool("isHurt", false);
+            
         }
     }
 }

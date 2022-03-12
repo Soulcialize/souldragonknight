@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 3667998177489575439}
   - component: {fileID: 7122373227875185747}
   - component: {fileID: 7404829110624881476}
+  - component: {fileID: 5584288266804474021}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
@@ -296,6 +297,7 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
+  health: {fileID: 5584288266804474021}
   wallCollisionDetector: {fileID: 8923394087307039422}
   dodgeSpeed: 0
   dodgeDistance: 0
@@ -334,6 +336,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   readyAttackDistance: 7
   lockTargetPositionTime: 2.5
   chargeSpeed: 20
@@ -386,6 +391,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6640825776839569101}
+--- !u!114 &5584288266804474021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2f6eff6a7c9f4e8d0e3da4a091335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 1
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +505,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isHurt
+  - Type: 4
+    SynchronizeType: 2
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
