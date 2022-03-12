@@ -5,8 +5,7 @@ public enum CombatAbilityIdentifier
     ATTACK_MELEE,
     ATTACK_RANGED,
     BLOCK,
-    DODGE,
-    ATTACK_CHARGE
+    DODGE
 }
 
 public abstract class CombatAbility : MonoBehaviour
