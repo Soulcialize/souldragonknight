@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockHitDuration: 0.5
 --- !u!1 &3657565083484446672
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,13 +648,13 @@ MonoBehaviour:
     Name: isBlocking
   - Type: 4
     SynchronizeType: 2
-    Name: isBlockKnockback
-  - Type: 4
-    SynchronizeType: 2
     Name: isStunned
   - Type: 4
     SynchronizeType: 2
     Name: isDead
+  - Type: 4
+    SynchronizeType: 2
+    Name: isBlockingHit
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

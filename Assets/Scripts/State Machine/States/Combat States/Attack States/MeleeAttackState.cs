@@ -32,7 +32,7 @@ namespace CombatStates
 
                     if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is BlockState blockState)
                     {
-                        blockState.Knockback(new Vector2(actorHit.Movement.IsFacingRight ? -1f : 1f, 0f));
+                        blockState.HandleHit();
                     }
                     else
                     {

@@ -6,7 +6,12 @@ namespace CombatStates
 {
     public class BlockState : CombatState
     {
-        public BlockState(Combat owner) : base(owner) { }
+        private readonly float blockHitDuration;
+
+        public BlockState(Combat owner, float blockHitDuration) : base(owner)
+        {
+            this.blockHitDuration = blockHitDuration;
+        }
 
         public override void Enter()
         {
@@ -23,9 +28,9 @@ namespace CombatStates
             owner.Animator.SetBool("isBlocking", false);
         }
 
-        public void Knockback(Vector2 direction)
+        public void HandleHit()
         {
-            owner.CombatStateMachine.ChangeState(new BlockKnockbackState(owner, direction));
+            owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration));
         }
     }
 }
