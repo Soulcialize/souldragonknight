@@ -15,6 +15,7 @@ public abstract class EnemyController : ActorController
         if (photonView.IsMine)
         {
             Combat.HurtEvent.AddListener(HandleHurtEvent);
+            Combat.DeathEvent.AddListener(HandleDeathEvent);
         }
     }
 
@@ -23,6 +24,7 @@ public abstract class EnemyController : ActorController
         if (photonView.IsMine)
         {
             Combat.HurtEvent.RemoveListener(HandleHurtEvent);
+            Combat.DeathEvent.RemoveListener(HandleDeathEvent);
         }
     }
 
@@ -56,5 +58,11 @@ public abstract class EnemyController : ActorController
         {
             visibility.RevealBriefly(hurtRevealDuration);
         }
+    }
+
+    protected virtual void HandleDeathEvent()
+    {
+        visibility.Reveal();
+        hideVisibility = false;
     }
 }

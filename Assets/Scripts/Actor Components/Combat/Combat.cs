@@ -21,6 +21,10 @@ public class Combat : MonoBehaviour
     [SerializeField] private LayerMask attackEffectLayer;
     [SerializeField] private List<SerializedCombatAbility> combatAbilities;
 
+    [Header("Combat Stats")]
+
+    [SerializeField] private Health health;
+    
     [Header("Knockback")]
 
     [SerializeField] private SurfaceDetector wallCollisionDetector;
@@ -31,6 +35,7 @@ public class Combat : MonoBehaviour
     [Header("General Combat Events")]
 
     [SerializeField] private UnityEvent hurtEvent;
+    [SerializeField] private UnityEvent deathEvent;
 
     private Dictionary<CombatAbilityIdentifier, CombatAbility> identifierToAbilityDictionary
         = new Dictionary<CombatAbilityIdentifier, CombatAbility>();
@@ -39,12 +44,15 @@ public class Combat : MonoBehaviour
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
 
+    public Health Health { get => health; }
+
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
     public float KnockbackSpeed { get => knockbackSpeed; }
     public float KnockbackDistance { get => knockbackDistance; }
     public float PostClashKnockbackRecoveryTime { get => postClashKnockbackRecoveryTime; }
 
     public UnityEvent HurtEvent { get => hurtEvent; }
+    public UnityEvent DeathEvent { get => deathEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 
@@ -110,8 +118,21 @@ public class Combat : MonoBehaviour
 
     public void Hurt()
     {
-        CombatStateMachine.ChangeState(new HurtState(this));
-        hurtEvent.Invoke();
+        if (!(CombatStateMachine.CurrState is DeathState))
+        {
+            health.Decrement();
+
+            if (!health.IsZero())
+            {
+                CombatStateMachine.ChangeState(new HurtState(this));
+                hurtEvent.Invoke();
+            }
+            else
+            {
+                CombatStateMachine.ChangeState(new DeathState(this));
+                deathEvent.Invoke();
+            }
+        }
     }
 
     public void OnHurtEnd()

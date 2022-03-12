@@ -14,6 +14,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button startButton;
     [SerializeField] private string gameSceneName;
+    [SerializeField] private string roleSelectSceneName;
     [SerializeField] private LevelButton[] levelSelectButtons;
 
     private void Start()
@@ -23,6 +24,17 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         for (int i = 0; i <= levelsCleared; i++)
         {
             levelSelectButtons[i].SetInteractable(true);
+        }
+
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            object playerTypeObj = player.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
+            if (playerTypeObj != null)
+            {
+                int levelNumber = (int)playerTypeObj;
+                bool isLocalPlayer = (player == PhotonNetwork.LocalPlayer);
+                levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
+            }
         }
     }
     public static void SelectLevel(int levelNumber)
@@ -50,6 +62,12 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
             button.UpdateIndicators(levelNumber, isLocalPlayer);
         }
     }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+
+        PhotonNetwork.LoadLevel(roleSelectSceneName);
+    }
 
     private bool CanStart()
     {
@@ -66,7 +84,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
             selectedLevels.Add((int)playerTypeObj);
         }
 
-        return selectedLevels.Count == 1;
+        return selectedLevels.Count == 1 && PhotonNetwork.CurrentRoom.PlayerCount == 2;
     }
 
     private void ResetLevelChoice()

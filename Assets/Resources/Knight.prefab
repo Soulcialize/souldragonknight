@@ -45,6 +45,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 1.4, y: 0.6}
   drawAreas: 1
+--- !u!1 &2345183453493097578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961698731118320924}
+  - component: {fileID: 5102135582045005520}
+  - component: {fileID: 4796355272749017670}
+  m_Layer: 7
+  m_Name: Combat Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961698731118320924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345183453493097578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5696632616774609734}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5102135582045005520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345183453493097578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8670ec07ee8a6449503ea24e6068fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyRequired: 0
+  readyDuration: 0
+  attackEffectArea: {fileID: 5822808363884121821}
+--- !u!114 &4796355272749017670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345183453493097578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3657565083484446672
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +265,8 @@ GameObject:
   - component: {fileID: 5696632616774609755}
   - component: {fileID: 8730972490635118285}
   - component: {fileID: 6669902685249964190}
-  - component: {fileID: 1530853809338003501}
+  - component: {fileID: 4584270387848782332}
+  - component: {fileID: 5726660194417758549}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
   - component: {fileID: -8030419580977392626}
@@ -233,6 +293,7 @@ Transform:
   - {fileID: 8849393234130334097}
   - {fileID: 4024579181161031291}
   - {fileID: 1784289309786822353}
+  - {fileID: 1961698731118320924}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -376,6 +437,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8e34ec73-50aa-47db-a2e5-8ac6c24c4d43
     m_ActionName: Ui/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 240b0724-e651-4dd4-88de-fd7fb3c104b4
+    m_ActionName: Ground/BlockStart[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 64402ca2-4469-4af1-9d19-ba301261dfa8
+    m_ActionName: Ground/BlockEnd[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d5d1934-7a21-4cc5-b305-441e8f55d2b9
+    m_ActionName: Air/RangedAttack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17bfe6fe-b339-46ab-93c2-0a26674f5966
+    m_ActionName: Air/AirDodge[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
@@ -394,10 +471,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
+  combat: {fileID: 4584270387848782332}
   playerInput: {fileID: 5696632616774609755}
   persistentActionMaps: []
   movement: {fileID: 6669902685249964190}
-  combat: {fileID: 1530853809338003501}
 --- !u!114 &6669902685249964190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +493,7 @@ MonoBehaviour:
   groundDetector: {fileID: 2344377606277045393}
   horizontalMoveSpeed: 8
   jumpForce: 12
---- !u!114 &1530853809338003501
+--- !u!114 &4584270387848782332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,7 +502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5696632616774609732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba4cb9e87f7ea8948a542c2b5e142915, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 5696632616774609753}
@@ -433,23 +510,35 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 512
+  combatAbilities:
+  - abilityIdentifier: 0
+    ability: {fileID: 5102135582045005520}
+  - abilityIdentifier: 2
+    ability: {fileID: 4796355272749017670}
+  health: {fileID: 5726660194417758549}
   wallCollisionDetector: {fileID: 47246515022818543}
-  dodgeSpeed: 10
-  dodgeDistance: 1.2
   knockbackSpeed: 10
   knockbackDistance: 1.2
-  readyAttackEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  readyAttackEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  postClashKnockbackRecoveryTime: 1
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []
-  attackEffectArea: {fileID: 5822808363884121821}
-  distanceBeforePreemptiveClash: 0
-  postClashKnockbackRecoveryTime: 1
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5726660194417758549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d2f6eff6a7c9f4e8d0e3da4a091335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!114 &5696632616774609759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +655,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isStunned
+  - Type: 4
+    SynchronizeType: 2
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
