@@ -6,14 +6,7 @@ namespace CombatStates
 {
     public class BlockState : CombatState
     {
-        private readonly float startTime;
-
-        public float StartTime { get => startTime; }
-
-        public BlockState(Combat owner) : base(owner)
-        {
-            startTime = Time.time;
-        }
+        public BlockState(Combat owner) : base(owner) { }
 
         public override void Enter()
         {

@@ -17,15 +17,12 @@ public class MeleeAttackAbility : CombatAbility
         }
         else
         {
-            combat.CombatStateMachine.ChangeState(new MeleeAttackState(
-                combat, attackEffectArea, Time.time));
+            combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea));
         }
     }
 
     private void ReadyCallback(Combat combat)
     {
-        float readyStartTime = ((ReadyAttackState)combat.CombatStateMachine.CurrState).StartTime;
-        combat.CombatStateMachine.ChangeState(new MeleeAttackState(
-            combat, attackEffectArea, readyStartTime));
+        combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea));
     }
 }
