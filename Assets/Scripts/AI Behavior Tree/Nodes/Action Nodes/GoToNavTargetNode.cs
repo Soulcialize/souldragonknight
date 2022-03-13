@@ -35,7 +35,7 @@ namespace AiBehaviorTreeNodes
             Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
             Vector2 currentPos = ownerMovement.transform.position;
 
-            float distanceToTarget = Mathf.Abs(currentPos.x - navTargetPos.x);
+            float distanceToTarget = Vector2.Distance(currentPos, navTargetPos);
             if (useStoppingDistance && distanceToTarget <= (float)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE)
                 || !useStoppingDistance && distanceToTarget <= 0.01f)
             {
