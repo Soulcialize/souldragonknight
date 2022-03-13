@@ -17,19 +17,15 @@ namespace AiBehaviorTrees
         private BehaviorNode entry;
         private BehaviorNode update;
 
-        public Function TreeFunction { get; private set; }
-
-        public BehaviorTree(Function function, BehaviorNode update)
+        public BehaviorTree(BehaviorNode update)
         {
-            TreeFunction = function;
             this.update = update;
 
             Blackboard.CreateBlackboardForTree(update);
         }
 
-        public BehaviorTree(Function function, BehaviorNode entry, BehaviorNode update)
+        public BehaviorTree(BehaviorNode entry, BehaviorNode update)
         {
-            TreeFunction = function;
             this.entry = entry;
             this.update = update;
 

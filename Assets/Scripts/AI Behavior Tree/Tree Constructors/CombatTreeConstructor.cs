@@ -11,7 +11,6 @@ namespace AiBehaviorTrees
         public static BehaviorTree ConstructGroundCombatTree(Movement movement, Combat combat)
         {
             return new BehaviorTree(
-                BehaviorTree.Function.COMBAT,
                 new SequenceNode(new List<BehaviorNode>()
                 {
                     new GetVisibleCombatTargetNode(combat),
@@ -46,7 +45,6 @@ namespace AiBehaviorTrees
         public static BehaviorTree ConstructAirCombatTree(Movement movement, Combat combat)
         {
             return new BehaviorTree(
-                BehaviorTree.Function.COMBAT,
                 new SequenceNode(new List<BehaviorNode>()
                 {
                     new GetVisibleCombatTargetNode(combat),
