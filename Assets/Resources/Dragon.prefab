@@ -246,6 +246,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3533750638843532997}
   isDefaultFacingRight: 1
+  defaultStoppingDistanceFromNavTargets: 2.1
   movementSpeed: 6
 --- !u!114 &3483110514655366300
 MonoBehaviour:
@@ -410,7 +411,7 @@ GameObject:
   - component: {fileID: 6446324908195120128}
   - component: {fileID: 3901688964061665601}
   - component: {fileID: 7163776362713714178}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wall Collision Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

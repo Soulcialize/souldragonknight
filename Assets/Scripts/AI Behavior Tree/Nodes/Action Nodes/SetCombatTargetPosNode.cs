@@ -15,10 +15,21 @@ namespace AiBehaviorTreeNodes
     /// </remarks>
     public class SetCombatTargetPosNode : BehaviorNode
     {
+        private readonly Movement ownerMovement;
+
+        public SetCombatTargetPosNode(Movement ownerMovement)
+        {
+            this.ownerMovement = ownerMovement;
+        }
+
         public override NodeState Execute()
         {
-            GameObject target = (GameObject)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
+            ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)target.transform.position);
+            Blackboard.SetData(
+                GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE,
+                Mathf.Max(ownerMovement.DefaultStoppingDistanceFromNavTargets, target.Movement.DefaultStoppingDistanceFromNavTargets));
+
             return NodeState.SUCCESS;
         }
     }

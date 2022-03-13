@@ -16,7 +16,7 @@ public class DragonEnemyController : EnemyController
             {
                 // construct behavior trees
                 {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructAirCombatTree(movement, combat)
+                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(movement, combat)
                 }
             },
             BehaviorTree.Function.COMBAT);

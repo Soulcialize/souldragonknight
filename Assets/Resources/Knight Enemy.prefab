@@ -274,6 +274,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 5693331145748344918}
   isDefaultFacingRight: 0
+  defaultStoppingDistanceFromNavTargets: 1.4
   groundDetector: {fileID: 5693331146666542379}
   horizontalMoveSpeed: 8
   jumpForce: 12

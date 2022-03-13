@@ -10,9 +10,11 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private bool isDefaultFacingRight = true;
+    [SerializeField] private float defaultStoppingDistanceFromNavTargets;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
+    public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
 
     public bool IsFacingRight { get; private set; }
     public Vector2 CachedMovementDirection { get; protected set; }
@@ -60,11 +62,5 @@ public abstract class Movement : MonoBehaviour
                     $"{System.Enum.GetName(typeof(Direction), toDirection)} " +
                     "is not a valid direction to flip towards");
         }
-    }
-
-    public float GetStoppingDistanceFromNavTarget()
-    {
-        // TODO: make this value a serialized field once we're sure no one else is modifying prefabs
-        return 1.4f;
     }
 }
