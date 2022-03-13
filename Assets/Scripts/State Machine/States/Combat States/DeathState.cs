@@ -21,7 +21,7 @@ namespace CombatStates
 
         public override void Exit()
         {
-            
+            owner.Animator.SetBool("isDead", false);
         }
     }
 }

@@ -9,7 +9,9 @@ namespace StateMachines
     {
         public AirMovementStateMachine()
         {
-            transitions[typeof(AirborneState)] = new HashSet<System.Type>();
+            transitions[typeof(AirborneState)] = new HashSet<System.Type>() { typeof(FallingState), typeof(GroundedState) };
+            transitions[typeof(FallingState)] = new HashSet<System.Type>() { typeof(GroundedState) };
+            transitions[typeof(GroundedState)] = new HashSet<System.Type>();
         }
     }
 }

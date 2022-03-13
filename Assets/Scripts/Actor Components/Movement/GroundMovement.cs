@@ -6,13 +6,11 @@ using GroundMovementStates;
 
 public class GroundMovement : Movement
 {
-    [SerializeField] protected SurfaceDetector groundDetector;
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
     private GroundMovementStateMachine movementStateMachine;
 
-    public SurfaceDetector GroundDetector { get => groundDetector; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
 

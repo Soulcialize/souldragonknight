@@ -37,7 +37,7 @@ namespace AiBehaviorTreeNodes
                 return NodeState.FAILURE;
             }
 
-            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetActor.gameObject);
+            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetActor);
             return NodeState.SUCCESS;
         }
     }
