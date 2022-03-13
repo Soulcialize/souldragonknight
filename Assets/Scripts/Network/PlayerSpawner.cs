@@ -1,6 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 using PlayerType = RoleSelectManager.PlayerType;
+using Cinemachine;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerSpawner : MonoBehaviour
 
     [SerializeField] private GameObject knightPrefab;
     [SerializeField] private GameObject dragonPrefab;
+    [SerializeField] private CinemachineVirtualCamera camera;
 
     private void Start()
     {
@@ -16,7 +18,8 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnKnight()
     {
-        PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-3f, 1.56f), knightPrefab.transform.rotation);
+        var knightObj = PhotonNetwork.Instantiate(knightPrefab.name, new Vector2(-3f, 1.56f), knightPrefab.transform.rotation);
+        camera.m_Follow = knightObj.transform;
 
         // TODO: consider doing this stuff in other scripts
         BackgroundManager.Instance.ActivateSoulWorldBackground();
@@ -25,7 +28,8 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnDragon()
     {
-        PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-5f, 4f), dragonPrefab.transform.rotation);
+        var dragonObj = PhotonNetwork.Instantiate(dragonPrefab.name, new Vector2(-5f, 4f), dragonPrefab.transform.rotation);
+        camera.m_Follow = dragonObj.transform;
 
         // TODO: consider doing this stuff in other scripts
         BackgroundManager.Instance.ActivateRealWorldBackground();
