@@ -16,7 +16,7 @@ public class DragonEnemyController : EnemyController
             {
                 // construct behavior trees
                 {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructAirCombatTree(movement, combat)
+                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(movement, combat)
                 }
             },
             BehaviorTree.Function.COMBAT);
@@ -25,6 +25,7 @@ public class DragonEnemyController : EnemyController
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
-        movement.Rigidbody2d.gravityScale = 5;
+        movement.CanLandOnGround = true;
+        movement.ToggleGravity(true);
     }
 }

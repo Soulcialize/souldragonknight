@@ -108,6 +108,7 @@ public class DragonPlayerController : PlayerController
     }
     protected void HandleDeathEvent()
     {
-        movement.Rigidbody2d.gravityScale = 5;
+        movement.CanLandOnGround = true;
+        movement.ToggleGravity(true);
     }
 }
