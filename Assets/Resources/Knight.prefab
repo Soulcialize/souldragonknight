@@ -540,6 +540,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+  decrementHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5696632616774609759
 MonoBehaviour:
   m_ObjectHideFlags: 0

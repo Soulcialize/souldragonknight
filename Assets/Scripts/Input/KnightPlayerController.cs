@@ -13,6 +13,8 @@ public class KnightPlayerController : PlayerController
     private InputAction blockStartAction;
     private InputAction blockEndAction;
 
+    private HealthUI healthUI;
+
     private float movementInput = 0f;
 
     public override Movement Movement { get => movement; }
@@ -25,6 +27,8 @@ public class KnightPlayerController : PlayerController
         attackAction = playerInput.actions["Attack"];
         blockStartAction = playerInput.actions["BlockStart"];
         blockEndAction = playerInput.actions["BlockEnd"];
+
+        healthUI = GameObject.FindObjectOfType<HealthUI>();
     }
 
     protected override void FixedUpdate()
@@ -34,6 +38,20 @@ public class KnightPlayerController : PlayerController
         {
             movement.UpdateMovement(new Vector2(movementInput, 0f));
         }
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        Combat.Health.DecrementHealthEvent.AddListener(healthUI.decrementKnightHealthUI);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.decrementKnightHealthUI);
     }
 
     protected override void BindInputActionHandlers()

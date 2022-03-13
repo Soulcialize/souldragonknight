@@ -550,7 +550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &142514746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1123,6 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knightPrefab: {fileID: 5696632616774609732, guid: d92136aa6e1dd884aa99b51f2b950227, type: 3}
   dragonPrefab: {fileID: 4470413134207635880, guid: 9a8705b2cb40d94409b88940b0d7828a, type: 3}
+  healthUI: {fileID: 1710262031}
 --- !u!4 &765560305
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &875541707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1434,7 +1435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &920739363
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1509,7 +1510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &991003312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1758,7 +1759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1510196689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1912,7 +1913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1532587115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2094,6 +2095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710262029}
   - component: {fileID: 1710262030}
+  - component: {fileID: 1710262031}
   m_Layer: 5
   m_Name: InGame_UI
   m_TagString: Untagged
@@ -2108,7 +2110,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710262028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2130,6 +2132,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710262028}
   m_CullTransparentMesh: 1
+--- !u!114 &1710262031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710262028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee6c381903ca1b44afd6f3888b595d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragonHealthUI:
+  - {fileID: 1510196688}
+  - {fileID: 142514745}
+  - {fileID: 1532587114}
+  knightHealthUI:
+  - {fileID: 920739362}
+  - {fileID: 875541706}
+  - {fileID: 991003311}
+  dragonHealth: 3
+  knightHealth: 3
 --- !u!224 &1722338857
 RectTransform:
   m_ObjectHideFlags: 0

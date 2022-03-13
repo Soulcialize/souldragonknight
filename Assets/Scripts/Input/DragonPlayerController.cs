@@ -12,6 +12,8 @@ public class DragonPlayerController : PlayerController
     private InputAction rangedAttackAction;
     private InputAction dodgeAction;
 
+    private HealthUI healthUI;
+
     private float horizontalMovementInput = 0f;
     private float verticalMovementInput = 0f;
 
@@ -24,6 +26,8 @@ public class DragonPlayerController : PlayerController
         moveAirVerticalAction = playerInput.actions["MoveAirVertical"];
         rangedAttackAction = playerInput.actions["RangedAttack"];
         dodgeAction = playerInput.actions["AirDodge"];
+
+        healthUI = GameObject.FindObjectOfType<HealthUI>();
     }
 
     protected override void FixedUpdate()
@@ -38,6 +42,8 @@ public class DragonPlayerController : PlayerController
     {
         base.OnEnable();
 
+        Combat.Health.DecrementHealthEvent.AddListener(healthUI.decrementDragonHealthUI);
+
         if (photonView.IsMine)
         {
             Combat.DeathEvent.AddListener(HandleDeathEvent);
@@ -47,6 +53,8 @@ public class DragonPlayerController : PlayerController
     protected override void OnDisable()
     {
         base.OnDisable();
+
+        Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.decrementDragonHealthUI);
 
         if (photonView.IsMine)
         {
