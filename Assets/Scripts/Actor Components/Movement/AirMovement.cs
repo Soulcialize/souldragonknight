@@ -51,6 +51,9 @@ public class AirMovement : Movement
     public void ToggleGravity(bool isEnabled)
     {
         rigidbody2d.gravityScale = isEnabled ? 5f : 0f;
-        MovementStateMachine.ChangeState(new FallingState(this));
+        if (isEnabled)
+        {
+            MovementStateMachine.ChangeState(new FallingState(this));
+        }
     }
 }
