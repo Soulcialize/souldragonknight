@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isReadyRequired: 1
-  readyDuration: 15
+  readyDuration: 2
   attackEffectArea: {fileID: 5693331146226388544}
 --- !u!1 &5693331145748344921
 GameObject:
