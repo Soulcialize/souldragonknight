@@ -7,10 +7,12 @@ using AirMovementStates;
 public class AirMovement : Movement
 {
     [SerializeField] private float movementSpeed;
+    [SerializeField] private bool canLandOnGround;
 
     private AirMovementStateMachine movementStateMachine;
 
     public float MovementSpeed { get => movementSpeed; }
+    public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
 
     public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
@@ -46,21 +48,9 @@ public class AirMovement : Movement
         }
     }
 
-    public void UpdateHorizontalMovement(float direction)
+    public void ToggleGravity(bool isEnabled)
     {
-        CachedMovementDirection = new Vector2(direction, CachedMovementDirection.y);
-        if (MovementStateMachine.CurrState is AirborneState airborneState)
-        {
-            airborneState.UpdateHorizontalMovement(direction);
-        }
-    }
-
-    public void UpdateVerticalMovement(float direction)
-    {
-        CachedMovementDirection = new Vector2(CachedMovementDirection.x, direction);
-        if (MovementStateMachine.CurrState is AirborneState airborneState)
-        {
-            airborneState.UpdateVerticalMovement(direction);
-        }
+        rigidbody2d.gravityScale = isEnabled ? 5f : 0f;
+        MovementStateMachine.ChangeState(new FallingState(this));
     }
 }
