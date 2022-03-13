@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class KnightPlayerController : PlayerController
 {
     [SerializeField] private GroundMovement movement;
-    [SerializeField] private MeleeCombat combat;
 
     private InputAction moveGroundAction;
     private InputAction jumpAction;
@@ -17,7 +16,6 @@ public class KnightPlayerController : PlayerController
     private float movementInput = 0f;
 
     public override Movement Movement { get => movement; }
-    public override Combat Combat { get => combat; }
 
     protected override void Awake()
     {
@@ -74,7 +72,7 @@ public class KnightPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
             movement.UpdateMovement(Vector2.zero);
-            combat.Attack();
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE);
         }
     }
 
@@ -83,12 +81,12 @@ public class KnightPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
             movement.UpdateMovement(Vector2.zero);
-            combat.StartBlock();
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK);
         }
     }
 
     private void HandleBlockEndInput(InputAction.CallbackContext context)
     {
-        combat.EndBlock();
+        combat.EndCombatAbility(CombatAbilityIdentifier.BLOCK);
     }
 }

@@ -26,15 +26,19 @@ namespace AiBehaviorTreeNodes
         {
             // TODO: use viewcone detection instead of radial grab
             Collider2D targetCollider = Physics2D.OverlapCircle(ownerCombat.transform.position, 1000f, ownerCombat.AttackEffectLayer);
-            if (targetCollider != null && !targetCollider.GetComponentInParent<Health>().IsZero())
-            {
-                Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetCollider.gameObject);
-                return NodeState.SUCCESS;
-            } 
-            else
+            if (targetCollider == null)
             {
                 return NodeState.FAILURE;
             }
+
+            ActorController targetActor = ActorController.GetActorFromCollider(targetCollider);
+            if (targetActor.Combat.Health.IsZero())
+            {
+                return NodeState.FAILURE;
+            }
+
+            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetActor.gameObject);
+            return NodeState.SUCCESS;
         }
     }
 }

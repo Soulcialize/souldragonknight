@@ -57,6 +57,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 1.32}
   m_EdgeRadius: 0
+--- !u!1 &1859129163615566576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750192537020340053}
+  - component: {fileID: 1707262774369454606}
+  m_Layer: 9
+  m_Name: Combat Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750192537020340053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859129163615566576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5693331145748344923}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707262774369454606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859129163615566576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8670ec07ee8a6449503ea24e6068fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isReadyRequired: 1
+  readyDuration: 15
+  attackEffectArea: {fileID: 5693331146226388544}
 --- !u!1 &5693331145748344921
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +117,7 @@ GameObject:
   - component: {fileID: 5693331145748344918}
   - component: {fileID: 5693331145748344919}
   - component: {fileID: 5693331145748344913}
-  - component: {fileID: 6045176360427638502}
+  - component: {fileID: 7568959259614269199}
   - component: {fileID: 7653389214318838471}
   - component: {fileID: 707785210333968309}
   - component: {fileID: 5693331145748344914}
@@ -100,6 +146,7 @@ Transform:
   - {fileID: 5693331146666542378}
   - {fileID: 5693331146226388551}
   - {fileID: 2862898516975400696}
+  - {fileID: 1750192537020340053}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,11 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5693331145748344914}
+  combat: {fileID: 7568959259614269199}
   hideVisibility: 1
   visibility: {fileID: 7653389214318838471}
   hurtRevealDuration: 0.8
   movement: {fileID: 5693331145748344913}
-  combat: {fileID: 6045176360427638502}
 --- !u!114 &5693331145748344913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +277,7 @@ MonoBehaviour:
   groundDetector: {fileID: 5693331146666542379}
   horizontalMoveSpeed: 8
   jumpForce: 12
---- !u!114 &6045176360427638502
+--- !u!114 &7568959259614269199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5693331145748344921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba4cb9e87f7ea8948a542c2b5e142915, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 5693331145748344916}
@@ -247,27 +294,19 @@ MonoBehaviour:
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
+  combatAbilities:
+  - abilityIdentifier: 0
+    ability: {fileID: 1707262774369454606}
   health: {fileID: 707785210333968309}
   wallCollisionDetector: {fileID: 3776096321984719771}
-  dodgeSpeed: 10
-  dodgeDistance: 1.2
   knockbackSpeed: 10
   knockbackDistance: 1.2
-  readyAttackEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  readyAttackEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
-  attackEffectArea: {fileID: 5693331146226388544}
-  minTimeBetweenAttacks: 3
-  postClashKnockbackRecoveryTime: 1
 --- !u!114 &7653389214318838471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,9 +443,6 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isStunned
-  - Type: 4
-    SynchronizeType: 2
-    Name: isClashing
   - Type: 4
     SynchronizeType: 2
     Name: isDead

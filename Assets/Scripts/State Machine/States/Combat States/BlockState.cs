@@ -6,18 +6,11 @@ namespace CombatStates
 {
     public class BlockState : CombatState
     {
-        private readonly float startTime;
+        private readonly float blockHitDuration;
 
-        public float StartTime { get => startTime; }
-
-        public BlockState(MeleeCombat owner) : base(owner)
+        public BlockState(Combat owner, float blockHitDuration) : base(owner)
         {
-            startTime = Time.time;
-        }
-
-        public BlockState(MeleeCombat owner, float startTime) : base(owner)
-        {
-            this.startTime = startTime;
+            this.blockHitDuration = blockHitDuration;
         }
 
         public override void Enter()
@@ -33,6 +26,11 @@ namespace CombatStates
         public override void Exit()
         {
             owner.Animator.SetBool("isBlocking", false);
+        }
+
+        public void HandleHit()
+        {
+            owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration));
         }
     }
 }

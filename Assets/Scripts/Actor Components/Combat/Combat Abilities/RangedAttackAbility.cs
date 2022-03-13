@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using CombatStates;
 
-public class RangedCombat : Combat
+public class RangedAttackAbility : CombatAbility
 {
-    [Header("Ranged Combat")]
-
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
 
-    public override void Attack()
+    public override void Execute(Combat combat, params object[] parameters)
     {
-        CombatStateMachine.ChangeState(new RangedAttackState(
-            this,
+        Vector2 direction = (Vector2)parameters[0];
+        combat.CombatStateMachine.ChangeState(new RangedAttackState(
+            combat,
             projectilePrefab,
             projectileOrigin.position,
-            transform.localScale.x > 0f ? Vector2.right : Vector2.left));
+            direction));
     }
 }

@@ -6,21 +6,19 @@ namespace CombatStates
 {
     public class MeleeAttackState : AttackState
     {
-        private new readonly MeleeCombat owner;
-        private readonly float readyAttackStartTime;
+        private readonly AttackEffectArea attackEffectArea;
 
-        public MeleeAttackState(MeleeCombat owner, float readyAttackStartTime) : base(owner)
+        public MeleeAttackState(Combat owner, AttackEffectArea attackEffectArea) : base(owner)
         {
-            this.owner = owner;
-            this.readyAttackStartTime = readyAttackStartTime;
+            this.attackEffectArea = attackEffectArea;
         }
 
         public override void ExecuteAttackEffect()
         {
             Collider2D[] hits = Physics2D.OverlapBoxAll(
-                owner.AttackEffectArea.transform.position,
-                owner.AttackEffectArea.Size,
-                owner.AttackEffectArea.transform.eulerAngles.z,
+                attackEffectArea.transform.position,
+                attackEffectArea.Size,
+                attackEffectArea.transform.eulerAngles.z,
                 owner.AttackEffectLayer);
 
             foreach (Collider2D hit in hits)
@@ -34,20 +32,7 @@ namespace CombatStates
 
                     if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is BlockState blockState)
                     {
-                        if (blockState.StartTime >= readyAttackStartTime)
-                        {
-                            owner.Stun();
-                        }
-                        else
-                        {
-                            ((MeleeCombat)actorHit.Combat).KnockbackDuringBlock(new Vector2(actorHit.Movement.IsFacingRight ? -1f : 1f, 0f));
-                        }
-                    }
-                    else if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is ReadyAttackState)
-                    {
-                        Vector2 ownerKnockbackDirection = new Vector2(actorHit.Movement.IsFacingRight ? 1f : -1f, 0f);
-                        owner.Clash(ownerKnockbackDirection);
-                        ((MeleeCombat)actorHit.Combat).Clash(-ownerKnockbackDirection);
+                        blockState.HandleHit();
                     }
                     else
                     {

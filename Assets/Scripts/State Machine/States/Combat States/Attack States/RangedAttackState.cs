@@ -12,7 +12,7 @@ namespace CombatStates
         private readonly Vector2 attackDirection;
 
         public RangedAttackState(
-            RangedCombat owner, RangedProjectile projectilePrefab,
+            Combat owner, RangedProjectile projectilePrefab,
             Vector2 projectileOrigin, Vector2 attackDirection) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
