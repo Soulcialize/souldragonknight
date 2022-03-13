@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6084731882482450353}
-  - component: {fileID: 3625236102993533556}
+  - component: {fileID: 5886154097904693633}
   - component: {fileID: 8923394087307039422}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Wall Collision Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,8 +32,8 @@ Transform:
   m_Father: {fileID: 6640825776839569102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3625236102993533556
-CircleCollider2D:
+--- !u!61 &5886154097904693633
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -45,9 +45,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.035, y: -0.53}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.125, y: 2.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.29
+  m_Size: {x: 0.68, y: 1.32}
+  m_EdgeRadius: 0
 --- !u!114 &8923394087307039422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +82,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8741898079270909711}
-  - component: {fileID: 5117750422463035635}
+  - component: {fileID: 6758016192082639341}
   m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
@@ -94,8 +104,8 @@ Transform:
   m_Father: {fileID: 6640825776839569102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5117750422463035635
-CircleCollider2D:
+--- !u!61 &6758016192082639341
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,9 +117,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.035, y: -0.53}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.125, y: 2.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.27
+  m_Size: {x: 0.68, y: 1.32}
+  m_EdgeRadius: 0
 --- !u!1 &4323829788290658441
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,12 +262,12 @@ SpriteRenderer:
   m_SortingLayerID: -79651679
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dff013c39a5dd9141b8f889d165e70ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300038, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
+  m_Color: {r: 0.8717336, g: 0.21933962, b: 0.8773585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.125, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -246,7 +246,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3533750638843532997}
   isDefaultFacingRight: 1
-  defaultStoppingDistanceFromNavTargets: 2.1
+  defaultStoppingDistanceFromNavTargets: 1.6
   movementSpeed: 6
 --- !u!114 &3483110514655366300
 MonoBehaviour:
