@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatStates
 {
@@ -10,13 +11,15 @@ namespace CombatStates
 
         private readonly float blockHitDuration;
         private readonly Direction blockDirection;
+        private readonly UnityEvent blockHitEvent;
 
         public Direction BlockDirection { get => blockDirection; }
 
-        public BlockState(Combat owner, float blockHitDuration, Direction blockDirection) : base(owner)
+        public BlockState(Combat owner, float blockHitDuration, Direction blockDirection, UnityEvent blockHitEvent) : base(owner)
         {
             this.blockHitDuration = blockHitDuration;
             this.blockDirection = blockDirection;
+            this.blockHitEvent = blockHitEvent;
         }
 
         public override void Enter()
@@ -50,7 +53,7 @@ namespace CombatStates
                 // check if owner is facing the right the direction from which the hit is coming from
                 if (isOwnerFacingRight && hitDirection.x < 0f || !isOwnerFacingRight && hitDirection.x > 0f)
                 {
-                    owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection));
+                    owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
                 }
                 else
                 {
@@ -59,7 +62,7 @@ namespace CombatStates
             }
             else if (blockDirection == Direction.UPWARDS)
             {
-                owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection));
+                owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
             }
         }
     }

@@ -106,6 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBlockProjectiles: 0
   blockHitDuration: 0.5
+  blockHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3657565083484446672
 GameObject:
   m_ObjectHideFlags: 0

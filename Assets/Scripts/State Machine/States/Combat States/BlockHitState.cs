@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatStates
 {
@@ -8,6 +9,7 @@ namespace CombatStates
     {
         private readonly float duration;
         private readonly BlockState.Direction direction;
+        private readonly UnityEvent blockHitEvent;
 
         private float startTime;
         private bool willReturnToBlock;
@@ -22,18 +24,19 @@ namespace CombatStates
             }
         }
 
-        public BlockHitState(Combat owner, float duration, BlockState.Direction direction) : base(owner)
+        public BlockHitState(Combat owner, float duration, BlockState.Direction direction, UnityEvent blockHitEvent) : base(owner)
         {
             this.duration = duration;
             this.direction = direction;
+            this.blockHitEvent = blockHitEvent;
         }
 
         public override void Enter()
         {
             startTime = Time.time;
             WillReturnToBlock = true;
-
             owner.Animator.SetBool("isBlockingHit", true);
+            blockHitEvent.Invoke();
         }
 
         public override void Execute()
@@ -43,7 +46,7 @@ namespace CombatStates
                 // switch to block state or exit combat state machine
                 if (WillReturnToBlock)
                 {
-                    owner.CombatStateMachine.ChangeState(new BlockState(owner, duration, direction));
+                    owner.CombatStateMachine.ChangeState(new BlockState(owner, duration, direction, blockHitEvent));
                 }
                 else
                 {
