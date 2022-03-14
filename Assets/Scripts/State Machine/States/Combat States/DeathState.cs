@@ -14,8 +14,8 @@ namespace CombatStates
         {
             Debug.Log($"{owner.gameObject.name} died");
 
-            originalCollisionLayer = owner.Collider.gameObject.layer;
-            owner.Collider.gameObject.layer = LayerMask.NameToLayer("Dead");
+            originalCollisionLayer = owner.Collider2d.gameObject.layer;
+            owner.Collider2d.gameObject.layer = LayerMask.NameToLayer("Dead");
             owner.Animator.SetBool("isDead", true);
         }
 
@@ -26,7 +26,7 @@ namespace CombatStates
 
         public override void Exit()
         {
-            owner.Collider.gameObject.layer = originalCollisionLayer;
+            owner.Collider2d.gameObject.layer = originalCollisionLayer;
             owner.Animator.SetBool("isDead", false);
         }
     }
