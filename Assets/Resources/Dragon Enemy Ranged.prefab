@@ -325,6 +325,8 @@ MonoBehaviour:
   combatAbilities:
   - abilityIdentifier: 1
     ability: {fileID: 650249244500082988}
+  - abilityIdentifier: 2
+    ability: {fileID: 9164543939492879357}
   health: {fileID: 2580839893817942638}
   wallCollisionDetector: {fileID: 2580839894231045049}
   knockbackSpeed: 10
@@ -475,6 +477,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isFalling
+  - Type: 4
+    SynchronizeType: 2
+    Name: isBlocking
+  - Type: 4
+    SynchronizeType: 2
+    Name: isBlockingHit
+  - Type: 4
+    SynchronizeType: 2
+    Name: isBlockingUpwards
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -561,6 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2580839895130150032}
   - component: {fileID: 650249244500082988}
+  - component: {fileID: 9164543939492879357}
   m_Layer: 0
   m_Name: Combat Abilities
   m_TagString: Untagged
@@ -599,6 +611,23 @@ MonoBehaviour:
   timeToLock: 3
   projectilePrefab: {fileID: 2451902509671687090, guid: d75a65ad664c7a147bf5869d211fbe95, type: 3}
   projectileOrigin: {fileID: 9076783464814098838}
+  fireRangedProjectileEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &9164543939492879357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580839895130150035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBlockProjectiles: 1
+  blockHitDuration: 0.5
 --- !u!1 &2705613028783591539
 GameObject:
   m_ObjectHideFlags: 0

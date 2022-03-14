@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBlockProjectiles: 0
   blockHitDuration: 0.5
 --- !u!1 &3657565083484446672
 GameObject:

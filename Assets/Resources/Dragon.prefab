@@ -522,6 +522,9 @@ MonoBehaviour:
   timeToLock: 0
   projectilePrefab: {fileID: 2451902509671687090, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
   projectileOrigin: {fileID: 8972197996417656447}
+  fireRangedProjectileEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &591363011492556981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,17 @@ public class RangedAttackAbility : CombatAbility
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
 
+    [Space(10)]
+
+    [SerializeField] private RangedProjectileEvent fireRangedProjectileEvent;
+
     public float MaxRange { get => maxRange; }
+    public RangedProjectileEvent FireRangedProjectileEvent { get => fireRangedProjectileEvent; }
+
+    private void OnDisable()
+    {
+        fireRangedProjectileEvent.RemoveAllListeners();
+    }
 
     public override void Execute(Combat combat, params object[] parameters)
     {
@@ -24,7 +34,7 @@ public class RangedAttackAbility : CombatAbility
         {
             Vector2 direction = (Vector2)parameters[0];
             combat.CombatStateMachine.ChangeState(new RangedAttackState(
-                combat, projectilePrefab, projectileOrigin.position, direction));
+                combat, projectilePrefab, projectileOrigin.position, direction, fireRangedProjectileEvent));
         }
     }
 
@@ -32,6 +42,6 @@ public class RangedAttackAbility : CombatAbility
     {
         Vector2 direction = ((ReadyRangedAttackState)combat.CombatStateMachine.CurrState).TargetPosition - (Vector2)transform.position;
         combat.CombatStateMachine.ChangeState(new RangedAttackState(
-            combat, projectilePrefab, projectileOrigin.position, direction));
+            combat, projectilePrefab, projectileOrigin.position, direction, fireRangedProjectileEvent));
     }
 }

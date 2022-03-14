@@ -11,9 +11,9 @@ namespace AiBehaviorTrees
         public static BehaviorTree ConstructMeleeCombatTree(Movement movement, Combat combat)
         {
             return new BehaviorTree(
+                new GetVisibleCombatTargetNode(combat),
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    new GetVisibleCombatTargetNode(combat),
                     new SelectorNode(new List<BehaviorNode>()
                     {
                         // in combat state, engaging target
@@ -48,6 +48,11 @@ namespace AiBehaviorTrees
                 new SequenceNode(new List<BehaviorNode>()
                 {
                     new GetVisibleCombatTargetNode(combat),
+                    new AddListenerToCombatTargetRangedAttackNode(combat)
+                }),
+                new SequenceNode(new List<BehaviorNode>()
+                {
+                    new GetVisibleCombatTargetNode(combat),
                     new SelectorNode(new List<BehaviorNode>()
                     {
                         // in combat state, engaging target
@@ -66,7 +71,6 @@ namespace AiBehaviorTrees
                         {
                             new SetRangedAttackPosNode(movement, combat),
                             new GoToNavTargetNode(movement, false),
-                            new StopMovingNode(movement),
                             new StopMovingNode(movement),
                             new StartRangedAttackNode(combat)
                         })

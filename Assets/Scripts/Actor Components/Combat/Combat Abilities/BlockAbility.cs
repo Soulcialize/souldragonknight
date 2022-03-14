@@ -8,6 +8,8 @@ public class BlockAbility : CombatAbility
     [SerializeField] private bool canBlockProjectiles;
     [SerializeField] private float blockHitDuration;
 
+    public bool CanBlockProjectiles { get => canBlockProjectiles; }
+
     public override void Execute(Combat combat, params object[] parameters)
     {
         if (combat.CombatStateMachine.CurrState is BlockHitState blockHitState)

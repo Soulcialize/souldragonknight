@@ -79,6 +79,9 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 64
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &330416023049157660
 MonoBehaviour:
   m_ObjectHideFlags: 0
