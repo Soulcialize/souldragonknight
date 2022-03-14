@@ -47,7 +47,27 @@ namespace AiBehaviorTrees
             return new BehaviorTree(
                 new SequenceNode(new List<BehaviorNode>()
                 {
-
+                    new GetVisibleCombatTargetNode(combat),
+                    new SelectorNode(new List<BehaviorNode>()
+                    {
+                        // in combat state, engaging target
+                        new SequenceNode(new List<BehaviorNode>()
+                        {
+                            // in ready-attack state
+                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyRangedAttackState)),
+                            // face target while readying if target position not locked yet
+                            new InverterNode(new HasLockedTargetPositionNode(combat)),
+                            new SetCombatTargetPosNode(movement),
+                            new FaceNavTargetNode(movement)
+                        }),
+                        new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
+                        // chasing target
+                        new SequenceNode(new List<BehaviorNode>()
+                        {
+                            new StopMovingNode(movement),
+                            new StartRangedAttackNode(combat)
+                        })
+                    })
                 }));
         }
     }

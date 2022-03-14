@@ -5,37 +5,28 @@ using UnityEngine.Events;
 
 namespace CombatStates
 {
-    public class ReadyChargeAttackState : ReadyAttackState
+    public class ReadyRangedAttackState : ReadyAttackState
     {
         private readonly Transform target;
         private readonly float lockTargetPositionTime;
-        private readonly UnityEvent readyChargeStartEvent;
 
         public bool HasLockedTargetPosition { get; private set; }
         public Vector2 TargetPosition { get; private set; }
 
-        public ReadyChargeAttackState(
+        public ReadyRangedAttackState(
             Combat owner, Transform target,
             float lockTargetPositionTime, float readyDuration,
-            UnityAction<Combat> readyCallback, UnityEvent readyChargeStartEvent) : base(owner, readyDuration, readyCallback)
+            UnityAction<Combat> readyCallback) : base(owner, readyDuration, readyCallback)
         {
             this.target = target;
             this.lockTargetPositionTime = lockTargetPositionTime;
-            this.readyChargeStartEvent = readyChargeStartEvent;
 
             HasLockedTargetPosition = false;
-        }
-
-        public override void Enter()
-        {
-            base.Enter();
-            readyChargeStartEvent.Invoke();
         }
 
         public override void Execute()
         {
             base.Execute();
-            owner.Rigidbody2d.velocity = Vector2.zero;
             if (!HasLockedTargetPosition && Time.time - StartTime >= lockTargetPositionTime)
             {
                 LockTargetPosition();

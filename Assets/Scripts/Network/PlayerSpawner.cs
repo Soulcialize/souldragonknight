@@ -30,6 +30,7 @@ public class PlayerSpawner : MonoBehaviour
         // TODO: consider doing this stuff in other scripts
         BackgroundManager.Instance.ActivateRealWorldBackground();
         PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy").name, new Vector2(6f, 5f), Quaternion.identity);
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy Ranged").name, new Vector2(6f, 5f), Quaternion.identity);
     }
 
     private void SpawnPlayer()

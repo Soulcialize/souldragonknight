@@ -5,16 +5,30 @@ using CombatStates;
 
 public class RangedAttackAbility : CombatAbility
 {
+    [SerializeField] private float readyDuration;
+    [SerializeField] private float timeToLock;
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
 
     public override void Execute(Combat combat, params object[] parameters)
     {
-        Vector2 direction = (Vector2)parameters[0];
+        if (readyDuration > 0f)
+        {
+            Transform target = (Transform)parameters[0];
+            combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(combat, target, timeToLock, readyDuration, ReadyCallback));
+        }
+        else
+        {
+            Vector2 direction = (Vector2)parameters[0];
+            combat.CombatStateMachine.ChangeState(new RangedAttackState(
+                combat, projectilePrefab, projectileOrigin.position, direction));
+        }
+    }
+
+    private void ReadyCallback(Combat combat)
+    {
+        Vector2 direction = ((ReadyRangedAttackState)combat.CombatStateMachine.CurrState).TargetPosition - (Vector2)transform.position;
         combat.CombatStateMachine.ChangeState(new RangedAttackState(
-            combat,
-            projectilePrefab,
-            projectileOrigin.position,
-            direction));
+            combat, projectilePrefab, projectileOrigin.position, direction));
     }
 }
