@@ -5,10 +5,13 @@ using CombatStates;
 
 public class RangedAttackAbility : CombatAbility
 {
+    [SerializeField] private float maxRange;
     [SerializeField] private float readyDuration;
     [SerializeField] private float timeToLock;
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
+
+    public float MaxRange { get => maxRange; }
 
     public override void Execute(Combat combat, params object[] parameters)
     {
