@@ -407,6 +407,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+  decrementHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 6640825776839568949}
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
