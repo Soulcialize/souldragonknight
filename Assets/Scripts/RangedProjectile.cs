@@ -75,7 +75,14 @@ public class RangedProjectile : MonoBehaviour
             }
 
             actorHit.Movement.UpdateMovement(Vector2.zero);
-            actorHit.Combat.Hurt();
+            if (actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
+            {
+                blockState.HandleHit(actorHit.Movement.IsFacingRight, direction);
+            }
+            else
+            {
+                actorHit.Combat.Hurt();
+            }
 
             EndLifecycle();
         }

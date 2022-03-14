@@ -5,6 +5,7 @@ using CombatStates;
 
 public class BlockAbility : CombatAbility
 {
+    [SerializeField] private bool canBlockProjectiles;
     [SerializeField] private float blockHitDuration;
 
     public override void Execute(Combat combat, params object[] parameters)
@@ -15,7 +16,8 @@ public class BlockAbility : CombatAbility
         }
         else
         {
-            combat.CombatStateMachine.ChangeState(new BlockState(combat, blockHitDuration));
+            BlockState.Direction blockDirection = (BlockState.Direction)parameters[0];
+            combat.CombatStateMachine.ChangeState(new BlockState(combat, blockHitDuration, blockDirection));
         }
     }
 

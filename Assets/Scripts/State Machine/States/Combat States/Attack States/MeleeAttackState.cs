@@ -26,17 +26,13 @@ namespace CombatStates
                 ActorController actorHit = ActorController.GetActorFromCollider(hit);
                 if (actorHit != null)
                 {
-                    bool isActorHitFacingOwner =
-                        actorHit.Movement.IsFacingRight && owner.transform.position.x > actorHit.transform.position.x
-                        || !actorHit.Movement.IsFacingRight && owner.transform.position.x < actorHit.transform.position.x;
-
-                    if (isActorHitFacingOwner && actorHit.Combat.CombatStateMachine.CurrState is BlockState blockState)
+                    actorHit.Movement.UpdateMovement(Vector2.zero);
+                    if (actorHit.Combat.CombatStateMachine.CurrState is BlockState blockState)
                     {
-                        blockState.HandleHit();
+                        blockState.HandleHit(actorHit.Movement.IsFacingRight, (actorHit.transform.position - owner.transform.position).normalized);
                     }
                     else
                     {
-                        actorHit.Movement.UpdateMovement(Vector2.zero);
                         actorHit.Combat.Hurt();
                     }
                 }

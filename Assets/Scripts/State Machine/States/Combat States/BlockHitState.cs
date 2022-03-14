@@ -7,6 +7,7 @@ namespace CombatStates
     public class BlockHitState : CombatState
     {
         private readonly float duration;
+        private readonly BlockState.Direction direction;
 
         private float startTime;
         private bool willReturnToBlock;
@@ -21,9 +22,10 @@ namespace CombatStates
             }
         }
 
-        public BlockHitState(Combat owner, float duration) : base(owner)
+        public BlockHitState(Combat owner, float duration, BlockState.Direction direction) : base(owner)
         {
             this.duration = duration;
+            this.direction = direction;
         }
 
         public override void Enter()
@@ -41,7 +43,7 @@ namespace CombatStates
                 // switch to block state or exit combat state machine
                 if (WillReturnToBlock)
                 {
-                    owner.CombatStateMachine.ChangeState(new BlockState(owner, duration));
+                    owner.CombatStateMachine.ChangeState(new BlockState(owner, duration, direction));
                 }
                 else
                 {
