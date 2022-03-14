@@ -337,6 +337,7 @@ MonoBehaviour:
   decrementHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+  photonView: {fileID: 5693331145748344914}
 --- !u!114 &5693331145748344914
 MonoBehaviour:
   m_ObjectHideFlags: 0

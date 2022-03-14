@@ -44,14 +44,20 @@ public class KnightPlayerController : PlayerController
     {
         base.OnEnable();
 
-        Combat.Health.DecrementHealthEvent.AddListener(healthUI.decrementKnightHealthUI);
+        if (photonView.IsMine)
+        {
+            Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
+        }
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
 
-        Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.decrementKnightHealthUI);
+        if (photonView.IsMine)
+        {
+            Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
+        }
     }
 
     protected override void BindInputActionHandlers()

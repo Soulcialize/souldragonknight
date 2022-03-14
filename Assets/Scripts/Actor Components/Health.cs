@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int healthPoints;
     [SerializeField] private UnityEvent decrementHealthEvent;
+    [SerializeField] private PhotonView photonView;
 
     public int HealthPoints { get => healthPoints; }
 
@@ -16,7 +17,6 @@ public class Health : MonoBehaviour
 
     public void Decrement()
     {
-        PhotonView photonView = GetComponent<PhotonView>();
         photonView.RPC("RPC_Decrement", RpcTarget.All);
     }
 

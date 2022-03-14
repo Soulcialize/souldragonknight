@@ -49,6 +49,8 @@ MonoBehaviour:
   - RPC_EndLifecycle
   - RPC_EndProjectileLifecycle
   - RPC_Decrement
+  - RPC_DecrementDragonHealthUI
+  - RPC_DecrementKnightHealthUI
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

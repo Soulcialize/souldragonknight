@@ -42,10 +42,9 @@ public class DragonPlayerController : PlayerController
     {
         base.OnEnable();
 
-        Combat.Health.DecrementHealthEvent.AddListener(healthUI.decrementDragonHealthUI);
-
         if (photonView.IsMine)
         {
+            Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementDragonHealthUI);
             Combat.DeathEvent.AddListener(HandleDeathEvent);
         }
     }
@@ -54,10 +53,9 @@ public class DragonPlayerController : PlayerController
     {
         base.OnDisable();
 
-        Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.decrementDragonHealthUI);
-
         if (photonView.IsMine)
         {
+            Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementDragonHealthUI);
             Combat.DeathEvent.RemoveListener(HandleDeathEvent);
         }
     }
