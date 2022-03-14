@@ -14,7 +14,19 @@ namespace AiBehaviorTrees
                 new GetVisibleCombatTargetNode(combat),
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    new GetVisibleCombatTargetNode(combat),
+                    // get visible combat target
+                    new SelectorNode(new List<BehaviorNode>()
+                    {
+                        new GetVisibleCombatTargetNode(combat),
+                        // failed to get visible combat target; fail out of tree
+                        new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
+                        {
+                            // exit state machine if readying attack
+                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new ExitCombatStateMachineNode(combat)
+                        })))
+                    }),
+                    // found visible combat target
                     new SelectorNode(new List<BehaviorNode>()
                     {
                         // in combat state, engaging target
@@ -24,7 +36,7 @@ namespace AiBehaviorTrees
                             new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
                             new InverterNode(new SequenceNode(new List<BehaviorNode>()
                             {
-                                // exit ready-attack state if target no longer in range
+                                // exit ready-attack state if target is no longer in range
                                 new InverterNode(new IsCombatTargetInMeleeRangeNode(movement)),
                                 new ExitCombatStateMachineNode(combat)
                             }))
@@ -53,7 +65,19 @@ namespace AiBehaviorTrees
                 }),
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    new GetVisibleCombatTargetNode(combat),
+                    // get visible combat target
+                    new SelectorNode(new List<BehaviorNode>()
+                    {
+                        new GetVisibleCombatTargetNode(combat),
+                        // failed to get visible combat target; fail out of tree
+                        new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
+                        {
+                            // exit state machine if readying attack
+                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new ExitCombatStateMachineNode(combat)
+                        })))
+                    }),
+                    // found visible combat target
                     new SelectorNode(new List<BehaviorNode>()
                     {
                         // in combat state, engaging target
