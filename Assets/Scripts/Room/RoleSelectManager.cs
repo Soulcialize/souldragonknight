@@ -13,6 +13,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button levelSelectButton;
     [SerializeField] private string levelSelectSceneName;
+    [SerializeField] private string menuSceneName;
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
 
@@ -20,10 +21,11 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
-            object playerTypeObj = player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-            if (playerTypeObj != null)
+            if (player != PhotonNetwork.LocalPlayer &&
+                player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
             {
-                IndicatorUpdate(player, (PlayerType)playerTypeObj);
+                PlayerType playerType = (PlayerType)player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+                IndicatorUpdate(player, playerType);
             }
         }
     }
@@ -31,6 +33,12 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+    }
+    public static void ResetRole()
+    {
+        Hashtable playerProperties = new Hashtable();
+        playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = null;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
@@ -94,6 +102,12 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     public void MoveToLevelSelect()
     {
         photonView.RPC("RPC_LoadLevelSelect", RpcTarget.All);
+    }
+
+    public void MoveToMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(menuSceneName);
     }
 
     [PunRPC]
