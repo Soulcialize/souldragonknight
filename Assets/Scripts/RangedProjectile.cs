@@ -93,12 +93,6 @@ public class RangedProjectile : MonoBehaviour
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
-            if (actorHit.Combat.CombatStateMachine.CurrState is CombatStates.DeathState)
-            {
-                // actor dead, ignore
-                return;
-            }
-
             actorHit.Movement.UpdateMovement(Vector2.zero);
             if (actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
             {

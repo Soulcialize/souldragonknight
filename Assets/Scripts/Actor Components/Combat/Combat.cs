@@ -16,6 +16,7 @@ public class Combat : MonoBehaviour
         public CombatAbility Ability { get => ability; }
     }
 
+    [SerializeField] protected Collider2D collider;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private LayerMask attackEffectLayer;
@@ -39,6 +40,7 @@ public class Combat : MonoBehaviour
     private Dictionary<CombatAbilityIdentifier, CombatAbility> identifierToAbilityDictionary
         = new Dictionary<CombatAbilityIdentifier, CombatAbility>();
 
+    public Collider2D Collider { get => collider; }
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }

@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 8342237615520396707}
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 5693331145748344918}
   attackEffectLayer:
