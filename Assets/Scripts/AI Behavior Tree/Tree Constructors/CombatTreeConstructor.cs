@@ -41,5 +41,14 @@ namespace AiBehaviorTrees
                     })
                 }));
         }
+
+        public static BehaviorTree ConstructRangedCombatTree(Movement movement, Combat combat)
+        {
+            return new BehaviorTree(
+                new SequenceNode(new List<BehaviorNode>()
+                {
+
+                }));
+        }
     }
 }
