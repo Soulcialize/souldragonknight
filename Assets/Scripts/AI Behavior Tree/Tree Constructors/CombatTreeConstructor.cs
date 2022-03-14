@@ -14,6 +14,7 @@ namespace AiBehaviorTrees
                 new GetVisibleCombatTargetNode(combat),
                 new SequenceNode(new List<BehaviorNode>()
                 {
+                    new GetVisibleCombatTargetNode(combat),
                     new SelectorNode(new List<BehaviorNode>()
                     {
                         // in combat state, engaging target

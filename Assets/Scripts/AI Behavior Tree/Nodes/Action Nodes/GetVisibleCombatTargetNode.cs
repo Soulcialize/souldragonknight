@@ -31,13 +31,7 @@ namespace AiBehaviorTreeNodes
                 return NodeState.FAILURE;
             }
 
-            ActorController targetActor = ActorController.GetActorFromCollider(targetCollider);
-            if (targetActor.Combat.Health.IsZero())
-            {
-                return NodeState.FAILURE;
-            }
-
-            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, targetActor);
+            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, ActorController.GetActorFromCollider(targetCollider));
             return NodeState.SUCCESS;
         }
     }
