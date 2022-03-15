@@ -1495,7 +1495,6 @@ MonoBehaviour:
   roomNameInputField: {fileID: 511988680}
   roomSceneName: Room
   errorMessage: {fileID: 459955486}
-  gameSceneName: Test
 --- !u!4 &1538132808
 Transform:
   m_ObjectHideFlags: 0
@@ -1866,7 +1865,6 @@ MonoBehaviour:
   roomNameInputField: {fileID: 511988680}
   roomSceneName: Room
   errorMessage: {fileID: 459955486}
-  gameSceneName: Test
 --- !u!114 &1933529984
 MonoBehaviour:
   m_ObjectHideFlags: 0

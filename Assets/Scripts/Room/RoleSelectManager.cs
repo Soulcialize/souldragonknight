@@ -21,20 +21,23 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
-            if (player != PhotonNetwork.LocalPlayer &&
-                player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
+            if (player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
             {
                 PlayerType playerType = (PlayerType)player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-                IndicatorUpdate(player, playerType);
+                UpdateIndicator(player, playerType);
             }
         }
+
+        levelSelectButton.interactable = CanPickLevel();
     }
+
     public static void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
+
     public static void ResetRole()
     {
         Hashtable playerProperties = new Hashtable();
@@ -46,23 +49,23 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-        Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
+        if (targetPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
+        {
+            PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+            Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
-        levelSelectButton.interactable = CanPickLevel();
-        IndicatorUpdate(targetPlayer, playerType);
+            levelSelectButton.interactable = CanPickLevel();
+            UpdateIndicator(targetPlayer, playerType);
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
 
-        if (otherPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
-        {
-            PlayerType playerType = (PlayerType)otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-            levelSelectButton.interactable = CanPickLevel();
-            partnerRoleIndicator[(int)playerType].SetActive(false);
-        }
+        levelSelectButton.interactable = false;
+        partnerRoleIndicator[0].SetActive(false);
+        partnerRoleIndicator[1].SetActive(false);
     }
 
     private bool CanPickLevel()
@@ -85,17 +88,27 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         return selectedRoles.Count == System.Enum.GetValues(typeof(PlayerType)).Length;
     }
 
-    private void IndicatorUpdate(Player player, PlayerType type)
+    private void UpdateSelfIndicator(PlayerType type)
+    {
+        yourRoleIndicator[(int)type].SetActive(true);
+        yourRoleIndicator[1 - (int)type].SetActive(false);
+    }
+
+    private void UpdatePartnerIndicator(PlayerType type)
+    {
+        partnerRoleIndicator[(int)type].SetActive(true);
+        partnerRoleIndicator[1 - (int)type].SetActive(false);
+    }
+
+    private void UpdateIndicator(Player player, PlayerType type)
     {
         if (player == PhotonNetwork.LocalPlayer)
         {
-            yourRoleIndicator[(int)type].SetActive(true);
-            yourRoleIndicator[1-(int)type].SetActive(false);
-        }
+            UpdateSelfIndicator(type);
+        } 
         else
         {
-            partnerRoleIndicator[(int)type].SetActive(true);
-            partnerRoleIndicator[1 - (int)type].SetActive(false);
+            UpdatePartnerIndicator(type);
         }
     }
 
@@ -106,6 +119,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     public void MoveToMenu()
     {
+        ResetRole();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(menuSceneName);
     }
