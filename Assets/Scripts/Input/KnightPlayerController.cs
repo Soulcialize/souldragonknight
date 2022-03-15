@@ -105,7 +105,7 @@ public class KnightPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
             movement.UpdateMovement(Vector2.zero);
-            combat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK);
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK, CombatStates.BlockState.Direction.HORIZONTAL);
         }
     }
 

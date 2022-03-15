@@ -14,6 +14,8 @@ public class AirMovement : Movement
     public float MovementSpeed { get => movementSpeed; }
     public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
 
+    public bool IsGravityEnabled { get; private set; }
+
     public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
     protected override void Awake()
@@ -50,6 +52,7 @@ public class AirMovement : Movement
 
     public void ToggleGravity(bool isEnabled)
     {
+        IsGravityEnabled = isEnabled;
         rigidbody2d.gravityScale = isEnabled ? 5f : 0f;
         if (isEnabled)
         {

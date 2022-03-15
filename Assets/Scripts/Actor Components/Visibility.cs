@@ -12,6 +12,11 @@ public class Visibility : MonoBehaviour
 
     public void Hide()
     {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
         IsVisible = false;
         Color color = spriteRenderer.color;
         color.a = 0f;
@@ -20,6 +25,11 @@ public class Visibility : MonoBehaviour
 
     public void Reveal()
     {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
         IsVisible = true;
         Color color = spriteRenderer.color;
         color.a = 1f;

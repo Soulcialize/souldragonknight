@@ -14,7 +14,9 @@ public class BehaviorTreesManager
         BehaviorTree.Function startTree)
     {
         this.functionToTreesDictionary = functionToTreesDictionary;
+
         ActiveTree = startTree;
+        functionToTreesDictionary[ActiveTree].Enter();
     }
 
     public void UpdateActiveTree()

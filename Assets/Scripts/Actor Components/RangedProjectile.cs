@@ -1,19 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
+
+[System.Serializable]
+public class RangedProjectileEvent : UnityEvent<RangedProjectile> { }
 
 public class RangedProjectile : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private Collider2D collider2d;
+
+    [Space(10)]
+
     [SerializeField] private float speed;
     [SerializeField] private float maxDistance;
+
+    [Space(10)]
+
     [SerializeField] private LayerMask actorTargetsLayer;
     [SerializeField] private LayerMask obstaclesLayer;
 
+    [Space(10)]
+
+    [SerializeField] private UnityEvent hitEvent;
+
     private Vector2 startPos;
     private Vector2 direction;
+
+    public LayerMask ActorTargetsLayer { get => actorTargetsLayer; }
 
     public Vector2 Direction
     {
@@ -25,10 +42,17 @@ public class RangedProjectile : MonoBehaviour
         }
     }
 
+    public UnityEvent HitEvent { get => hitEvent; }
+
     public static Quaternion GetRotationForDirection(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         return Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    private void OnDisable()
+    {
+        hitEvent.RemoveAllListeners();
     }
 
     private void Start()
@@ -48,6 +72,20 @@ public class RangedProjectile : MonoBehaviour
         }
     }
 
+    public float GetHeight()
+    {
+        if (collider2d is CircleCollider2D circleCollider)
+        {
+            return circleCollider.radius * 2f;
+        }
+        else if (collider2d is BoxCollider2D boxCollider)
+        {
+            return boxCollider.size.y;
+        }
+
+        throw new System.ArgumentException($"Collider height calculation not implemented");
+    }
+
     private void EndLifecycle()
     {
         photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All);
@@ -56,6 +94,7 @@ public class RangedProjectile : MonoBehaviour
     [PunRPC]
     private void RPC_EndProjectileLifecycle()
     {
+        hitEvent.Invoke();
         Destroy(gameObject);
     }
 
@@ -68,10 +107,16 @@ public class RangedProjectile : MonoBehaviour
 
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
         {
-            if (photonView.IsMine)
+            ActorController actorHit = ActorController.GetActorFromCollider(collision);
+            actorHit.Movement.UpdateMovement(Vector2.zero);
+            if (actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
             {
-                ActorController actorHit = ActorController.GetActorFromCollider(collision);
-                actorHit.Movement.UpdateMovement(Vector2.zero);
+                // actor is in block state, let block state handle hit
+                blockState.HandleHit(actorHit.Movement.IsFacingRight, direction);
+            }
+            else
+            {
+                // actor not blocking, hurt actor
                 actorHit.Combat.Hurt();
             }
 
@@ -79,6 +124,7 @@ public class RangedProjectile : MonoBehaviour
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
+            // projectile hit obstacle
             EndLifecycle();
         }
     }

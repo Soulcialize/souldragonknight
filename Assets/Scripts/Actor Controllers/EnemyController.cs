@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyController : ActorController
 {
+    [Tooltip("This toggle is for allowing enemy visibility during debugging only.")]
     [SerializeField] private bool hideVisibility;
     [SerializeField] protected Visibility visibility;
     [SerializeField] protected float hurtRevealDuration;
@@ -63,6 +64,5 @@ public abstract class EnemyController : ActorController
     protected virtual void HandleDeathEvent()
     {
         visibility.Reveal();
-        hideVisibility = false;
     }
 }

@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 330416023049157660}
   rigidbody2d: {fileID: 2451902509671687101}
+  collider2d: {fileID: 3621335486857536193}
   speed: 20
   maxDistance: 20
   actorTargetsLayer:
@@ -79,6 +80,9 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 64
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &330416023049157660
 MonoBehaviour:
   m_ObjectHideFlags: 0
