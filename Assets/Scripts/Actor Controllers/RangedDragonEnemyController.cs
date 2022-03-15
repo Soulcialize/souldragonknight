@@ -24,7 +24,7 @@ public class RangedDragonEnemyController : EnemyController
 
     public void CombatTargetFiredProjectileHandler(RangedProjectile projectile)
     {
-        if (combat.HasCombatAbility(CombatAbilityIdentifier.BLOCK)
+        if (!combat.HasCombatAbility(CombatAbilityIdentifier.BLOCK)
             || !((BlockAbility)combat.GetCombatAbility(CombatAbilityIdentifier.BLOCK)).CanBlockProjectiles)
         {
             // cannot block or cannot block projectiles
