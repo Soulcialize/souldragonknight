@@ -47,9 +47,9 @@ namespace AiBehaviorTreeNodes
 
         private bool ShouldBlockProjectile(RangedProjectile projectile)
         {
-            RaycastHit2D projectileRaycastHit = Physics2D.Raycast(
-                projectile.transform.position, projectile.Direction,
-                Mathf.Infinity, projectile.ActorTargetsLayer);
+            RaycastHit2D projectileRaycastHit = Physics2D.CircleCast(
+                projectile.transform.position, projectile.GetHeight() / 2f,
+                projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer);
 
             // check if projectile is going to hit any actors at all
             if (projectileRaycastHit.collider == null)

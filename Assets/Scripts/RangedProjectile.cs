@@ -11,6 +11,7 @@ public class RangedProjectile : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private Collider2D collider2d;
 
     [Space(10)]
 
@@ -69,6 +70,20 @@ public class RangedProjectile : MonoBehaviour
                 EndLifecycle();
             }
         }
+    }
+
+    public float GetHeight()
+    {
+        if (collider2d is CircleCollider2D circleCollider)
+        {
+            return circleCollider.radius * 2f;
+        }
+        else if (collider2d is BoxCollider2D boxCollider)
+        {
+            return boxCollider.size.y;
+        }
+
+        throw new System.ArgumentException($"Collider height calculation not implemented");
     }
 
     private void EndLifecycle()
