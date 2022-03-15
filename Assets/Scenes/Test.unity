@@ -927,7 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knightPrefab: {fileID: 5696632616774609732, guid: d92136aa6e1dd884aa99b51f2b950227, type: 3}
   dragonPrefab: {fileID: 4470413134207635880, guid: 9a8705b2cb40d94409b88940b0d7828a, type: 3}
-  cam: {fileID: 1166123395}
+  camera: {fileID: 1166123395}
 --- !u!4 &765560305
 Transform:
   m_ObjectHideFlags: 0
