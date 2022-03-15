@@ -55,6 +55,10 @@ MonoBehaviour:
   - RPC_StopDrawingProjectilePath
   - RPC_StartDrawingProjectilePath
   - RPC_StopUpdatingProjectilePath
+  - RPC_LoadMenu
+  - RPC_LoadRoleSelectLevel
+  - RPC_UpdatePartnerIndicator
+  - RPC_RemovePartnerIndicator
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

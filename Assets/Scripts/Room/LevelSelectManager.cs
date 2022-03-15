@@ -36,6 +36,8 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
                 levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
             }
         }
+
+        startButton.interactable = CanStart();
     }
     public static void SelectLevel(int levelNumber)
     {
@@ -48,6 +50,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         RoomManager.UpdateRoomProperty(ROOM_PROPERTIES_LEVELS_CLEARED, levelsCleared);
     }
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
@@ -87,7 +90,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         return selectedLevels.Count == 1 && PhotonNetwork.CurrentRoom.PlayerCount == 2;
     }
 
-    private void ResetLevelChoice()
+    public static void ResetLevelChoice()
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = null;
@@ -101,10 +104,21 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }
 
+    public void ReturnToRoleSelect()
+    {
+        photonView.RPC("RPC_LoadRoleSelectLevel", RpcTarget.All);
+    }
+
     [PunRPC]
     private void RPC_LoadGameLevel()
     {
         PhotonNetwork.LoadLevel(gameSceneName);
         ResetLevelChoice();
+    }
+
+    [PunRPC]
+    private void RPC_LoadRoleSelectLevel()
+    {
+        PhotonNetwork.LoadLevel(roleSelectSceneName);
     }
 }
