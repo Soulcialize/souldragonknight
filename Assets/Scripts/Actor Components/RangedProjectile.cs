@@ -20,7 +20,6 @@ public class RangedProjectile : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField] private LayerMask actorTargetsLayer;
     [SerializeField] private LayerMask obstaclesLayer;
 
     [Space(10)]
@@ -29,8 +28,6 @@ public class RangedProjectile : MonoBehaviour
 
     private Vector2 startPos;
     private Vector2 direction;
-
-    public LayerMask ActorTargetsLayer { get => actorTargetsLayer; }
 
     public Vector2 Direction
     {
@@ -41,6 +38,8 @@ public class RangedProjectile : MonoBehaviour
             transform.rotation = GetRotationForDirection(direction);
         }
     }
+
+    public LayerMask ActorTargetsLayer { get; set; }
 
     public UnityEvent HitEvent { get => hitEvent; }
 
@@ -105,7 +104,7 @@ public class RangedProjectile : MonoBehaviour
             return;
         }
 
-        if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
+        if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, ActorTargetsLayer))
         {
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
             actorHit.Movement.UpdateMovement(Vector2.zero);

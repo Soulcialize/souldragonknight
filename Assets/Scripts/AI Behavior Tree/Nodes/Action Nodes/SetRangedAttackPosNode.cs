@@ -35,7 +35,7 @@ namespace AiBehaviorTreeNodes
             {
                 // move directly towards target
                 Vector2 directionToTarget = targetTransform.position - ownerTransform.position;
-                Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)targetTransform.position - directionToTarget * maxRange);
+                Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)targetTransform.position - directionToTarget.normalized * maxRange);
                 return NodeState.SUCCESS;
             }
 

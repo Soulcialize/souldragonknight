@@ -18,6 +18,11 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
+            if (!target.Combat.HasCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED))
+            {
+                return NodeState.FAILURE;
+            }
+
             RangedAttackAbility targetAbility = (RangedAttackAbility)target.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
             targetAbility.FireRangedProjectileEvent.AddListener(ownerCombat.OnProjectileFiredEvent);
             return NodeState.SUCCESS;

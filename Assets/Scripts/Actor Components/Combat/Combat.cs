@@ -67,6 +67,11 @@ public class Combat : MonoBehaviour
         }
     }
 
+    public bool HasCombatAbility(CombatAbilityIdentifier ability)
+    {
+        return identifierToAbilityDictionary.ContainsKey(ability);
+    }
+
     public CombatAbility GetCombatAbility(CombatAbilityIdentifier ability)
     {
         return identifierToAbilityDictionary[ability];
