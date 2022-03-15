@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CombatStates;
+using Photon.Pun;
 
 public class RangedAttackAbility : CombatAbility
 {
     [SerializeField] private float maxRange;
     [SerializeField] private float readyDuration;
     [SerializeField] private float timeToLock;
+
+    [Space(10)]
+
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
+    [SerializeField] private ProjectilePathDisplay projectilePathDisplay;
 
     [Space(10)]
 
@@ -28,7 +33,8 @@ public class RangedAttackAbility : CombatAbility
         if (readyDuration > 0f)
         {
             Transform target = (Transform)parameters[0];
-            combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(combat, target, timeToLock, readyDuration, ReadyCallback));
+            combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(
+                combat, target, projectilePathDisplay, timeToLock, readyDuration, ReadyCallback));
         }
         else
         {

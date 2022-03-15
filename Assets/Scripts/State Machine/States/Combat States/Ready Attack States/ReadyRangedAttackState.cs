@@ -8,20 +8,28 @@ namespace CombatStates
     public class ReadyRangedAttackState : ReadyAttackState
     {
         private readonly Transform target;
+        private ProjectilePathDisplay projectilePathDisplay;
         private readonly float lockTargetPositionTime;
 
         public bool HasLockedTargetPosition { get; private set; }
         public Vector2 TargetPosition { get; private set; }
 
         public ReadyRangedAttackState(
-            Combat owner, Transform target,
+            Combat owner, Transform target, ProjectilePathDisplay projectilePathDisplay,
             float lockTargetPositionTime, float readyDuration,
             UnityAction<Combat> readyCallback) : base(owner, readyDuration, readyCallback)
         {
             this.target = target;
+            this.projectilePathDisplay = projectilePathDisplay;
             this.lockTargetPositionTime = lockTargetPositionTime;
 
             HasLockedTargetPosition = false;
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            projectilePathDisplay.StartDrawingProjectilePath(target);
         }
 
         public override void Execute()
@@ -33,11 +41,18 @@ namespace CombatStates
             }
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+            projectilePathDisplay.StopDrawingProjectilePath();
+        }
+
         private void LockTargetPosition()
         {
             Debug.Log($"{owner.name}: target position locked");
             HasLockedTargetPosition = true;
             TargetPosition = target.position;
+            projectilePathDisplay.StopUpdatingProjectilePath();
         }
     }
 }
