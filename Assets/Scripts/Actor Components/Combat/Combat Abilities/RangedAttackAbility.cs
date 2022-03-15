@@ -34,7 +34,7 @@ public class RangedAttackAbility : CombatAbility
         {
             Vector2 direction = (Vector2)parameters[0];
             combat.CombatStateMachine.ChangeState(new RangedAttackState(
-                combat, projectilePrefab, projectileOrigin.position, direction, fireRangedProjectileEvent));
+                combat, projectilePrefab, projectileOrigin, direction, fireRangedProjectileEvent));
         }
     }
 
@@ -42,6 +42,6 @@ public class RangedAttackAbility : CombatAbility
     {
         Vector2 direction = ((ReadyRangedAttackState)combat.CombatStateMachine.CurrState).TargetPosition - (Vector2)transform.position;
         combat.CombatStateMachine.ChangeState(new RangedAttackState(
-            combat, projectilePrefab, projectileOrigin.position, direction, fireRangedProjectileEvent));
+            combat, projectilePrefab, projectileOrigin, direction, fireRangedProjectileEvent));
     }
 }

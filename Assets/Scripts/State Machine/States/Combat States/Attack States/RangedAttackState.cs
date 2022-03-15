@@ -8,16 +8,13 @@ namespace CombatStates
     public class RangedAttackState : AttackState
     {
         private readonly RangedProjectile projectilePrefab;
-        private readonly Vector2 projectileOrigin;
+        private readonly Transform projectileOrigin;
         private readonly Vector2 attackDirection;
         private RangedProjectileEvent fireRangedProjectileEvent;
 
-        public Vector2 ProjectileOrigin { get => projectileOrigin; }
-        public Vector2 AttackDirection { get => attackDirection; }
-
         public RangedAttackState(
             Combat owner, RangedProjectile projectilePrefab,
-            Vector2 projectileOrigin, Vector2 attackDirection,
+            Transform projectileOrigin, Vector2 attackDirection,
             RangedProjectileEvent fireRangedProjectileEvent) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
@@ -39,7 +36,7 @@ namespace CombatStates
         {
             RangedProjectile projectile = PhotonNetwork.Instantiate(
                 projectilePrefab.name,
-                projectileOrigin,
+                projectileOrigin.position,
                 RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
             projectile.Direction = attackDirection;

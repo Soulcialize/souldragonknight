@@ -10,6 +10,7 @@ public class DragonPlayerController : PlayerController
     private InputAction moveAirHorizontalAction;
     private InputAction moveAirVerticalAction;
     private InputAction rangedAttackAction;
+    private InputAction rangedAttackDownAction;
     private InputAction dodgeAction;
 
     private HealthUI healthUI;
@@ -25,6 +26,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction = playerInput.actions["MoveAirHorizontal"];
         moveAirVerticalAction = playerInput.actions["MoveAirVertical"];
         rangedAttackAction = playerInput.actions["RangedAttack"];
+        rangedAttackDownAction = playerInput.actions["RangedAttackDown"];
         dodgeAction = playerInput.actions["AirDodge"];
 
         healthUI = GameObject.FindObjectOfType<HealthUI>();
@@ -65,6 +67,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction.performed += HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed += HandleMoveAirVerticalInput;
         rangedAttackAction.performed += HandleRangedAttackInput;
+        rangedAttackDownAction.performed += HandleRangedAttackDownInput;
         dodgeAction.performed += HandleDodgeInput;
     }
 
@@ -73,6 +76,7 @@ public class DragonPlayerController : PlayerController
         moveAirHorizontalAction.performed -= HandleMoveAirHorizontalInput;
         moveAirVerticalAction.performed -= HandleMoveAirVerticalInput;
         rangedAttackAction.performed -= HandleRangedAttackInput;
+        rangedAttackDownAction.performed -= HandleRangedAttackDownInput;
         dodgeAction.performed -= HandleDodgeInput;
     }
 
@@ -93,6 +97,15 @@ public class DragonPlayerController : PlayerController
             movement.UpdateMovement(Vector2.zero);
             Vector2 direction = movement.IsFacingRight ? Vector2.right : Vector2.left;
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED, direction);
+        }
+    }
+
+    private void HandleRangedAttackDownInput(InputAction.CallbackContext context)
+    {
+        if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
+        {
+            movement.UpdateMovement(Vector2.zero);
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED, Vector2.down);
         }
     }
 
