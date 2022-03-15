@@ -8,8 +8,6 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    public static readonly string ROOM_PROPERTIES_MISSING_TYPE_KEY = "MissingType";
-
     [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
     [SerializeField] private string roomSceneName;
@@ -46,9 +44,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.Log($"Player {otherPlayer.ActorNumber} has left the game");
 
-        UpdateRoomProperty(ROOM_PROPERTIES_MISSING_TYPE_KEY, 
-            otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
-
         photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
         base.OnPlayerLeftRoom(otherPlayer);
     }
@@ -62,9 +57,5 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         base.OnLeftRoom();
         PhotonNetwork.LoadLevel(mainMenuSceneName);
-
-        Hashtable playerProperties = new Hashtable();
-        playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = null;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 }
