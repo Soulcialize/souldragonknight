@@ -36,7 +36,7 @@ namespace AiBehaviorTreeNodes
             {
                 // projectile is travelling towards actor, start block
                 float projectileAngle = Vector2.Angle(Vector2.up, projectile.Direction);
-                BlockState.Direction blockDirection = projectileAngle <= 45f
+                BlockState.Direction blockDirection = projectileAngle >= 135f
                     ? BlockState.Direction.UPWARDS
                     : BlockState.Direction.HORIZONTAL;
 
