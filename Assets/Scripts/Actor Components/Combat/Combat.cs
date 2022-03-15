@@ -34,6 +34,8 @@ public class Combat : MonoBehaviour
 
     [Header("General Combat Events")]
 
+    [Tooltip("'actor' refers to whichever actor the OnProjectileFiredEvent is subscribed to.")]
+    [SerializeField] private RangedProjectileEvent actorFiredProjectileEvent;
     [SerializeField] private UnityEvent hurtEvent;
     [SerializeField] private UnityEvent deathEvent;
 
@@ -78,6 +80,11 @@ public class Combat : MonoBehaviour
     public void EndCombatAbility(CombatAbilityIdentifier ability)
     {
         identifierToAbilityDictionary[ability].End(this);
+    }
+
+    public void OnProjectileFiredEvent(RangedProjectile projectile)
+    {
+        actorFiredProjectileEvent.Invoke(projectile);
     }
 
     public void Stun()
