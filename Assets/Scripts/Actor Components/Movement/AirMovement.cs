@@ -6,6 +6,8 @@ using AirMovementStates;
 
 public class AirMovement : Movement
 {
+    [Header("Aerial Movement")]
+
     [SerializeField] private float movementSpeed;
     [SerializeField] private bool canLandOnGround;
 

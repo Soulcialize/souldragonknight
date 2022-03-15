@@ -20,41 +20,46 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
-            Transform targetTransform = target.transform;
+            Transform target = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform;
+
+            float currDistanceToTarget = Vector2.Distance(ownerTransform.position, target.position);
             float maxRange = ((RangedAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
 
-            if (Vector2.Distance(ownerTransform.position, targetTransform.position) <= maxRange)
+            if (currDistanceToTarget <= maxRange)
             {
                 // already in range, remain at current position
                 Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)ownerTransform.position);
                 return NodeState.SUCCESS;
             }
 
-            if (ownerMovement is AirMovement)
-            {
-                // move directly towards target
-                Vector2 directionToTarget = targetTransform.position - ownerTransform.position;
-                Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)targetTransform.position - directionToTarget.normalized * maxRange);
-                return NodeState.SUCCESS;
-            }
+            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, ownerMovement is AirMovement
+                ? CalculateAerialReadyPosition(target, currDistanceToTarget, maxRange)
+                : CalculateGroundReadyPosition(target, currDistanceToTarget, maxRange));
 
-            // attacker is grounded
+            return NodeState.SUCCESS;
+        }
 
+        private Vector2 CalculateAerialReadyPosition(Transform target, float currDistanceToTarget, float maxRange)
+        {
+            // just keep moving towards target on the horizontal axis
+            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
+            return (Vector2)ownerTransform.position + directionToNavTarget;
+        }
+
+        private Vector2 CalculateGroundReadyPosition(Transform target, float currDistanceToTarget, float maxRange)
+        {
             // cast ray from target straight down to ground
-            RaycastHit2D groundHit = Physics2D.Raycast(targetTransform.position, Vector2.down, maxRange, ownerMovement.GroundDetector.SurfacesLayerMask);
+            RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, maxRange, ownerMovement.GroundDetector.SurfacesLayerMask);
             if (groundHit.distance >= maxRange)
             {
-                // impossible to hit even if target is directly above attacker
-                return NodeState.FAILURE;
+                // impossible to hit even if target is directly above attacker; return point under target for now
+                return groundHit.point;
             }
 
             // get horizontal distance to the point from which an attack can be made
             float horizontalDistance = Mathf.Sqrt(maxRange * maxRange - groundHit.distance * groundHit.distance);
-            Vector2 directionToNavTarget = new Vector2(targetTransform.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
-            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)ownerTransform.position + directionToNavTarget * horizontalDistance);
-
-            return NodeState.SUCCESS;
+            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
+            return (Vector2)ownerTransform.position + directionToNavTarget * horizontalDistance;
         }
     }
 }
