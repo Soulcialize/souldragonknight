@@ -22,8 +22,17 @@ namespace CombatStates
         {
             this.projectilePrefab = projectilePrefab;
             this.projectileOrigin = projectileOrigin;
-            this.attackDirection = attackDirection;
+            this.attackDirection = attackDirection.normalized;
             this.fireRangedProjectileEvent = fireRangedProjectileEvent;
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            if (Vector2.Angle(Vector2.up, attackDirection) > 170f)
+            {
+                owner.Animator.SetBool("isAttackingDown", true);
+            }
         }
 
         public override void ExecuteAttackEffect()
@@ -35,6 +44,12 @@ namespace CombatStates
 
             projectile.Direction = attackDirection;
             fireRangedProjectileEvent.Invoke(projectile);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            owner.Animator.SetBool("isAttackingDown", false);
         }
     }
 }

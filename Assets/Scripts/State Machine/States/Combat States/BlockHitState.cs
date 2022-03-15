@@ -21,6 +21,10 @@ namespace CombatStates
             {
                 willReturnToBlock = value;
                 owner.Animator.SetBool("isBlocking", value);
+                if (direction == BlockState.Direction.UPWARDS)
+                {
+                    owner.Animator.SetBool("isBlockingUpwards", value);
+                }
             }
         }
 

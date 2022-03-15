@@ -25,6 +25,10 @@ namespace CombatStates
         public override void Enter()
         {
             owner.Animator.SetBool("isBlocking", true);
+            if (blockDirection == Direction.UPWARDS)
+            {
+                owner.Animator.SetBool("isBlockingUpwards", true);
+            }
         }
 
         public override void Execute()
@@ -35,6 +39,10 @@ namespace CombatStates
         public override void Exit()
         {
             owner.Animator.SetBool("isBlocking", false);
+            if (blockDirection == Direction.UPWARDS)
+            {
+                owner.Animator.SetBool("isBlockingUpwards", false);
+            }
         }
 
         public void HandleHit(bool isOwnerFacingRight, Vector2 hitDirection)

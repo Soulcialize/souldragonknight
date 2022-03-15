@@ -162,6 +162,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isBlockingUpwards
+  - Type: 4
+    SynchronizeType: 2
+    Name: isAttackingDown
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
