@@ -98,7 +98,8 @@ public class KnightPlayerController : PlayerController
 
     private void HandleAttackInput(InputAction.CallbackContext context)
     {
-        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
+        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState
+            || movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
         {
             movement.UpdateMovement(Vector2.zero);
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE);
