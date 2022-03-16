@@ -9,7 +9,7 @@ public class RangedProjectileEvent : UnityEvent<RangedProjectile> { }
 
 public class RangedProjectile : MonoBehaviour
 {
-    [SerializeField] private PhotonView photonView;
+    [SerializeField] protected PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Collider2D collider2d;
 
