@@ -415,7 +415,7 @@ MonoBehaviour:
   maxRange: 0
   readyDuration: 0
   timeToLock: 0
-  projectilePrefab: {fileID: 2451902509671687090, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
+  projectilePrefab: {fileID: 2387202332680191168, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
   projectileOrigin: {fileID: 8972197996417656447}
   projectilePathDisplay: {fileID: 0}
   fireRangedProjectileEvent:

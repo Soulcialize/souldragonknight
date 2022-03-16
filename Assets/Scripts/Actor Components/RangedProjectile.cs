@@ -85,19 +85,19 @@ public class RangedProjectile : MonoBehaviour
         throw new System.ArgumentException($"Collider height calculation not implemented");
     }
 
-    private void EndLifecycle()
+    protected void EndLifecycle()
     {
         photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All);
     }
 
     [PunRPC]
-    private void RPC_EndProjectileLifecycle()
+    protected void RPC_EndProjectileLifecycle()
     {
         hitEvent.Invoke();
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!photonView.IsMine)
         {

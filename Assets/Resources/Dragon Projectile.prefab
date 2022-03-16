@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2451902509671687088}
   - component: {fileID: 2451902509671687101}
-  - component: {fileID: 2451902509671687090}
+  - component: {fileID: 2387202332680191168}
   - component: {fileID: 330416023049157660}
   - component: {fileID: 6359108571181574452}
   - component: {fileID: 235230415901569659}
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2451902509671687090
+--- !u!114 &2387202332680191168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2451902509671687094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5500594af778ead42b71a872e488a471, type: 3}
+  m_Script: {fileID: 11500000, guid: e3f148e0a8c49f64a9d0e46d6e8f0a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 330416023049157660}
@@ -80,6 +80,9 @@ MonoBehaviour:
   hitEvent:
     m_PersistentCalls:
       m_Calls: []
+  knightLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &330416023049157660
 MonoBehaviour:
   m_ObjectHideFlags: 0
