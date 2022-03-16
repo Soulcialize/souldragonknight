@@ -74,9 +74,6 @@ MonoBehaviour:
   collider2d: {fileID: 3621335486857536193}
   speed: 20
   maxDistance: 20
-  actorTargetsLayer:
-    serializedVersion: 2
-    m_Bits: 256
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 64

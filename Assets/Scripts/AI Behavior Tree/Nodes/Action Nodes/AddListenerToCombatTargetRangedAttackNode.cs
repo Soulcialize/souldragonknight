@@ -18,53 +18,14 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
+            if (!target.Combat.HasCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED))
+            {
+                return NodeState.FAILURE;
+            }
+
             RangedAttackAbility targetAbility = (RangedAttackAbility)target.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
-            targetAbility.FireRangedProjectileEvent.AddListener(TargetFireRangedProjectileHandler);
+            targetAbility.FireRangedProjectileEvent.AddListener(ownerCombat.OnProjectileFiredEvent);
             return NodeState.SUCCESS;
-        }
-
-        private void TargetFireRangedProjectileHandler(RangedProjectile projectile)
-        {
-            if (ownerCombat.GetCombatAbility(CombatAbilityIdentifier.BLOCK) == null
-                || !((BlockAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.BLOCK)).CanBlockProjectiles)
-            {
-                // cannot block or cannot block projectiles
-                return;
-            }
-
-            if (ShouldBlockProjectile(projectile))
-            {
-                // projectile is travelling towards actor, start block
-                float projectileAngle = Vector2.Angle(Vector2.up, projectile.Direction);
-                BlockState.Direction blockDirection = projectileAngle >= 135f
-                    ? BlockState.Direction.UPWARDS
-                    : BlockState.Direction.HORIZONTAL;
-
-                projectile.HitEvent.AddListener(() => ownerCombat.EndCombatAbility(CombatAbilityIdentifier.BLOCK));
-                ownerCombat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK, blockDirection);
-            }
-        }
-
-        private bool ShouldBlockProjectile(RangedProjectile projectile)
-        {
-            RaycastHit2D projectileRaycastHit = Physics2D.CircleCast(
-                projectile.transform.position, projectile.GetHeight() / 2f,
-                projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer);
-
-            // check if projectile is going to hit any actors at all
-            if (projectileRaycastHit.collider == null)
-            {
-                return false;
-            }
-
-            // check if projectile is going to hit this actor
-            ActorController hitActor = ActorController.GetActorFromCollider(projectileRaycastHit.collider);
-            if (hitActor.Combat != ownerCombat)
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }

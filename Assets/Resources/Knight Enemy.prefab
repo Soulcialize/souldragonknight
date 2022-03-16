@@ -390,6 +390,9 @@ MonoBehaviour:
   wallCollisionDetector: {fileID: 3776096321984719771}
   knockbackSpeed: 10
   knockbackDistance: 1.2
+  actorFiredProjectileEvent:
+    m_PersistentCalls:
+      m_Calls: []
   hurtEvent:
     m_PersistentCalls:
       m_Calls: []

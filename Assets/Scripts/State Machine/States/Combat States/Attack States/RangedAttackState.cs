@@ -10,16 +10,18 @@ namespace CombatStates
         private readonly RangedProjectile projectilePrefab;
         private readonly Transform projectileOrigin;
         private readonly Vector2 attackDirection;
+        private readonly LayerMask actorHitLayer;
         private RangedProjectileEvent fireRangedProjectileEvent;
 
         public RangedAttackState(
             Combat owner, RangedProjectile projectilePrefab,
-            Transform projectileOrigin, Vector2 attackDirection,
+            Transform projectileOrigin, Vector2 attackDirection, LayerMask actorHitLayer,
             RangedProjectileEvent fireRangedProjectileEvent) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
             this.projectileOrigin = projectileOrigin;
             this.attackDirection = attackDirection.normalized;
+            this.actorHitLayer = actorHitLayer;
             this.fireRangedProjectileEvent = fireRangedProjectileEvent;
         }
 
@@ -40,6 +42,7 @@ namespace CombatStates
                 RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
             projectile.Direction = attackDirection;
+            projectile.ActorTargetsLayer = actorHitLayer;
             fireRangedProjectileEvent.Invoke(projectile);
         }
 

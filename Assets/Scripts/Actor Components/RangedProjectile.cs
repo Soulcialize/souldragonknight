@@ -20,7 +20,6 @@ public class RangedProjectile : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField] private LayerMask actorTargetsLayer;
     [SerializeField] private LayerMask obstaclesLayer;
 
     [Space(10)]
@@ -29,8 +28,6 @@ public class RangedProjectile : MonoBehaviour
 
     private Vector2 startPos;
     private Vector2 direction;
-
-    public LayerMask ActorTargetsLayer { get => actorTargetsLayer; }
 
     public Vector2 Direction
     {
@@ -41,6 +38,8 @@ public class RangedProjectile : MonoBehaviour
             transform.rotation = GetRotationForDirection(direction);
         }
     }
+
+    public LayerMask ActorTargetsLayer { get; set; }
 
     public UnityEvent HitEvent { get => hitEvent; }
 
@@ -105,13 +104,16 @@ public class RangedProjectile : MonoBehaviour
             return;
         }
 
-        if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, actorTargetsLayer))
+        if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, ActorTargetsLayer))
         {
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
             actorHit.Movement.UpdateMovement(Vector2.zero);
-            if (actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
+
+            if (actorHit.Combat.HasCombatAbility(CombatAbilityIdentifier.BLOCK)
+                && ((BlockAbility)actorHit.Combat.GetCombatAbility(CombatAbilityIdentifier.BLOCK)).CanBlockProjectiles
+                && actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
             {
-                // actor is in block state, let block state handle hit
+                // actor can block projectiles and is in block state, let block state handle hit
                 blockState.HandleHit(actorHit.Movement.IsFacingRight, direction);
             }
             else
