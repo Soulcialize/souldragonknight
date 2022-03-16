@@ -7,6 +7,7 @@ namespace GroundMovementStates
     public class MountedState : GroundMovementState
     {
         private readonly Transform mount;
+        private readonly Movement mountMovement;
         private readonly Vector2 localOffset;
         private readonly string mountedSortingLayerName;
         private readonly int mountedSortingLayerOrder;
@@ -15,10 +16,11 @@ namespace GroundMovementStates
         private int originalSortingLayerOrder;
 
         public MountedState(
-            GroundMovement owner, Transform mount, Vector2 localOffset,
+            GroundMovement owner, Transform mount, Movement mountMovement, Vector2 localOffset,
             string mountedSortingLayerName, int mountedSortingLayerOrder) : base(owner)
         {
             this.mount = mount;
+            this.mountMovement = mountMovement;
             this.localOffset = localOffset;
             this.mountedSortingLayerName = mountedSortingLayerName;
             this.mountedSortingLayerOrder = mountedSortingLayerOrder;
@@ -27,6 +29,10 @@ namespace GroundMovementStates
         public override void Enter()
         {
             owner.Rigidbody2d.velocity = Vector2.zero;
+            if (owner.IsFacingRight != mountMovement.IsFacingRight)
+            {
+                owner.FlipDirection(owner.IsFacingRight ? Movement.Direction.LEFT : Movement.Direction.RIGHT);
+            }
 
             originalSortingLayerName = owner.SpriteRenderer.sortingLayerName;
             originalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;

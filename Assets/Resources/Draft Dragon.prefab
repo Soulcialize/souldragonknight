@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mount: {fileID: 0}
+  mountMovement: {fileID: 0}
   localOffset: {x: 0, y: 0}
   mountedSortingLayerName: 
   mountedSortingLayerOrder: 0
@@ -385,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mount: {fileID: 4470413134207635894}
+  mountMovement: {fileID: 4470413134207635889}
   localOffset: {x: 0.425, y: 0.794}
   mountedSortingLayerName: Dragon Mount
   mountedSortingLayerOrder: 0

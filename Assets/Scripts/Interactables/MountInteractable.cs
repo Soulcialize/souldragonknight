@@ -6,6 +6,7 @@ using GroundMovementStates;
 public class MountInteractable : Interactable
 {
     [SerializeField] private Transform mount;
+    [SerializeField] private Movement mountMovement;
     [SerializeField] private Vector2 localOffset;
     [SerializeField] private string mountedSortingLayerName;
     [SerializeField] private int mountedSortingLayerOrder;
@@ -21,7 +22,7 @@ public class MountInteractable : Interactable
             else
             {
                 groundMovement.MovementStateMachine.ChangeState(new MountedState(
-                    groundMovement, mount, localOffset, mountedSortingLayerName, mountedSortingLayerOrder));
+                    groundMovement, mount, mountMovement, localOffset, mountedSortingLayerName, mountedSortingLayerOrder));
             }
         }
     }
