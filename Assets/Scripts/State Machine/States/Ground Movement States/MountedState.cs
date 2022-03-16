@@ -32,7 +32,6 @@ namespace GroundMovementStates
             originalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;
             
             owner.Mount(mount, localOffset, mountedSortingLayerName, mountedSortingLayerOrder);
-            owner.Animator.SetBool("isMounted", true);
         }
 
         public override void Execute()
@@ -44,7 +43,6 @@ namespace GroundMovementStates
         {
             owner.Rigidbody2d.velocity = Vector2.zero;
             owner.Dismount(originalSortingLayerName, originalSortingLayerOrder);
-            owner.Animator.SetBool("isMounted", false);
         }
     }
 }

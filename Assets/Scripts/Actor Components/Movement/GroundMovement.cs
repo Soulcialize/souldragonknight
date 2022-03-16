@@ -13,6 +13,12 @@ public class GroundMovement : Movement
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
+    [Header("Mount")]
+
+    [SerializeField] private AnimatorOverrideController mountAnimatorOverride;
+
+    private RuntimeAnimatorController defaultAnimatorController;
+
     private GroundMovementStateMachine movementStateMachine;
 
     public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
@@ -82,18 +88,27 @@ public class GroundMovement : Movement
     private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY, string updatedSortingLayer, int updatedSortingLayerOrder)
     {
         rigidbody2d.simulated = false;
+        
         transform.parent = PhotonView.Find(mountViewId).transform;
         transform.localPosition = new Vector2(localOffsetX, localOffsetY);
+
         spriteRenderer.sortingLayerName = updatedSortingLayer;
         spriteRenderer.sortingOrder = updatedSortingLayerOrder;
+
+        defaultAnimatorController = animator.runtimeAnimatorController;
+        animator.runtimeAnimatorController = mountAnimatorOverride;
     }
 
     [PunRPC]
     private void RPC_Dismount(string updatedSortingLayer, int updatedSortingLayerOrder)
     {
         transform.parent = null;
+        
         rigidbody2d.simulated = true;
+
         spriteRenderer.sortingLayerName = updatedSortingLayer;
         spriteRenderer.sortingOrder = updatedSortingLayerOrder;
+
+        animator.runtimeAnimatorController = defaultAnimatorController;
     }
 }

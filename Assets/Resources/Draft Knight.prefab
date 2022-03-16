@@ -501,6 +501,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7134467020418318920}
   horizontalMoveSpeed: 8
   jumpForce: 12
+  mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}
 --- !u!114 &4584270387848782332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,9 +788,6 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isBlockingHit
-  - Type: 4
-    SynchronizeType: 2
-    Name: isMounted
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
