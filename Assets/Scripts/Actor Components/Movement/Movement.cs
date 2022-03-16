@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StateMachines;
+using Photon.Pun;
 
 public abstract class Movement : MonoBehaviour
 {
     public enum Direction { LEFT, RIGHT }
 
+    [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SurfaceDetector groundDetector;

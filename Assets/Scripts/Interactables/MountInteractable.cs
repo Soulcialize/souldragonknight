@@ -5,11 +5,13 @@ using GroundMovementStates;
 
 public class MountInteractable : Interactable
 {
+    [SerializeField] private Transform mount;
+
     public override void Interact(ActorController initiator)
     {
         if (initiator.Movement is GroundMovement groundMovement)
         {
-            groundMovement.MovementStateMachine.ChangeState(new MountedState(groundMovement));
+            groundMovement.MovementStateMachine.ChangeState(new MountedState(groundMovement, mount));
         }
     }
 }

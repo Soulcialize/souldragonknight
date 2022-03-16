@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4471501140ce233449a8367757bdfecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mount: {fileID: 0}
 --- !u!1 &4470413134207635880
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 4470413134207635888}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3806877152634518949}
   groundDetector: {fileID: 6523712521498633943}
@@ -379,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4471501140ce233449a8367757bdfecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mount: {fileID: 4470413134207635894}
 --- !u!1 &5997454603647402425
 GameObject:
   m_ObjectHideFlags: 0

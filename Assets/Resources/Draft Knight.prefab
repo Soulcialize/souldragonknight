@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
   groundDetector: {fileID: 2344377606277045393}

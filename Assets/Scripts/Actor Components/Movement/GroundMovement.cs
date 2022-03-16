@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StateMachines;
 using GroundMovementStates;
+using Photon.Pun;
 
 public class GroundMovement : Movement
 {
@@ -62,5 +63,17 @@ public class GroundMovement : Movement
         {
             groundedState.PostJumpRequest();
         }
+    }
+
+    public void Mount(Transform mount)
+    {
+        photonView.RPC("RPC_Mount", RpcTarget.All, mount.GetComponent<PhotonView>().ViewID);
+    }
+
+    [PunRPC]
+    private void RPC_Mount(int mountViewId)
+    {
+        rigidbody2d.simulated = false;
+        transform.parent = PhotonView.Find(mountViewId).transform;
     }
 }

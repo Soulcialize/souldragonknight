@@ -6,11 +6,16 @@ namespace GroundMovementStates
 {
     public class MountedState : GroundMovementState
     {
-        public MountedState(GroundMovement owner) : base(owner) { }
+        private readonly Transform mount;
+
+        public MountedState(GroundMovement owner, Transform mount) : base(owner)
+        {
+            this.mount = mount;
+        }
 
         public override void Enter()
         {
-
+            owner.Mount(mount);
         }
 
         public override void Execute()
