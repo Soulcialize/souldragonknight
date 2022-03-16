@@ -87,7 +87,7 @@ public class GroundMovement : Movement
     [PunRPC]
     private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY, string updatedSortingLayer, int updatedSortingLayerOrder)
     {
-        rigidbody2d.simulated = false;
+        rigidbody2d.isKinematic = true;
         
         transform.parent = PhotonView.Find(mountViewId).transform;
         transform.localPosition = new Vector2(localOffsetX, localOffsetY);
@@ -104,7 +104,7 @@ public class GroundMovement : Movement
     {
         transform.parent = null;
         
-        rigidbody2d.simulated = true;
+        rigidbody2d.isKinematic = false;
 
         spriteRenderer.sortingLayerName = updatedSortingLayer;
         spriteRenderer.sortingOrder = updatedSortingLayerOrder;
