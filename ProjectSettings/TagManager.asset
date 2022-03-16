@@ -18,8 +18,8 @@ TagManager:
   - DragonEnemy
   - Projectile
   - Dead
-  - 
-  - 
+  - Interactable
+  - Interactable Detector
   - 
   - 
   - 
