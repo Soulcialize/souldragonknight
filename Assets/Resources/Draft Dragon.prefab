@@ -61,6 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mount: {fileID: 0}
+  localOffset: {x: 0, y: 0}
+  mountedSortingLayerName: 
+  mountedSortingLayerOrder: 0
 --- !u!1 &4470413134207635880
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mount: {fileID: 4470413134207635894}
+  localOffset: {x: 0.425, y: 0.794}
+  mountedSortingLayerName: Dragon Mount
+  mountedSortingLayerOrder: 0
 --- !u!1 &5997454603647402425
 GameObject:
   m_ObjectHideFlags: 0

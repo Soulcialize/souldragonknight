@@ -47,6 +47,9 @@ TagManager:
   - name: Dragon
     uniqueID: 4215315617
     locked: 0
+  - name: Dragon Mount
+    uniqueID: 3581773735
+    locked: 0
   - name: Knight
     uniqueID: 2967941379
     locked: 0

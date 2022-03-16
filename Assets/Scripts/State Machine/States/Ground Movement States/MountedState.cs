@@ -7,16 +7,32 @@ namespace GroundMovementStates
     public class MountedState : GroundMovementState
     {
         private readonly Transform mount;
+        private readonly Vector2 localOffset;
+        private readonly string mountedSortingLayerName;
+        private readonly int mountedSortingLayerOrder;
 
-        public MountedState(GroundMovement owner, Transform mount) : base(owner)
+        private string originalSortingLayerName;
+        private int originalSortingLayerOrder;
+
+        public MountedState(
+            GroundMovement owner, Transform mount, Vector2 localOffset,
+            string mountedSortingLayerName, int mountedSortingLayerOrder) : base(owner)
         {
             this.mount = mount;
+            this.localOffset = localOffset;
+            this.mountedSortingLayerName = mountedSortingLayerName;
+            this.mountedSortingLayerOrder = mountedSortingLayerOrder;
         }
 
         public override void Enter()
         {
             owner.Rigidbody2d.velocity = Vector2.zero;
-            owner.Mount(mount);
+
+            originalSortingLayerName = owner.SpriteRenderer.sortingLayerName;
+            originalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;
+            
+            owner.Mount(mount, localOffset, mountedSortingLayerName, mountedSortingLayerOrder);
+            owner.Animator.SetBool("isMounted", true);
         }
 
         public override void Execute()
@@ -26,7 +42,9 @@ namespace GroundMovementStates
 
         public override void Exit()
         {
-            owner.Dismount();
+            owner.Rigidbody2d.velocity = Vector2.zero;
+            owner.Dismount(originalSortingLayerName, originalSortingLayerOrder);
+            owner.Animator.SetBool("isMounted", false);
         }
     }
 }

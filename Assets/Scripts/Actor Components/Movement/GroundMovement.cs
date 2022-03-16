@@ -9,11 +9,13 @@ public class GroundMovement : Movement
 {
     [Header("Ground Movement")]
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 
     private GroundMovementStateMachine movementStateMachine;
 
+    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
 
@@ -65,27 +67,33 @@ public class GroundMovement : Movement
         }
     }
 
-    public void Mount(Transform mount)
+    public void Mount(Transform mount, Vector2 localOffset, string newSortingLayer, int newSortingLayerOrder)
     {
-        photonView.RPC("RPC_Mount", RpcTarget.All, mount.GetComponent<PhotonView>().ViewID);
+        photonView.RPC("RPC_Mount", RpcTarget.All,
+            mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, newSortingLayer, newSortingLayerOrder);
     }
 
-    public void Dismount()
+    public void Dismount(string updatedSortingLayer, int updatedSortingLayerOrder)
     {
-        photonView.RPC("RPC_Dismount", RpcTarget.All);
+        photonView.RPC("RPC_Dismount", RpcTarget.All, updatedSortingLayer, updatedSortingLayerOrder);
     }
 
     [PunRPC]
-    private void RPC_Mount(int mountViewId)
+    private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY, string updatedSortingLayer, int updatedSortingLayerOrder)
     {
         rigidbody2d.simulated = false;
         transform.parent = PhotonView.Find(mountViewId).transform;
+        transform.localPosition = new Vector2(localOffsetX, localOffsetY);
+        spriteRenderer.sortingLayerName = updatedSortingLayer;
+        spriteRenderer.sortingOrder = updatedSortingLayerOrder;
     }
 
     [PunRPC]
-    private void RPC_Dismount()
+    private void RPC_Dismount(string updatedSortingLayer, int updatedSortingLayerOrder)
     {
         transform.parent = null;
         rigidbody2d.simulated = true;
+        spriteRenderer.sortingLayerName = updatedSortingLayer;
+        spriteRenderer.sortingOrder = updatedSortingLayerOrder;
     }
 }

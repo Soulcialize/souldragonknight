@@ -6,6 +6,9 @@ using GroundMovementStates;
 public class MountInteractable : Interactable
 {
     [SerializeField] private Transform mount;
+    [SerializeField] private Vector2 localOffset;
+    [SerializeField] private string mountedSortingLayerName;
+    [SerializeField] private int mountedSortingLayerOrder;
 
     public override void Interact(ActorController initiator)
     {
@@ -17,7 +20,8 @@ public class MountInteractable : Interactable
             }
             else
             {
-                groundMovement.MovementStateMachine.ChangeState(new MountedState(groundMovement, mount));
+                groundMovement.MovementStateMachine.ChangeState(new MountedState(
+                    groundMovement, mount, localOffset, mountedSortingLayerName, mountedSortingLayerOrder));
             }
         }
     }

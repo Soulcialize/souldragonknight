@@ -498,6 +498,7 @@ MonoBehaviour:
   groundDetector: {fileID: 2344377606277045393}
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
+  spriteRenderer: {fileID: 7134467020418318920}
   horizontalMoveSpeed: 8
   jumpForce: 12
 --- !u!114 &4584270387848782332
@@ -699,7 +700,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -786,6 +787,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isBlockingHit
+  - Type: 4
+    SynchronizeType: 2
+    Name: isMounted
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
