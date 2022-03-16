@@ -128,6 +128,10 @@ public class KnightPlayerController : PlayerController
             {
                 Interact(nearestInteractable);
             }
+            else if (movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
+            {
+                movement.MovementStateMachine.ChangeState(new GroundMovementStates.AirborneState(movement));
+            }
         }
     }
 }

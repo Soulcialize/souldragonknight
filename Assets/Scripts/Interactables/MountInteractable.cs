@@ -11,7 +11,14 @@ public class MountInteractable : Interactable
     {
         if (initiator.Movement is GroundMovement groundMovement)
         {
-            groundMovement.MovementStateMachine.ChangeState(new MountedState(groundMovement, mount));
+            if (groundMovement.MovementStateMachine.CurrState is MountedState)
+            {
+                groundMovement.MovementStateMachine.ChangeState(new AirborneState(groundMovement));
+            }
+            else
+            {
+                groundMovement.MovementStateMachine.ChangeState(new MountedState(groundMovement, mount));
+            }
         }
     }
 }

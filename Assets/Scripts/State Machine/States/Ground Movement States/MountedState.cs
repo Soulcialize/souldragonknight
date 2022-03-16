@@ -15,6 +15,7 @@ namespace GroundMovementStates
 
         public override void Enter()
         {
+            owner.Rigidbody2d.velocity = Vector2.zero;
             owner.Mount(mount);
         }
 
@@ -25,7 +26,7 @@ namespace GroundMovementStates
 
         public override void Exit()
         {
-
+            owner.Dismount();
         }
     }
 }

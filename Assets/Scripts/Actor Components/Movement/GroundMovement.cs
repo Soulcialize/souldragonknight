@@ -70,10 +70,22 @@ public class GroundMovement : Movement
         photonView.RPC("RPC_Mount", RpcTarget.All, mount.GetComponent<PhotonView>().ViewID);
     }
 
+    public void Dismount()
+    {
+        photonView.RPC("RPC_Dismount", RpcTarget.All);
+    }
+
     [PunRPC]
     private void RPC_Mount(int mountViewId)
     {
         rigidbody2d.simulated = false;
         transform.parent = PhotonView.Find(mountViewId).transform;
+    }
+
+    [PunRPC]
+    private void RPC_Dismount()
+    {
+        transform.parent = null;
+        rigidbody2d.simulated = true;
     }
 }
