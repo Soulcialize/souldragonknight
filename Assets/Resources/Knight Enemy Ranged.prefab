@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb6fa1b4a489e143918953a0c719b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 10
+  maxRange: 5
   readyDuration: 4
   timeToLock: 3
   projectilePrefab: {fileID: 2451902509671687090, guid: d75a65ad664c7a147bf5869d211fbe95, type: 3}
