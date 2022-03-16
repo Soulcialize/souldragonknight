@@ -59,6 +59,7 @@ MonoBehaviour:
   - RPC_LoadRoleSelectLevel
   - RPC_UpdatePartnerIndicator
   - RPC_RemovePartnerIndicator
+  - RPC_ApplyBuff
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

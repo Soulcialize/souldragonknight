@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2451902509671687094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f148e0a8c49f64a9d0e46d6e8f0a7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5500594af778ead42b71a872e488a471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 330416023049157660}
@@ -77,12 +77,12 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 64
+  friendliesLayer:
+    serializedVersion: 2
+    m_Bits: 128
   hitEvent:
     m_PersistentCalls:
       m_Calls: []
-  knightLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &330416023049157660
 MonoBehaviour:
   m_ObjectHideFlags: 0

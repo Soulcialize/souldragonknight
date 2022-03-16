@@ -9,7 +9,7 @@ public class RangedProjectileEvent : UnityEvent<RangedProjectile> { }
 
 public class RangedProjectile : MonoBehaviour
 {
-    [SerializeField] protected PhotonView photonView;
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Collider2D collider2d;
 
@@ -21,6 +21,7 @@ public class RangedProjectile : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private LayerMask obstaclesLayer;
+    [SerializeField] private LayerMask friendliesLayer;
 
     [Space(10)]
 
@@ -40,6 +41,7 @@ public class RangedProjectile : MonoBehaviour
     }
 
     public LayerMask ActorTargetsLayer { get; set; }
+    public LayerMask FriendlyTargetsLayer { get => friendliesLayer; }
 
     public UnityEvent HitEvent { get => hitEvent; }
 
@@ -85,19 +87,19 @@ public class RangedProjectile : MonoBehaviour
         throw new System.ArgumentException($"Collider height calculation not implemented");
     }
 
-    protected void EndLifecycle()
+    private void EndLifecycle()
     {
         photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All);
     }
 
     [PunRPC]
-    protected void RPC_EndProjectileLifecycle()
+    private void RPC_EndProjectileLifecycle()
     {
         hitEvent.Invoke();
         Destroy(gameObject);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!photonView.IsMine)
         {
@@ -124,10 +126,19 @@ public class RangedProjectile : MonoBehaviour
 
             EndLifecycle();
         }
+        else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, friendliesLayer))
+        {
+            ActorController actorHit = ActorController.GetActorFromCollider(collision);
+
+            // projectile hit friendly
+            actorHit.Combat.Buff();
+            EndLifecycle();
+        }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
             // projectile hit obstacle
             EndLifecycle();
-        }
+        } 
+        
     }
 }

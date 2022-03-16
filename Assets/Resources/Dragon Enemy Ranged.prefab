@@ -597,6 +597,7 @@ MonoBehaviour:
   - abilityIdentifier: 2
     ability: {fileID: 9164543939492879357}
   health: {fileID: 2580839893817942638}
+  buff: {fileID: 0}
   wallCollisionDetector: {fileID: 2580839894231045049}
   knockbackSpeed: 10
   knockbackDistance: 1.2

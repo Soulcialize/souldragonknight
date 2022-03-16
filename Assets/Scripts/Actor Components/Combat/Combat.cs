@@ -25,6 +25,7 @@ public class Combat : MonoBehaviour
     [Header("Combat Stats")]
 
     [SerializeField] private Health health;
+    [SerializeField] private Buff buff;
     
     [Header("Knockback")]
 
@@ -45,7 +46,7 @@ public class Combat : MonoBehaviour
     public Collider2D Collider2d { get => collider2d; }
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
-    public LayerMask AttackEffectLayer { get => attackEffectLayer; }
+    public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
 
     public Health Health { get => health; }
 
@@ -113,6 +114,14 @@ public class Combat : MonoBehaviour
                 CombatStateMachine.ChangeState(new DeathState(this));
                 deathEvent.Invoke();
             }
+        }
+    }
+
+    public void Buff()
+    {
+        if (buff != null)
+        {
+            buff.ApplyBuff();
         }
     }
 }

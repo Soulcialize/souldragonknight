@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 6669902685249964190}
   - component: {fileID: 4584270387848782332}
   - component: {fileID: 5726660194417758549}
+  - component: {fileID: 4828491241966369471}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
   - component: {fileID: -8030419580977392626}
@@ -386,6 +387,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 17bfe6fe-b339-46ab-93c2-0a26674f5966
     m_ActionName: Air/AirDodge[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b63d5e30-8985-43bd-9b4a-8de3ff399e42
+    m_ActionName: Air/RangedAttackDown[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
@@ -444,13 +449,14 @@ MonoBehaviour:
   animator: {fileID: 977637900953337948}
   attackEffectLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   combatAbilities:
   - abilityIdentifier: 0
     ability: {fileID: 5102135582045005520}
   - abilityIdentifier: 2
     ability: {fileID: 4796355272749017670}
   health: {fileID: 5726660194417758549}
+  buff: {fileID: 4828491241966369471}
   wallCollisionDetector: {fileID: 47246515022818543}
   knockbackSpeed: 10
   knockbackDistance: 1.2
@@ -479,6 +485,26 @@ MonoBehaviour:
   decrementHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+  photonView: {fileID: 5696632616774609759}
+--- !u!114 &4828491241966369471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4df49d7a48d884b8838073d6313242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combat: {fileID: 4584270387848782332}
+  buffedTargetLayer:
+    serializedVersion: 2
+    m_Bits: 1536
+  mainTargetLayer:
+    serializedVersion: 2
+    m_Bits: 512
   photonView: {fileID: 5696632616774609759}
 --- !u!114 &5696632616774609759
 MonoBehaviour:

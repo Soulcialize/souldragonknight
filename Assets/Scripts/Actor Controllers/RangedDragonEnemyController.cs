@@ -22,7 +22,7 @@ public class RangedDragonEnemyController : EnemyController
             BehaviorTree.Function.COMBAT);
     }
 
-    public void CombatTargetFiredProjectileHandler(DragonRangedProjectile projectile)
+    public void CombatTargetFiredProjectileHandler(RangedProjectile projectile)
     {
         if (!combat.HasCombatAbility(CombatAbilityIdentifier.BLOCK)
             || !((BlockAbility)combat.GetCombatAbility(CombatAbilityIdentifier.BLOCK)).CanBlockProjectiles)
@@ -44,11 +44,11 @@ public class RangedDragonEnemyController : EnemyController
         }
     }
 
-    private bool WillProjectileHitActor(DragonRangedProjectile projectile)
+    private bool WillProjectileHitActor(RangedProjectile projectile)
     {
         RaycastHit2D projectileRaycastHit = Physics2D.CircleCast(
             projectile.transform.position, projectile.GetHeight() / 2f,
-            projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer | projectile.KnightLayer);
+            projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer | projectile.FriendlyTargetsLayer);
 
         // check if projectile is going to hit this actor
         return projectileRaycastHit.collider == combat.Collider2d;
