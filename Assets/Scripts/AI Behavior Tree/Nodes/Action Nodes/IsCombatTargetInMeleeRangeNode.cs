@@ -5,11 +5,11 @@ using AiBehaviorTreeBlackboards;
 
 namespace AiBehaviorTreeNodes
 {
-    public class IsCombatTargetInRangeNode : BehaviorNode
+    public class IsCombatTargetInMeleeRangeNode : BehaviorNode
     {
         private readonly Transform ownerTransform;
         
-        public IsCombatTargetInRangeNode(Movement ownerMovement)
+        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement)
         {
             ownerTransform = ownerMovement.transform;
         }

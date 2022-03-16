@@ -6,6 +6,8 @@ using GroundMovementStates;
 
 public class GroundMovement : Movement
 {
+    [Header("Ground Movement")]
+
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
 

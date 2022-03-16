@@ -6,6 +6,8 @@ using AirMovementStates;
 
 public class AirMovement : Movement
 {
+    [Header("Aerial Movement")]
+
     [SerializeField] private float movementSpeed;
     [SerializeField] private bool canLandOnGround;
 
@@ -13,6 +15,8 @@ public class AirMovement : Movement
 
     public float MovementSpeed { get => movementSpeed; }
     public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
+
+    public bool IsGravityEnabled { get; private set; }
 
     public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
@@ -50,6 +54,7 @@ public class AirMovement : Movement
 
     public void ToggleGravity(bool isEnabled)
     {
+        IsGravityEnabled = isEnabled;
         rigidbody2d.gravityScale = isEnabled ? 5f : 0f;
         if (isEnabled)
         {

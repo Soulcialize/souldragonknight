@@ -5,23 +5,23 @@ using UnityEngine.Events;
 
 namespace CombatStates
 {
-    public class ReadyChargeAttackState : ReadyAttackState
+    public class ReadyRangedAttackState : ReadyAttackState
     {
         private readonly Transform target;
+        private ProjectilePathDisplay projectilePathDisplay;
         private readonly float lockTargetPositionTime;
-        private readonly UnityEvent readyChargeStartEvent;
 
         public bool HasLockedTargetPosition { get; private set; }
         public Vector2 TargetPosition { get; private set; }
 
-        public ReadyChargeAttackState(
-            Combat owner, Transform target,
+        public ReadyRangedAttackState(
+            Combat owner, Transform target, ProjectilePathDisplay projectilePathDisplay,
             float lockTargetPositionTime, float readyDuration,
-            UnityAction<Combat> readyCallback, UnityEvent readyChargeStartEvent) : base(owner, readyDuration, readyCallback)
+            UnityAction<Combat> readyCallback) : base(owner, readyDuration, readyCallback)
         {
             this.target = target;
+            this.projectilePathDisplay = projectilePathDisplay;
             this.lockTargetPositionTime = lockTargetPositionTime;
-            this.readyChargeStartEvent = readyChargeStartEvent;
 
             HasLockedTargetPosition = false;
         }
@@ -29,17 +29,22 @@ namespace CombatStates
         public override void Enter()
         {
             base.Enter();
-            readyChargeStartEvent.Invoke();
+            projectilePathDisplay.StartDrawingProjectilePath(target);
         }
 
         public override void Execute()
         {
             base.Execute();
-            owner.Rigidbody2d.velocity = Vector2.zero;
             if (!HasLockedTargetPosition && Time.time - StartTime >= lockTargetPositionTime)
             {
                 LockTargetPosition();
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            projectilePathDisplay.StopDrawingProjectilePath();
         }
 
         private void LockTargetPosition()
@@ -47,6 +52,7 @@ namespace CombatStates
             Debug.Log($"{owner.name}: target position locked");
             HasLockedTargetPosition = true;
             TargetPosition = target.position;
+            projectilePathDisplay.StopUpdatingProjectilePath();
         }
     }
 }

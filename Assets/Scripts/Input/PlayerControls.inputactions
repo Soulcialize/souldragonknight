@@ -163,6 +163,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RangedAttackDown",
+                    "type": "Button",
+                    "id": "b63d5e30-8985-43bd-9b4a-8de3ff399e42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "AirDodge",
                     "type": "Button",
                     "id": "17bfe6fe-b339-46ab-93c2-0a26674f5966",
@@ -258,6 +267,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AirDodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "161b965d-8f0a-492e-a42c-26f9f435d2cf",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangedAttackDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

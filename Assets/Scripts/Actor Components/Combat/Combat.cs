@@ -16,6 +16,7 @@ public class Combat : MonoBehaviour
         public CombatAbility Ability { get => ability; }
     }
 
+    [SerializeField] protected Collider2D collider2d;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] private LayerMask attackEffectLayer;
@@ -33,12 +34,15 @@ public class Combat : MonoBehaviour
 
     [Header("General Combat Events")]
 
+    [Tooltip("'actor' refers to whichever actor the OnProjectileFiredEvent is subscribed to.")]
+    [SerializeField] private RangedProjectileEvent actorFiredProjectileEvent;
     [SerializeField] private UnityEvent hurtEvent;
     [SerializeField] private UnityEvent deathEvent;
 
     private Dictionary<CombatAbilityIdentifier, CombatAbility> identifierToAbilityDictionary
         = new Dictionary<CombatAbilityIdentifier, CombatAbility>();
 
+    public Collider2D Collider2d { get => collider2d; }
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public LayerMask AttackEffectLayer { get => attackEffectLayer; }
@@ -63,6 +67,11 @@ public class Combat : MonoBehaviour
         }
     }
 
+    public bool HasCombatAbility(CombatAbilityIdentifier ability)
+    {
+        return identifierToAbilityDictionary.ContainsKey(ability);
+    }
+
     public CombatAbility GetCombatAbility(CombatAbilityIdentifier ability)
     {
         return identifierToAbilityDictionary[ability];
@@ -78,35 +87,14 @@ public class Combat : MonoBehaviour
         identifierToAbilityDictionary[ability].End(this);
     }
 
-    public virtual void Attack() { }
-
-    public void ExecuteAttackEffect()
+    public void OnProjectileFiredEvent(RangedProjectile projectile)
     {
-        if (CombatStateMachine.CurrState is AttackState attackState)
-        {
-            attackState.ExecuteAttackEffect();
-        }
-    }
-
-    public void OnAttackEnd()
-    {
-        if (CombatStateMachine.CurrState is AttackState)
-        {
-            CombatStateMachine.Exit();
-        }
+        actorFiredProjectileEvent.Invoke(projectile);
     }
 
     public void Stun()
     {
         CombatStateMachine.ChangeState(new StunState(this));
-    }
-
-    public void OnStunEnd()
-    {
-        if (CombatStateMachine.CurrState is StunState)
-        {
-            CombatStateMachine.Exit();
-        }
     }
 
     public void Hurt()
@@ -125,14 +113,6 @@ public class Combat : MonoBehaviour
                 CombatStateMachine.ChangeState(new DeathState(this));
                 deathEvent.Invoke();
             }
-        }
-    }
-
-    public void OnHurtEnd()
-    {
-        if (CombatStateMachine.CurrState is HurtState)
-        {
-            CombatStateMachine.Exit();
         }
     }
 }

@@ -48,6 +48,17 @@ MonoBehaviour:
   - RPC_LoadRoomLevel
   - RPC_EndLifecycle
   - RPC_EndProjectileLifecycle
+  - RPC_Decrement
+  - RPC_DecrementDragonHealthUI
+  - RPC_DecrementKnightHealthUI
+  - RPC_DrawProjectilePath
+  - RPC_StopDrawingProjectilePath
+  - RPC_StartDrawingProjectilePath
+  - RPC_StopUpdatingProjectilePath
+  - RPC_LoadMenu
+  - RPC_LoadRoleSelectLevel
+  - RPC_UpdatePartnerIndicator
+  - RPC_RemovePartnerIndicator
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -13,6 +13,8 @@ public class KnightPlayerController : PlayerController
     private InputAction blockStartAction;
     private InputAction blockEndAction;
 
+    private HealthUI healthUI;
+
     private float movementInput = 0f;
 
     public override Movement Movement { get => movement; }
@@ -25,6 +27,8 @@ public class KnightPlayerController : PlayerController
         attackAction = playerInput.actions["Attack"];
         blockStartAction = playerInput.actions["BlockStart"];
         blockEndAction = playerInput.actions["BlockEnd"];
+
+        healthUI = GameObject.FindObjectOfType<HealthUI>();
     }
 
     protected override void FixedUpdate()
@@ -33,6 +37,26 @@ public class KnightPlayerController : PlayerController
         if (combat.CombatStateMachine.CurrState == null)
         {
             movement.UpdateMovement(new Vector2(movementInput, 0f));
+        }
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (photonView.IsMine)
+        {
+            Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        if (photonView.IsMine)
+        {
+            Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
         }
     }
 
@@ -81,7 +105,7 @@ public class KnightPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
         {
             movement.UpdateMovement(Vector2.zero);
-            combat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK);
+            combat.ExecuteCombatAbility(CombatAbilityIdentifier.BLOCK, CombatStates.BlockState.Direction.HORIZONTAL);
         }
     }
 

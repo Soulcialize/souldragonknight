@@ -8,6 +8,8 @@ public class SurfaceDetector : MonoBehaviour
 
     private int numCollidersInContact = 0;
 
+    public LayerMask SurfacesLayerMask { get => surfacesLayerMask; }
+
     public bool IsInContact { get => numCollidersInContact > 0; }
 
     private void OnTriggerEnter2D(Collider2D other)

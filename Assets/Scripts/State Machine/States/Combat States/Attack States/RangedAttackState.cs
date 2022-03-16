@@ -8,26 +8,48 @@ namespace CombatStates
     public class RangedAttackState : AttackState
     {
         private readonly RangedProjectile projectilePrefab;
-        private readonly Vector2 projectileOrigin;
+        private readonly Transform projectileOrigin;
         private readonly Vector2 attackDirection;
+        private readonly LayerMask actorHitLayer;
+        private RangedProjectileEvent fireRangedProjectileEvent;
 
         public RangedAttackState(
             Combat owner, RangedProjectile projectilePrefab,
-            Vector2 projectileOrigin, Vector2 attackDirection) : base(owner)
+            Transform projectileOrigin, Vector2 attackDirection, LayerMask actorHitLayer,
+            RangedProjectileEvent fireRangedProjectileEvent) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
             this.projectileOrigin = projectileOrigin;
-            this.attackDirection = attackDirection;
+            this.attackDirection = attackDirection.normalized;
+            this.actorHitLayer = actorHitLayer;
+            this.fireRangedProjectileEvent = fireRangedProjectileEvent;
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            if (Vector2.Angle(Vector2.up, attackDirection) > 170f)
+            {
+                owner.Animator.SetBool("isAttackingDown", true);
+            }
         }
 
         public override void ExecuteAttackEffect()
         {
             RangedProjectile projectile = PhotonNetwork.Instantiate(
                 projectilePrefab.name,
-                projectileOrigin,
+                projectileOrigin.position,
                 RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
             projectile.Direction = attackDirection;
+            projectile.ActorTargetsLayer = actorHitLayer;
+            fireRangedProjectileEvent.Invoke(projectile);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            owner.Animator.SetBool("isAttackingDown", false);
         }
     }
 }

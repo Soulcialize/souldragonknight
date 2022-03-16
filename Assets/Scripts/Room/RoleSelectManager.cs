@@ -13,6 +13,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button levelSelectButton;
     [SerializeField] private string levelSelectSceneName;
+    [SerializeField] private string menuSceneName;
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
 
@@ -20,13 +21,16 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
-            object playerTypeObj = player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-            if (playerTypeObj != null)
+            if (player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
             {
-                IndicatorUpdate(player, (PlayerType)playerTypeObj);
+                PlayerType playerType = (PlayerType)player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+                UpdateIndicator(player, playerType);
             }
         }
+
+        levelSelectButton.interactable = CanPickLevel();
     }
+
     public static void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
@@ -34,27 +38,34 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
+    public static void ResetRole()
+    {
+        Hashtable playerProperties = new Hashtable();
+        playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = null;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+    }
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-        Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
+        if (targetPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
+        {
+            PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+            Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
 
-        levelSelectButton.interactable = CanPickLevel();
-        IndicatorUpdate(targetPlayer, playerType);
+            levelSelectButton.interactable = CanPickLevel();
+            UpdateIndicator(targetPlayer, playerType);
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
 
-        if (otherPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
-        {
-            PlayerType playerType = (PlayerType)otherPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-            levelSelectButton.interactable = CanPickLevel();
-            partnerRoleIndicator[(int)playerType].SetActive(false);
-        }
+        levelSelectButton.interactable = false;
+        partnerRoleIndicator[0].SetActive(false);
+        partnerRoleIndicator[1].SetActive(false);
     }
 
     private bool CanPickLevel()
@@ -77,23 +88,40 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         return selectedRoles.Count == System.Enum.GetValues(typeof(PlayerType)).Length;
     }
 
-    private void IndicatorUpdate(Player player, PlayerType type)
+    private void UpdateSelfIndicator(PlayerType type)
+    {
+        yourRoleIndicator[(int)type].SetActive(true);
+        yourRoleIndicator[1 - (int)type].SetActive(false);
+    }
+
+    private void UpdatePartnerIndicator(PlayerType type)
+    {
+        partnerRoleIndicator[(int)type].SetActive(true);
+        partnerRoleIndicator[1 - (int)type].SetActive(false);
+    }
+
+    private void UpdateIndicator(Player player, PlayerType type)
     {
         if (player == PhotonNetwork.LocalPlayer)
         {
-            yourRoleIndicator[(int)type].SetActive(true);
-            yourRoleIndicator[1-(int)type].SetActive(false);
-        }
+            UpdateSelfIndicator(type);
+        } 
         else
         {
-            partnerRoleIndicator[(int)type].SetActive(true);
-            partnerRoleIndicator[1 - (int)type].SetActive(false);
+            UpdatePartnerIndicator(type);
         }
     }
 
     public void MoveToLevelSelect()
     {
         photonView.RPC("RPC_LoadLevelSelect", RpcTarget.All);
+    }
+
+    public void MoveToMenu()
+    {
+        ResetRole();
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(menuSceneName);
     }
 
     [PunRPC]
