@@ -11,6 +11,8 @@ namespace CombatStates
         private readonly float distance;
 
         private Vector2 startPos;
+        private float startTime;
+        private float maxDodgeTime;
 
         public DodgeState(Combat owner, Vector2 direction, float speed, float distance) : base(owner)
         {
@@ -22,14 +24,16 @@ namespace CombatStates
         public override void Enter()
         {
             startPos = owner.transform.position;
+            startTime = Time.time;
+            maxDodgeTime = distance / speed;
             owner.Animator.SetBool("isDodging", true);
         }
 
         public override void Execute()
         {
             owner.Rigidbody2d.velocity = direction * speed;
-            if (owner.WallCollisionDetector.IsInContact
-                || Vector2.Distance(startPos, owner.transform.position) > distance)
+            if (Vector2.Distance(startPos, owner.transform.position) > distance
+                || Time.time - startTime > maxDodgeTime)
             {
                 EndDodge();
             }
