@@ -190,9 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 4470413134207635888}
   collider2d: {fileID: 6525134411238163316}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3806877152634518949}
+  movement: {fileID: 4470413134207635889}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 1024

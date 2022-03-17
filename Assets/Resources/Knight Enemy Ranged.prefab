@@ -520,9 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2315394145704112158}
   collider2d: {fileID: 3812630226607940506}
   rigidbody2d: {fileID: 9072196668915215803}
   animator: {fileID: 271088900839404577}
+  movement: {fileID: 2080431000792514480}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -530,6 +532,7 @@ MonoBehaviour:
   - abilityIdentifier: 1
     ability: {fileID: 7085852033703407569}
   health: {fileID: 4948305080866607028}
+  buff: {fileID: 0}
   wallCollisionDetector: {fileID: 276739738191126824}
   knockbackSpeed: 0
   knockbackDistance: 0
