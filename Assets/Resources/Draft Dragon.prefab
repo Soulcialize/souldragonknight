@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4471501140ce233449a8367757bdfecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
   mount: {fileID: 0}
   mountMovement: {fileID: 0}
   localOffset: {x: 0, y: 0}
@@ -233,7 +234,19 @@ MonoBehaviour:
       m_Calls: []
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5726376234329744619}
+        m_TargetAssemblyTypeName: MountInteractable, Assembly-CSharp
+        m_MethodName: MountDeathHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6446500998015482331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +349,7 @@ GameObject:
   - component: {fileID: 8787845735291541869}
   - component: {fileID: 7030694398237728816}
   - component: {fileID: 5726376234329744619}
+  - component: {fileID: 3012200760044106011}
   m_Layer: 13
   m_Name: Interaction
   m_TagString: Untagged
@@ -385,11 +399,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4471501140ce233449a8367757bdfecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 3012200760044106011}
   mount: {fileID: 4470413134207635894}
   mountMovement: {fileID: 4470413134207635889}
   localOffset: {x: 0.425, y: 0.794}
   mountedSortingLayerName: Dragon Mount
   mountedSortingLayerOrder: 0
+--- !u!114 &3012200760044106011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069071975227940354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5997454603647402425
 GameObject:
   m_ObjectHideFlags: 0
