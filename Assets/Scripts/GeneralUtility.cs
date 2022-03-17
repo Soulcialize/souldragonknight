@@ -25,42 +25,13 @@ public static class GeneralUtility
         }
 
         // save parameter values
-        Dictionary<string, bool> boolParameters = new Dictionary<string, bool>();
-        Dictionary<string, float> floatParameters = new Dictionary<string, float>();
-        Dictionary<string, int> intParameters = new Dictionary<string, int>();
-        foreach (AnimatorControllerParameter parameter in animator.parameters)
-        {
-            switch (parameter.type)
-            {
-                case AnimatorControllerParameterType.Bool:
-                    boolParameters.Add(parameter.name, animator.GetBool(parameter.name));
-                    break;
-                case AnimatorControllerParameterType.Float:
-                    floatParameters.Add(parameter.name, animator.GetFloat(parameter.name));
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    intParameters.Add(parameter.name, animator.GetInteger(parameter.name));
-                    break;
-            }
-        }
+        Dictionary<string, (AnimatorControllerParameterType, object)> savedParameters
+            = SaveAnimatorParameters(animator);
 
         animator.runtimeAnimatorController = to;
 
         // restore parameter values
-        foreach (KeyValuePair<string, bool> parameter in boolParameters)
-        {
-            animator.SetBool(parameter.Key, parameter.Value);
-        }
-
-        foreach (KeyValuePair<string, float> parameter in floatParameters)
-        {
-            animator.SetFloat(parameter.Key, parameter.Value);
-        }
-
-        foreach (KeyValuePair<string, int> parameter in intParameters)
-        {
-            animator.SetInteger(parameter.Key, parameter.Value);
-        }
+        RestoreAnimatorParameters(animator, savedParameters);
 
         // push back saved state
         for (int i = 0; i < layerInfo.Length; i++)
@@ -69,5 +40,56 @@ public static class GeneralUtility
         }
 
         animator.Update(0.0f);
+    }
+
+    private static Dictionary<string, (AnimatorControllerParameterType, object)> SaveAnimatorParameters(Animator animator)
+    {
+        Dictionary<string, (AnimatorControllerParameterType, object)> savedParameters
+            = new Dictionary<string, (AnimatorControllerParameterType, object)>();
+
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            switch (parameter.type)
+            {
+                case AnimatorControllerParameterType.Bool:
+                    savedParameters[parameter.name] = (parameter.type, animator.GetBool(parameter.name));
+                    break;
+                case AnimatorControllerParameterType.Float:
+                    savedParameters[parameter.name] = (parameter.type, animator.GetFloat(parameter.name));
+                    break;
+                case AnimatorControllerParameterType.Int:
+                    savedParameters[parameter.name] = (parameter.type, animator.GetInteger(parameter.name));
+                    break;
+            }
+        }
+
+        return savedParameters;
+    }
+
+    private static void RestoreAnimatorParameters(
+        Animator animator, Dictionary<string, (AnimatorControllerParameterType, object)> savedParameters)
+    {
+        string name;
+        AnimatorControllerParameterType type;
+        object value;
+        foreach (KeyValuePair<string, (AnimatorControllerParameterType, object)> nameValuePair in savedParameters)
+        {
+            name = nameValuePair.Key;
+            type = nameValuePair.Value.Item1;
+            value = nameValuePair.Value.Item2;
+
+            switch (type)
+            {
+                case AnimatorControllerParameterType.Bool:
+                    animator.SetBool(name, (bool)value);
+                    break;
+                case AnimatorControllerParameterType.Float:
+                    animator.SetFloat(name, (float)value);
+                    break;
+                case AnimatorControllerParameterType.Int:
+                    animator.SetInteger(name, (int)value);
+                    break;
+            }
+        }
     }
 }
