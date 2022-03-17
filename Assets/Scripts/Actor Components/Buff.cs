@@ -9,13 +9,13 @@ public class Buff : MonoBehaviour
 
     [SerializeField] Combat combat;
     [SerializeField] private LayerMask buffedTargetLayer;
-    [SerializeField] private LayerMask defaultTargetLayer;
+    private LayerMask defaultTargetLayer;
 
     [Header("Visual Changes")]
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color buffedColor;
-    [SerializeField] private Color defaultColor;
+    private Color defaultColor;
 
     [Space (10)]
 
@@ -36,6 +36,9 @@ public class Buff : MonoBehaviour
     [PunRPC]
     private void RPC_ApplyBuff()
     {
+        defaultTargetLayer = combat.AttackEffectLayer;
+        defaultColor = spriteRenderer.color;
+
         combat.AttackEffectLayer = buffedTargetLayer;
         spriteRenderer.color = buffedColor;
         IsBuffed = true;
