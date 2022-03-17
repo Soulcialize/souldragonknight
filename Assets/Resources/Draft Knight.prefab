@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8670ec07ee8a6449503ea24e6068fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   isReadyRequired: 0
   readyDuration: 0
   attackEffectArea: {fileID: 5822808363884121821}
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   canBlockProjectiles: 0
   blockHitDuration: 0.5
   blockHitEvent:

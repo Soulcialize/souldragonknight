@@ -66,6 +66,12 @@ MonoBehaviour:
   localOffset: {x: 0, y: 0}
   mountedSortingLayerName: 
   mountedSortingLayerOrder: 0
+  mountEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  dismountEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4470413134207635880
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +411,36 @@ MonoBehaviour:
   localOffset: {x: 0.425, y: 0.794}
   mountedSortingLayerName: Dragon Mount
   mountedSortingLayerOrder: 0
+  mountEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3483110514655366300}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: ToggleCombatAbilities
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dismountEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3483110514655366300}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: ToggleCombatAbilities
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &3012200760044106011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb6fa1b4a489e143918953a0c719b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   maxRange: 0
   readyDuration: 0
   timeToLock: 0
@@ -555,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb50c9d62f26a242bce15b9d769cbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   speed: 20
   distance: 4
 --- !u!1 &8714695237697900579
