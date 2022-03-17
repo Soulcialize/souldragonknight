@@ -12,6 +12,8 @@ public class GroundMovement : Movement
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
+    [Tooltip("The maximum height a point can be at before it is considered unreachable by the grounded actor.")]
+    [SerializeField] private float maxReachableHeight = 1.6f;
 
     [Header("Mount")]
 
@@ -24,6 +26,7 @@ public class GroundMovement : Movement
     public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
+    public float MaxReachableHeight { get => maxReachableHeight; }
 
     public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
