@@ -50,6 +50,7 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
+            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -60,6 +61,7 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
+            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -131,7 +133,7 @@ public class KnightPlayerController : PlayerController
             }
             else if (movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
             {
-                movement.MovementStateMachine.ChangeState(new GroundMovementStates.AirborneState(movement));
+                movement.Dismount();
             }
         }
     }

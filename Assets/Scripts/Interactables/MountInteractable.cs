@@ -17,12 +17,11 @@ public class MountInteractable : Interactable
         {
             if (groundMovement.MovementStateMachine.CurrState is MountedState)
             {
-                groundMovement.MovementStateMachine.ChangeState(new AirborneState(groundMovement));
+                groundMovement.Dismount();
             }
             else
             {
-                groundMovement.MovementStateMachine.ChangeState(new MountedState(
-                    groundMovement, mount, mountMovement, localOffset, mountedSortingLayerName, mountedSortingLayerOrder));
+                groundMovement.Mount(mount, mountMovement, localOffset, mountedSortingLayerName, mountedSortingLayerOrder);
             }
         }
     }

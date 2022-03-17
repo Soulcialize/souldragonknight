@@ -73,15 +73,24 @@ public class GroundMovement : Movement
         }
     }
 
-    public void Mount(Transform mount, Vector2 localOffset, string newSortingLayer, int newSortingLayerOrder)
+    public void Mount(Transform mount, Movement mountMovement, Vector2 localOffset, string mountedSortingLayer, int mountedSortingLayerOrder)
     {
-        photonView.RPC("RPC_Mount", RpcTarget.All,
-            mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, newSortingLayer, newSortingLayerOrder);
+        if (MovementStateMachine.CurrState is GroundedState || MovementStateMachine.CurrState is AirborneState)
+        {
+            MovementStateMachine.ChangeState(new MountedState(this, mountMovement));
+            photonView.RPC("RPC_Mount", RpcTarget.All,
+                mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, mountedSortingLayer, mountedSortingLayerOrder);
+        }
     }
 
-    public void Dismount(string updatedSortingLayer, int updatedSortingLayerOrder)
+    public void Dismount()
     {
-        photonView.RPC("RPC_Dismount", RpcTarget.All, updatedSortingLayer, updatedSortingLayerOrder);
+        if (MovementStateMachine.CurrState is MountedState mountedState)
+        {
+            MovementStateMachine.ChangeState(new AirborneState(this));
+            photonView.RPC("RPC_Dismount", RpcTarget.All,
+                mountedState.OriginalSortingLayerName, mountedState.OriginalSortingLayerOrder);
+        }
     }
 
     [PunRPC]
@@ -96,7 +105,7 @@ public class GroundMovement : Movement
         spriteRenderer.sortingOrder = updatedSortingLayerOrder;
 
         defaultAnimatorController = animator.runtimeAnimatorController;
-        animator.runtimeAnimatorController = mountAnimatorOverride;
+        GeneralUtility.SwapAnimatorController(animator, mountAnimatorOverride, false);
     }
 
     [PunRPC]
@@ -109,6 +118,6 @@ public class GroundMovement : Movement
         spriteRenderer.sortingLayerName = updatedSortingLayer;
         spriteRenderer.sortingOrder = updatedSortingLayerOrder;
 
-        animator.runtimeAnimatorController = defaultAnimatorController;
+        GeneralUtility.SwapAnimatorController(animator, defaultAnimatorController, true);
     }
 }

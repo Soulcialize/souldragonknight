@@ -6,24 +6,14 @@ namespace GroundMovementStates
 {
     public class MountedState : GroundMovementState
     {
-        private readonly Transform mount;
         private readonly Movement mountMovement;
-        private readonly Vector2 localOffset;
-        private readonly string mountedSortingLayerName;
-        private readonly int mountedSortingLayerOrder;
 
-        private string originalSortingLayerName;
-        private int originalSortingLayerOrder;
+        public string OriginalSortingLayerName { get; private set; }
+        public int OriginalSortingLayerOrder { get; private set; }
 
-        public MountedState(
-            GroundMovement owner, Transform mount, Movement mountMovement, Vector2 localOffset,
-            string mountedSortingLayerName, int mountedSortingLayerOrder) : base(owner)
+        public MountedState(GroundMovement owner, Movement mountMovement) : base(owner)
         {
-            this.mount = mount;
             this.mountMovement = mountMovement;
-            this.localOffset = localOffset;
-            this.mountedSortingLayerName = mountedSortingLayerName;
-            this.mountedSortingLayerOrder = mountedSortingLayerOrder;
         }
 
         public override void Enter()
@@ -34,10 +24,8 @@ namespace GroundMovementStates
                 owner.FlipDirection(owner.IsFacingRight ? Movement.Direction.LEFT : Movement.Direction.RIGHT);
             }
 
-            originalSortingLayerName = owner.SpriteRenderer.sortingLayerName;
-            originalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;
-            
-            owner.Mount(mount, localOffset, mountedSortingLayerName, mountedSortingLayerOrder);
+            OriginalSortingLayerName = owner.SpriteRenderer.sortingLayerName;
+            OriginalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;
         }
 
         public override void Execute()
@@ -48,7 +36,6 @@ namespace GroundMovementStates
         public override void Exit()
         {
             owner.Rigidbody2d.velocity = Vector2.zero;
-            owner.Dismount(originalSortingLayerName, originalSortingLayerOrder);
         }
     }
 }
