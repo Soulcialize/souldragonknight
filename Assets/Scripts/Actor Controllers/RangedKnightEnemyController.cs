@@ -20,4 +20,11 @@ public class RangedKnightEnemyController : EnemyController
             },
             BehaviorTree.Function.COMBAT);
     }
+
+    protected override void HandleDeathEvent()
+    {
+        base.HandleDeathEvent();
+        movement.CanLandOnGround = true;
+        movement.ToggleGravity(true);
+    }
 }
