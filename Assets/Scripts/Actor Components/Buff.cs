@@ -5,9 +5,19 @@ using Photon.Pun;
 
 public class Buff : MonoBehaviour
 {
+    [Header("Combat Changes")]
+
     [SerializeField] Combat combat;
     [SerializeField] private LayerMask buffedTargetLayer;
     [SerializeField] private LayerMask defaultTargetLayer;
+
+    [Header("Visual Changes")]
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Color buffedColor;
+    [SerializeField] private Color defaultColor;
+
+    [Space (10)]
 
     [SerializeField] private PhotonView photonView;
 
@@ -27,6 +37,7 @@ public class Buff : MonoBehaviour
     private void RPC_ApplyBuff()
     {
         combat.AttackEffectLayer = buffedTargetLayer;
+        spriteRenderer.color = buffedColor;
         IsBuffed = true;
     }
 
@@ -34,6 +45,7 @@ public class Buff : MonoBehaviour
     private void RPC_RemoveBuff()
     {
         combat.AttackEffectLayer = defaultTargetLayer;
+        spriteRenderer.color = defaultColor;
         IsBuffed = false;
     }
 }

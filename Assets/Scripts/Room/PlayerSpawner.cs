@@ -20,8 +20,8 @@ public class PlayerSpawner : MonoBehaviour
 
         // TODO: consider doing this stuff in other scripts
         BackgroundManager.Instance.ActivateSoulWorldBackground();
-        //PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy").name, new Vector2(6f, 1.56f), Quaternion.identity);
-        //PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy Ranged").name, new Vector2(6.5f, 5.5f), Quaternion.identity);
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy").name, new Vector2(6f, 1.56f), Quaternion.identity);
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Knight Enemy Ranged").name, new Vector2(6.5f, 5.5f), Quaternion.identity);
     }
 
     private void SpawnDragon()
@@ -30,7 +30,7 @@ public class PlayerSpawner : MonoBehaviour
 
         // TODO: consider doing this stuff in other scripts
         BackgroundManager.Instance.ActivateRealWorldBackground();
-        //PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy").name, new Vector2(6f, 4.5f), Quaternion.identity);
+        PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy").name, new Vector2(6f, 4.5f), Quaternion.identity);
         PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy Ranged").name, new Vector2(6.5f, 2f), Quaternion.identity);
     }
     
