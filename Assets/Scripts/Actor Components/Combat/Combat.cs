@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using CombatStates;
+using Photon.Pun;
 
 public class Combat : MonoBehaviour
 {
@@ -16,9 +17,11 @@ public class Combat : MonoBehaviour
         public CombatAbility Ability { get => ability; }
     }
 
+    [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Collider2D collider2d;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected Movement movement;
     [SerializeField] private LayerMask attackEffectLayer;
     [SerializeField] private List<SerializedCombatAbility> combatAbilities;
 
@@ -96,6 +99,38 @@ public class Combat : MonoBehaviour
     public void Stun()
     {
         CombatStateMachine.ChangeState(new StunState(this));
+    }
+
+    public void HandleAttackHit(Combat attacker)
+    {
+        Vector2 attackerPosition = attacker.transform.position;
+        if (photonView.IsMine)
+        {
+            LocalHandleAttackHit(attackerPosition.x, attackerPosition.y);
+        }
+        else
+        {
+            photonView.RPC("RPC_HandleAttackHit", RpcTarget.Others, attackerPosition.x, attackerPosition.y);
+        }
+    }
+
+    protected void LocalHandleAttackHit(float attackerPosX, float attackerPosY)
+    {
+        movement.UpdateMovement(Vector2.zero);
+        if (CombatStateMachine.CurrState is BlockState blockState)
+        {
+            blockState.HandleHit(movement.IsFacingRight, ((Vector2)transform.position - new Vector2(attackerPosX, attackerPosY)).normalized);
+        }
+        else
+        {
+            Hurt();
+        }
+    }
+
+    [PunRPC]
+    protected void RPC_HandleAttackHit(float attackerPosX, float attackerPosY)
+    {
+        LocalHandleAttackHit(attackerPosX, attackerPosY);
     }
 
     public void Hurt()
