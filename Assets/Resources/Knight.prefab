@@ -451,7 +451,7 @@ MonoBehaviour:
   movement: {fileID: 6669902685249964190}
   attackEffectLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 512
   combatAbilities:
   - abilityIdentifier: 0
     ability: {fileID: 5102135582045005520}
@@ -504,7 +504,7 @@ MonoBehaviour:
   buffedTargetLayer:
     serializedVersion: 2
     m_Bits: 1536
-  mainTargetLayer:
+  defaultTargetLayer:
     serializedVersion: 2
     m_Bits: 512
   photonView: {fileID: 5696632616774609759}

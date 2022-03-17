@@ -61,6 +61,7 @@ MonoBehaviour:
   - RPC_RemovePartnerIndicator
   - RPC_ApplyBuff
   - RPC_HandleAttackHit
+  - RPC_RemoveBuff
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

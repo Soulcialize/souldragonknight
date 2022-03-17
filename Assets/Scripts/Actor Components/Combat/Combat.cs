@@ -103,6 +103,8 @@ public class Combat : MonoBehaviour
 
     public void HandleAttackHit(Combat attacker)
     {
+        attacker.Debuff();
+
         Vector2 attackerPosition = attacker.transform.position;
         if (photonView.IsMine)
         {
@@ -154,9 +156,17 @@ public class Combat : MonoBehaviour
 
     public void Buff()
     {
-        if (buff != null)
+        if (buff != null && !buff.IsBuffed)
         {
             buff.ApplyBuff();
+        }
+    }
+
+    public void Debuff()
+    {
+        if (buff != null && buff.IsBuffed)
+        {
+            buff.RemoveBuff();
         }
     }
 }

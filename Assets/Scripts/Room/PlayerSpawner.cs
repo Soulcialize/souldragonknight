@@ -33,7 +33,7 @@ public class PlayerSpawner : MonoBehaviour
         //PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy").name, new Vector2(6f, 4.5f), Quaternion.identity);
         PhotonNetwork.Instantiate(Resources.Load<GameObject>("Dragon Enemy Ranged").name, new Vector2(6.5f, 2f), Quaternion.identity);
     }
-
+    
     private void SpawnPlayer()
     {
         SpawnPlayer((PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY]);

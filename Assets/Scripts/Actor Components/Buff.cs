@@ -7,7 +7,7 @@ public class Buff : MonoBehaviour
 {
     [SerializeField] Combat combat;
     [SerializeField] private LayerMask buffedTargetLayer;
-    [SerializeField] private LayerMask mainTargetLayer;
+    [SerializeField] private LayerMask defaultTargetLayer;
 
     [SerializeField] private PhotonView photonView;
 
@@ -18,6 +18,11 @@ public class Buff : MonoBehaviour
         photonView.RPC("RPC_ApplyBuff", RpcTarget.All);
     }
 
+    public void RemoveBuff()
+    {
+        photonView.RPC("RPC_RemoveBuff", RpcTarget.All);
+    }
+
     [PunRPC]
     private void RPC_ApplyBuff()
     {
@@ -25,9 +30,10 @@ public class Buff : MonoBehaviour
         IsBuffed = true;
     }
 
-    public void RemoveBuff()
+    [PunRPC]
+    private void RPC_RemoveBuff()
     {
-        combat.AttackEffectLayer = mainTargetLayer;
+        combat.AttackEffectLayer = defaultTargetLayer;
         IsBuffed = false;
     }
 }
