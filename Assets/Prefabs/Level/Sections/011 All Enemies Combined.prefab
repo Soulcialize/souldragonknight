@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3561172804805727503}
   - component: {fileID: 8631338355475634433}
+  - component: {fileID: 224261590704090319}
   m_Layer: 0
   m_Name: Enemy Spawning
   m_TagString: Untagged
@@ -47,11 +48,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81ef71b7e919bc4887e992f85461682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 224261590704090319}
   spawnPoints:
   - {fileID: 2410214266098614060}
   - {fileID: 655083412759984717}
   - {fileID: 9089967800366048834}
   - {fileID: 1207672263705909325}
+--- !u!114 &224261590704090319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374008880600811150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6991227340335122317
 GameObject:
   m_ObjectHideFlags: 0

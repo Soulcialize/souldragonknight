@@ -13,8 +13,12 @@ public class LevelTrigger : MonoBehaviour
     {
         if (numEntries == 0)
         {
-            numEntries++;
-            playerEnteredEvent.Invoke();
+            ActorController player = ActorController.GetActorFromCollider(collision);
+            if (player != null && player.IsNetworkOwner)
+            {
+                numEntries++;
+                playerEnteredEvent.Invoke();
+            }
         }
     }
 }

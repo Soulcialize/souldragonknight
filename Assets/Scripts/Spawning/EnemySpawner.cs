@@ -6,10 +6,12 @@ using Photon.Pun;
 
 using PlayerType = RoleSelectManager.PlayerType;
 
+[System.Serializable]
 public class EnemySpawnEvent : UnityEvent<ActorController> { }
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private PhotonView photonView;
     [SerializeField] private List<EnemySpawnPoint> spawnPoints;
     [SerializeField] private EnemySpawnEvent enemySpawnEvent;
 
@@ -17,10 +19,16 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnAllEnemies()
     {
-        foreach (EnemySpawnPoint spawnPoint in spawnPoints)
-        {
-            SpawnEnemy(spawnPoint);
-        }
+        SpawnEnemiesForPlayer(
+            (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
+        photonView.RPC("RPC_SpawnAllEnemies", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void RPC_SpawnAllEnemies()
+    {
+        SpawnEnemiesForPlayer(
+            (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
     }
 
     private void SpawnEnemiesForPlayer(PlayerType playerType)
