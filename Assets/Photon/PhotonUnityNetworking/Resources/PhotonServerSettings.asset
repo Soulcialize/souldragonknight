@@ -69,6 +69,7 @@ MonoBehaviour:
   - RPC_EnemyDeathHandler
   - RPC_EnemySpawnHandler
   - RPC_SignalLevelCleared
+  - RPC_PlayerEnteredTriggerHandler
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

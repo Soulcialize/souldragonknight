@@ -11,6 +11,7 @@ public abstract class ActorController : MonoBehaviour
     public abstract Movement Movement { get; }
     public Combat Combat { get => combat; }
 
+    public int NetworkViewId { get => photonView.ViewID; }
     public bool IsNetworkOwner { get => photonView.IsMine; }
 
     public static ActorController GetActorFromCollider(Collider2D collider)

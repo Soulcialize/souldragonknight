@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6075862162565295498}
   - component: {fileID: 6075862162565295220}
   - component: {fileID: 6075862162565295499}
+  - component: {fileID: 6980154628746336785}
   m_Layer: 16
   m_Name: Level Trigger
   m_TagString: Untagged
@@ -70,6 +71,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef587d8c048ffc4ea179e19db3e9502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 6980154628746336785}
   playerEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6980154628746336785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075862162565295497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
