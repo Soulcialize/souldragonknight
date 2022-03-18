@@ -15,11 +15,18 @@ public class RoomCreator : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        Debug.Log($"Creating room ({roomNameInputField.text})");
+        if (roomNameInputField.text == "")
+        {
+            errorMessage.text = "Please enter a room name.";
+        }
+        else
+        {
+            Debug.Log($"Creating room ({roomNameInputField.text})");
 
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
-        PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = 2;
+            PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
+        }
     }
 
     public override void OnCreatedRoom()

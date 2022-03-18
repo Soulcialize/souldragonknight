@@ -37,7 +37,7 @@ namespace AiBehaviorTrees
                             new InverterNode(new SequenceNode(new List<BehaviorNode>()
                             {
                                 // exit ready-attack state if target is no longer in range
-                                new InverterNode(new IsCombatTargetInMeleeRangeNode(movement)),
+                                new InverterNode(new IsCombatTargetInMeleeRangeNode(combat)),
                                 new ExitCombatStateMachineNode(combat)
                             }))
                         }),
@@ -46,10 +46,24 @@ namespace AiBehaviorTrees
                         new SequenceNode(new List<BehaviorNode>()
                         {
                             new SetCombatTargetPosNode(movement),
-                            new GoToNavTargetNode(movement, true),
-                            new StopMovingNode(movement),
-                            new FaceNavTargetNode(movement),
-                            new StartMeleeAttackNode(combat)
+                            new SelectorNode(new List<BehaviorNode>()
+                            {
+                                new SequenceNode(new List<BehaviorNode>()
+                                {
+                                    // can reach target
+                                    new CanReachNavTargetNode(movement),
+                                    new GoToNavTargetNode(movement, true),
+                                    new StopMovingNode(movement),
+                                    new FaceNavTargetNode(movement),
+                                    new StartMeleeAttackNode(combat)
+                                }),
+                                new SequenceNode(new List<BehaviorNode>()
+                                {
+                                    // cannot reach target
+                                    new StopMovingNode(movement),
+                                    new FaceNavTargetNode(movement)
+                                })
+                            })
                         })
                     })
                 }));
@@ -95,9 +109,23 @@ namespace AiBehaviorTrees
                         new SequenceNode(new List<BehaviorNode>()
                         {
                             new SetRangedAttackPosNode(movement, combat),
-                            new GoToNavTargetNode(movement, false),
-                            new StopMovingNode(movement),
-                            new StartRangedAttackNode(combat)
+                            new SelectorNode(new List<BehaviorNode>()
+                            {
+                                new SequenceNode(new List<BehaviorNode>()
+                                {
+                                    // can reach target
+                                    new CanReachNavTargetNode(movement),
+                                    new GoToNavTargetNode(movement, false),
+                                    new StopMovingNode(movement),
+                                    new StartRangedAttackNode(combat)
+                                }),
+                                new SequenceNode(new List<BehaviorNode>()
+                                {
+                                    // cannot reach target
+                                    new StopMovingNode(movement),
+                                    new FaceNavTargetNode(movement)
+                                })
+                            })
                         })
                     })
                 }));

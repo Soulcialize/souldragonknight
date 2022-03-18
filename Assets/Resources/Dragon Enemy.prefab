@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8670ec07ee8a6449503ea24e6068fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   isReadyRequired: 1
   readyDuration: 2
   attackEffectArea: {fileID: 7280965100743785369}
@@ -425,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 5540462038900781736}
   groundDetector: {fileID: 791881558941451881}
@@ -444,9 +446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
   collider2d: {fileID: 6758016192082639341}
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 5540462038900781736}
+  movement: {fileID: 6640825776839569099}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -454,6 +458,7 @@ MonoBehaviour:
   - abilityIdentifier: 0
     ability: {fileID: 458767237906566525}
   health: {fileID: 5584288266804474021}
+  buff: {fileID: 0}
   wallCollisionDetector: {fileID: 8923394087307039422}
   knockbackSpeed: 0
   knockbackDistance: 0

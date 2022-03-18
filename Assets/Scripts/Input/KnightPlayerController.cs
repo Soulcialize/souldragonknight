@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class KnightPlayerController : PlayerController
 {
     [SerializeField] private GroundMovement movement;
+    [SerializeField] private InteractableDetector interactableDetector;
 
     private InputAction moveGroundAction;
     private InputAction jumpAction;
     private InputAction attackAction;
     private InputAction blockStartAction;
     private InputAction blockEndAction;
+    private InputAction interactAction;
 
     private HealthUI healthUI;
 
@@ -27,6 +29,7 @@ public class KnightPlayerController : PlayerController
         attackAction = playerInput.actions["Attack"];
         blockStartAction = playerInput.actions["BlockStart"];
         blockEndAction = playerInput.actions["BlockEnd"];
+        interactAction = playerInput.actions["Interact"];
 
         healthUI = GameObject.FindObjectOfType<HealthUI>();
     }
@@ -47,6 +50,7 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
+            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -57,6 +61,7 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
+            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -67,6 +72,7 @@ public class KnightPlayerController : PlayerController
         attackAction.performed += HandleAttackInput;
         blockStartAction.performed += HandleBlockStartInput;
         blockEndAction.performed += HandleBlockEndInput;
+        interactAction.performed += HandleInteractInput;
     }
 
     protected override void UnbindInputActionHandlers()
@@ -75,7 +81,8 @@ public class KnightPlayerController : PlayerController
         jumpAction.performed -= HandleJumpInput;
         attackAction.performed -= HandleAttackInput;
         blockStartAction.performed -= HandleBlockStartInput;
-        blockEndAction.performed += HandleBlockEndInput;
+        blockEndAction.performed -= HandleBlockEndInput;
+        interactAction.performed -= HandleInteractInput;
     }
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
@@ -93,7 +100,8 @@ public class KnightPlayerController : PlayerController
 
     private void HandleAttackInput(InputAction.CallbackContext context)
     {
-        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState)
+        if (movement.MovementStateMachine.CurrState is GroundMovementStates.GroundedState
+            || movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
         {
             movement.UpdateMovement(Vector2.zero);
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE);
@@ -112,5 +120,21 @@ public class KnightPlayerController : PlayerController
     private void HandleBlockEndInput(InputAction.CallbackContext context)
     {
         combat.EndCombatAbility(CombatAbilityIdentifier.BLOCK);
+    }
+
+    private void HandleInteractInput(InputAction.CallbackContext context)
+    {
+        if (combat.CombatStateMachine.CurrState == null)
+        {
+            Interactable nearestInteractable = interactableDetector.GetNearestInteractable();
+            if (nearestInteractable != null)
+            {
+                Interact(nearestInteractable);
+            }
+            else if (movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
+            {
+                movement.Dismount();
+            }
+        }
     }
 }

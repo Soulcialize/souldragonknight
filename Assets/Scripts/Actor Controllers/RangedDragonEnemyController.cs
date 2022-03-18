@@ -48,7 +48,7 @@ public class RangedDragonEnemyController : EnemyController
     {
         RaycastHit2D projectileRaycastHit = Physics2D.CircleCast(
             projectile.transform.position, projectile.GetHeight() / 2f,
-            projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer);
+            projectile.Direction, Mathf.Infinity, projectile.ActorTargetsLayer | projectile.FriendlyTargetsLayer);
 
         // check if projectile is going to hit this actor
         return projectileRaycastHit.collider == combat.Collider2d;
