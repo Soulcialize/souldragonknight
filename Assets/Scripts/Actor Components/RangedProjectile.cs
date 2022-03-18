@@ -21,6 +21,7 @@ public class RangedProjectile : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private LayerMask obstaclesLayer;
+    [SerializeField] private LayerMask friendliesLayer;
 
     [Space(10)]
 
@@ -40,6 +41,7 @@ public class RangedProjectile : MonoBehaviour
     }
 
     public LayerMask ActorTargetsLayer { get; set; }
+    public LayerMask FriendlyTargetsLayer { get => friendliesLayer; }
 
     public UnityEvent HitEvent { get => hitEvent; }
 
@@ -124,10 +126,19 @@ public class RangedProjectile : MonoBehaviour
 
             EndLifecycle();
         }
+        else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, friendliesLayer))
+        {
+            ActorController actorHit = ActorController.GetActorFromCollider(collision);
+
+            // projectile hit friendly
+            actorHit.Combat.Buff();
+            EndLifecycle();
+        }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
             // projectile hit obstacle
             EndLifecycle();
-        }
+        } 
+        
     }
 }

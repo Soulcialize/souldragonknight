@@ -190,9 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c23f934294204f4ea421e5cf0526e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 4470413134207635888}
   collider2d: {fileID: 6525134411238163316}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3806877152634518949}
+  movement: {fileID: 4470413134207635889}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -202,6 +204,7 @@ MonoBehaviour:
   - abilityIdentifier: 3
     ability: {fileID: 591363011492556981}
   health: {fileID: 6446500998015482331}
+  buff: {fileID: 0}
   wallCollisionDetector: {fileID: 7163776362713714178}
   knockbackSpeed: 0
   knockbackDistance: 0
@@ -415,7 +418,7 @@ MonoBehaviour:
   maxRange: 0
   readyDuration: 0
   timeToLock: 0
-  projectilePrefab: {fileID: 2451902509671687090, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
+  projectilePrefab: {fileID: 2387202332680191168, guid: dd25e136c5def8448a844bb80b6468a9, type: 3}
   projectileOrigin: {fileID: 8972197996417656447}
   projectilePathDisplay: {fileID: 0}
   fireRangedProjectileEvent:
