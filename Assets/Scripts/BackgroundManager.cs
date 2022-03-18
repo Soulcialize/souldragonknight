@@ -6,8 +6,8 @@ public class BackgroundManager : MonoBehaviour
 {
     public static BackgroundManager Instance { get; private set; }
 
-    [SerializeField] private GameObject realWorldBackground;
-    [SerializeField] private GameObject soulWorldBackground;
+    [SerializeField] private GameObject realWorldBackgrounds;
+    [SerializeField] private GameObject soulWorldBackgrounds;
 
     private void Awake()
     {
@@ -23,13 +23,13 @@ public class BackgroundManager : MonoBehaviour
 
     public void ActivateRealWorldBackground()
     {
-        soulWorldBackground.SetActive(false);
-        realWorldBackground.SetActive(true);
+        soulWorldBackgrounds.SetActive(false);
+        realWorldBackgrounds.SetActive(true);
     }
 
     public void ActivateSoulWorldBackground()
     {
-        realWorldBackground.SetActive(false);
-        soulWorldBackground.SetActive(true);
+        realWorldBackgrounds.SetActive(false);
+        soulWorldBackgrounds.SetActive(true);
     }
 }
