@@ -366,19 +366,7 @@ MonoBehaviour:
   photonView: {fileID: 8565705061797002542}
   levelClearedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9089352262997251395}
-        m_TargetAssemblyTypeName: LevelSectionGate, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &8565705061797002542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,17 +945,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b918874e0e5bbe147bcb0e9896549e7e, type: 3}
---- !u!114 &9089352262997251395 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2279106431740796672, guid: b918874e0e5bbe147bcb0e9896549e7e, type: 3}
-  m_PrefabInstance: {fileID: 7026423013200349763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b97a0fafe852949b450aa907fe9146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7511492411189310302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 701699577812941085, guid: b918874e0e5bbe147bcb0e9896549e7e, type: 3}
