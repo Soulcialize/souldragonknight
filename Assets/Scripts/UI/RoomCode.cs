@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class RoomCode : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textObject;
+    [SerializeField] private TextMeshProUGUI textObject;
 
     private void Start()
     {
