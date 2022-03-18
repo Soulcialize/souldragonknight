@@ -25,7 +25,6 @@ namespace AiBehaviorTreeNodes
             
             if (ownerMovement is GroundMovement groundMovement)
             {
-                Debug.Log($"{ownerMovement.gameObject}: {navTarget}");
                 RaycastHit2D groundHit = Physics2D.Raycast(
                     navTarget, Vector2.down, Mathf.Infinity, ownerMovement.GroundDetector.SurfacesLayerMask);
 
