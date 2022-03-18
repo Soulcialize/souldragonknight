@@ -70,6 +70,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
 
         PhotonNetwork.LoadLevel(roleSelectSceneName);
+        ResetLevelChoice();
     }
 
     private bool CanStart()
@@ -120,5 +121,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     private void RPC_LoadRoleSelectLevel()
     {
         PhotonNetwork.LoadLevel(roleSelectSceneName);
+        ResetLevelChoice();
     }
 }
