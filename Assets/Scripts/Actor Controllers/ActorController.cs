@@ -31,4 +31,9 @@ public abstract class ActorController : MonoBehaviour
             Movement.MovementStateMachine.Update();
         }
     }
+
+    public void Interact(Interactable interactable)
+    {
+        interactable.Interact(this);
+    }
 }

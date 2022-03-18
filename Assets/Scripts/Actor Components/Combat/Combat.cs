@@ -71,6 +71,14 @@ public class Combat : MonoBehaviour
         }
     }
 
+    public void ToggleCombatAbilities(bool isEnabled)
+    {
+        foreach (CombatAbility ability in identifierToAbilityDictionary.Values)
+        {
+            ability.Toggle(isEnabled);
+        }
+    }
+
     public bool HasCombatAbility(CombatAbilityIdentifier ability)
     {
         return identifierToAbilityDictionary.ContainsKey(ability);
@@ -83,12 +91,18 @@ public class Combat : MonoBehaviour
 
     public void ExecuteCombatAbility(CombatAbilityIdentifier ability, params object[] parameters)
     {
-        identifierToAbilityDictionary[ability].Execute(this, parameters);
+        if (identifierToAbilityDictionary[ability].IsEnabled)
+        {
+            identifierToAbilityDictionary[ability].Execute(this, parameters);
+        }
     }
 
     public void EndCombatAbility(CombatAbilityIdentifier ability)
     {
-        identifierToAbilityDictionary[ability].End(this);
+        if (identifierToAbilityDictionary[ability].IsEnabled)
+        {
+            identifierToAbilityDictionary[ability].End(this);
+        }
     }
 
     public void OnProjectileFiredEvent(RangedProjectile projectile)

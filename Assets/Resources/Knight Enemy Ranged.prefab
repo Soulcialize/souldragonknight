@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2315394145704112158}
   rigidbody2d: {fileID: 9072196668915215803}
   animator: {fileID: 271088900839404577}
   groundDetector: {fileID: 8383342966988454602}
@@ -692,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb6fa1b4a489e143918953a0c719b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   maxRange: 5
   readyDuration: 4
   timeToLock: 3
@@ -773,7 +775,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300038, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0.67058825, g: 0.25490198, b: 0.25490198, a: 1}

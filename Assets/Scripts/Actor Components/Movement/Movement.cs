@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StateMachines;
+using Photon.Pun;
 
 public abstract class Movement : MonoBehaviour
 {
     public enum Direction { LEFT, RIGHT }
 
+    [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SurfaceDetector groundDetector;
@@ -18,7 +20,7 @@ public abstract class Movement : MonoBehaviour
     public SurfaceDetector GroundDetector { get => groundDetector; }
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
 
-    public bool IsFacingRight { get; private set; }
+    public bool IsFacingRight { get => transform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
     public abstract MovementStateMachine MovementStateMachine { get; }
@@ -32,7 +34,6 @@ public abstract class Movement : MonoBehaviour
     protected virtual void Start()
     {
         FlipDirection(isDefaultFacingRight ? Direction.RIGHT : Direction.LEFT);
-        IsFacingRight = isDefaultFacingRight;
     }
 
     public abstract void UpdateMovement(Vector2 direction);
@@ -45,8 +46,6 @@ public abstract class Movement : MonoBehaviour
             localScale.x = -localScale.x;
             transform.localScale = localScale;
         }
-
-        IsFacingRight = localScale.x > 0f;
     }
 
     public void FlipDirection(Direction toDirection)

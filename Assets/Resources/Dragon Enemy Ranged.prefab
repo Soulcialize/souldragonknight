@@ -566,13 +566,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2580839893817942634}
   rigidbody2d: {fileID: 2580839893817942640}
   animator: {fileID: 8790055526326636033}
   groundDetector: {fileID: 2580839893550595546}
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
+  spriteRenderer: {fileID: 8614387502859579257}
   horizontalMoveSpeed: 8
   jumpForce: 12
+  maxReachableHeight: 2
+  mountAnimatorOverride: {fileID: 0}
 --- !u!114 &2580839893817942632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb6fa1b4a489e143918953a0c719b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   maxRange: 10
   readyDuration: 4
   timeToLock: 3
@@ -866,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   canBlockProjectiles: 1
   blockHitDuration: 0.5
   blockHitEvent:

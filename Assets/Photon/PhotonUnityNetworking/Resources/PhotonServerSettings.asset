@@ -59,6 +59,9 @@ MonoBehaviour:
   - RPC_LoadRoleSelectLevel
   - RPC_UpdatePartnerIndicator
   - RPC_RemovePartnerIndicator
+  - RPC_Mount
+  - RPC_Dismount
+  - RPC_DismountMountedRider
   - RPC_ApplyBuff
   - RPC_HandleAttackHit
   - RPC_RemoveBuff

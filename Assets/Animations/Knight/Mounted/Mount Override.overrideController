@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mount Override
+  m_Controller: {fileID: 9100000, guid: fa67e127aae890847bc6a977cb27e14c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 537835b640729124a90aabf3f80fe510, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e7c2a7d091a0fc648ad7c482c69810dc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3cf17d4c2ff2772479f4a26cd2cd0195, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b39b2e9b12bdddd49ae27118fdb01b85, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a583797ee1be82b4a9c73f1af1160b45, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: de18db0c7103f364d9b57e99b6bb244c, type: 2}

@@ -8,16 +8,19 @@ namespace AiBehaviorTreeNodes
     public class IsCombatTargetInMeleeRangeNode : BehaviorNode
     {
         private readonly Transform ownerTransform;
+        private readonly Combat ownerCombat;
         
-        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement)
+        public IsCombatTargetInMeleeRangeNode(Combat ownerCombat)
         {
-            ownerTransform = ownerMovement.transform;
+            ownerTransform = ownerCombat.transform;
+            this.ownerCombat = ownerCombat;
         }
 
         public override NodeState Execute()
         {
             Vector2 targetPosition = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform.position;
-            return Vector2.Distance(ownerTransform.position, targetPosition) <= (float)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE)
+            float maxMeleeRange = ((MeleeAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE)).MaximumReach;
+            return Vector2.Distance(ownerTransform.position, targetPosition) <= maxMeleeRange
                 ? NodeState.SUCCESS
                 : NodeState.FAILURE;
         }
