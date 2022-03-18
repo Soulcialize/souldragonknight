@@ -67,8 +67,11 @@ public class MountInteractable : Interactable
     private void RPC_DismountMountedRider()
     {
         // executed on rider's client
-        currentRiderMovement.Dismount();
-        currentRiderMovement = null;
+        if (currentRiderMovement != null)
+        {
+            currentRiderMovement.Dismount();
+            currentRiderMovement = null;
+        }
     }
 
     /// <summary>
