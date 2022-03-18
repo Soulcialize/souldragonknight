@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8670ec07ee8a6449503ea24e6068fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   isReadyRequired: 0
   readyDuration: 0
   attackEffectArea: {fileID: 5822808363884121821}
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a6a908101066044a4d31e80508026f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   canBlockProjectiles: 0
   blockHitDuration: 0.5
   blockHitEvent:
@@ -298,6 +300,7 @@ Transform:
   - {fileID: 4024579181161031291}
   - {fileID: 1784289309786822353}
   - {fileID: 1961698731118320924}
+  - {fileID: 8788491003870426397}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -413,6 +416,7 @@ MonoBehaviour:
   playerInput: {fileID: 5696632616774609755}
   persistentActionMaps: []
   movement: {fileID: 6669902685249964190}
+  interactableDetector: {fileID: 6397929481459963310}
 --- !u!114 &6669902685249964190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,13 +429,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
   groundDetector: {fileID: 2344377606277045393}
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
+  spriteRenderer: {fileID: 7134467020418318920}
   horizontalMoveSpeed: 8
   jumpForce: 12
+  maxReachableHeight: 2
+  mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}
 --- !u!114 &4584270387848782332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +661,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -743,6 +751,76 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
+--- !u!1 &7499006096477850584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8788491003870426397}
+  - component: {fileID: 5407804672213967040}
+  - component: {fileID: 6397929481459963310}
+  m_Layer: 14
+  m_Name: Interactable Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8788491003870426397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499006096477850584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5696632616774609734}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5407804672213967040
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499006096477850584}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.66, y: 1.66}
+  m_EdgeRadius: 0
+--- !u!114 &6397929481459963310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499006096477850584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8798ebdf7652f484aaffe843cc83d70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8022116657947580006
 GameObject:
   m_ObjectHideFlags: 0

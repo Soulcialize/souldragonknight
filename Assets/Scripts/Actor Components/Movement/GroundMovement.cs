@@ -13,7 +13,7 @@ public class GroundMovement : Movement
     [SerializeField] private float horizontalMoveSpeed;
     [SerializeField] private float jumpForce;
     [Tooltip("The maximum height a point can be at before it is considered unreachable by the grounded actor.")]
-    [SerializeField] private float maxReachableHeight = 1.6f;
+    [SerializeField] private float maxReachableHeight;
 
     [Header("Mount")]
 

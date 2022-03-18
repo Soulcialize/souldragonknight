@@ -1,5 +1,124 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1522193754294946270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2501043989457942554}
+  - component: {fileID: 3884554816259593756}
+  - component: {fileID: 2657584058281478896}
+  - component: {fileID: 3076819617650144031}
+  m_Layer: 13
+  m_Name: Interaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2501043989457942554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522193754294946270}
+  m_LocalRotation: {x: -0, y: -0, z: 0.13853048, w: 0.9903582}
+  m_LocalPosition: {x: 0.142, y: 0.032, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4470413134207635894}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15.926}
+--- !u!70 &3884554816259593756
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522193754294946270}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.98, y: 0.68}
+  m_Direction: 1
+--- !u!114 &2657584058281478896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522193754294946270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4471501140ce233449a8367757bdfecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 3076819617650144031}
+  mount: {fileID: 4470413134207635894}
+  mountMovement: {fileID: 4470413134207635889}
+  localOffset: {x: 0.425, y: 0.794}
+  mountedSortingLayerName: Dragon Mount
+  mountedSortingLayerOrder: 0
+  mountEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3483110514655366300}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: ToggleCombatAbilities
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dismountEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3483110514655366300}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: ToggleCombatAbilities
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &3076819617650144031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522193754294946270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3288909423805522758
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +207,7 @@ Transform:
   - {fileID: 5960651057919622052}
   - {fileID: 6446324908195120128}
   - {fileID: 614414376297081873}
+  - {fileID: 2501043989457942554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60234e85a67c6345b8becc866cd76e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 4470413134207635888}
   rigidbody2d: {fileID: 4470413134207635895}
   animator: {fileID: 3806877152634518949}
   groundDetector: {fileID: 6523712521498633943}
@@ -216,7 +337,19 @@ MonoBehaviour:
       m_Calls: []
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2657584058281478896}
+        m_TargetAssemblyTypeName: MountInteractable, Assembly-CSharp
+        m_MethodName: MountDeathHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6446500998015482331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb6fa1b4a489e143918953a0c719b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   maxRange: 0
   readyDuration: 0
   timeToLock: 0
@@ -436,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb50c9d62f26a242bce15b9d769cbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
   speed: 20
   distance: 4
 --- !u!1 &8714695237697900579
