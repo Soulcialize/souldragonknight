@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ToggleableButton : MonoBehaviour, IPointerClickHandler
 {
-    private bool isToggled;
+    private bool isToggled = false;
     private Color untoggledColor;
     private Color toggledColor;
     
@@ -30,12 +30,12 @@ public class ToggleableButton : MonoBehaviour, IPointerClickHandler
 
         if (isToggled)
         {
-            cb.normalColor = untoggledColor;
+            cb.normalColor = toggledColor;
             button.colors = cb;
         }
         else
         {
-            cb.normalColor = toggledColor;
+            cb.normalColor = untoggledColor;
             button.colors = cb;
         }
     }
