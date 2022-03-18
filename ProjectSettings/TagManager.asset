@@ -21,8 +21,8 @@ TagManager:
   - Interactable
   - Interactable Detector
   - CameraBoundary
-  - 
-  - 
+  - LevelTrigger
+  - Wall
   - 
   - 
   - 

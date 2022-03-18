@@ -27,6 +27,15 @@ namespace CombatStates
                 if (actorHit != null)
                 {
                     actorHit.Combat.HandleAttackHit(owner);
+                    continue;
+                }
+
+                BreakableWall breakableWall = hit.GetComponent<BreakableWall>();
+                if (breakableWall != null)
+                {
+                    owner.Debuff();
+                    breakableWall.HandleHit();
+                    continue;
                 }
             }
         }

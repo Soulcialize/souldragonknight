@@ -76,7 +76,7 @@ MonoBehaviour:
   maxDistance: 20
   obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
   friendliesLayer:
     serializedVersion: 2
     m_Bits: 128
