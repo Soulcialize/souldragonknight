@@ -8,7 +8,15 @@ public class PlayerSpawner : MonoBehaviour
     public static readonly string PLAYER_PROPERTIES_TYPE_KEY = "PlayerType";
 
     [SerializeField] private GameObject knightPrefab;
+    [SerializeField] private Transform knightSpawnPoint;
+
+    [Space(10)]
+
     [SerializeField] private GameObject dragonPrefab;
+    [SerializeField] private Transform dragonSpawnPoint;
+
+    [Space(10)]
+
     [SerializeField] private CinemachineVirtualCamera CVCamera;
 
     private void Start()
@@ -18,24 +26,20 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnKnight()
     {
-        var knightObj = PhotonNetwork.Instantiate("Knight", new Vector2(-3f, 1.56f), knightPrefab.transform.rotation);
+        var knightObj = PhotonNetwork.Instantiate(knightPrefab.name, knightSpawnPoint.position, knightPrefab.transform.rotation);
         CVCamera.m_Follow = knightObj.transform;
         
         // TODO: consider doing this stuff in other scripts
-        BackgroundManager.Instance.ActivateSoulWorldBackground();
-        PhotonNetwork.Instantiate("Knight Enemy", new Vector2(6f, 1.56f), Quaternion.identity);
-        PhotonNetwork.Instantiate("Knight Enemy Ranged", new Vector2(6.5f, 5.5f), Quaternion.identity);
+        // BackgroundManager.Instance.ActivateSoulWorldBackground();
     }
 
     private void SpawnDragon()
     {
-        var dragonObj = PhotonNetwork.Instantiate("Dragon", new Vector2(-5f, 4f), dragonPrefab.transform.rotation);
+        var dragonObj = PhotonNetwork.Instantiate(dragonPrefab.name, dragonSpawnPoint.position, dragonPrefab.transform.rotation);
         CVCamera.m_Follow = dragonObj.transform;
 
         // TODO: consider doing this stuff in other scripts
-        BackgroundManager.Instance.ActivateRealWorldBackground();
-        PhotonNetwork.Instantiate("Dragon Enemy", new Vector2(6f, 4.5f), Quaternion.identity);
-        PhotonNetwork.Instantiate("Dragon Enemy Ranged", new Vector2(6.5f, 2f), Quaternion.identity);
+        // BackgroundManager.Instance.ActivateRealWorldBackground();
     }
     
     private void SpawnPlayer()
