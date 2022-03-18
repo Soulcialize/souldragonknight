@@ -71,6 +71,15 @@ public class Combat : MonoBehaviour
         }
     }
 
+    protected virtual void OnDisable()
+    {
+        if (photonView.IsMine)
+        {
+            hurtEvent.RemoveAllListeners();
+            deathEvent.RemoveAllListeners();
+        }
+    }
+
     public void ToggleCombatAbilities(bool isEnabled)
     {
         foreach (CombatAbility ability in identifierToAbilityDictionary.Values)

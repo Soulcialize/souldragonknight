@@ -48,6 +48,21 @@ MonoBehaviour:
   photonView: {fileID: 778036540567082704}
   spawnPoints:
   - {fileID: 5281963097373834439}
+  enemySpawnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1496299373042602839}
+        m_TargetAssemblyTypeName: LevelSectionManager, Assembly-CSharp
+        m_MethodName: EnemySpawnHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &778036540567082704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +427,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4736631742872169149}
+  - component: {fileID: 1496299373042602839}
+  - component: {fileID: 6106143347835454730}
   m_Layer: 0
   m_Name: 009 Knight Enemy Ranged Introduction
   m_TagString: Untagged
@@ -437,6 +454,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496299373042602839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736631742872169148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6750fcaa104f14781a0c81d85546e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 6106143347835454730}
+  levelClearedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6106143347835454730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736631742872169148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4736631743107266281
 GameObject:
   m_ObjectHideFlags: 0

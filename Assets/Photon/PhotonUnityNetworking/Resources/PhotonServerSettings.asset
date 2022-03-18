@@ -66,6 +66,9 @@ MonoBehaviour:
   - RPC_HandleAttackHit
   - RPC_RemoveBuff
   - RPC_SpawnAllEnemies
+  - RPC_EnemyDeathHandler
+  - RPC_EnemySpawnHandler
+  - RPC_SignalLevelCleared
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
