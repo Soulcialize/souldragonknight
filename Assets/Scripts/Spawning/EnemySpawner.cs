@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 using PlayerType = RoleSelectManager.PlayerType;
 
+public class EnemySpawnEvent : UnityEvent<ActorController> { }
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawnPoint> spawnPoints;
+    [SerializeField] private EnemySpawnEvent enemySpawnEvent;
+
+    public EnemySpawnEvent EnemySpawnEvent { get => enemySpawnEvent; }
 
     public void SpawnAllEnemies()
     {
@@ -17,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnEnemiesForPlayer(PlayerType playerType)
+    private void SpawnEnemiesForPlayer(PlayerType playerType)
     {
         foreach (EnemySpawnPoint spawnPoint in spawnPoints)
         {
@@ -30,9 +36,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy(EnemySpawnPoint spawnPoint)
     {
-        PhotonNetwork.Instantiate(
+        ActorController enemy = PhotonNetwork.Instantiate(
             spawnPoint.PrefabToSpawn.name,
             spawnPoint.transform.position,
-            spawnPoint.transform.rotation);
+            spawnPoint.transform.rotation).GetComponent<ActorController>();
+
+        enemySpawnEvent.Invoke(enemy);
     }
 }
