@@ -137,8 +137,13 @@ public class RangedProjectile : MonoBehaviour
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
             // projectile hit obstacle
+            BreakableWall breakableWall = collision.GetComponent<BreakableWall>();
+            if (breakableWall != null)
+            {
+                breakableWall.HandleHit();
+            }
+
             EndLifecycle();
         } 
-        
     }
 }
