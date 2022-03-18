@@ -9,8 +9,9 @@ namespace StateMachines
     {
         public GroundMovementStateMachine()
         {
-            transitions[typeof(GroundedState)] = new HashSet<Type>() { typeof(AirborneState) };
-            transitions[typeof(AirborneState)] = new HashSet<Type>() { typeof(GroundedState) };
+            transitions[typeof(GroundedState)] = new HashSet<Type>() { typeof(AirborneState), typeof(MountedState) };
+            transitions[typeof(AirborneState)] = new HashSet<Type>() { typeof(GroundedState), typeof(MountedState) };
+            transitions[typeof(MountedState)] = new HashSet<Type>() { typeof(AirborneState) };
         }
     }
 }
