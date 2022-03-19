@@ -5,8 +5,6 @@ using Photon.Pun;
 
 public class Buff : MonoBehaviour
 {
-    private readonly float timerDuration = 3f;
-
     private float timer;
     private bool isTimerRunning = false;
 
@@ -14,6 +12,7 @@ public class Buff : MonoBehaviour
 
     [SerializeField] Combat combat;
     [SerializeField] private LayerMask buffedTargetLayer;
+    [SerializeField] private float buffDuration;
     private LayerMask defaultTargetLayer;
 
     [Header("Visual Changes")]
@@ -38,26 +37,28 @@ public class Buff : MonoBehaviour
             }
             else 
             {
-                RemoveBuff();
                 isTimerRunning = false;
+                RemoveBuff();
             }
         }
     }
 
     public void ApplyBuff()
     {
+        StartTimer();
         photonView.RPC("RPC_ApplyBuff", RpcTarget.All);
     }
 
     public void RemoveBuff()
     {
+        StopTimer();
         photonView.RPC("RPC_RemoveBuff", RpcTarget.All);
     }
 
     private void StartTimer()
     {
         isTimerRunning = true;
-        timer = timerDuration;
+        timer = buffDuration;
     }
 
     private void StopTimer()
@@ -75,8 +76,6 @@ public class Buff : MonoBehaviour
         combat.AttackEffectLayer = buffedTargetLayer;
         spriteRenderer.color = buffedColor;
         IsBuffed = true;
-
-        StartTimer();
     }
 
     [PunRPC]
@@ -85,7 +84,5 @@ public class Buff : MonoBehaviour
         combat.AttackEffectLayer = defaultTargetLayer;
         spriteRenderer.color = defaultColor;
         IsBuffed = false;
-
-        StopTimer();
     }
 }
