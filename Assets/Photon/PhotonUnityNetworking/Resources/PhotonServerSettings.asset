@@ -71,6 +71,10 @@ MonoBehaviour:
   - RPC_SignalLevelCleared
   - RPC_PlayerEnteredTriggerHandler
   - RPC_HandleHit
+  - RPC_CancelRestartRequest
+  - RPC_RequestRestart
+  - RPC_UpdateMessage
+  - RPC_ResetMessage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -516,6 +516,7 @@ MonoBehaviour:
   buffedTargetLayer:
     serializedVersion: 2
     m_Bits: 132608
+  buffDuration: 3
   spriteRenderer: {fileID: 7134467020418318920}
   buffedColor: {r: 0.09411766, g: 1, b: 1, a: 1}
   photonView: {fileID: 5696632616774609759}
