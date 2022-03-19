@@ -692,4 +692,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfacesLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
