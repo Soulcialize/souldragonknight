@@ -18,6 +18,8 @@ public class PlayerSpawner : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private CinemachineVirtualCamera CVCamera;
+    [SerializeField] private float knightCameraSize;
+    [SerializeField] private float dragonCameraSize;
 
     public static PlayerType GetLocalPlayerType()
     {
@@ -33,6 +35,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         var knightObj = PhotonNetwork.Instantiate(knightPrefab.name, knightSpawnPoint.position, knightPrefab.transform.rotation);
         CVCamera.m_Follow = knightObj.transform;
+        CVCamera.m_Lens.OrthographicSize = knightCameraSize;
         
         // TODO: consider doing this stuff in other scripts
         // BackgroundManager.Instance.ActivateSoulWorldBackground();
@@ -42,6 +45,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         var dragonObj = PhotonNetwork.Instantiate(dragonPrefab.name, dragonSpawnPoint.position, dragonPrefab.transform.rotation);
         CVCamera.m_Follow = dragonObj.transform;
+        CVCamera.m_Lens.OrthographicSize = dragonCameraSize;
 
         // TODO: consider doing this stuff in other scripts
         // BackgroundManager.Instance.ActivateRealWorldBackground();

@@ -1870,7 +1870,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1894,7 +1894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000013828278, y: 3.3999996, z: -20}
+  m_LocalPosition: {x: 0.00002527237, y: 1.3999996, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1166123394}
@@ -2176,6 +2176,8 @@ MonoBehaviour:
   dragonPrefab: {fileID: 4470413134207635880, guid: 9a8705b2cb40d94409b88940b0d7828a, type: 3}
   dragonSpawnPoint: {fileID: 559996314}
   CVCamera: {fileID: 1166123395}
+  knightCameraSize: 6
+  dragonCameraSize: 7
 --- !u!4 &765560305
 Transform:
   m_ObjectHideFlags: 0
@@ -3187,7 +3189,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 6
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
