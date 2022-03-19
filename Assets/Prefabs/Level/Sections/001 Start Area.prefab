@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615772437218224985}
   - component: {fileID: 1615772437218224984}
-  m_Layer: 6
+  m_Layer: 17
   m_Name: Wall Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615772438382016790}
   - component: {fileID: 1615772438382016785}
-  m_Layer: 6
+  m_Layer: 17
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

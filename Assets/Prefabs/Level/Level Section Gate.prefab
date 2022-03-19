@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 701699577812941087}
   - component: {fileID: 701699577812941084}
   - component: {fileID: 2279106431740796672}
-  m_Layer: 6
+  m_Layer: 17
   m_Name: Level Section Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -411,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2217869352567757883}
   - component: {fileID: 2217869352567757884}
-  m_Layer: 6
+  m_Layer: 17
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
