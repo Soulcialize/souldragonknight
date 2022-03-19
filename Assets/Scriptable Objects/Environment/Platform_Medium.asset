@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 766a5d9164512cd43a731c073446c45f, type: 3}
-  m_Name: Platform_Large
+  m_Name: Platform_Medium
   m_EditorClassIdentifier: 
-  knightPovSprite: {fileID: 21300000, guid: 8042be8a676a78c40a75f4bab9bf54fe, type: 3}
-  dragonPovSprite: {fileID: 21300000, guid: 9c0b0294c96300240be3fdc52a8fb0fe, type: 3}
+  knightPovSprite: {fileID: 21300000, guid: f9e4731dc7310fd459f2d5b08edc62ec, type: 3}
+  dragonPovSprite: {fileID: 21300000, guid: 92108173002d06442b7c1a90e467b1fa, type: 3}
