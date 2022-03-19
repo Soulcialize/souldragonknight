@@ -11,6 +11,8 @@ public class GroundMovement : Movement
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float horizontalMoveSpeed;
+    [Tooltip("The horizontal velocity an actor can move while airborne (on top of whatever horizontal velocity they started with before being airborne).")]
+    [SerializeField] private float airborneHorizontalMoveSpeed;
     [SerializeField] private float jumpForce;
     [Tooltip("The maximum height a point can be at before it is considered unreachable by the grounded actor.")]
     [SerializeField] private float maxReachableHeight;
@@ -25,6 +27,7 @@ public class GroundMovement : Movement
 
     public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
+    public float AirborneHorizontalMoveSpeed { get => airborneHorizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
     public float MaxReachableHeight { get => maxReachableHeight; }
 
@@ -65,6 +68,10 @@ public class GroundMovement : Movement
         if (MovementStateMachine.CurrState is GroundedState groundedState)
         {
             groundedState.UpdateHorizontalMovement(direction.x);
+        }
+        else if (MovementStateMachine.CurrState is AirborneState airborneState)
+        {
+            airborneState.UpdateHorizontalMovement(direction.x);
         }
     }
 

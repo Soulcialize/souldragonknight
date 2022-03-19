@@ -441,6 +441,7 @@ MonoBehaviour:
   defaultStoppingDistanceFromNavTargets: 1.4
   spriteRenderer: {fileID: 7134467020418318920}
   horizontalMoveSpeed: 8
+  airborneHorizontalMoveSpeed: 1
   jumpForce: 12
   maxReachableHeight: 2
   mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}

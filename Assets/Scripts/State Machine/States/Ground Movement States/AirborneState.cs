@@ -6,9 +6,17 @@ namespace GroundMovementStates
 {
     public class AirborneState : GroundMovementState
     {
-        public AirborneState(GroundMovement owner) : base(owner) { }
+        private readonly float maxHorizontalSpeed;
 
         private bool isFalling = false;
+
+        private bool isMoveRequestPending = false;
+        private float horizontalMoveDirection = 0f;
+
+        public AirborneState(GroundMovement owner) : base(owner)
+        {
+            maxHorizontalSpeed = owner.HorizontalMoveSpeed + owner.AirborneHorizontalMoveSpeed;
+        }
 
         public override void Enter()
         {
@@ -19,18 +27,28 @@ namespace GroundMovementStates
 
         public override void Execute()
         {
-            if (isFalling)
+            if (isFalling && owner.GroundDetector.IsInContact)
             {
-                if (owner.GroundDetector.IsInContact)
-                {
-                    owner.MovementStateMachine.ChangeState(new GroundedState(owner));
-                }
+                owner.MovementStateMachine.ChangeState(new GroundedState(owner));
+                return;
             }
-            else if (ShouldStartFalling())
+
+            if (!isFalling && ShouldStartFalling())
             {
                 isFalling = true;
                 owner.Animator.SetBool("isJumping", false);
                 owner.Animator.SetBool("isFalling", true);
+            }
+
+            if (isMoveRequestPending)
+            {
+                isMoveRequestPending = false;
+                owner.Rigidbody2d.velocity = new Vector2(
+                    Mathf.Clamp(
+                        owner.Rigidbody2d.velocity.x + horizontalMoveDirection * owner.AirborneHorizontalMoveSpeed,
+                        -maxHorizontalSpeed,
+                        maxHorizontalSpeed),
+                    owner.Rigidbody2d.velocity.y);
             }
         }
 
@@ -38,6 +56,15 @@ namespace GroundMovementStates
         {
             owner.Animator.SetBool("isJumping", false);
             owner.Animator.SetBool("isFalling", false);
+        }
+
+        public void UpdateHorizontalMovement(float direction)
+        {
+            if (owner.IsFacingRight && direction > 0f || !owner.IsFacingRight && direction < 0f)
+            {
+                isMoveRequestPending = true;
+                horizontalMoveDirection = Mathf.Clamp(direction, -1f, 1f);
+            }
         }
 
         private bool ShouldStartFalling()
