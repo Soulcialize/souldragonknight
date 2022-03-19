@@ -19,6 +19,11 @@ public class PlayerSpawner : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera CVCamera;
 
+    public static PlayerType GetLocalPlayerType()
+    {
+        return (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY];
+    }
+
     private void Start()
     {
         SpawnPlayer();
@@ -44,7 +49,7 @@ public class PlayerSpawner : MonoBehaviour
     
     private void SpawnPlayer()
     {
-        SpawnPlayer((PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY]);
+        SpawnPlayer(GetLocalPlayerType());
     }
 
     private void SpawnPlayer(PlayerType playerType)

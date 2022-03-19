@@ -19,16 +19,14 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnAllEnemies()
     {
-        SpawnEnemiesForPlayer(
-            (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
+        SpawnEnemiesForPlayer(PlayerSpawner.GetLocalPlayerType());
         photonView.RPC("RPC_SpawnAllEnemies", RpcTarget.Others);
     }
 
     [PunRPC]
     private void RPC_SpawnAllEnemies()
     {
-        SpawnEnemiesForPlayer(
-            (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY]);
+        SpawnEnemiesForPlayer(PlayerSpawner.GetLocalPlayerType());
     }
 
     private void SpawnEnemiesForPlayer(PlayerType playerType)
