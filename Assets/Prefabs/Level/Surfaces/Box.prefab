@@ -160,7 +160,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 675568479195801860, guid: 6d7272b9f3af68342af151efc85ce5d6, type: 3}
       propertyPath: m_Name
-      value: Generic Square
+      value: Square Dark
       objectReference: {fileID: 0}
     - target: {fileID: 1115056158550571241, guid: 6d7272b9f3af68342af151efc85ce5d6, type: 3}
       propertyPath: m_RootOrder
@@ -168,11 +168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1115056158550571241, guid: 6d7272b9f3af68342af151efc85ce5d6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 1115056158550571241, guid: 6d7272b9f3af68342af151efc85ce5d6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 1115056158550571241, guid: 6d7272b9f3af68342af151efc85ce5d6, type: 3}
       propertyPath: m_LocalPosition.x
