@@ -394,6 +394,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b63d5e30-8985-43bd-9b4a-8de3ff399e42
     m_ActionName: Air/RangedAttackDown[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 201b485e-954a-41ac-924a-26cff286f9ba
+    m_ActionName: Ground/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
