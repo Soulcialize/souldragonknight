@@ -34,7 +34,6 @@ public class LevelSectionGate : MonoBehaviour
         while (elapsedTime < timeTaken)
         {
             gateTransform.position = Vector2.Lerp(startPos, finalPos, elapsedTime / timeTaken);
-            Debug.Log(gateTransform.position);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
