@@ -15,9 +15,6 @@ public class ToggleableButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private UnityEvent toggleOnEvent;
     [SerializeField] private UnityEvent toggleOffEvent;
 
-    public UnityEvent ToggleOnEvent { get => toggleOnEvent; }
-    public UnityEvent ToggleOffEvent { get => toggleOffEvent; }
-
     void Start()
     {
         untoggledColor = button.colors.normalColor;

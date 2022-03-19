@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -13,6 +15,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
     [SerializeField] private string roomSceneName;
+
+    [SerializeField] private UnityEvent requestRestartEvent;
+    [SerializeField] private UnityEvent cancelRestartEvent;
 
     public static void UpdateRoomProperty(string key, object value)
     {
@@ -49,12 +54,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
         else
         {
             RequestRestart();
+            requestRestartEvent.Invoke();
         }
     }
 
     public void CancelRestartRequest()
     {
         photonView.RPC("RPC_CancelRestartRequest", RpcTarget.Others);
+        cancelRestartEvent.Invoke();
     }
 
     private void RequestRestart()
