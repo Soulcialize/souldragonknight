@@ -1137,7 +1137,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 150}
+  m_SizeDelta: {x: 10, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2939505297196568340
 CanvasRenderer:
@@ -1168,6 +1168,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: ':
+
+    :
 
     :
 
@@ -1296,7 +1298,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 307.5, y: 150}
+  m_SizeDelta: {x: 307.5, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2039963086117266279
 CanvasRenderer:
@@ -1330,7 +1332,9 @@ MonoBehaviour:
 
     Left Mouse
 
-    Right Mouse'
+    Right Mouse
+
+    Space'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
   m_sharedMaterial: {fileID: 4567519300188514924, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
@@ -1770,7 +1774,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 435.5, y: 150}
+  m_SizeDelta: {x: 435.5, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2592934929763459966
 CanvasRenderer:
@@ -1804,7 +1808,9 @@ MonoBehaviour:
 
     Forward Attack
 
-    Downward Attack'
+    Downward Attack
+
+    Boost'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
   m_sharedMaterial: {fileID: 4567519300188514924, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
