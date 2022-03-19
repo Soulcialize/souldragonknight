@@ -5,10 +5,14 @@ using Photon.Pun;
 
 public class Buff : MonoBehaviour
 {
+    private float timer;
+    private bool isTimerRunning = false;
+
     [Header("Combat Changes")]
 
     [SerializeField] Combat combat;
     [SerializeField] private LayerMask buffedTargetLayer;
+    [SerializeField] private float buffDuration;
     private LayerMask defaultTargetLayer;
 
     [Header("Visual Changes")]
@@ -23,14 +27,44 @@ public class Buff : MonoBehaviour
 
     public bool IsBuffed { get; set; }
 
+    private void Update()
+    {
+        if (isTimerRunning)
+        {
+            if (timer > 0f)
+            {
+                timer -= Time.deltaTime;
+            }
+            else 
+            {
+                isTimerRunning = false;
+                RemoveBuff();
+            }
+        }
+    }
+
     public void ApplyBuff()
     {
+        StartTimer();
         photonView.RPC("RPC_ApplyBuff", RpcTarget.All);
     }
 
     public void RemoveBuff()
     {
+        StopTimer();
         photonView.RPC("RPC_RemoveBuff", RpcTarget.All);
+    }
+
+    private void StartTimer()
+    {
+        isTimerRunning = true;
+        timer = buffDuration;
+    }
+
+    private void StopTimer()
+    {
+        isTimerRunning = false;
+        timer = 0f;
     }
 
     [PunRPC]
