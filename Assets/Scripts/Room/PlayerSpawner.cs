@@ -36,9 +36,6 @@ public class PlayerSpawner : MonoBehaviour
         var knightObj = PhotonNetwork.Instantiate(knightPrefab.name, knightSpawnPoint.position, knightPrefab.transform.rotation);
         CVCamera.m_Follow = knightObj.transform;
         CVCamera.m_Lens.OrthographicSize = knightCameraSize;
-        
-        // TODO: consider doing this stuff in other scripts
-        // BackgroundManager.Instance.ActivateSoulWorldBackground();
     }
 
     private void SpawnDragon()
@@ -46,9 +43,6 @@ public class PlayerSpawner : MonoBehaviour
         var dragonObj = PhotonNetwork.Instantiate(dragonPrefab.name, dragonSpawnPoint.position, dragonPrefab.transform.rotation);
         CVCamera.m_Follow = dragonObj.transform;
         CVCamera.m_Lens.OrthographicSize = dragonCameraSize;
-
-        // TODO: consider doing this stuff in other scripts
-        // BackgroundManager.Instance.ActivateRealWorldBackground();
     }
     
     private void SpawnPlayer()
