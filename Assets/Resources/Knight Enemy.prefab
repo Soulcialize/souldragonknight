@@ -369,7 +369,7 @@ MonoBehaviour:
   horizontalMoveSpeed: 8
   airborneHorizontalMoveSpeed: 1
   jumpForce: 12
-  maxReachableHeight: 2
+  maxReachableHeight: 0.56
   mountAnimatorOverride: {fileID: 0}
 --- !u!114 &7568959259614269199
 MonoBehaviour:
