@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766a5d9164512cd43a731c073446c45f, type: 3}
   m_Name: Background
   m_EditorClassIdentifier: 
-  knightPovSprite: {fileID: 21300000, guid: 9f9ac0c634d692a46bd5a4c07540edda, type: 3}
-  dragonPovSprite: {fileID: 21300000, guid: 292dd6b914a3fde489661e726f863b60, type: 3}
+  knightPovSprite: {fileID: 21300000, guid: 91bb994fcb198384381d0fa3cf10c5b0, type: 3}
+  dragonPovSprite: {fileID: 21300000, guid: 136c09b003a9e8e4e85d4a8b4dcee03a, type: 3}
