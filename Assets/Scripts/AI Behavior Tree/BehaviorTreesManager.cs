@@ -21,13 +21,24 @@ public class BehaviorTreesManager
 
     public void UpdateActiveTree()
     {
-        functionToTreesDictionary[ActiveTree].Update();
+        if (ActiveTree != BehaviorTree.Function.NONE)
+        {
+            functionToTreesDictionary[ActiveTree].Update();
+        }
     }
 
     public void SwitchActiveTree(BehaviorTree.Function newTree)
     {
-        functionToTreesDictionary[ActiveTree].Exit();
+        if (ActiveTree != BehaviorTree.Function.NONE)
+        {
+            functionToTreesDictionary[ActiveTree].Exit();
+        }
+
         ActiveTree = newTree;
-        functionToTreesDictionary[ActiveTree].Enter();
+
+        if (ActiveTree != BehaviorTree.Function.NONE)
+        {
+            functionToTreesDictionary[ActiveTree].Enter();
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace AiBehaviorTrees
     {
         public enum Function
         {
+            NONE,
             IDLE,
             COMBAT
         }

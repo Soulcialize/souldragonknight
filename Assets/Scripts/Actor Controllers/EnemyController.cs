@@ -63,6 +63,7 @@ public abstract class EnemyController : ActorController
 
     protected virtual void HandleDeathEvent()
     {
+        BehaviorTreesManager.SwitchActiveTree(AiBehaviorTrees.BehaviorTree.Function.NONE);
         visibility.Reveal();
     }
 }
