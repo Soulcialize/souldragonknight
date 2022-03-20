@@ -1675,12 +1675,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51acf1e449224042ad4acb008ae19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1166123395}
   spriteRenderer: {fileID: 433622405}
-  percentageLargerThanCam: 1.25
   cameraBoundary: {fileID: 958347279}
-  minLocalPos: {x: -2.5, y: 0}
-  maxLocalPos: {x: 2.5, y: 0}
+  minLocalPos: {x: -2.5, y: -0.5}
+  maxLocalPos: {x: 2.5, y: 0.5}
 --- !u!1001 &466552555
 PrefabInstance:
   m_ObjectHideFlags: 0
