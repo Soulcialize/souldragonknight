@@ -22,6 +22,7 @@ public class Combat : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SpriteLayer spriteLayer;
+    [SerializeField] protected CollisionLayer collisionLayer;
     [SerializeField] protected Movement movement;
 
     [Space(10)]
@@ -53,6 +54,7 @@ public class Combat : MonoBehaviour
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public SpriteLayer SpriteLayer { get => spriteLayer; }
+    public CollisionLayer CollisionLayer { get => collisionLayer; }
 
     public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
     public Health Health { get => health; }

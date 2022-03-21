@@ -34,16 +34,16 @@ public class SpriteLayer : MonoBehaviour
 
     public void SetLayer(Layer layer, int order = 0)
     {
-        photonView.RPC("RPC_SetLayer", RpcTarget.All, layerToNameDictionary[layer], order);
+        photonView.RPC("RPC_SetSpriteRendererLayer", RpcTarget.All, layerToNameDictionary[layer], order);
     }
 
     public void ResetLayer()
     {
-        photonView.RPC("RPC_SetLayer", RpcTarget.All, originalLayerName, originalOrder);
+        photonView.RPC("RPC_SetSpriteRendererLayer", RpcTarget.All, originalLayerName, originalOrder);
     }
 
     [PunRPC]
-    private void RPC_SetLayer(string layerName, int order)
+    private void RPC_SetSpriteRendererLayer(string layerName, int order)
     {
         spriteRenderer.sortingLayerName = layerName;
         spriteRenderer.sortingOrder = order;

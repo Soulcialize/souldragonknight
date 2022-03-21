@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 5693331145748344923}
   - component: {fileID: 5693331145748344916}
   - component: {fileID: 693705184267070998}
+  - component: {fileID: 8833465501210280286}
   - component: {fileID: 5693331145748344919}
   - component: {fileID: 5693331145748344913}
   - component: {fileID: 7568959259614269199}
@@ -344,6 +345,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 5693331145748344914}
   spriteRenderer: {fileID: 5570463013405397102}
+--- !u!114 &8833465501210280286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693331145748344921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e182f8533928a4789c2913e93e8e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5693331145748344914}
+  collider2d: {fileID: 8342237615520396707}
 --- !u!114 &5693331145748344919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +418,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 3091961783657160481}
   spriteLayer: {fileID: 693705184267070998}
+  collisionLayer: {fileID: 8833465501210280286}
   movement: {fileID: 5693331145748344913}
   attackEffectLayer:
     serializedVersion: 2
