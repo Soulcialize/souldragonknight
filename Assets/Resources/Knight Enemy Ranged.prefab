@@ -71,7 +71,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -79651679
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -414,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4861795074019271562}
   - component: {fileID: 9072196668915215803}
+  - component: {fileID: 5796386325133325074}
   - component: {fileID: 5301393953282103243}
   - component: {fileID: 2080431000792514480}
   - component: {fileID: 1860061280274303189}
@@ -471,6 +472,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5796386325133325074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861795074019271563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96772129f1004d489817ce7d2d4f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 2315394145704112158}
+  spriteRenderer: {fileID: 4826769299319132632}
 --- !u!114 &5301393953282103243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +540,7 @@ MonoBehaviour:
   collider2d: {fileID: 3812630226607940506}
   rigidbody2d: {fileID: 9072196668915215803}
   animator: {fileID: 271088900839404577}
+  spriteLayer: {fileID: 5796386325133325074}
   movement: {fileID: 2080431000792514480}
   attackEffectLayer:
     serializedVersion: 2
@@ -775,7 +791,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300038, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0.67058825, g: 0.25490198, b: 0.25490198, a: 1}

@@ -9,7 +9,7 @@ public class GroundMovement : Movement
 {
     [Header("Ground Movement")]
 
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteLayer spriteLayer;
     [SerializeField] private float horizontalMoveSpeed;
     [Tooltip("The horizontal velocity an actor can move while airborne (on top of whatever horizontal velocity they started with before being airborne).")]
     [SerializeField] private float airborneHorizontalMoveSpeed;
@@ -25,7 +25,6 @@ public class GroundMovement : Movement
 
     private GroundMovementStateMachine movementStateMachine;
 
-    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
     public float HorizontalMoveSpeed { get => horizontalMoveSpeed; }
     public float AirborneHorizontalMoveSpeed { get => airborneHorizontalMoveSpeed; }
     public float JumpForce { get => jumpForce; }
@@ -83,7 +82,8 @@ public class GroundMovement : Movement
         }
     }
 
-    public void Mount(Transform mount, Movement mountMovement, Vector2 localOffset, string mountedSortingLayer, int mountedSortingLayerOrder)
+    public void Mount(Transform mount, Movement mountMovement, Vector2 localOffset,
+        SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
         if (MovementStateMachine.CurrState is GroundedState || MovementStateMachine.CurrState is AirborneState)
         {
@@ -95,39 +95,34 @@ public class GroundMovement : Movement
 
     public void Dismount()
     {
-        if (MovementStateMachine.CurrState is MountedState mountedState)
+        if (MovementStateMachine.CurrState is MountedState)
         {
             MovementStateMachine.ChangeState(new AirborneState(this));
-            photonView.RPC("RPC_Dismount", RpcTarget.All,
-                mountedState.OriginalSortingLayerName, mountedState.OriginalSortingLayerOrder);
+            photonView.RPC("RPC_Dismount", RpcTarget.All);
         }
     }
 
     [PunRPC]
-    private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY, string updatedSortingLayer, int updatedSortingLayerOrder)
+    private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY,
+        SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
         rigidbody2d.isKinematic = true;
         
         transform.parent = PhotonView.Find(mountViewId).transform;
         transform.localPosition = new Vector2(localOffsetX, localOffsetY);
 
-        spriteRenderer.sortingLayerName = updatedSortingLayer;
-        spriteRenderer.sortingOrder = updatedSortingLayerOrder;
+        spriteLayer.SetLayer(mountedSortingLayer, mountedSortingLayerOrder);
 
         defaultAnimatorController = animator.runtimeAnimatorController;
         GeneralUtility.SwapAnimatorController(animator, mountAnimatorOverride, false);
     }
 
     [PunRPC]
-    private void RPC_Dismount(string updatedSortingLayer, int updatedSortingLayerOrder)
+    private void RPC_Dismount()
     {
         transform.parent = null;
-        
         rigidbody2d.isKinematic = false;
-
-        spriteRenderer.sortingLayerName = updatedSortingLayer;
-        spriteRenderer.sortingOrder = updatedSortingLayerOrder;
-
+        spriteLayer.ResetLayer();
         GeneralUtility.SwapAnimatorController(animator, defaultAnimatorController, true);
     }
 }

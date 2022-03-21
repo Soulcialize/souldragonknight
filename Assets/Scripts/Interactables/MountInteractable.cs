@@ -17,8 +17,8 @@ public class MountInteractable : Interactable
 
     [Space(10)]
 
-    [SerializeField] private string mountedSortingLayerName;
-    [SerializeField] private int mountedSortingLayerOrder;
+    [SerializeField] private SpriteLayer.Layer mountedSpriteLayer;
+    [SerializeField] private int mountedSpriteLayerOrder;
 
     [Space(10)]
 
@@ -43,7 +43,7 @@ public class MountInteractable : Interactable
             {
                 // mount
                 currentRiderMovement = groundMovement;
-                groundMovement.Mount(mount, mountMovement, localOffset, mountedSortingLayerName, mountedSortingLayerOrder);
+                groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
                 photonView.RPC("RPC_Mount", RpcTarget.Others);
             }
         }

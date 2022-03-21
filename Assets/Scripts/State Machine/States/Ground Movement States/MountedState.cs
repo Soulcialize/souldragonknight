@@ -8,9 +8,6 @@ namespace GroundMovementStates
     {
         private readonly Movement mountMovement;
 
-        public string OriginalSortingLayerName { get; private set; }
-        public int OriginalSortingLayerOrder { get; private set; }
-
         public MountedState(GroundMovement owner, Movement mountMovement) : base(owner)
         {
             this.mountMovement = mountMovement;
@@ -23,9 +20,6 @@ namespace GroundMovementStates
             {
                 owner.FlipDirection(owner.IsFacingRight ? Movement.Direction.LEFT : Movement.Direction.RIGHT);
             }
-
-            OriginalSortingLayerName = owner.SpriteRenderer.sortingLayerName;
-            OriginalSortingLayerOrder = owner.SpriteRenderer.sortingOrder;
         }
 
         public override void Execute()

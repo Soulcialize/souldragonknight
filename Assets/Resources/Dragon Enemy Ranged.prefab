@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -79651679
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0, g: 0.7137255, b: 0.011764706, a: 1}
@@ -239,7 +239,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -79651679
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -479,6 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2580839893817942643}
   - component: {fileID: 2580839893817942640}
+  - component: {fileID: 1672654525746901489}
   - component: {fileID: 2580839893817942646}
   - component: {fileID: 2580839893817942633}
   - component: {fileID: 2580839893817942632}
@@ -536,6 +537,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1672654525746901489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580839893817942653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96772129f1004d489817ce7d2d4f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 2580839893817942634}
+  spriteRenderer: {fileID: 8614387502859579257}
 --- !u!114 &2580839893817942646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +587,7 @@ MonoBehaviour:
   groundDetector: {fileID: 2580839893550595546}
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
-  spriteRenderer: {fileID: 8614387502859579257}
+  spriteLayer: {fileID: 1672654525746901489}
   horizontalMoveSpeed: 8
   airborneHorizontalMoveSpeed: 1
   jumpForce: 12
@@ -594,6 +609,7 @@ MonoBehaviour:
   collider2d: {fileID: 2580839893422323836}
   rigidbody2d: {fileID: 2580839893817942640}
   animator: {fileID: 8790055526326636033}
+  spriteLayer: {fileID: 1672654525746901489}
   movement: {fileID: 2580839893817942633}
   attackEffectLayer:
     serializedVersion: 2
