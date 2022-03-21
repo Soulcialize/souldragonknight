@@ -260,6 +260,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isDead
+  - Type: 4
+    SynchronizeType: 2
+    Name: isWalking
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

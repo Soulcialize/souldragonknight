@@ -41,6 +41,14 @@ public class AirMovement : Movement
         }
     }
 
+    public override void SetMovementMode(MovementSpeedData.Mode mode)
+    {
+        if (MovementStateMachine.CurrState is AirborneState)
+        {
+            MovementMode = mode;
+        }
+    }
+
     public void ToggleGravity(bool isEnabled)
     {
         IsGravityEnabled = isEnabled;

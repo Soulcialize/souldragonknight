@@ -61,6 +61,15 @@ public class GroundMovement : Movement
         }
     }
 
+    public override void SetMovementMode(MovementSpeedData.Mode mode)
+    {
+        if (MovementStateMachine.CurrState is GroundedState groundedState)
+        {
+            MovementMode = mode;
+            groundedState.UpdateMovementMode(mode);
+        }
+    }
+
     public void Jump()
     {
         if (MovementStateMachine.CurrState is GroundedState groundedState)

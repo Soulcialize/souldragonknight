@@ -33,7 +33,7 @@ public abstract class Movement : MonoBehaviour
     public bool IsFacingRight { get => transform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
-    public MovementSpeedData.Mode MovementMode { get; set; }
+    public MovementSpeedData.Mode MovementMode { get; protected set; }
     public float MovementSpeed { get => movementModeToSpeedDictionary[MovementMode]; }
 
     public abstract MovementStateMachine MovementStateMachine { get; }
@@ -54,6 +54,8 @@ public abstract class Movement : MonoBehaviour
     }
 
     public abstract void UpdateMovement(Vector2 direction);
+
+    public abstract void SetMovementMode(MovementSpeedData.Mode mode);
 
     public float GetMovementSpeedForMode(MovementSpeedData.Mode mode)
     {
