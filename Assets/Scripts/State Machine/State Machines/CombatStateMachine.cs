@@ -9,7 +9,7 @@ public class CombatStateMachine : StateMachine
     public CombatStateMachine()
     {
         transitions[typeof(ReadyAttackState)] = new HashSet<System.Type>() { typeof(AttackState), typeof(BlockState), typeof(HurtState), typeof(DeathState) };
-        transitions[typeof(AttackState)] = new HashSet<System.Type>() { typeof(StunState), typeof(HurtState), typeof(DeathState) };
+        transitions[typeof(AttackState)] = new HashSet<System.Type>() { typeof(BlockState), typeof(StunState), typeof(HurtState), typeof(DeathState) };
         transitions[typeof(DodgeState)] = new HashSet<System.Type>() { typeof(HurtState), typeof(DeathState) };
         transitions[typeof(BlockState)] = new HashSet<System.Type>() { typeof(BlockHitState), typeof(HurtState), typeof(DeathState) };
         transitions[typeof(BlockHitState)] = new HashSet<System.Type>() { typeof(BlockState), typeof(HurtState), typeof(DeathState) };
