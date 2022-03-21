@@ -11,24 +11,6 @@ public abstract class EnemyController : ActorController
 
     public BehaviorTreesManager BehaviorTreesManager { get; private set; }
 
-    protected virtual void OnEnable()
-    {
-        if (photonView.IsMine)
-        {
-            Combat.HurtEvent.AddListener(HandleHurtEvent);
-            Combat.DeathEvent.AddListener(HandleDeathEvent);
-        }
-    }
-
-    protected virtual void OnDisable()
-    {
-        if (photonView.IsMine)
-        {
-            Combat.HurtEvent.RemoveListener(HandleHurtEvent);
-            Combat.DeathEvent.RemoveListener(HandleDeathEvent);
-        }
-    }
-
     protected virtual void Start()
     {
         if (photonView.IsMine)
@@ -53,16 +35,18 @@ public abstract class EnemyController : ActorController
 
     protected abstract BehaviorTreesManager InitializeBehaviorTreesManager();
 
-    protected virtual void HandleHurtEvent()
+    protected override void HandleHurtEvent()
     {
+        base.HandleHurtEvent();
         if (hideVisibility)
         {
             visibility.RevealBriefly(hurtRevealDuration);
         }
     }
 
-    protected virtual void HandleDeathEvent()
+    protected override void HandleDeathEvent()
     {
+        base.HandleDeathEvent();
         BehaviorTreesManager.SwitchActiveTree(AiBehaviorTrees.BehaviorTree.Function.NONE);
         visibility.Reveal();
     }

@@ -47,7 +47,6 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementDragonHealthUI);
-            Combat.DeathEvent.AddListener(HandleDeathEvent);
         }
     }
 
@@ -58,7 +57,6 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementDragonHealthUI);
-            Combat.DeathEvent.RemoveListener(HandleDeathEvent);
         }
     }
 
@@ -125,8 +123,9 @@ public class DragonPlayerController : PlayerController
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.DODGE, direction);
         }
     }
-    protected void HandleDeathEvent()
+    protected override void HandleDeathEvent()
     {
+        base.HandleDeathEvent();
         movement.CanLandOnGround = true;
         movement.ToggleGravity(true);
     }

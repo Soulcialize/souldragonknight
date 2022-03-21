@@ -19,6 +19,24 @@ public abstract class ActorController : MonoBehaviour
         return collider.GetComponentInParent<ActorController>();
     }
 
+    protected virtual void OnEnable()
+    {
+        if (photonView.IsMine)
+        {
+            Combat.HurtEvent.AddListener(HandleHurtEvent);
+            Combat.DeathEvent.AddListener(HandleDeathEvent);
+        }
+    }
+
+    protected virtual void OnDisable()
+    {
+        if (photonView.IsMine)
+        {
+            Combat.HurtEvent.RemoveListener(HandleHurtEvent);
+            Combat.DeathEvent.RemoveListener(HandleDeathEvent);
+        }
+    }
+
     protected virtual void Update()
     {
         if (photonView.IsMine)
@@ -39,4 +57,8 @@ public abstract class ActorController : MonoBehaviour
     {
         interactable.Interact(this);
     }
+
+    protected virtual void HandleHurtEvent() { }
+
+    protected virtual void HandleDeathEvent() { }
 }

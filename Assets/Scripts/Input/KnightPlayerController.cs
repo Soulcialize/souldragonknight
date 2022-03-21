@@ -50,7 +50,6 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
-            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -61,7 +60,6 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
-            Combat.DeathEvent.AddListener(movement.Dismount);
         }
     }
 
@@ -136,5 +134,11 @@ public class KnightPlayerController : PlayerController
                 movement.Dismount();
             }
         }
+    }
+
+    protected override void HandleDeathEvent()
+    {
+        base.HandleDeathEvent();
+        movement.Dismount();
     }
 }
