@@ -18,6 +18,13 @@ public class PlayerSpawner : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private CinemachineVirtualCamera CVCamera;
+    [SerializeField] private float knightCameraSize;
+    [SerializeField] private float dragonCameraSize;
+
+    public static PlayerType GetLocalPlayerType()
+    {
+        return (PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY];
+    }
 
     private void Start()
     {
@@ -28,23 +35,19 @@ public class PlayerSpawner : MonoBehaviour
     {
         var knightObj = PhotonNetwork.Instantiate(knightPrefab.name, knightSpawnPoint.position, knightPrefab.transform.rotation);
         CVCamera.m_Follow = knightObj.transform;
-        
-        // TODO: consider doing this stuff in other scripts
-        // BackgroundManager.Instance.ActivateSoulWorldBackground();
+        CVCamera.m_Lens.OrthographicSize = knightCameraSize;
     }
 
     private void SpawnDragon()
     {
         var dragonObj = PhotonNetwork.Instantiate(dragonPrefab.name, dragonSpawnPoint.position, dragonPrefab.transform.rotation);
         CVCamera.m_Follow = dragonObj.transform;
-
-        // TODO: consider doing this stuff in other scripts
-        // BackgroundManager.Instance.ActivateRealWorldBackground();
+        CVCamera.m_Lens.OrthographicSize = dragonCameraSize;
     }
     
     private void SpawnPlayer()
     {
-        SpawnPlayer((PlayerType)PhotonNetwork.LocalPlayer.CustomProperties[PLAYER_PROPERTIES_TYPE_KEY]);
+        SpawnPlayer(GetLocalPlayerType());
     }
 
     private void SpawnPlayer(PlayerType playerType)

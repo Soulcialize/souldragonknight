@@ -6,12 +6,12 @@ namespace GroundMovementStates
 {
     public class GroundedState : GroundMovementState
     {
-        public GroundedState(GroundMovement owner) : base(owner) { }
-
         private bool isMoveRequestPending = false;
         private float horizontalMoveDirection = 0f;
 
         private bool isJumpRequestPending = false;
+
+        public GroundedState(GroundMovement owner) : base(owner) { }
 
         public override void Enter()
         {

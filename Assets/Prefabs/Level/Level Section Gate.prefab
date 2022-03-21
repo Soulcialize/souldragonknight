@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 701699577812941087}
   - component: {fileID: 701699577812941084}
   - component: {fileID: 2279106431740796672}
-  m_Layer: 6
+  m_Layer: 17
   m_Name: Level Section Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 701699577812941082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 9, z: 1}
+  m_LocalScale: {x: 0.5, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 701699577812941082}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 01a182dbd5fb333469fe5409c8543b9b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b97a0fafe852949b450aa907fe9146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raisedHeight: 8
+  raisedHeight: 10
   speed: 5

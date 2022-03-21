@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
-  m_Color: {r: 0.99039525, g: 0.051886797, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7137255, b: 0.011764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -264,8 +264,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.96470594, g: 0.050980397, b: 0.9725491, a: 1}
-      key1: {r: 0.96470594, g: 0.050980397, b: 0.9725491, a: 1}
+      key0: {r: 0, g: 0.7137255, b: 0.011764707, a: 1}
+      key1: {r: 0, g: 0.7137255, b: 0.011764707, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfacesLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
 --- !u!1 &2580839893817942653
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
   defaultStoppingDistanceFromNavTargets: 1.4
   spriteRenderer: {fileID: 8614387502859579257}
   horizontalMoveSpeed: 8
+  airborneHorizontalMoveSpeed: 1
   jumpForce: 12
   maxReachableHeight: 2
   mountAnimatorOverride: {fileID: 0}

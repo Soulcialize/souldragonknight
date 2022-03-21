@@ -73,7 +73,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 2451902509671687101}
   collider2d: {fileID: 3621335486857536193}
   speed: 20
-  maxDistance: 20
+  maxDistance: 100
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 64

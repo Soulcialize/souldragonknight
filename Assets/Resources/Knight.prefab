@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfacesLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
 --- !u!1 &4315458086179539006
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +394,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b63d5e30-8985-43bd-9b4a-8de3ff399e42
     m_ActionName: Air/RangedAttackDown[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 201b485e-954a-41ac-924a-26cff286f9ba
+    m_ActionName: Ground/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
@@ -437,6 +441,7 @@ MonoBehaviour:
   defaultStoppingDistanceFromNavTargets: 1.4
   spriteRenderer: {fileID: 7134467020418318920}
   horizontalMoveSpeed: 8
+  airborneHorizontalMoveSpeed: 1
   jumpForce: 12
   maxReachableHeight: 2
   mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}

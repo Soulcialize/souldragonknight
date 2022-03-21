@@ -28,8 +28,9 @@ public class LevelSectionGate : MonoBehaviour
         Vector2 startPos = gateTransform.position;
         Vector2 finalPos = (Vector2)gateTransform.position + Vector2.up * raisedHeight;
 
-        float timeTaken = raisedHeight - gateTransform.position.y;
+        float timeTaken = raisedHeight / speed;
         float elapsedTime = 0f;
+
         while (elapsedTime < timeTaken)
         {
             gateTransform.position = Vector2.Lerp(startPos, finalPos, elapsedTime / timeTaken);
