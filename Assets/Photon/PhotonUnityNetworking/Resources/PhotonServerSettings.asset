@@ -75,6 +75,9 @@ MonoBehaviour:
   - RPC_RequestRestart
   - RPC_UpdateMessage
   - RPC_ResetMessage
+  - RPC_SetLayer
+  - RPC_SetCollisionLayer
+  - RPC_SetSpriteRendererLayer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

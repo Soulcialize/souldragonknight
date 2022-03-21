@@ -44,6 +44,9 @@ TagManager:
   - name: Environment
     uniqueID: 2997534731
     locked: 0
+  - name: Dead
+    uniqueID: 2712896493
+    locked: 0
   - name: Dragon
     uniqueID: 4215315617
     locked: 0

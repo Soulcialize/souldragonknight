@@ -268,6 +268,8 @@ GameObject:
   - component: {fileID: 5696632616774609734}
   - component: {fileID: 5696632616774609753}
   - component: {fileID: 5696632616774609755}
+  - component: {fileID: 2826182381347841401}
+  - component: {fileID: 4469721297075192466}
   - component: {fileID: 8730972490635118285}
   - component: {fileID: 6669902685249964190}
   - component: {fileID: 4584270387848782332}
@@ -403,6 +405,34 @@ MonoBehaviour:
   m_DefaultActionMap: Ground
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2826182381347841401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96772129f1004d489817ce7d2d4f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
+  spriteRenderer: {fileID: 7134467020418318920}
+--- !u!114 &4469721297075192466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e182f8533928a4789c2913e93e8e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5696632616774609759}
+  collider2d: {fileID: 5003391959657003033}
 --- !u!114 &8730972490635118285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,13 +467,15 @@ MonoBehaviour:
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
   groundDetector: {fileID: 2344377606277045393}
+  movementSpeedData: {fileID: 11400000, guid: b75da31e1a29f254b90df195960a4400, type: 2}
+  defaultMovementMode: 1
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
-  spriteRenderer: {fileID: 7134467020418318920}
-  horizontalMoveSpeed: 8
-  airborneHorizontalMoveSpeed: 1
+  navFastDistanceThreshold: 6
+  spriteLayer: {fileID: 2826182381347841401}
   jumpForce: 12
-  maxReachableHeight: 2
+  airborneHorizontalMoveSpeed: 1
+  maxReachableHeight: 0.56
   mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}
 --- !u!114 &4584270387848782332
 MonoBehaviour:
@@ -461,6 +493,8 @@ MonoBehaviour:
   collider2d: {fileID: 5003391959657003033}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
+  spriteLayer: {fileID: 2826182381347841401}
+  collisionLayer: {fileID: 4469721297075192466}
   movement: {fileID: 6669902685249964190}
   attackEffectLayer:
     serializedVersion: 2
@@ -667,7 +701,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -754,6 +788,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isBlockingHit
+  - Type: 4
+    SynchronizeType: 2
+    Name: isWalking
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

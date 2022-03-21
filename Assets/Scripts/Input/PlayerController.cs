@@ -27,8 +27,9 @@ public abstract class PlayerController : ActorController
         menuAction = playerInput.actions["Menu"];
     }
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (photonView.IsMine)
         {
             BindGeneralInputActionHandlers();
@@ -39,8 +40,9 @@ public abstract class PlayerController : ActorController
         }
     }
 
-    protected virtual void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         if (photonView.IsMine)
         {
             UnbindGeneralInputActionHandlers();

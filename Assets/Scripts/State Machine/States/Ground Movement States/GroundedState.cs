@@ -8,6 +8,7 @@ namespace GroundMovementStates
     {
         private bool isMoveRequestPending = false;
         private float horizontalMoveDirection = 0f;
+        private string currentMovementModeAnimatorParameter;
 
         private bool isJumpRequestPending = false;
 
@@ -16,6 +17,7 @@ namespace GroundMovementStates
         public override void Enter()
         {
             UpdateHorizontalMovement(owner.CachedMovementDirection.x);
+            UpdateMovementMode(owner.MovementMode);
         }
 
         public override void Execute()
@@ -33,8 +35,8 @@ namespace GroundMovementStates
             else if (isMoveRequestPending)
             {
                 isMoveRequestPending = false;
-                owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection * owner.HorizontalMoveSpeed, owner.Rigidbody2d.velocity.y);
-                owner.Animator.SetBool("isRunning", horizontalMoveDirection != 0f);
+                owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection * owner.MovementSpeed, owner.Rigidbody2d.velocity.y);
+                owner.Animator.SetBool(currentMovementModeAnimatorParameter, horizontalMoveDirection != 0f);
                 owner.FlipDirection(horizontalMoveDirection);
             }
         }
@@ -48,6 +50,35 @@ namespace GroundMovementStates
         {
             isMoveRequestPending = true;
             horizontalMoveDirection = Mathf.Clamp(direction, -1f, 1f);
+        }
+
+        public void UpdateMovementMode(MovementSpeedData.Mode mode)
+        {
+            string prevParameter = currentMovementModeAnimatorParameter;
+
+            // update movement animator parameter
+            switch (mode)
+            {
+                case MovementSpeedData.Mode.SLOW:
+                    currentMovementModeAnimatorParameter = "isWalking";
+                    break;
+                case MovementSpeedData.Mode.FAST:
+                    currentMovementModeAnimatorParameter = "isRunning";
+                    break;
+                default:
+                    throw new System.ArgumentException(
+                        $"{System.Enum.GetName(typeof(MovementSpeedData.Mode), mode)} not supported");
+            }
+
+            // update animator state
+            if (horizontalMoveDirection != 0f)
+            {
+                owner.Animator.SetBool(currentMovementModeAnimatorParameter, true);
+                if (prevParameter != null)
+                {
+                    owner.Animator.SetBool(prevParameter, false);
+                }
+            }
         }
 
         public void PostJumpRequest()

@@ -42,6 +42,16 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
+            bool isDistanceGreaterThanWalkThreshold = distanceToTarget > ownerMovement.NavTargetWalkDistanceThreshold;
+            if (ownerMovement.MovementMode == MovementSpeedData.Mode.SLOW && isDistanceGreaterThanWalkThreshold)
+            {
+                ownerMovement.SetMovementMode(MovementSpeedData.Mode.FAST);
+            }
+            else if (ownerMovement.MovementMode == MovementSpeedData.Mode.FAST && !isDistanceGreaterThanWalkThreshold)
+            {
+                ownerMovement.SetMovementMode(MovementSpeedData.Mode.SLOW);
+            }
+
             ownerMovement.UpdateMovement(navTargetPos - currentPos);
             return NodeState.RUNNING;
         }

@@ -25,7 +25,7 @@ public class Buff : MonoBehaviour
 
     [SerializeField] private PhotonView photonView;
 
-    public bool IsBuffed { get; set; }
+    public bool IsBuffed { get; private set; }
 
     private void Update()
     {

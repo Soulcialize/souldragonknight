@@ -13,7 +13,6 @@ public class AirMovement : Movement
 
     private AirMovementStateMachine movementStateMachine;
 
-    public float MovementSpeed { get => movementSpeed; }
     public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
 
     public bool IsGravityEnabled { get; private set; }
@@ -24,16 +23,6 @@ public class AirMovement : Movement
     {
         base.Awake();
         movementStateMachine = new AirMovementStateMachine();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
     }
 
     protected override void Start()
@@ -49,6 +38,14 @@ public class AirMovement : Movement
         {
             airborneState.UpdateHorizontalMovement(direction.x);
             airborneState.UpdateVerticalMovement(direction.y);
+        }
+    }
+
+    public override void SetMovementMode(MovementSpeedData.Mode mode)
+    {
+        if (MovementStateMachine.CurrState is AirborneState)
+        {
+            MovementMode = mode;
         }
     }
 

@@ -176,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1327025917
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0.6698113, g: 0.25591847, b: 0.25591847, a: 1}
@@ -260,6 +260,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isDead
+  - Type: 4
+    SynchronizeType: 2
+    Name: isWalking
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -273,6 +276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5693331145748344923}
   - component: {fileID: 5693331145748344916}
+  - component: {fileID: 693705184267070998}
+  - component: {fileID: 8833465501210280286}
   - component: {fileID: 5693331145748344919}
   - component: {fileID: 5693331145748344913}
   - component: {fileID: 7568959259614269199}
@@ -329,6 +334,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &693705184267070998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693331145748344921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96772129f1004d489817ce7d2d4f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5693331145748344914}
+  spriteRenderer: {fileID: 5570463013405397102}
+--- !u!114 &8833465501210280286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693331145748344921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e182f8533928a4789c2913e93e8e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5693331145748344914}
+  collider2d: {fileID: 8342237615520396707}
 --- !u!114 &5693331145748344919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,13 +396,15 @@ MonoBehaviour:
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 3091961783657160481}
   groundDetector: {fileID: 5693331146666542379}
+  movementSpeedData: {fileID: 11400000, guid: 95b2385f7c65c924cb2fb6631bf63255, type: 2}
+  defaultMovementMode: 0
   isDefaultFacingRight: 0
   defaultStoppingDistanceFromNavTargets: 1.4
-  spriteRenderer: {fileID: 5570463013405397102}
-  horizontalMoveSpeed: 8
-  airborneHorizontalMoveSpeed: 1
+  navFastDistanceThreshold: 6
+  spriteLayer: {fileID: 693705184267070998}
   jumpForce: 12
-  maxReachableHeight: 2
+  airborneHorizontalMoveSpeed: 1
+  maxReachableHeight: 0.56
   mountAnimatorOverride: {fileID: 0}
 --- !u!114 &7568959259614269199
 MonoBehaviour:
@@ -387,6 +422,8 @@ MonoBehaviour:
   collider2d: {fileID: 8342237615520396707}
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 3091961783657160481}
+  spriteLayer: {fileID: 693705184267070998}
+  collisionLayer: {fileID: 8833465501210280286}
   movement: {fileID: 5693331145748344913}
   attackEffectLayer:
     serializedVersion: 2

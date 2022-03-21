@@ -202,7 +202,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -79651679
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300038, guid: 300ea1a5869382b43bf6149aba92c4db, type: 3}
   m_Color: {r: 0, g: 0.7137255, b: 0.011764707, a: 1}
@@ -340,6 +340,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6640825776839569102}
   - component: {fileID: 6640825776839569096}
+  - component: {fileID: 8417316841493555386}
+  - component: {fileID: 9143107644789676115}
   - component: {fileID: 6640825776839568948}
   - component: {fileID: 6640825776839569099}
   - component: {fileID: 7213589635427211298}
@@ -396,6 +398,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8417316841493555386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96772129f1004d489817ce7d2d4f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
+  spriteRenderer: {fileID: 3585087225862758697}
+--- !u!114 &9143107644789676115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e182f8533928a4789c2913e93e8e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 6640825776839568949}
+  collider2d: {fileID: 6758016192082639341}
 --- !u!114 &6640825776839568948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,9 +460,12 @@ MonoBehaviour:
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 5540462038900781736}
   groundDetector: {fileID: 791881558941451881}
+  movementSpeedData: {fileID: 11400000, guid: 08485bd91ab59254892666caae2310e9, type: 2}
+  defaultMovementMode: 0
   isDefaultFacingRight: 0
   defaultStoppingDistanceFromNavTargets: 0.91
-  movementSpeed: 4
+  navFastDistanceThreshold: 8
+  movementSpeed: 2
   canLandOnGround: 0
 --- !u!114 &7213589635427211298
 MonoBehaviour:
@@ -450,6 +483,8 @@ MonoBehaviour:
   collider2d: {fileID: 6758016192082639341}
   rigidbody2d: {fileID: 6640825776839569096}
   animator: {fileID: 5540462038900781736}
+  spriteLayer: {fileID: 8417316841493555386}
+  collisionLayer: {fileID: 9143107644789676115}
   movement: {fileID: 6640825776839569099}
   attackEffectLayer:
     serializedVersion: 2

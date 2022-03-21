@@ -21,12 +21,16 @@ public class Combat : MonoBehaviour
     [SerializeField] protected Collider2D collider2d;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected SpriteLayer spriteLayer;
+    [SerializeField] protected CollisionLayer collisionLayer;
     [SerializeField] protected Movement movement;
-    [SerializeField] private LayerMask attackEffectLayer;
-    [SerializeField] private List<SerializedCombatAbility> combatAbilities;
+
+    [Space(10)]
 
     [Header("Combat Stats")]
 
+    [SerializeField] private LayerMask attackEffectLayer;
+    [SerializeField] private List<SerializedCombatAbility> combatAbilities;
     [SerializeField] private Health health;
     [SerializeField] private Buff buff;
     
@@ -49,8 +53,10 @@ public class Combat : MonoBehaviour
     public Collider2D Collider2d { get => collider2d; }
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
-    public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
+    public SpriteLayer SpriteLayer { get => spriteLayer; }
+    public CollisionLayer CollisionLayer { get => collisionLayer; }
 
+    public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
     public Health Health { get => health; }
 
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
@@ -126,8 +132,6 @@ public class Combat : MonoBehaviour
 
     public void HandleAttackHit(Combat attacker)
     {
-        attacker.Debuff();
-
         Vector2 attackerPosition = attacker.transform.position;
         if (photonView.IsMine)
         {
