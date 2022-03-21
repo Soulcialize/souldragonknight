@@ -130,8 +130,6 @@ public class Combat : MonoBehaviour
 
     public void HandleAttackHit(Combat attacker)
     {
-        attacker.Debuff();
-
         Vector2 attackerPosition = attacker.transform.position;
         if (photonView.IsMine)
         {

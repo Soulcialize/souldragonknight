@@ -26,6 +26,7 @@ namespace CombatStates
                 ActorController actorHit = ActorController.GetActorFromCollider(hit);
                 if (actorHit != null)
                 {
+                    owner.Debuff();
                     actorHit.Combat.HandleAttackHit(owner);
                     continue;
                 }

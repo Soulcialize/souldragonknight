@@ -15,6 +15,8 @@ namespace CombatStates
         {
             Debug.Log($"{owner.gameObject.name} died");
 
+            owner.Debuff();
+
             originalCollisionLayer = owner.Collider2d.gameObject.layer;
             owner.Collider2d.gameObject.layer = LayerMask.NameToLayer("Dead");
 
