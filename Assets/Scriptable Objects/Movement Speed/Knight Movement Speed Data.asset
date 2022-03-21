@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modesSpeedData:
   - movementMode: 0
-    speed: 4
+    speed: 2
   - movementMode: 1
     speed: 8

@@ -539,6 +539,7 @@ MonoBehaviour:
   defaultMovementMode: 0
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
+  navFastDistanceThreshold: 8
   movementSpeed: 2
   canLandOnGround: 0
 --- !u!114 &1860061280274303189

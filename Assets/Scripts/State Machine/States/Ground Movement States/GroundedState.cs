@@ -56,6 +56,7 @@ namespace GroundMovementStates
         {
             string prevParameter = currentMovementModeAnimatorParameter;
 
+            // update movement animator parameter
             switch (mode)
             {
                 case MovementSpeedData.Mode.SLOW:
@@ -69,10 +70,14 @@ namespace GroundMovementStates
                         $"{System.Enum.GetName(typeof(MovementSpeedData.Mode), mode)} not supported");
             }
 
+            // update animator state
             if (horizontalMoveDirection != 0f)
             {
                 owner.Animator.SetBool(currentMovementModeAnimatorParameter, true);
-                owner.Animator.SetBool(prevParameter, false);
+                if (prevParameter != null)
+                {
+                    owner.Animator.SetBool(prevParameter, false);
+                }
             }
         }
 

@@ -22,6 +22,8 @@ public abstract class Movement : MonoBehaviour
 
     [SerializeField] private bool isDefaultFacingRight = true;
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
+    [Tooltip("Distance to a navigation target beyond which the actor will move faster.")]
+    [SerializeField] private float navFastDistanceThreshold;
 
     private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
 
@@ -29,6 +31,7 @@ public abstract class Movement : MonoBehaviour
     public Animator Animator { get => animator; }
     public SurfaceDetector GroundDetector { get => groundDetector; }
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
+    public float NavTargetWalkDistanceThreshold { get => navFastDistanceThreshold; }
 
     public bool IsFacingRight { get => transform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }

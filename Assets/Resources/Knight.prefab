@@ -471,6 +471,7 @@ MonoBehaviour:
   defaultMovementMode: 1
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
+  navFastDistanceThreshold: 6
   spriteLayer: {fileID: 2826182381347841401}
   jumpForce: 12
   airborneHorizontalMoveSpeed: 1
