@@ -10,8 +10,6 @@ public class GroundMovement : Movement
     [Header("Ground Movement")]
 
     [SerializeField] private SpriteLayer spriteLayer;
-    [SerializeField] private MovementSpeedData movementSpeedData;
-    [SerializeField] private MovementSpeedData.Mode defaultMovementMode;
     [SerializeField] private float jumpForce;
     [Tooltip("The horizontal velocity an actor can move while airborne (on top of whatever horizontal velocity they started with before being airborne).")]
     [SerializeField] private float airborneHorizontalMoveSpeed;
@@ -22,7 +20,6 @@ public class GroundMovement : Movement
 
     [SerializeField] private AnimatorOverrideController mountAnimatorOverride;
 
-    private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
     private RuntimeAnimatorController defaultAnimatorController;
     private GroundMovementStateMachine movementStateMachine;
 
@@ -30,16 +27,11 @@ public class GroundMovement : Movement
     public float AirborneHorizontalMoveSpeed { get => airborneHorizontalMoveSpeed; }
     public float MaxReachableHeight { get => maxReachableHeight; }
 
-    public MovementSpeedData.Mode MovementMode { get; set; }
-    public float HorizontalMoveSpeed { get => movementModeToSpeedDictionary[MovementMode]; }
-
     public override MovementStateMachine MovementStateMachine { get => movementStateMachine; }
 
     protected override void Awake()
     {
         base.Awake();
-        MovementMode = defaultMovementMode;
-        movementModeToSpeedDictionary = movementSpeedData.GetModeToSpeedDictionary();
         movementStateMachine = new GroundMovementStateMachine();
     }
 
@@ -67,11 +59,6 @@ public class GroundMovement : Movement
         {
             airborneState.UpdateHorizontalMovement(direction.x);
         }
-    }
-
-    public float GetMovementSpeedForMode(MovementSpeedData.Mode mode)
-    {
-        return movementModeToSpeedDictionary[mode];
     }
 
     public void Jump()

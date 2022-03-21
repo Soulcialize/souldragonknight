@@ -7,8 +7,8 @@ public class MovementSpeedData : ScriptableObject
 {
     public enum Mode
     {
-        WALK,
-        RUN
+        SLOW,
+        FAST
     }
 
     [System.Serializable]

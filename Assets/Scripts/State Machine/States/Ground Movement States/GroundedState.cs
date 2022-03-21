@@ -33,7 +33,7 @@ namespace GroundMovementStates
             else if (isMoveRequestPending)
             {
                 isMoveRequestPending = false;
-                owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection * owner.HorizontalMoveSpeed, owner.Rigidbody2d.velocity.y);
+                owner.Rigidbody2d.velocity = new Vector2(horizontalMoveDirection * owner.MovementSpeed, owner.Rigidbody2d.velocity.y);
                 owner.Animator.SetBool("isRunning", horizontalMoveDirection != 0f);
                 owner.FlipDirection(horizontalMoveDirection);
             }

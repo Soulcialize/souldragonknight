@@ -13,7 +13,6 @@ public class AirMovement : Movement
 
     private AirMovementStateMachine movementStateMachine;
 
-    public float MovementSpeed { get => movementSpeed; }
     public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
 
     public bool IsGravityEnabled { get; private set; }

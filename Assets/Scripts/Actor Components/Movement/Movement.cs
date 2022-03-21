@@ -12,8 +12,18 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SurfaceDetector groundDetector;
+
+    [Space(10)]
+
+    [SerializeField] protected MovementSpeedData movementSpeedData;
+    [SerializeField] protected MovementSpeedData.Mode defaultMovementMode;
+
+    [Space(10)]
+
     [SerializeField] private bool isDefaultFacingRight = true;
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
+
+    private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
@@ -23,9 +33,16 @@ public abstract class Movement : MonoBehaviour
     public bool IsFacingRight { get => transform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
+    public MovementSpeedData.Mode MovementMode { get; set; }
+    public float MovementSpeed { get => movementModeToSpeedDictionary[MovementMode]; }
+
     public abstract MovementStateMachine MovementStateMachine { get; }
 
-    protected virtual void Awake() { }
+    protected virtual void Awake()
+    {
+        MovementMode = defaultMovementMode;
+        movementModeToSpeedDictionary = movementSpeedData.GetModeToSpeedDictionary();
+    }
 
     protected virtual void OnEnable() { }
 
@@ -37,6 +54,11 @@ public abstract class Movement : MonoBehaviour
     }
 
     public abstract void UpdateMovement(Vector2 direction);
+
+    public float GetMovementSpeedForMode(MovementSpeedData.Mode mode)
+    {
+        return movementModeToSpeedDictionary[mode];
+    }
 
     public void FlipDirection(float toDirection)
     {

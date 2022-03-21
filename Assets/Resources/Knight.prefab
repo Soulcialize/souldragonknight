@@ -467,12 +467,13 @@ MonoBehaviour:
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
   groundDetector: {fileID: 2344377606277045393}
+  movementSpeedData: {fileID: 11400000, guid: b75da31e1a29f254b90df195960a4400, type: 2}
+  defaultMovementMode: 1
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
   spriteLayer: {fileID: 2826182381347841401}
-  movementSpeedData: {fileID: 11400000, guid: 95b2385f7c65c924cb2fb6631bf63255, type: 2}
-  defaultMovementMode: 1
   jumpForce: 12
+  airborneHorizontalMoveSpeed: 1
   maxReachableHeight: 0.56
   mountAnimatorOverride: {fileID: 22100000, guid: 154a2733ec3426c468a27533e649c874, type: 2}
 --- !u!114 &4584270387848782332
