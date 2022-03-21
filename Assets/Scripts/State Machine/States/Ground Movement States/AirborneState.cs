@@ -15,7 +15,7 @@ namespace GroundMovementStates
 
         public AirborneState(GroundMovement owner) : base(owner)
         {
-            maxHorizontalSpeed = owner.HorizontalMoveSpeed + owner.AirborneHorizontalMoveSpeed;
+            maxHorizontalSpeed = owner.HorizontalMoveSpeed;
         }
 
         public override void Enter()
