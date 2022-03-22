@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using GroundMovementStates;
 using Photon.Pun;
 
 public class MountInteractable : Interactable
 {
-    [SerializeField] private PhotonView photonView;
-    
-    [Space(10)]
-
     [SerializeField] private Transform mount;
     [SerializeField] private Movement mountMovement;
     [SerializeField] private Vector2 localOffset;
@@ -28,24 +23,27 @@ public class MountInteractable : Interactable
 
     private GroundMovement currentRiderMovement = null;
 
+    public override Interaction InteractableInteraction { get => Interaction.MOUNT; }
+
     public override void Interact(ActorController initiator)
     {
-        if (initiator.Movement is GroundMovement groundMovement)
+        if (!IsEnabled || !(initiator.Movement is GroundMovement groundMovement))
         {
-            if (groundMovement.MovementStateMachine.CurrState is MountedState)
-            {
-                // dismount
-                currentRiderMovement = null;
-                groundMovement.Dismount();
-                photonView.RPC("RPC_Dismount", RpcTarget.Others);
-            }
-            else
-            {
-                // mount
-                currentRiderMovement = groundMovement;
-                groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
-                photonView.RPC("RPC_Mount", RpcTarget.Others);
-            }
+            return;
+        }
+
+        if (initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
+        {
+            currentRiderMovement = null;
+            groundMovement.Dismount();
+            photonView.RPC("RPC_Dismount", RpcTarget.Others);
+        }
+        else
+        {
+            // mount
+            currentRiderMovement = groundMovement;
+            groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
+            photonView.RPC("RPC_Mount", RpcTarget.Others);
         }
     }
 

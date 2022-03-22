@@ -6,8 +6,6 @@ namespace CombatStates
 {
     public class DeathState : CombatState
     {
-        private int originalCollisionLayer;
-
         public DeathState(Combat owner) : base(owner) { }
 
         public override void Enter()
@@ -27,8 +25,6 @@ namespace CombatStates
 
         public override void Exit()
         {
-            owner.CollisionLayer.ResetLayer();
-            owner.SpriteLayer.ResetLayer();
             owner.Animator.SetBool("isDead", false);
         }
     }
