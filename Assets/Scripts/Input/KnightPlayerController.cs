@@ -15,6 +15,7 @@ public class KnightPlayerController : PlayerController
     private InputAction interactAction;
 
     private HealthUI healthUI;
+    private ConsumableResourceUI staminaUI;
 
     private float movementInput = 0f;
 
@@ -30,7 +31,8 @@ public class KnightPlayerController : PlayerController
         blockEndAction = playerInput.actions["BlockEnd"];
         interactAction = playerInput.actions["Interact"];
 
-        healthUI = GameObject.FindObjectOfType<HealthUI>();
+        healthUI = FindObjectOfType<HealthUI>();
+        staminaUI = FindObjectOfType<ConsumableResourceUI>();
     }
 
     protected override void FixedUpdate()
@@ -49,6 +51,8 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
+            Combat.Resource.ConsumeResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
+            Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
         }
     }
 

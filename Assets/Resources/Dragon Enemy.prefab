@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 0
   isReadyRequired: 1
   readyDuration: 2
   attackEffectArea: {fileID: 7280965100743785369}
@@ -347,6 +348,7 @@ GameObject:
   - component: {fileID: 7213589635427211298}
   - component: {fileID: 7404829110624881476}
   - component: {fileID: 5584288266804474021}
+  - component: {fileID: 4282329958813357994}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
@@ -493,6 +495,7 @@ MonoBehaviour:
     ability: {fileID: 458767237906566525}
   health: {fileID: 5584288266804474021}
   buff: {fileID: 0}
+  resource: {fileID: 4282329958813357994}
   wallCollisionDetector: {fileID: 8923394087307039422}
   knockbackSpeed: 0
   knockbackDistance: 0
@@ -537,6 +540,26 @@ MonoBehaviour:
   updateHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4282329958813357994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3eeb8de5d62be4c97b07611d0d6219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 0
+  regenerateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  consumeResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 6640825776839568949}
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0

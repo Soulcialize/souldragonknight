@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 2080431000792514480}
   - component: {fileID: 1860061280274303189}
   - component: {fileID: 4948305080866607028}
+  - component: {fileID: 2369876310287700112}
   - component: {fileID: 8145762069085459480}
   - component: {fileID: 2315394145704112158}
   - component: {fileID: 2072683001291248131}
@@ -541,7 +542,6 @@ MonoBehaviour:
   defaultStoppingDistanceFromNavTargets: 1.4
   navFastDistanceThreshold: 8
   movementSpeed: 2
-  canLandOnGround: 0
 --- !u!114 &1860061280274303189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +569,7 @@ MonoBehaviour:
     ability: {fileID: 7085852033703407569}
   health: {fileID: 4948305080866607028}
   buff: {fileID: 0}
+  resource: {fileID: 2369876310287700112}
   wallCollisionDetector: {fileID: 276739738191126824}
   knockbackSpeed: 0
   knockbackDistance: 0
@@ -579,6 +580,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  reviveEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4948305080866607028
@@ -594,6 +598,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
+  updateHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2369876310287700112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861795074019271563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3eeb8de5d62be4c97b07611d0d6219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 0
+  regenerateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  consumeResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 2315394145704112158}
 --- !u!114 &8145762069085459480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 0
   maxRange: 5
   readyDuration: 4
   timeToLock: 3

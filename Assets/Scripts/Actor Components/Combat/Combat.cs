@@ -33,7 +33,8 @@ public class Combat : MonoBehaviour
     [SerializeField] private List<SerializedCombatAbility> combatAbilities;
     [SerializeField] private Health health;
     [SerializeField] private Buff buff;
-    
+    [SerializeField] private ConsumableResource resource;
+
     [Header("Knockback")]
 
     [SerializeField] private SurfaceDetector wallCollisionDetector;
@@ -59,6 +60,7 @@ public class Combat : MonoBehaviour
 
     public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
     public Health Health { get => health; }
+    public ConsumableResource Resource { get => resource; }
 
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
     public float KnockbackSpeed { get => knockbackSpeed; }

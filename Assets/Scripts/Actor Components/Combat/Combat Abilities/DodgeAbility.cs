@@ -10,7 +10,12 @@ public class DodgeAbility : CombatAbility
 
     public override void Execute(Combat combat, params object[] parameters)
     {
-        Vector2 direction = (Vector2)parameters[0];
-        combat.CombatStateMachine.ChangeState(new DodgeState(combat, direction, speed, distance));
+        if (combat.Resource.CanConsume(resourceCost))
+        {
+            combat.Resource.Consume(resourceCost);
+
+            Vector2 direction = (Vector2)parameters[0];
+            combat.CombatStateMachine.ChangeState(new DodgeState(combat, direction, speed, distance));
+        }
     }
 }

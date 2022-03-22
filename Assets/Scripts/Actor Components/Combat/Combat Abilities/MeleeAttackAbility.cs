@@ -17,8 +17,9 @@ public class MeleeAttackAbility : CombatAbility
         {
             combat.CombatStateMachine.ChangeState(new ReadyAttackState(combat, readyDuration, ReadyCallback));
         }
-        else
+        else if (combat.Resource.CanConsume(resourceCost))
         {
+            combat.Resource.Consume(resourceCost);
             combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea));
         }
     }

@@ -696,7 +696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 5}
+  m_AnchoredPosition: {x: 35, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142514747
@@ -1258,6 +1258,7 @@ GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 331615082}
@@ -2275,7 +2276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 5}
+  m_AnchoredPosition: {x: 35, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875541708
@@ -2350,7 +2351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 5}
+  m_AnchoredPosition: {x: -20, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920739364
@@ -2490,7 +2491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 5}
+  m_AnchoredPosition: {x: 90, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991003313
@@ -3210,7 +3211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 5}
+  m_AnchoredPosition: {x: -20, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510196690
@@ -3419,7 +3420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 5}
+  m_AnchoredPosition: {x: 90, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532587116
@@ -3717,6 +3718,7 @@ GameObject:
   - component: {fileID: 1710262030}
   - component: {fileID: 1710262031}
   - component: {fileID: 1710262033}
+  - component: {fileID: 1710262034}
   - component: {fileID: 1710262032}
   m_Layer: 5
   m_Name: InGame_UI
@@ -3766,6 +3768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee6c381903ca1b44afd6f3888b595d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 1710262032}
   dragonHealthUI:
   - {fileID: 1510196688}
   - {fileID: 142514745}
@@ -3774,9 +3777,6 @@ MonoBehaviour:
   - {fileID: 920739362}
   - {fileID: 875541706}
   - {fileID: 991003311}
-  dragonHealth: 3
-  knightHealth: 3
-  photonView: {fileID: 1710262032}
 --- !u!114 &1710262032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,6 +3813,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 1710262032}
   textObject: {fileID: 208754547}
+--- !u!114 &1710262034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710262028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f7fc17b21a38840b578c95c6df0fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 1783460115}
+  manaBar: {fileID: 2068160359}
+  photonView: {fileID: 1710262032}
 --- !u!1 &1721524880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4013,6 +4028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783460113}
   - component: {fileID: 1783460114}
+  - component: {fileID: 1783460115}
   m_Layer: 5
   m_Name: Knight_Stamina
   m_TagString: Untagged
@@ -4088,10 +4104,23 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.42
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1783460115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783460112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae87fbc1df1e3469c3ac856cee896d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1783460114}
 --- !u!1 &1992689278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4196,8 +4225,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2068160357}
   - component: {fileID: 2068160358}
+  - component: {fileID: 2068160359}
   m_Layer: 5
-  m_Name: Dragon_Stamina
+  m_Name: Dragon_Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4271,7 +4301,20 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.872
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2068160359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068160356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae87fbc1df1e3469c3ac856cee896d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2068160358}

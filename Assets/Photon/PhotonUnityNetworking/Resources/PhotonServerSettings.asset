@@ -87,6 +87,10 @@ MonoBehaviour:
   - RPC_ToggleAllInteractables
   - RPC_EnableInteractable
   - RPC_SetInteractableIsEnabled
+  - RPC_RegenerateManaUI
+  - RPC_RegenerateStaminaUI
+  - RPC_UpdateManaUI
+  - RPC_UpdateStaminaUI
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

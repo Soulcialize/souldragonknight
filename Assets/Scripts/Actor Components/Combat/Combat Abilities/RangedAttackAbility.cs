@@ -36,8 +36,10 @@ public class RangedAttackAbility : CombatAbility
             combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(
                 combat, target, projectilePathDisplay, timeToLock, readyDuration, ReadyCallback));
         }
-        else
+        else if (combat.Resource.CanConsume(resourceCost))
         {
+            combat.Resource.Consume(resourceCost);
+
             Vector2 direction = (Vector2)parameters[0];
             combat.CombatStateMachine.ChangeState(new RangedAttackState(
                 combat, projectilePrefab, projectileOrigin, direction, combat.AttackEffectLayer, fireRangedProjectileEvent));
