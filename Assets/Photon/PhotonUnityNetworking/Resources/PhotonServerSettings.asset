@@ -81,6 +81,12 @@ MonoBehaviour:
   - RPC_Revive
   - RPC_UpdateDragonHealthUI
   - RPC_UpdateKnightHealthUI
+  - RPC_DismountRider
+  - RPC_MountRider
+  - RPC_SetIsEnabled
+  - RPC_ToggleAllInteractables
+  - RPC_EnableInteractable
+  - RPC_SetInteractableIsEnabled
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

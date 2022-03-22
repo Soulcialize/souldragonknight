@@ -42,6 +42,7 @@ public class DragonPlayerController : PlayerController
             movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
         }
     }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -143,7 +144,13 @@ public class DragonPlayerController : PlayerController
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
-        movement.CanLandOnGround = true;
         movement.ToggleGravity(true);
+    }
+
+    protected override void HandleReviveEvent()
+    {
+        base.HandleReviveEvent();
+        movement.ToggleGravity(false);
+        movement.TakeFlight();
     }
 }

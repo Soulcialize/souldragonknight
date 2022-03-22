@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6128370761676518506}
   - component: {fileID: 3417880824068493907}
+  - component: {fileID: 2350143408308583893}
   - component: {fileID: 795063247648489553}
   - component: {fileID: 642602536449024203}
   m_Layer: 13
@@ -170,6 +171,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.66, y: 1.66}
   m_EdgeRadius: 0
+--- !u!114 &2350143408308583893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633289788714468707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542294f93a6a85f42b8f56dd1a655ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 642602536449024203}
 --- !u!114 &795063247648489553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 642602536449024203}
+  isEnabledByDefault: 0
   combat: {fileID: 4584270387848782332}
 --- !u!114 &642602536449024203
 MonoBehaviour:
@@ -613,7 +628,34 @@ MonoBehaviour:
       m_Calls: []
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 795063247648489553}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetIsEnabledWithSync
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  reviveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 795063247648489553}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetIsEnabledWithSync
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5726660194417758549
 MonoBehaviour:
   m_ObjectHideFlags: 0

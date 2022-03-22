@@ -84,7 +84,7 @@ public class GroundMovement : Movement
         if (MovementStateMachine.CurrState is GroundedState || MovementStateMachine.CurrState is AirborneState)
         {
             MovementStateMachine.ChangeState(new MountedState(this, mountMovement));
-            photonView.RPC("RPC_Mount", RpcTarget.All,
+            photonView.RPC("RPC_MountRider", RpcTarget.All,
                 mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, mountedSortingLayer, mountedSortingLayerOrder);
         }
     }
@@ -94,12 +94,12 @@ public class GroundMovement : Movement
         if (MovementStateMachine.CurrState is MountedState)
         {
             MovementStateMachine.ChangeState(new AirborneState(this));
-            photonView.RPC("RPC_Dismount", RpcTarget.All);
+            photonView.RPC("RPC_DismountRider", RpcTarget.All);
         }
     }
 
     [PunRPC]
-    private void RPC_Mount(int mountViewId, float localOffsetX, float localOffsetY,
+    private void RPC_MountRider(int mountViewId, float localOffsetX, float localOffsetY,
         SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
         rigidbody2d.isKinematic = true;
@@ -114,7 +114,7 @@ public class GroundMovement : Movement
     }
 
     [PunRPC]
-    private void RPC_Dismount()
+    private void RPC_DismountRider()
     {
         transform.parent = null;
         rigidbody2d.isKinematic = false;

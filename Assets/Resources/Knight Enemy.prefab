@@ -445,6 +445,9 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
+  reviveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7653389214318838471
 MonoBehaviour:
   m_ObjectHideFlags: 0

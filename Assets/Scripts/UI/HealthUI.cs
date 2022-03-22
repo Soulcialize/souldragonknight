@@ -37,7 +37,6 @@ public class HealthUI : MonoBehaviour
     [PunRPC]
     private void RPC_UpdateKnightHealthUI(int currHealthPoints)
     {
-        print($"{currHealthPoints}");
         for (int i = 0; i < currHealthPoints; i++)
         {
             knightHealthUI[i].SetActive(true);

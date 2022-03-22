@@ -25,7 +25,6 @@ public class DragonEnemyController : EnemyController
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
-        movement.CanLandOnGround = true;
         movement.ToggleGravity(true);
     }
 }

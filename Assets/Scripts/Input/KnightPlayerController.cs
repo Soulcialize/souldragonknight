@@ -128,10 +128,6 @@ public class KnightPlayerController : PlayerController
             {
                 Interact(nearestInteractable);
             }
-            else if (movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
-            {
-                movement.Dismount();
-            }
         }
     }
 

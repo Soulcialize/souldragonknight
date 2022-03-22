@@ -24,6 +24,7 @@ namespace CombatStates
         {
             owner.CollisionLayer.ResetLayer();
             owner.Animator.SetBool("isReviving", false);
+            owner.ReviveEvent.Invoke();
         }
     }
 }

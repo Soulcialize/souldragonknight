@@ -466,7 +466,6 @@ MonoBehaviour:
   defaultStoppingDistanceFromNavTargets: 0.91
   navFastDistanceThreshold: 8
   movementSpeed: 2
-  canLandOnGround: 0
 --- !u!114 &7213589635427211298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +505,9 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
+  reviveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7404829110624881476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +534,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
+  updateHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0

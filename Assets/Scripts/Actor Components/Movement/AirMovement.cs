@@ -9,11 +9,8 @@ public class AirMovement : Movement
     [Header("Aerial Movement")]
 
     [SerializeField] private float movementSpeed;
-    [SerializeField] private bool canLandOnGround;
 
     private AirMovementStateMachine movementStateMachine;
-
-    public bool CanLandOnGround { get => canLandOnGround; set => canLandOnGround = value; }
 
     public bool IsGravityEnabled { get; private set; }
 
@@ -28,7 +25,7 @@ public class AirMovement : Movement
     protected override void Start()
     {
         base.Start();
-        MovementStateMachine.ChangeState(new AirborneState(this));
+        TakeFlight();
     }
 
     public override void UpdateMovement(Vector2 direction)
@@ -57,5 +54,10 @@ public class AirMovement : Movement
         {
             MovementStateMachine.ChangeState(new FallingState(this));
         }
+    }
+
+    public void TakeFlight()
+    {
+        MovementStateMachine.ChangeState(new AirborneState(this));
     }
 }
