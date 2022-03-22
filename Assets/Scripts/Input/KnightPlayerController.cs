@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class KnightPlayerController : PlayerController
 {
     [SerializeField] private GroundMovement movement;
-    [SerializeField] private InteractableDetector interactableDetector;
 
     private InputAction moveGroundAction;
     private InputAction jumpAction;
@@ -49,7 +48,7 @@ public class KnightPlayerController : PlayerController
 
         if (photonView.IsMine)
         {
-            Combat.Health.DecrementHealthEvent.AddListener(healthUI.DecrementKnightHealthUI);
+            Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
         }
     }
 
@@ -59,7 +58,7 @@ public class KnightPlayerController : PlayerController
 
         if (photonView.IsMine)
         {
-            Combat.Health.DecrementHealthEvent.RemoveListener(healthUI.DecrementKnightHealthUI);
+            Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateKnightHealthUI);
         }
     }
 

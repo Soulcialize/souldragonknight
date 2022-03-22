@@ -38,4 +38,12 @@ public class CombatAnimationEventHandler : MonoBehaviour
             combat.CombatStateMachine.Exit();
         }
     }
+
+    public void OnReviveEnd()
+    {
+        if (combat.CombatStateMachine.CurrState is ReviveState)
+        {
+            combat.CombatStateMachine.Exit();
+        }
+    }
 }

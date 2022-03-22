@@ -593,11 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d2f6eff6a7c9f4e8d0e3da4a091335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 1
-  decrementHealthEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  photonView: {fileID: 2315394145704112158}
+  maxHealthPoints: 1
 --- !u!114 &8145762069085459480
 MonoBehaviour:
   m_ObjectHideFlags: 0

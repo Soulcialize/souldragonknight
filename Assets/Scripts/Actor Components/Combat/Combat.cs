@@ -196,4 +196,9 @@ public class Combat : MonoBehaviour
             buff.RemoveBuff();
         }
     }
+
+    public void Revive()
+    {
+        CombatStateMachine.ChangeState(new ReviveState(this));
+    }
 }
