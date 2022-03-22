@@ -183,7 +183,7 @@ public class Combat : MonoBehaviour
 
     public void Buff()
     {
-        if (buff != null && !buff.IsBuffed)
+        if (buff != null)
         {
             buff.ApplyBuff();
         }
@@ -191,7 +191,7 @@ public class Combat : MonoBehaviour
 
     public void Debuff()
     {
-        if (buff != null && buff.IsBuffed)
+        if (buff != null)
         {
             buff.RemoveBuff();
         }
