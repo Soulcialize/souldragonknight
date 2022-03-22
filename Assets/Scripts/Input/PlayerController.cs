@@ -7,6 +7,7 @@ public abstract class PlayerController : ActorController
 {
     [SerializeField] protected PlayerInput playerInput;
     [SerializeField] protected List<string> persistentActionMaps = new List<string>();
+    [SerializeField] protected InteractableDetector interactableDetector;
 
     private InputAction menuAction;
 

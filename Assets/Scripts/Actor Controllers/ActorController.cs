@@ -25,6 +25,7 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.AddListener(HandleHurtEvent);
             Combat.DeathEvent.AddListener(HandleDeathEvent);
+            Combat.ReviveEvent.AddListener(HandleReviveEvent);
         }
     }
 
@@ -34,6 +35,7 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.RemoveListener(HandleHurtEvent);
             Combat.DeathEvent.RemoveListener(HandleDeathEvent);
+            Combat.ReviveEvent.RemoveListener(HandleReviveEvent);
         }
     }
 
@@ -61,4 +63,6 @@ public abstract class ActorController : MonoBehaviour
     protected virtual void HandleHurtEvent() { }
 
     protected virtual void HandleDeathEvent() { }
+
+    protected virtual void HandleReviveEvent() { }
 }

@@ -18,6 +18,11 @@ public class InteractableDetector : MonoBehaviour
         float nearestInteractableDistance = Mathf.Infinity;
         foreach (Interactable interactable in interactablesInRange)
         {
+            if (!interactable.IsEnabled)
+            {
+                continue;
+            }
+
             float distanceToInteractable = Vector2.Distance(currPosition, interactable.transform.position);
             if (distanceToInteractable < nearestInteractableDistance)
             {
@@ -31,8 +36,8 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Interactable interactable = collision.GetComponent<Interactable>();
-        if (interactable != null)
+        Interactable[] interactables = collision.GetComponents<Interactable>();
+        foreach (Interactable interactable in interactables)
         {
             interactablesInRange.Add(interactable);
         }
@@ -40,8 +45,8 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Interactable interactable = collision.GetComponent<Interactable>();
-        if (interactable != null)
+        Interactable[] interactables = collision.GetComponents<Interactable>();
+        foreach (Interactable interactable in interactables)
         {
             interactablesInRange.Remove(interactable);
         }

@@ -24,7 +24,6 @@ public class RangedKnightEnemyController : EnemyController
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
-        movement.CanLandOnGround = true;
         movement.ToggleGravity(true);
     }
 }

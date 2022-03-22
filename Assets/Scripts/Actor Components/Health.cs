@@ -2,33 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Photon.Pun;
-using Photon.Realtime;
+
+[System.Serializable]
+public class HealthUpdateEvent : UnityEvent<int> { }
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int healthPoints;
-    [SerializeField] private UnityEvent decrementHealthEvent;
-    [SerializeField] private PhotonView photonView;
+    [SerializeField] private int maxHealthPoints;
+    [SerializeField] private HealthUpdateEvent updateHealthEvent;
 
-    public int HealthPoints { get => healthPoints; }
+    public int CurrHealthPoints { get; private set; }
 
-    public UnityEvent DecrementHealthEvent { get => decrementHealthEvent; }
+    public HealthUpdateEvent UpdateHealthEvent { get => updateHealthEvent; }
+
+    private void Awake()
+    {
+        CurrHealthPoints = maxHealthPoints;
+    }
+
+    public void SetMax()
+    {
+        CurrHealthPoints = maxHealthPoints;
+        updateHealthEvent.Invoke(CurrHealthPoints);
+    }
 
     public void Decrement()
     {
-        photonView.RPC("RPC_Decrement", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void RPC_Decrement()
-    {
-        healthPoints = Mathf.Max(0, healthPoints - 1);
-        decrementHealthEvent.Invoke();
+        CurrHealthPoints = Mathf.Max(0, CurrHealthPoints - 1);
+        updateHealthEvent.Invoke(CurrHealthPoints);
     }
 
     public bool IsZero()
     {
-        return healthPoints == 0;
+        return CurrHealthPoints == 0;
     }
 }
