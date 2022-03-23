@@ -53,7 +53,7 @@ public class KnightPlayerController : PlayerController
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
             Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
             Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
-            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenManaUI);
+            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenStaminaUI);
         }
     }
 
@@ -64,6 +64,9 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateKnightHealthUI);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(staminaUI.UpdateStaminaUI);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(staminaUI.RegenerateStaminaUI);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(staminaUI.StopRegenStaminaUI);
         }
     }
 

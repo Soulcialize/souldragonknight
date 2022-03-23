@@ -65,6 +65,9 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateDragonHealthUI);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(manaUI.UpdateManaUI);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(manaUI.RegenerateManaUI);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(manaUI.StopRegenManaUI);
         }
     }
 

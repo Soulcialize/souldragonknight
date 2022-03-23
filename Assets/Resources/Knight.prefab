@@ -713,6 +713,9 @@ MonoBehaviour:
   updateResourceEvent:
     m_PersistentCalls:
       m_Calls: []
+  stopRegenResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
   photonView: {fileID: 5696632616774609759}
 --- !u!114 &4828491241966369471
 MonoBehaviour:
