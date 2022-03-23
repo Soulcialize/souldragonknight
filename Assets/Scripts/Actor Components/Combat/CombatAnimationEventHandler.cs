@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using CombatStates;
 
 public class CombatAnimationEventHandler : MonoBehaviour
 {
     [SerializeField] private Combat combat;
+
+    [Space(10)]
+
+    [SerializeField] private UnityEvent deathAnimationEndEvent;
 
     public void ExecuteAttackEffect()
     {
@@ -37,6 +42,11 @@ public class CombatAnimationEventHandler : MonoBehaviour
         {
             combat.CombatStateMachine.Exit();
         }
+    }
+
+    public void OnDeathEndEvent()
+    {
+        deathAnimationEndEvent.Invoke();
     }
 
     public void OnReviveEnd()
