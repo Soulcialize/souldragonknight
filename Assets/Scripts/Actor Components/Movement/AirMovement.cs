@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StateMachines;
 using AirMovementStates;
+using Photon.Pun;
 
 public class AirMovement : Movement
 {
@@ -44,6 +45,13 @@ public class AirMovement : Movement
         {
             MovementMode = mode;
         }
+    }
+
+    // This is here because Photon RPC calls don't check the parent class for the RPC method.
+    [PunRPC]
+    protected override void RPC_FlipDirection()
+    {
+        base.RPC_FlipDirection();
     }
 
     public void ToggleGravity(bool isEnabled)

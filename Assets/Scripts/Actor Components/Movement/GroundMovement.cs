@@ -70,6 +70,13 @@ public class GroundMovement : Movement
         }
     }
 
+    // This is here because Photon RPC calls don't check the parent class for the RPC method.
+    [PunRPC]
+    protected override void RPC_FlipDirection()
+    {
+        base.RPC_FlipDirection();
+    }
+
     public void Jump()
     {
         if (MovementStateMachine.CurrState is GroundedState groundedState)

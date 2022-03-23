@@ -12,6 +12,7 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SurfaceDetector groundDetector;
+    [SerializeField] private Transform actorTransform; // mainly used for flipping
 
     [Space(10)]
 
@@ -33,7 +34,7 @@ public abstract class Movement : MonoBehaviour
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
     public float NavTargetWalkDistanceThreshold { get => navFastDistanceThreshold; }
 
-    public bool IsFacingRight { get => transform.localScale.x > 0f; }
+    public bool IsFacingRight { get => actorTransform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
     public MovementSpeedData.Mode MovementMode { get; protected set; }
@@ -67,11 +68,10 @@ public abstract class Movement : MonoBehaviour
 
     public void FlipDirection(float toDirection)
     {
-        Vector3 localScale = transform.localScale;
+        Vector3 localScale = actorTransform.localScale;
         if (toDirection < 0f && localScale.x > 0f || toDirection > 0f && localScale.x < 0f)
         {
-            localScale.x = -localScale.x;
-            transform.localScale = localScale;
+            photonView.RPC("RPC_FlipDirection", RpcTarget.All);
         }
     }
 
@@ -90,5 +90,13 @@ public abstract class Movement : MonoBehaviour
                     $"{System.Enum.GetName(typeof(Direction), toDirection)} " +
                     "is not a valid direction to flip towards");
         }
+    }
+
+    // Needs to be flagged as [PunRPC] in concrete child class.
+    protected virtual void RPC_FlipDirection()
+    {
+        Vector3 localScale = actorTransform.localScale;
+        localScale.x = -localScale.x;
+        actorTransform.localScale = localScale;
     }
 }
