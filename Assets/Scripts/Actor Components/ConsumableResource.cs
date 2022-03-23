@@ -18,6 +18,7 @@ public class ConsumableResource : MonoBehaviour
 
     [SerializeField] private RegenerateResourceEvent regenerateResourceEvent;
     [SerializeField] private UpdateResourceEvent updateResourceEvent;
+    [SerializeField] private UnityEvent stopRegenResourceEvent;
     [SerializeField] private PhotonView photonView;
 
     private Coroutine regen;
@@ -26,6 +27,7 @@ public class ConsumableResource : MonoBehaviour
 
     public RegenerateResourceEvent RegenerateResourceEvent { get => regenerateResourceEvent; }
     public UpdateResourceEvent UpdateResourceEvent { get => updateResourceEvent; }
+    public UnityEvent StopRegenResourceEvent { get => stopRegenResourceEvent; }
 
     private void Start()
     {
@@ -46,24 +48,56 @@ public class ConsumableResource : MonoBehaviour
                 StopCoroutine(regen);
             }
 
-            regen = StartCoroutine(Regenerate());
+            regen = StartCoroutine(RegenerateWithDelay());
             CurrentAmount = Mathf.Max(CurrentAmount - amount, 0);
             float currentFill = CurrentAmount / maxAmount;
             updateResourceEvent.Invoke(currentFill);
         }
     }
 
-    private IEnumerator Regenerate()
+    public void EmptyAndStopRegen()
     {
-        yield return new WaitForSeconds(delayBeforeRegen);
+        CurrentAmount = 0.0f;
+        updateResourceEvent.Invoke(0.0f);
+        StopRegeneration();
+    }
 
+    public void StopRegeneration()
+    {
+        if (regen != null)
+        {
+            StopCoroutine(regen);
+            regen = null;
+        }
+        stopRegenResourceEvent.Invoke();
+    }
+
+    public void Regenerate()
+    {
+        regen = StartCoroutine(RegenerateImmediately());
+    }
+
+    public void RestartRegeneration()
+    {
+        regen = StartCoroutine(RegenerateWithDelay());
+    }
+
+    private IEnumerator RegenerateImmediately()
+    {
         regenerateResourceEvent.Invoke(resourcePerSec / maxAmount);
         while (CurrentAmount < maxAmount)
         {
-            CurrentAmount = Mathf.Min(maxAmount, 
+            CurrentAmount = Mathf.Min(maxAmount,
                 CurrentAmount + Time.deltaTime * resourcePerSec);
             yield return null;
         }
         regen = null;
+    }
+
+    private IEnumerator RegenerateWithDelay()
+    {
+        yield return new WaitForSeconds(delayBeforeRegen);
+
+        regen = StartCoroutine(RegenerateImmediately());
     }
 }

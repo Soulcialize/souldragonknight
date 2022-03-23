@@ -91,6 +91,8 @@ MonoBehaviour:
   - RPC_RegenerateStaminaUI
   - RPC_UpdateManaUI
   - RPC_UpdateStaminaUI
+  - RPC_StopRegenManaUI
+  - RPC_StopRegenStaminaUI
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

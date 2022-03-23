@@ -53,6 +53,7 @@ public class KnightPlayerController : PlayerController
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
             Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
             Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
+            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenManaUI);
         }
     }
 

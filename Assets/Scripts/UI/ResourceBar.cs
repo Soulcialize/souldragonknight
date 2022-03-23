@@ -30,6 +30,15 @@ public class ResourceBar : MonoBehaviour
         regen = StartCoroutine(Regenerate(regenSpeed));
     }
 
+    public void StopRegeneration()
+    {
+        if (regen != null)
+        {
+            StopCoroutine(regen);
+            regen = null;
+        }
+    }
+
     public IEnumerator Regenerate(float regenSpeed)
     {
         while (slider.value < maxValue)

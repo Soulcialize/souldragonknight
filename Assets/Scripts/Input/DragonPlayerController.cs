@@ -54,6 +54,7 @@ public class DragonPlayerController : PlayerController
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateDragonHealthUI);
             Combat.Resource.UpdateResourceEvent.AddListener(manaUI.UpdateManaUI);
             Combat.Resource.RegenerateResourceEvent.AddListener(manaUI.RegenerateManaUI);
+            Combat.Resource.StopRegenResourceEvent.AddListener(manaUI.StopRegenManaUI);
         }
     }
 

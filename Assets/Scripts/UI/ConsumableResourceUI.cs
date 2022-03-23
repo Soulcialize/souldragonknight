@@ -29,6 +29,16 @@ public class ConsumableResourceUI : MonoBehaviour
         photonView.RPC("RPC_RegenerateManaUI", RpcTarget.All, regenSpeed);
     }
 
+    public void StopRegenStaminaUI()
+    {
+        photonView.RPC("RPC_StopRegenStaminaUI", RpcTarget.All);
+    }
+
+    public void StopRegenManaUI()
+    {
+        photonView.RPC("RPC_StopRegenManaUI", RpcTarget.All);
+    }
+
     [PunRPC]
     private void RPC_UpdateStaminaUI(float currAmount)
     {
@@ -51,5 +61,17 @@ public class ConsumableResourceUI : MonoBehaviour
     private void RPC_RegenerateManaUI(float regenSpeed)
     {
         manaBar.StartRegeneration(regenSpeed);
+    }
+
+    [PunRPC]
+    private void RPC_StopRegenStaminaUI()
+    {
+        staminaBar.StopRegeneration();
+    }
+
+    [PunRPC]
+    private void RPC_StopRegenManaUI()
+    {
+        manaBar.StopRegeneration();
     }
 }
