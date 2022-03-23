@@ -107,12 +107,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  resourceCost: 10
+  resourceCost: 0
   canBlockProjectiles: 0
   blockHitDuration: 0.5
   blockHitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3995204192595609277}
+        m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
+        m_MethodName: Consume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3633289788714468707
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +526,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 201b485e-954a-41ac-924a-26cff286f9ba
     m_ActionName: Ground/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 093b5dce-79ea-4054-a46e-2204dd6a26c6
+    m_ActionName: Air/InteractAir[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground

@@ -553,10 +553,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmount: 0
+  delayBeforeRegen: 1.5
+  resourcePerSec: 1
   regenerateResourceEvent:
     m_PersistentCalls:
       m_Calls: []
-  consumeResourceEvent:
+  updateResourceEvent:
     m_PersistentCalls:
       m_Calls: []
   photonView: {fileID: 6640825776839568949}
