@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 public abstract class Interactable : MonoBehaviour
@@ -10,6 +13,9 @@ public abstract class Interactable : MonoBehaviour
 
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected bool isEnabledByDefault;
+    [SerializeField] protected float duration;
+
+    private Coroutine interactionCoroutine;
 
     public bool IsEnabled { get; protected set; }
     public abstract Interaction InteractableInteraction { get; }
@@ -19,7 +25,29 @@ public abstract class Interactable : MonoBehaviour
         IsEnabled = isEnabledByDefault;
     }
 
-    public abstract void Interact(ActorController initiator);
+    public abstract void Interact(ActorController initiator, UnityAction endInteractionCallback);
+
+    public void StartInteraction(ActorController initiator, UnityAction endInteractionCallback)
+    {
+        InterruptInteraction();
+        if (duration > 0f)
+        {
+            interactionCoroutine = StartCoroutine(ProcessInteraction(initiator, endInteractionCallback));
+        }
+        else
+        {
+            Interact(initiator, endInteractionCallback);
+        }
+    }
+
+    public void InterruptInteraction()
+    {
+        if (interactionCoroutine != null)
+        {
+            StopCoroutine(interactionCoroutine);
+            interactionCoroutine = null;
+        }
+    }
 
     public void SetIsEnabledWithoutSync(bool isEnabled)
     {
@@ -29,5 +57,17 @@ public abstract class Interactable : MonoBehaviour
     public void SetIsEnabledWithSync(bool isEnabled)
     {
         photonView.RPC("RPC_SetInteractableIsEnabled", RpcTarget.All, InteractableInteraction, isEnabled);
+    }
+
+    private IEnumerator ProcessInteraction(ActorController initiator, UnityAction endInteractionCallback)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Interact(initiator, endInteractionCallback);
     }
 }

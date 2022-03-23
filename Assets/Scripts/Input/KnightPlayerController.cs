@@ -12,7 +12,8 @@ public class KnightPlayerController : PlayerController
     private InputAction attackAction;
     private InputAction blockStartAction;
     private InputAction blockEndAction;
-    private InputAction interactAction;
+    private InputAction startInteractionAction;
+    private InputAction stopInteractionAction;
 
     private HealthUI healthUI;
 
@@ -28,7 +29,8 @@ public class KnightPlayerController : PlayerController
         attackAction = playerInput.actions["Attack"];
         blockStartAction = playerInput.actions["BlockStart"];
         blockEndAction = playerInput.actions["BlockEnd"];
-        interactAction = playerInput.actions["Interact"];
+        startInteractionAction = playerInput.actions["Interact"];
+        stopInteractionAction = playerInput.actions["InteractStop"];
 
         healthUI = GameObject.FindObjectOfType<HealthUI>();
     }
@@ -69,7 +71,8 @@ public class KnightPlayerController : PlayerController
         attackAction.performed += HandleAttackInput;
         blockStartAction.performed += HandleBlockStartInput;
         blockEndAction.performed += HandleBlockEndInput;
-        interactAction.performed += HandleInteractInput;
+        startInteractionAction.performed += HandleStartInteractionInput;
+        stopInteractionAction.performed += HandleStopInteractionInput;
     }
 
     protected override void UnbindInputActionHandlers()
@@ -79,7 +82,8 @@ public class KnightPlayerController : PlayerController
         attackAction.performed -= HandleAttackInput;
         blockStartAction.performed -= HandleBlockStartInput;
         blockEndAction.performed -= HandleBlockEndInput;
-        interactAction.performed -= HandleInteractInput;
+        startInteractionAction.performed -= HandleStartInteractionInput;
+        stopInteractionAction.performed -= HandleStopInteractionInput;
     }
 
     private void HandleMoveGroundInput(InputAction.CallbackContext context)
@@ -119,7 +123,7 @@ public class KnightPlayerController : PlayerController
         combat.EndCombatAbility(CombatAbilityIdentifier.BLOCK);
     }
 
-    private void HandleInteractInput(InputAction.CallbackContext context)
+    private void HandleStartInteractionInput(InputAction.CallbackContext context)
     {
         if (combat.CombatStateMachine.CurrState == null)
         {
@@ -129,6 +133,11 @@ public class KnightPlayerController : PlayerController
                 Interact(nearestInteractable);
             }
         }
+    }
+
+    private void HandleStopInteractionInput(InputAction.CallbackContext context)
+    {
+        InterruptInteraction();
     }
 
     protected override void HandleDeathEvent()

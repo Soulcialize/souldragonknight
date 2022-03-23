@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 public class ReviveInteractable : Interactable
@@ -9,14 +10,10 @@ public class ReviveInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.REVIVE; }
 
-    public override void Interact(ActorController initiator)
+    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
-        if (!IsEnabled)
-        {
-            return;
-        }
-
         photonView.RPC("RPC_Revive", RpcTarget.All);
+        endInteractionCallback();
     }
 
     [PunRPC]

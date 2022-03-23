@@ -25,10 +25,11 @@ public class MountInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.MOUNT; }
 
-    public override void Interact(ActorController initiator)
+    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
-        if (!IsEnabled || !(initiator.Movement is GroundMovement groundMovement))
+        if (!(initiator.Movement is GroundMovement groundMovement))
         {
+            endInteractionCallback();
             return;
         }
 
@@ -45,6 +46,8 @@ public class MountInteractable : Interactable
             groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
             photonView.RPC("RPC_Mount", RpcTarget.Others);
         }
+
+        endInteractionCallback();
     }
 
     [PunRPC]
