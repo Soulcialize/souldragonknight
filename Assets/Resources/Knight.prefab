@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
-  resourceCost: 0
+  resourceCost: 10
   canBlockProjectiles: 0
   blockHitDuration: 0.5
   blockHitEvent:

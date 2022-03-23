@@ -152,6 +152,9 @@ public class Combat : MonoBehaviour
         movement.UpdateMovement(Vector2.zero);
         if (CombatStateMachine.CurrState is BlockState blockState)
         {
+            float blockCost = identifierToAbilityDictionary[CombatAbilityIdentifier.BLOCK].ResourceCost;
+            resource.Consume(blockCost);
+
             blockState.HandleHit(movement.IsFacingRight, ((Vector2)transform.position - new Vector2(attackerPosX, attackerPosY)).normalized);
         }
         else

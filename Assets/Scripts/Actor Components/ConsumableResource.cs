@@ -47,7 +47,7 @@ public class ConsumableResource : MonoBehaviour
             }
 
             regen = StartCoroutine(Regenerate());
-            CurrentAmount -= amount;
+            CurrentAmount = Mathf.Max(CurrentAmount - amount, 0);
             float currentFill = CurrentAmount / maxAmount;
             updateResourceEvent.Invoke(currentFill);
         }
