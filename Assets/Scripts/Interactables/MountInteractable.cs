@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class MountInteractable : Interactable
 {
+    [Header("Mount")]
+
     [SerializeField] private Transform mount;
     [SerializeField] private Movement mountMovement;
     [SerializeField] private Vector2 localOffset;

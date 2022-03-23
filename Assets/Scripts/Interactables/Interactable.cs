@@ -15,6 +15,12 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected bool isEnabledByDefault;
     [SerializeField] protected float duration;
 
+    [Header("UI")]
+
+    [SerializeField] private InteractableUi interactableUi;
+    [SerializeField] private string promptText;
+    [SerializeField] private Vector2 localPosition;
+
     private Coroutine interactionCoroutine;
 
     public bool IsEnabled { get; protected set; }
@@ -60,6 +66,16 @@ public abstract class Interactable : MonoBehaviour
     public void SetIsEnabledWithSync(bool isEnabled)
     {
         photonView.RPC("RPC_SetInteractableIsEnabled", RpcTarget.All, InteractableInteraction, isEnabled);
+    }
+
+    public void DisplayPrompt()
+    {
+        interactableUi.DisplayPrompt(promptText, localPosition);
+    }
+
+    public void HidePrompt()
+    {
+        interactableUi.HidePrompt();
     }
 
     private IEnumerator ProcessInteraction(ActorController initiator, UnityAction endInteractionCallback)

@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class ReviveInteractable : Interactable
 {
+    [Header("Revive")]
+
     [SerializeField] private Combat combat;
 
     public override Interaction InteractableInteraction { get => Interaction.REVIVE; }

@@ -6,6 +6,8 @@ public class InteractableDetector : MonoBehaviour
 {
     private HashSet<Interactable> interactablesInRange = new HashSet<Interactable>();
 
+    public Interactable CurrentNearestInteractable { get; private set; }
+
     public Interactable GetNearestInteractable()
     {
         if (interactablesInRange.Count == 0)
@@ -41,6 +43,20 @@ public class InteractableDetector : MonoBehaviour
         {
             interactablesInRange.Add(interactable);
         }
+
+        Interactable nearestInteractable = GetNearestInteractable();
+        if (CurrentNearestInteractable == nearestInteractable)
+        {
+            return;
+        }
+
+        if (CurrentNearestInteractable != null)
+        {
+            CurrentNearestInteractable.HidePrompt();
+        }
+
+        CurrentNearestInteractable = nearestInteractable;
+        CurrentNearestInteractable.DisplayPrompt();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -48,6 +64,12 @@ public class InteractableDetector : MonoBehaviour
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {
+            if (CurrentNearestInteractable == interactable)
+            {
+                CurrentNearestInteractable.HidePrompt();
+                CurrentNearestInteractable = null;
+            }
+
             interactablesInRange.Remove(interactable);
         }
     }
