@@ -11,8 +11,10 @@ public enum CombatAbilityIdentifier
 public abstract class CombatAbility : MonoBehaviour
 {
     [SerializeField] private bool isEnabled = true;
+    [SerializeField] protected float resourceCost;
 
     public bool IsEnabled { get => isEnabled; }
+    public float ResourceCost { get => resourceCost; }
 
     public void Toggle(bool isEnabled)
     {

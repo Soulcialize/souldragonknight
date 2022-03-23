@@ -16,6 +16,7 @@ namespace CombatStates
             owner.CollisionLayer.SetLayer(LayerMask.NameToLayer("Dead"));
             owner.SpriteLayer.SetLayer(SpriteLayer.Layer.DEAD);
             owner.Animator.SetBool("isDead", true);
+            owner.Resource.EmptyAndStopRegen();
         }
 
         public override void Execute()

@@ -16,6 +16,7 @@ public class KnightPlayerController : PlayerController
     private InputAction stopInteractionAction;
 
     private HealthUI healthUI;
+    private ConsumableResourceUI staminaUI;
 
     private float movementInput = 0f;
 
@@ -32,7 +33,8 @@ public class KnightPlayerController : PlayerController
         startInteractionAction = playerInput.actions["Interact"];
         stopInteractionAction = playerInput.actions["InteractStop"];
 
-        healthUI = GameObject.FindObjectOfType<HealthUI>();
+        healthUI = FindObjectOfType<HealthUI>();
+        staminaUI = FindObjectOfType<ConsumableResourceUI>();
     }
 
     protected override void FixedUpdate()
@@ -51,6 +53,9 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
+            Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
+            Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
+            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenStaminaUI);
         }
     }
 
@@ -61,6 +66,9 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateKnightHealthUI);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(staminaUI.UpdateStaminaUI);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(staminaUI.RegenerateStaminaUI);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(staminaUI.StopRegenStaminaUI);
         }
     }
 

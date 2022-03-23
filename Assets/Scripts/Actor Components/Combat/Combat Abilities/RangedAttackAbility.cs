@@ -30,17 +30,21 @@ public class RangedAttackAbility : CombatAbility
 
     public override void Execute(Combat combat, params object[] parameters)
     {
-        if (readyDuration > 0f)
+        if (combat.Resource.CanConsume(resourceCost))
         {
-            Transform target = (Transform)parameters[0];
-            combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(
-                combat, target, projectilePathDisplay, timeToLock, readyDuration, ReadyCallback));
-        }
-        else
-        {
-            Vector2 direction = (Vector2)parameters[0];
-            combat.CombatStateMachine.ChangeState(new RangedAttackState(
-                combat, projectilePrefab, projectileOrigin, direction, combat.AttackEffectLayer, fireRangedProjectileEvent));
+            if (readyDuration > 0f)
+            {
+                Transform target = (Transform)parameters[0];
+                combat.CombatStateMachine.ChangeState(new ReadyRangedAttackState(
+                    combat, target, projectilePathDisplay, timeToLock, readyDuration, ReadyCallback));
+            }
+            else
+            {
+                Vector2 direction = (Vector2)parameters[0];
+                combat.CombatStateMachine.ChangeState(new RangedAttackState(
+                    combat, projectilePrefab, projectileOrigin, direction, 
+                    combat.AttackEffectLayer, fireRangedProjectileEvent, resourceCost));
+            }
         }
     }
 
@@ -48,6 +52,7 @@ public class RangedAttackAbility : CombatAbility
     {
         Vector2 direction = ((ReadyRangedAttackState)combat.CombatStateMachine.CurrState).TargetPosition - (Vector2)transform.position;
         combat.CombatStateMachine.ChangeState(new RangedAttackState(
-            combat, projectilePrefab, projectileOrigin, direction, combat.AttackEffectLayer, fireRangedProjectileEvent));
+            combat, projectilePrefab, projectileOrigin, direction, 
+            combat.AttackEffectLayer, fireRangedProjectileEvent, resourceCost));
     }
 }

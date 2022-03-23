@@ -10,6 +10,7 @@ namespace CombatStates
         private readonly float duration;
         private readonly BlockState.Direction direction;
         private readonly UnityEvent blockHitEvent;
+        private readonly float blockCost;
 
         private float startTime;
         private bool willReturnToBlock;

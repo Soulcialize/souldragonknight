@@ -16,6 +16,7 @@ public class DragonPlayerController : PlayerController
     private InputAction stopInteractionAction;
 
     private HealthUI healthUI;
+    private ConsumableResourceUI manaUI;
 
     private float horizontalMovementInput = 0f;
     private float verticalMovementInput = 0f;
@@ -33,7 +34,8 @@ public class DragonPlayerController : PlayerController
         startInteractionAction = playerInput.actions["InteractAir"];
         stopInteractionAction = playerInput.actions["InteractAirStop"];
 
-        healthUI = GameObject.FindObjectOfType<HealthUI>();
+        healthUI = FindObjectOfType<HealthUI>();
+        manaUI = FindObjectOfType<ConsumableResourceUI>();
     }
 
     protected override void FixedUpdate()
@@ -52,6 +54,9 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateDragonHealthUI);
+            Combat.Resource.UpdateResourceEvent.AddListener(manaUI.UpdateManaUI);
+            Combat.Resource.RegenerateResourceEvent.AddListener(manaUI.RegenerateManaUI);
+            Combat.Resource.StopRegenResourceEvent.AddListener(manaUI.StopRegenManaUI);
         }
     }
 
@@ -62,6 +67,9 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateDragonHealthUI);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(manaUI.UpdateManaUI);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(manaUI.RegenerateManaUI);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(manaUI.StopRegenManaUI);
         }
     }
 

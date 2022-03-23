@@ -14,16 +14,14 @@ public class GameMessageUI : MonoBehaviour
     private readonly float timerDuration = 3.0f;
 
     private string playerString;
-    private float timer = 0f;
-    private bool isTimerRunning = false;
+    private Coroutine timeoutMessage;
 
     [SerializeField] PhotonView photonView;
     [SerializeField] private TextMeshProUGUI textObject;
 
     private void Start()
     {
-        PlayerType playerType = (PlayerType)PhotonNetwork.LocalPlayer.
-            CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+        PlayerType playerType = PlayerSpawner.GetLocalPlayerType();
 
         switch (playerType)
         {
@@ -38,22 +36,6 @@ public class GameMessageUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (isTimerRunning)
-        {
-            if (timer > 0)
-            {
-                timer -= Time.deltaTime;
-            } 
-            else
-            {
-                isTimerRunning = false;
-                ClearRequestMessageIfExist();
-            }
-        }
-    }
-
     public void UpdateRestartMessage(bool isRestarting)
     {
         string suffix;
@@ -65,7 +47,7 @@ public class GameMessageUI : MonoBehaviour
         else
         {
             suffix = MESSAGE_CANCELLED_RESTART;
-            StartTimer();
+            timeoutMessage = StartCoroutine(ExpireMessage());
         }
 
         photonView.RPC("RPC_UpdateMessage", RpcTarget.All, playerString + suffix);
@@ -73,16 +55,23 @@ public class GameMessageUI : MonoBehaviour
 
     private void ClearRequestMessageIfExist()
     {
+        if (timeoutMessage != null)
+        {
+            StopCoroutine(timeoutMessage);
+            timeoutMessage = null;
+        }
+
         if (textObject.text.Equals(playerString + MESSAGE_CANCELLED_RESTART))
         {
             photonView.RPC("RPC_ResetMessage", RpcTarget.All);
         }
     }
 
-    private void StartTimer()
+    private IEnumerator ExpireMessage()
     {
-        isTimerRunning = true;
-        timer = timerDuration;
+        yield return new WaitForSeconds(timerDuration);
+
+        ClearRequestMessageIfExist();
     }
 
     [PunRPC]
