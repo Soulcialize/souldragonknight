@@ -7,10 +7,12 @@ namespace CombatStates
     public class MeleeAttackState : AttackState
     {
         private readonly AttackEffectArea attackEffectArea;
+        private readonly float attackCost;
 
-        public MeleeAttackState(Combat owner, AttackEffectArea attackEffectArea) : base(owner)
+        public MeleeAttackState(Combat owner, AttackEffectArea attackEffectArea, float attackCost) : base(owner)
         {
             this.attackEffectArea = attackEffectArea;
+            this.attackCost = attackCost;
         }
 
         public override void ExecuteAttackEffect()
@@ -20,6 +22,8 @@ namespace CombatStates
                 attackEffectArea.Size,
                 attackEffectArea.transform.eulerAngles.z,
                 owner.AttackEffectLayer);
+
+            owner.Resource.Consume(attackCost);
 
             foreach (Collider2D hit in hits)
             {

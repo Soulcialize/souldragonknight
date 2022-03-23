@@ -98,6 +98,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -8994959269452998378}
+        m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
+        m_MethodName: StopRegeneration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dismountEvent:
     m_PersistentCalls:
       m_Calls:
@@ -105,6 +117,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Combat, Assembly-CSharp
         m_MethodName: ToggleCombatAbilities
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: -8994959269452998378}
+        m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
+        m_MethodName: RestartRegeneration
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -214,6 +238,7 @@ GameObject:
   - component: {fileID: 4470413134207635889}
   - component: {fileID: 3483110514655366300}
   - component: {fileID: 6446500998015482331}
+  - component: {fileID: -8994959269452998378}
   - component: {fileID: 4470413134207635888}
   - component: {fileID: 4470413134207635891}
   - component: {fileID: 4470413134207635890}
@@ -393,6 +418,7 @@ MonoBehaviour:
     ability: {fileID: 591363011492556981}
   health: {fileID: 6446500998015482331}
   buff: {fileID: 0}
+  resource: {fileID: -8994959269452998378}
   wallCollisionDetector: {fileID: 7163776362713714178}
   knockbackSpeed: 0
   knockbackDistance: 0
@@ -484,6 +510,31 @@ MonoBehaviour:
   updateHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-8994959269452998378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470413134207635880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3eeb8de5d62be4c97b07611d0d6219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 100
+  delayBeforeRegen: 1.5
+  resourcePerSec: 10
+  regenerateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stopRegenResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 4470413134207635888}
 --- !u!114 &4470413134207635888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 30
   maxRange: 0
   readyDuration: 0
   timeToLock: 0
@@ -748,6 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 15
   speed: 20
   distance: 4
 --- !u!1 &8714695237697900579

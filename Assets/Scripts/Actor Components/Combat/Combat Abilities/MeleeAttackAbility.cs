@@ -13,18 +13,21 @@ public class MeleeAttackAbility : CombatAbility
 
     public override void Execute(Combat combat, params object[] parameters)
     {
-        if (isReadyRequired)
+        if (combat.Resource.CanConsume(resourceCost))
         {
-            combat.CombatStateMachine.ChangeState(new ReadyAttackState(combat, readyDuration, ReadyCallback));
-        }
-        else
-        {
-            combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea));
+            if (isReadyRequired)
+            {
+                combat.CombatStateMachine.ChangeState(new ReadyAttackState(combat, readyDuration, ReadyCallback));
+            }
+            else
+            {
+                combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
+            }
         }
     }
 
     private void ReadyCallback(Combat combat)
     {
-        combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea));
+        combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
     }
 }

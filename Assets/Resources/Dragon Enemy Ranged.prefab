@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 2580839893817942633}
   - component: {fileID: 2580839893817942632}
   - component: {fileID: 2580839893817942638}
+  - component: {fileID: 8780044099606125065}
   - component: {fileID: 2580839893817942635}
   - component: {fileID: 2580839893817942634}
   - component: {fileID: 2580839893817942645}
@@ -642,6 +643,7 @@ MonoBehaviour:
     ability: {fileID: 9164543939492879357}
   health: {fileID: 2580839893817942638}
   buff: {fileID: 0}
+  resource: {fileID: 8780044099606125065}
   wallCollisionDetector: {fileID: 2580839894231045049}
   knockbackSpeed: 10
   knockbackDistance: 1.2
@@ -666,6 +668,9 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
+  reviveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2580839893817942638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +684,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
+  updateHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8780044099606125065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580839893817942653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3eeb8de5d62be4c97b07611d0d6219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 0
+  delayBeforeRegen: 1.5
+  resourcePerSec: 1
+  regenerateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 2580839893817942634}
 --- !u!114 &2580839893817942635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 0
   maxRange: 10
   readyDuration: 4
   timeToLock: 3
@@ -906,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 0
   canBlockProjectiles: 1
   blockHitDuration: 0.5
   blockHitEvent:

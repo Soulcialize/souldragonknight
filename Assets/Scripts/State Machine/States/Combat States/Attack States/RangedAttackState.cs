@@ -12,17 +12,20 @@ namespace CombatStates
         private readonly Vector2 attackDirection;
         private readonly LayerMask actorHitLayer;
         private RangedProjectileEvent fireRangedProjectileEvent;
+        private readonly float attackCost;
 
         public RangedAttackState(
             Combat owner, RangedProjectile projectilePrefab,
             Transform projectileOrigin, Vector2 attackDirection, LayerMask actorHitLayer,
-            RangedProjectileEvent fireRangedProjectileEvent) : base(owner)
+            RangedProjectileEvent fireRangedProjectileEvent,
+            float attackCost) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
             this.projectileOrigin = projectileOrigin;
             this.attackDirection = attackDirection.normalized;
             this.actorHitLayer = actorHitLayer;
             this.fireRangedProjectileEvent = fireRangedProjectileEvent;
+            this.attackCost = attackCost;
         }
 
         public override void Enter()
@@ -36,6 +39,8 @@ namespace CombatStates
 
         public override void ExecuteAttackEffect()
         {
+            owner.Resource.Consume(attackCost);
+
             RangedProjectile projectile = PhotonNetwork.Instantiate(
                 projectilePrefab.name,
                 projectileOrigin.position,

@@ -13,6 +13,7 @@ namespace CombatStates
             owner.Health.SetMax();
             owner.SpriteLayer.ResetLayer();
             owner.Animator.SetBool("isReviving", true);
+            owner.Resource.Regenerate();
         }
 
         public override void Execute()

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 30
   isReadyRequired: 0
   readyDuration: 0
   attackEffectArea: {fileID: 5822808363884121821}
@@ -106,11 +107,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 1
+  resourceCost: 0
   canBlockProjectiles: 0
   blockHitDuration: 0.5
   blockHitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3995204192595609277}
+        m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
+        m_MethodName: Consume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3633289788714468707
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +398,7 @@ GameObject:
   - component: {fileID: 6669902685249964190}
   - component: {fileID: 4584270387848782332}
   - component: {fileID: 5726660194417758549}
+  - component: {fileID: 3995204192595609277}
   - component: {fileID: 4828491241966369471}
   - component: {fileID: 5696632616774609759}
   - component: {fileID: 5696632616774609756}
@@ -511,6 +526,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 201b485e-954a-41ac-924a-26cff286f9ba
     m_ActionName: Ground/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 093b5dce-79ea-4054-a46e-2204dd6a26c6
+    m_ActionName: Air/InteractAir[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ground
@@ -617,6 +636,7 @@ MonoBehaviour:
     ability: {fileID: 4796355272749017670}
   health: {fileID: 5726660194417758549}
   buff: {fileID: 4828491241966369471}
+  resource: {fileID: 3995204192595609277}
   wallCollisionDetector: {fileID: 47246515022818543}
   knockbackSpeed: 10
   knockbackDistance: 1.2
@@ -672,6 +692,31 @@ MonoBehaviour:
   updateHealthEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3995204192595609277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696632616774609732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3eeb8de5d62be4c97b07611d0d6219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 100
+  delayBeforeRegen: 1.5
+  resourcePerSec: 10
+  regenerateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stopRegenResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  photonView: {fileID: 5696632616774609759}
 --- !u!114 &4828491241966369471
 MonoBehaviour:
   m_ObjectHideFlags: 0

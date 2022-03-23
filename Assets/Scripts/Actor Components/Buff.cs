@@ -5,8 +5,7 @@ using Photon.Pun;
 
 public class Buff : MonoBehaviour
 {
-    private float timer;
-    private bool isTimerRunning = false;
+    private Coroutine buffTimeout;
 
     [Header("Combat Changes")]
 
@@ -27,44 +26,34 @@ public class Buff : MonoBehaviour
 
     public bool IsBuffed { get; private set; }
 
-    private void Update()
-    {
-        if (isTimerRunning)
-        {
-            if (timer > 0f)
-            {
-                timer -= Time.deltaTime;
-            }
-            else 
-            {
-                isTimerRunning = false;
-                RemoveBuff();
-            }
-        }
-    }
-
     public void ApplyBuff()
     {
-        StartTimer();
-        photonView.RPC("RPC_ApplyBuff", RpcTarget.All);
+        if (!IsBuffed)
+        {
+            photonView.RPC("RPC_ApplyBuff", RpcTarget.All);
+            buffTimeout = StartCoroutine(ExpireBuff());
+        }
     }
 
     public void RemoveBuff()
     {
-        StopTimer();
-        photonView.RPC("RPC_RemoveBuff", RpcTarget.All);
+        if (IsBuffed)
+        {
+            photonView.RPC("RPC_RemoveBuff", RpcTarget.All);
+
+            if (buffTimeout != null)
+            {
+                StopCoroutine(buffTimeout);
+                buffTimeout = null;
+            }
+        }
     }
 
-    private void StartTimer()
+    private IEnumerator ExpireBuff() 
     {
-        isTimerRunning = true;
-        timer = buffDuration;
-    }
+        yield return new WaitForSeconds(buffDuration);
 
-    private void StopTimer()
-    {
-        isTimerRunning = false;
-        timer = 0f;
+        RemoveBuff();
     }
 
     [PunRPC]
