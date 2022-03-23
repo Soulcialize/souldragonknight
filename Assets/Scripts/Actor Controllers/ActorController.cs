@@ -57,7 +57,10 @@ public abstract class ActorController : MonoBehaviour
 
     public void Interact(Interactable interactable)
     {
-        combat.CombatStateMachine.ChangeState(new CombatStates.InteractState(combat, this, interactable));
+        if (!interactable.IsInteracting)
+        {
+            combat.CombatStateMachine.ChangeState(new CombatStates.InteractState(combat, this, interactable));
+        }
     }
 
     public void InterruptInteraction()
