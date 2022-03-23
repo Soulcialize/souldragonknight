@@ -6,24 +6,26 @@ using UnityEngine.UI;
 using Photon.Pun;
 
 [System.Serializable]
-public class ConsumeResourceEvent : UnityEvent<float> { }
+public class UpdateResourceEvent : UnityEvent<float> { }
+[System.Serializable]
+public class RegenerateResourceEvent : UnityEvent<float> { }
 
 public class ConsumableResource : MonoBehaviour
 {
     [SerializeField] private float maxAmount;
-    [SerializeField] private UnityEvent regenerateResourceEvent;
-    [SerializeField] private ConsumeResourceEvent consumeResourceEvent;
-    [SerializeField] private PhotonView photonView;
+    [SerializeField] private float delayBeforeRegen = 1.5f;
+    [SerializeField] private float resourcePerSec = 10.0f;
 
-    private readonly float delayBeforeRegen = 1.5f;
-    private readonly WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+    [SerializeField] private RegenerateResourceEvent regenerateResourceEvent;
+    [SerializeField] private UpdateResourceEvent updateResourceEvent;
+    [SerializeField] private PhotonView photonView;
 
     private Coroutine regen;
 
     public float CurrentAmount { get; private set; }
 
-    public UnityEvent RegenerateResourceEvent { get => regenerateResourceEvent; }
-    public ConsumeResourceEvent ConsumeResourceEvent { get => consumeResourceEvent; }
+    public RegenerateResourceEvent RegenerateResourceEvent { get => regenerateResourceEvent; }
+    public UpdateResourceEvent UpdateResourceEvent { get => updateResourceEvent; }
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class ConsumableResource : MonoBehaviour
             regen = StartCoroutine(Regenerate());
             CurrentAmount -= amount;
             float currentFill = CurrentAmount / maxAmount;
-            consumeResourceEvent.Invoke(currentFill);
+            updateResourceEvent.Invoke(currentFill);
         }
     }
 
@@ -55,11 +57,12 @@ public class ConsumableResource : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeRegen);
 
-        regenerateResourceEvent.Invoke();
+        regenerateResourceEvent.Invoke(resourcePerSec / maxAmount);
         while (CurrentAmount < maxAmount)
         {
-            CurrentAmount = Mathf.Min(maxAmount, CurrentAmount + maxAmount / 50);
-            yield return regenTick;
+            CurrentAmount = Mathf.Min(maxAmount, 
+                CurrentAmount + Time.deltaTime * resourcePerSec);
+            yield return null;
         }
         regen = null;
     }

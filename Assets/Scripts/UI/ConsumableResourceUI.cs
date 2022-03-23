@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 
 public class ConsumableResourceUI : MonoBehaviour
@@ -20,14 +19,14 @@ public class ConsumableResourceUI : MonoBehaviour
         photonView.RPC("RPC_UpdateManaUI", RpcTarget.All, currAmount);
     }
 
-    public void RegenerateStaminaUI()
+    public void RegenerateStaminaUI(float regenSpeed)
     {
-        photonView.RPC("RPC_RegenerateStaminaUI", RpcTarget.All);
+        photonView.RPC("RPC_RegenerateStaminaUI", RpcTarget.All, regenSpeed);
     }
 
-    public void RegenerateManaUI()
+    public void RegenerateManaUI(float regenSpeed)
     {
-        photonView.RPC("RPC_RegenerateManaUI", RpcTarget.All);
+        photonView.RPC("RPC_RegenerateManaUI", RpcTarget.All, regenSpeed);
     }
 
     [PunRPC]
@@ -43,14 +42,14 @@ public class ConsumableResourceUI : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_RegenerateStaminaUI()
+    private void RPC_RegenerateStaminaUI(float regenSpeed )
     {
-        staminaBar.StartRegeneration();
+        staminaBar.StartRegeneration(regenSpeed);
     }
 
     [PunRPC]
-    private void RPC_RegenerateManaUI()
+    private void RPC_RegenerateManaUI(float regenSpeed)
     {
-        manaBar.StartRegeneration();
+        manaBar.StartRegeneration(regenSpeed);
     }
 }

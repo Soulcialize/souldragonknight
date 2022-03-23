@@ -51,7 +51,7 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
-            Combat.Resource.ConsumeResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
+            Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
             Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
         }
     }

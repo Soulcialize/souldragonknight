@@ -9,7 +9,6 @@ public class ResourceBar : MonoBehaviour
 
     private float maxValue = 1.0f;
     private Coroutine regen;
-    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
 
     private void Start()
     {
@@ -26,17 +25,18 @@ public class ResourceBar : MonoBehaviour
         slider.value = amount;
     }
 
-    public void StartRegeneration()
+    public void StartRegeneration(float regenSpeed )
     {
-        regen = StartCoroutine(Regenerate());
+        regen = StartCoroutine(Regenerate(regenSpeed));
     }
 
-    public IEnumerator Regenerate()
+    public IEnumerator Regenerate(float regenSpeed)
     {
         while (slider.value < maxValue)
         {
-            slider.value = Mathf.Min(maxValue, slider.value + maxValue / 50);
-            yield return regenTick;
+            slider.value = Mathf.Min(maxValue, 
+                slider.value + Time.deltaTime * regenSpeed);
+            yield return null;
         }
         regen = null;
     }
