@@ -18,6 +18,7 @@ public abstract class Interactable : MonoBehaviour
     private Coroutine interactionCoroutine;
 
     public bool IsEnabled { get; protected set; }
+    public bool IsInteracting { get; private set; }
     public abstract Interaction InteractableInteraction { get; }
 
     protected virtual void Awake()
@@ -29,7 +30,7 @@ public abstract class Interactable : MonoBehaviour
 
     public void StartInteraction(ActorController initiator, UnityAction endInteractionCallback)
     {
-        InterruptInteraction();
+        IsInteracting = true;
         if (duration > 0f)
         {
             interactionCoroutine = StartCoroutine(ProcessInteraction(initiator, endInteractionCallback));
@@ -37,6 +38,7 @@ public abstract class Interactable : MonoBehaviour
         else
         {
             Interact(initiator, endInteractionCallback);
+            IsInteracting = false;
         }
     }
 
@@ -46,6 +48,7 @@ public abstract class Interactable : MonoBehaviour
         {
             StopCoroutine(interactionCoroutine);
             interactionCoroutine = null;
+            IsInteracting = false;
         }
     }
 
@@ -69,5 +72,6 @@ public abstract class Interactable : MonoBehaviour
         }
 
         Interact(initiator, endInteractionCallback);
+        IsInteracting = false;
     }
 }

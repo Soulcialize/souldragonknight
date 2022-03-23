@@ -17,7 +17,7 @@ namespace CombatStates
 
         public override void Enter()
         {
-            interactable.StartInteraction(initiator, EndInteractionCallback);
+            interactable.StartInteraction(initiator, owner.CombatStateMachine.Exit);
         }
 
         public override void Execute()
@@ -27,17 +27,14 @@ namespace CombatStates
 
         public override void Exit()
         {
-
-        }
-
-        private void EndInteractionCallback()
-        {
-            owner.CombatStateMachine.Exit();
+            if (interactable.IsInteracting)
+            {
+                interactable.InterruptInteraction();
+            }
         }
 
         public void InterruptInteraction()
         {
-            interactable.InterruptInteraction();
             owner.CombatStateMachine.Exit();
         }
     }
