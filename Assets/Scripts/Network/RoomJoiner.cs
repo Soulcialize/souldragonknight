@@ -18,19 +18,16 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        if (roomNameInputField.text=="")
-        {
+        if (roomNameInputField.text=="") {
             errorMessage.text = "Please enter a room name.";
-        } else
-        {
-            if (!isJoinOngoing) {
-                isJoinOngoing = true;
-                Debug.Log($"Joining room ({roomNameInputField.text})");
-                PhotonNetwork.JoinRoom(roomNameInputField.text);
-            } else {
-                Debug.Log($"Joining room ({roomNameInputField.text}) already in progress");
-            }
+        } else if (!isJoinOngoing) {
+            isJoinOngoing = true;
+            Debug.Log($"Joining room ({roomNameInputField.text})");
+            PhotonNetwork.JoinRoom(roomNameInputField.text);
+        } else {
+            Debug.Log($"Joining room ({roomNameInputField.text}) already in progress");
         }
+    
     }
 
     public override void OnJoinedRoom()

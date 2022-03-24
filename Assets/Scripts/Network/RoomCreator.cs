@@ -17,23 +17,19 @@ public class RoomCreator : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        if (roomNameInputField.text == "")
-        {
+        if (roomNameInputField.text == "") {
             errorMessage.text = "Please enter a room name.";
-        }
-        else
-        {
-            if (!isCreateOngoing) {
-                isCreateOngoing = true;
-                Debug.Log($"Creating room ({roomNameInputField.text})");
+        } else if (!isCreateOngoing) {
+            isCreateOngoing = true;
+            Debug.Log($"Creating room ({roomNameInputField.text})");
 
-                RoomOptions roomOptions = new RoomOptions();
-                roomOptions.MaxPlayers = 2;
-                PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
-            } else {
-                Debug.Log($"Creating room ({roomNameInputField.text}) already in progress");
-            }
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = 2;
+            PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
+        } else {
+            Debug.Log($"Creating room ({roomNameInputField.text}) already in progress");
         }
+        
     }
 
     public override void OnCreatedRoom()
