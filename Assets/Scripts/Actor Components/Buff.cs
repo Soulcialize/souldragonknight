@@ -7,6 +7,7 @@ using Photon.Pun;
 public class Buff : MonoBehaviour
 {
     private Coroutine buffTimeout;
+    private Coroutine blinkingTime;
 
     [Header("Combat Changes")]
 
@@ -21,8 +22,8 @@ public class Buff : MonoBehaviour
     [SerializeField] private Color buffedColor;
     private Color defaultColor;
 
-    private float blinkingDuration = 1.0f;
-    private float blinkingPeriod = 0.2f;
+    [SerializeField] private float blinkingDuration = 1.0f;
+    [SerializeField] private float blinkingPeriod = 0.2f;
 
     [Space (10)]
 
@@ -48,38 +49,33 @@ public class Buff : MonoBehaviour
             if (buffTimeout != null)
             {
                 StopCoroutine(buffTimeout);
+                StopCoroutine(blinkingTime);
                 buffTimeout = null;
+                blinkingTime = null;
             }
         }
     }
 
-     private void ApplyBuffColor()
+    private void StartBlinking()
     {
-        if (IsBuffed)
-        {
-            photonView.RPC("RPC_ApplyBuffColor", RpcTarget.All);
-        }
-    }
-
-    private void RemoveBuffColor()
-    {
-        if (IsBuffed)
-        {
-            photonView.RPC("RPC_RemoveBuffColor", RpcTarget.All);
-        }
+        photonView.RPC("RPC_StartBlinking", RpcTarget.All);
     }
 
     private IEnumerator ExpireBuff() 
     {
         yield return new WaitForSeconds(Math.Max(0, buffDuration - blinkingDuration));
+        StartBlinking();
+    }
 
+    private IEnumerator ExpireBlinking()
+    {
         int numOfBlinks = (int) Math.Floor(Math.Min(blinkingDuration, buffDuration) / blinkingPeriod);
         int counter = 0;
 
         while (counter < numOfBlinks) {
-            RemoveBuffColor();
+            spriteRenderer.color = defaultColor;
             yield return new WaitForSeconds(blinkingPeriod / 2);
-            ApplyBuffColor();
+            spriteRenderer.color = buffedColor;
             yield return new WaitForSeconds(blinkingPeriod / 2);
             counter++;
         }
@@ -94,7 +90,7 @@ public class Buff : MonoBehaviour
         defaultColor = spriteRenderer.color;
 
         combat.AttackEffectLayer = buffedTargetLayer;
-        RPC_ApplyBuffColor();
+        spriteRenderer.color = buffedColor;
         IsBuffed = true;
     }
 
@@ -102,23 +98,13 @@ public class Buff : MonoBehaviour
     private void RPC_RemoveBuff()
     {
         combat.AttackEffectLayer = defaultTargetLayer;
-        RPC_RemoveBuffColor();
+        spriteRenderer.color = defaultColor;
         IsBuffed = false;
     }
 
     [PunRPC]
-    private void RPC_ApplyBuffColor()
+    private void RPC_StartBlinking()
     {
-        if (defaultColor != null) {
-            spriteRenderer.color = buffedColor;
-        }
-    }
-
-    [PunRPC]
-    private void RPC_RemoveBuffColor()
-    {
-        if (defaultColor != null) {
-            spriteRenderer.color = defaultColor;
-        }
+        blinkingTime = StartCoroutine(ExpireBlinking());
     }
 }
