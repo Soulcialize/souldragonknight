@@ -93,6 +93,8 @@ MonoBehaviour:
   - RPC_UpdateStaminaUI
   - RPC_StopRegenManaUI
   - RPC_StopRegenStaminaUI
+  - RPC_ApplyBuffColor
+  - RPC_RemoveBuffColor
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

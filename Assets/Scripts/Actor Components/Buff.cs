@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class Buff : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color buffedColor;
     private Color defaultColor;
+
+    private float blinkingDuration = 1.0f;
+    private float blinkingPeriod = 0.17f;
 
     [Space (10)]
 
@@ -49,9 +53,36 @@ public class Buff : MonoBehaviour
         }
     }
 
+     private void ApplyBuffColor()
+    {
+        if (IsBuffed)
+        {
+            photonView.RPC("RPC_ApplyBuffColor", RpcTarget.All);
+        }
+    }
+
+    private void RemoveBuffColor()
+    {
+        if (IsBuffed)
+        {
+            photonView.RPC("RPC_RemoveBuffColor", RpcTarget.All);
+        }
+    }
+
     private IEnumerator ExpireBuff() 
     {
-        yield return new WaitForSeconds(buffDuration);
+        yield return new WaitForSeconds(Math.Max(0, buffDuration - blinkingDuration));
+
+        int numOfBlinks = (int) Math.Floor(Math.Min(blinkingDuration, buffDuration) / blinkingPeriod);
+        int counter = 0;
+
+        while (counter < numOfBlinks) {
+            RemoveBuffColor();
+            yield return new WaitForSeconds(blinkingPeriod / 2);
+            ApplyBuffColor();
+            yield return new WaitForSeconds(blinkingPeriod / 2);
+            counter++;
+        }
 
         RemoveBuff();
     }
@@ -63,7 +94,7 @@ public class Buff : MonoBehaviour
         defaultColor = spriteRenderer.color;
 
         combat.AttackEffectLayer = buffedTargetLayer;
-        spriteRenderer.color = buffedColor;
+        RPC_ApplyBuffColor();
         IsBuffed = true;
     }
 
@@ -71,7 +102,23 @@ public class Buff : MonoBehaviour
     private void RPC_RemoveBuff()
     {
         combat.AttackEffectLayer = defaultTargetLayer;
-        spriteRenderer.color = defaultColor;
+        RPC_RemoveBuffColor();
         IsBuffed = false;
+    }
+
+    [PunRPC]
+    private void RPC_ApplyBuffColor()
+    {
+        if (defaultColor != null) {
+            spriteRenderer.color = buffedColor;
+        }
+    }
+
+    [PunRPC]
+    private void RPC_RemoveBuffColor()
+    {
+        if (defaultColor != null) {
+            spriteRenderer.color = defaultColor;
+        }
     }
 }
