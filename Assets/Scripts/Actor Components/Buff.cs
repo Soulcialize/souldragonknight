@@ -22,7 +22,7 @@ public class Buff : MonoBehaviour
     private Color defaultColor;
 
     private float blinkingDuration = 1.0f;
-    private float blinkingPeriod = 0.17f;
+    private float blinkingPeriod = 0.2f;
 
     [Space (10)]
 
