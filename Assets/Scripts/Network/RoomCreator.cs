@@ -13,6 +13,8 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     [SerializeField] private string roomSceneName;
     [SerializeField] private TextMeshProUGUI errorMessage;
 
+    private bool isCreateOngoing;
+
     public void CreateRoom()
     {
         if (roomNameInputField.text == "")
@@ -21,22 +23,30 @@ public class RoomCreator : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.Log($"Creating room ({roomNameInputField.text})");
+            if (!isCreateOngoing) {
+                isCreateOngoing = true;
+                Debug.Log($"Creating room ({roomNameInputField.text})");
 
-            RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = 2;
-            PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
+                RoomOptions roomOptions = new RoomOptions();
+                roomOptions.MaxPlayers = 2;
+                PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions, null);
+            } else {
+                Debug.Log($"Creating room ({roomNameInputField.text}) already in progress");
+            }
         }
     }
 
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
+        isCreateOngoing = false;
         LevelSelectManager.SetLevelsCleared(0);
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message) {
+    public override void OnCreateRoomFailed(short returnCode, string message) 
+    {
         base.OnCreateRoomFailed(returnCode, message);
+        isCreateOngoing = false;
         if (returnCode == LOBBY_ALREADY_EXISTS_ERROR_NAME) {
             errorMessage.text = "A lobby with that name already exists!";
         }
