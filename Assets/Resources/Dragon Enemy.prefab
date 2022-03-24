@@ -546,7 +546,10 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
-  reviveEvent:
+  reviveStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  reviveFinishEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7404829110624881476

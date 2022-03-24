@@ -50,6 +50,7 @@ public abstract class Interactable : MonoBehaviour
         IsInteracting = true;
         if (duration > 0f)
         {
+            initiator.Movement.UpdateMovement(Vector2.zero);
             interactionCoroutine = StartCoroutine(ProcessInteraction(initiator, endInteractionCallback));
         }
         else
