@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class InteractableDetector : MonoBehaviour
 {
+    [SerializeField] private PhotonView photonView;
+
     private HashSet<Interactable> interactablesInRange = new HashSet<Interactable>();
 
     public Interactable CurrentNearestInteractable { get; private set; }
@@ -38,6 +41,11 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {
@@ -61,6 +69,11 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {
