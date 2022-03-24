@@ -58,7 +58,16 @@ public class AirMovement : Movement
     {
         IsGravityEnabled = isEnabled;
         rigidbody2d.gravityScale = isEnabled ? 5f : 0f;
-        if (isEnabled)
+        if (!isEnabled)
+        {
+            return;
+        }
+
+        if (groundDetector.IsInContact)
+        {
+            MovementStateMachine.ChangeState(new GroundedState(this));
+        }
+        else
         {
             MovementStateMachine.ChangeState(new FallingState(this));
         }
