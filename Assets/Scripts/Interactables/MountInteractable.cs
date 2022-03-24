@@ -10,6 +10,7 @@ public class MountInteractable : Interactable
 
     [SerializeField] private Transform mount;
     [SerializeField] private Movement mountMovement;
+    [SerializeField] private Combat mountCombat;
     [SerializeField] private Vector2 localOffset;
 
     [Space(10)]
@@ -56,6 +57,7 @@ public class MountInteractable : Interactable
     private void RPC_Mount()
     {
         // executed on mount's client
+        mountCombat.ToggleCombatAbilities(false);
         mountEvent.Invoke();
     }
 
@@ -63,6 +65,7 @@ public class MountInteractable : Interactable
     private void RPC_Dismount()
     {
         // executed on mount's client
+        mountCombat.ToggleCombatAbilities(true);
         dismountEvent.Invoke();
     }
 
@@ -84,7 +87,7 @@ public class MountInteractable : Interactable
     public void MountDeathHandler()
     {
         // rider is separate client, so use RPC to dismount
+        mountCombat.ToggleCombatAbilities(true);
         photonView.RPC("RPC_DismountMountedRider", RpcTarget.Others);
-        dismountEvent.Invoke();
     }
 }

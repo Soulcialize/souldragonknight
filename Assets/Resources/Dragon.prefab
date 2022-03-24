@@ -254,24 +254,13 @@ MonoBehaviour:
   localPosition: {x: -0.52, y: 0.68}
   mount: {fileID: 4470413134207635894}
   mountMovement: {fileID: 4470413134207635889}
+  mountCombat: {fileID: 3483110514655366300}
   localOffset: {x: 0.43, y: 0.923}
   mountedSpriteLayer: 4
   mountedSpriteLayerOrder: 0
   mountEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3483110514655366300}
-        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
-        m_MethodName: ToggleCombatAbilities
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: -8994959269452998378}
         m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
         m_MethodName: StopRegeneration
@@ -287,18 +276,6 @@ MonoBehaviour:
   dismountEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3483110514655366300}
-        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
-        m_MethodName: ToggleCombatAbilities
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: -8994959269452998378}
         m_TargetAssemblyTypeName: ConsumableResource, Assembly-CSharp
         m_MethodName: RestartRegeneration
