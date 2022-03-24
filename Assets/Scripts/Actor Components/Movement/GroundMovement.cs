@@ -85,12 +85,12 @@ public class GroundMovement : Movement
         }
     }
 
-    public void Mount(Transform mount, Movement mountMovement, Vector2 localOffset,
+    public void Mount(Transform mount, Movement mountMovement, MountInteractable mountInteractable, Vector2 localOffset,
         SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
         if (MovementStateMachine.CurrState is GroundedState || MovementStateMachine.CurrState is AirborneState)
         {
-            MovementStateMachine.ChangeState(new MountedState(this, mountMovement));
+            MovementStateMachine.ChangeState(new MountedState(this, mountMovement, mountInteractable));
             photonView.RPC("RPC_MountRider", RpcTarget.All,
                 mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, mountedSortingLayer, mountedSortingLayerOrder);
         }

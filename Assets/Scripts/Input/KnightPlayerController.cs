@@ -140,6 +140,11 @@ public class KnightPlayerController : PlayerController
             {
                 Interact(nearestInteractable);
             }
+            else if (Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState mountedState)
+            {
+                // interact button is also the dismount button
+                mountedState.Dismount();
+            }
         }
     }
 

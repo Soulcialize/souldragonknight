@@ -30,27 +30,33 @@ public class MountInteractable : Interactable
 
     public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
-        if (!(initiator.Movement is GroundMovement groundMovement))
+        if (!(initiator.Movement is GroundMovement groundMovement)
+            || initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
         {
             endInteractionCallback();
             return;
         }
 
-        if (initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
-        {
-            currentRiderMovement = null;
-            groundMovement.Dismount();
-            photonView.RPC("RPC_Dismount", RpcTarget.Others);
-        }
-        else
-        {
-            // mount
-            currentRiderMovement = groundMovement;
-            groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
-            photonView.RPC("RPC_Mount", RpcTarget.Others);
-        }
-
+        Mount(groundMovement);
         endInteractionCallback();
+    }
+
+    public void Mount(GroundMovement riderGroundMovement)
+    {
+        // executed on rider's client
+        currentRiderMovement = riderGroundMovement;
+        SetIsEnabledWithSync(false);
+        riderGroundMovement.Mount(mount, mountMovement, this, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
+        photonView.RPC("RPC_Mount", RpcTarget.Others);
+    }
+
+    public void Dismount(GroundMovement riderGroundMovement)
+    {
+        // executed on rider's client
+        currentRiderMovement = null;
+        SetIsEnabledWithSync(true);
+        riderGroundMovement.Dismount();
+        photonView.RPC("RPC_Dismount", RpcTarget.Others);
     }
 
     [PunRPC]
