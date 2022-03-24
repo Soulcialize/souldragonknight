@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using StateMachines;
 using Photon.Pun;
 
@@ -25,6 +26,10 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
     [Tooltip("Distance to a navigation target beyond which the actor will move faster.")]
     [SerializeField] private float navFastDistanceThreshold;
+
+    [Space(10)]
+
+    [SerializeField] private UnityEvent flipDirectionEvent;
 
     private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
 
@@ -98,5 +103,6 @@ public abstract class Movement : MonoBehaviour
         Vector3 localScale = actorTransform.localScale;
         localScale.x = -localScale.x;
         actorTransform.localScale = localScale;
+        flipDirectionEvent.Invoke();
     }
 }

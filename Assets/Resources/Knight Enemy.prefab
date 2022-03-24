@@ -438,6 +438,9 @@ MonoBehaviour:
   isDefaultFacingRight: 0
   defaultStoppingDistanceFromNavTargets: 1.4
   navFastDistanceThreshold: 6
+  flipDirectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   spriteLayer: {fileID: 693705184267070998}
   jumpForce: 12
   airborneHorizontalMoveSpeed: 1

@@ -1283,6 +1283,21 @@ MonoBehaviour:
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
   navFastDistanceThreshold: 6
+  flipDirectionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 875855890118716395}
+        m_TargetAssemblyTypeName: InteractableUi, Assembly-CSharp
+        m_MethodName: FlipPrompt
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   spriteLayer: {fileID: 2826182381347841401}
   jumpForce: 12
   airborneHorizontalMoveSpeed: 1
@@ -1427,7 +1442,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5696632616774609756}
   - {fileID: -8030419580977392626}
-  - {fileID: 0}
   - {fileID: 8972519610864243388}
   sceneViewId: 0
   InstantiationId: 0
