@@ -47,7 +47,8 @@ public class Combat : MonoBehaviour
     [SerializeField] private RangedProjectileEvent actorFiredProjectileEvent;
     [SerializeField] private UnityEvent hurtEvent;
     [SerializeField] private UnityEvent deathEvent;
-    [SerializeField] private UnityEvent reviveEvent;
+    [SerializeField] private UnityEvent reviveStartEvent;
+    [SerializeField] private UnityEvent reviveFinishEvent;
 
     private Dictionary<CombatAbilityIdentifier, CombatAbility> identifierToAbilityDictionary
         = new Dictionary<CombatAbilityIdentifier, CombatAbility>();
@@ -68,7 +69,8 @@ public class Combat : MonoBehaviour
 
     public UnityEvent HurtEvent { get => hurtEvent; }
     public UnityEvent DeathEvent { get => deathEvent; }
-    public UnityEvent ReviveEvent { get => reviveEvent; }
+    public UnityEvent ReviveStartEvent { get => reviveStartEvent; }
+    public UnityEvent ReviveFinishEvent { get => reviveFinishEvent; }
 
     public CombatStateMachine CombatStateMachine { get; private set; }
 

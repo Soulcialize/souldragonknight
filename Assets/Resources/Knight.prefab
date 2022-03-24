@@ -732,6 +732,9 @@ MonoBehaviour:
   interactableUi: {fileID: 875855890118716395}
   promptText: Revive
   localPosition: {x: 0, y: -1.71}
+  enableStatusUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
   combat: {fileID: 4584270387848782332}
 --- !u!114 &642602536449024203
 MonoBehaviour:
@@ -1357,7 +1360,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  reviveEvent:
+  reviveStartEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 795063247648489553}
@@ -1372,6 +1375,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  reviveFinishEvent:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 6397929481459963310}
         m_TargetAssemblyTypeName: InteractableDetector, Assembly-CSharp
         m_MethodName: SetIsEnabled

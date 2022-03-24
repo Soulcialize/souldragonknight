@@ -252,6 +252,9 @@ MonoBehaviour:
   interactableUi: {fileID: 6468386604885205175}
   promptText: Mount
   localPosition: {x: -0.52, y: 0.68}
+  enableStatusUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mount: {fileID: 4470413134207635894}
   mountMovement: {fileID: 4470413134207635889}
   mountCombat: {fileID: 3483110514655366300}
@@ -306,6 +309,9 @@ MonoBehaviour:
   interactableUi: {fileID: 6468386604885205175}
   promptText: Revive
   localPosition: {x: 0, y: -1.54}
+  enableStatusUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
   combat: {fileID: 3483110514655366300}
 --- !u!114 &3076819617650144031
 MonoBehaviour:
@@ -773,7 +779,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  reviveEvent:
+  reviveStartEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9200074913184122050}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetIsEnabledWithSync
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  reviveFinishEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2657584058281478896}
@@ -787,18 +808,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 9200074913184122050}
-        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: SetIsEnabledWithSync
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1287844530801011846}
         m_TargetAssemblyTypeName: InteractableDetector, Assembly-CSharp

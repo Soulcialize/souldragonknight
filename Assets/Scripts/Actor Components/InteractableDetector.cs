@@ -105,6 +105,7 @@ public class InteractableDetector : MonoBehaviour
         foreach (Interactable interactable in interactables)
         {
             interactablesInRange.Add(interactable);
+            interactable.EnableStatusUpdateEvent.AddListener(UpdateNearestInteractable);
         }
 
         UpdateNearestInteractable();
@@ -121,6 +122,7 @@ public class InteractableDetector : MonoBehaviour
         foreach (Interactable interactable in interactables)
         {
             interactablesInRange.Remove(interactable);
+            interactable.EnableStatusUpdateEvent.RemoveListener(UpdateNearestInteractable);
         }
 
         UpdateNearestInteractable();

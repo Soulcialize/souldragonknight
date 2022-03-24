@@ -21,15 +21,26 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] private string promptText;
     [SerializeField] private Vector2 localPosition;
 
+    [Header("Events")]
+
+    [SerializeField] private UnityEvent enableStatusUpdateEvent;
+
     private Coroutine interactionCoroutine;
 
     public bool IsEnabled { get; protected set; }
     public bool IsInteracting { get; private set; }
     public abstract Interaction InteractableInteraction { get; }
 
+    public UnityEvent EnableStatusUpdateEvent { get => enableStatusUpdateEvent; }
+
     protected virtual void Awake()
     {
         IsEnabled = isEnabledByDefault;
+    }
+
+    private void OnDestroy()
+    {
+        enableStatusUpdateEvent.RemoveAllListeners();
     }
 
     public abstract void Interact(ActorController initiator, UnityAction endInteractionCallback);
@@ -61,6 +72,7 @@ public abstract class Interactable : MonoBehaviour
     public void SetIsEnabledWithoutSync(bool isEnabled)
     {
         IsEnabled = isEnabled;
+        enableStatusUpdateEvent.Invoke();
     }
 
     public void SetIsEnabledWithSync(bool isEnabled)

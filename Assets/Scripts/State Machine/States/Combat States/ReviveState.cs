@@ -14,6 +14,7 @@ namespace CombatStates
             owner.SpriteLayer.ResetLayer();
             owner.Animator.SetBool("isReviving", true);
             owner.Resource.Regenerate();
+            owner.ReviveStartEvent.Invoke();
         }
 
         public override void Execute()
@@ -25,7 +26,7 @@ namespace CombatStates
         {
             owner.CollisionLayer.ResetLayer();
             owner.Animator.SetBool("isReviving", false);
-            owner.ReviveEvent.Invoke();
+            owner.ReviveFinishEvent.Invoke();
         }
     }
 }

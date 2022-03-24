@@ -164,9 +164,9 @@ public class DragonPlayerController : PlayerController
         movement.ToggleGravity(true);
     }
 
-    protected override void HandleReviveEvent()
+    protected override void HandleReviveFinshEvent()
     {
-        base.HandleReviveEvent();
+        base.HandleReviveFinshEvent();
         movement.ToggleGravity(false);
         movement.TakeFlight();
     }
