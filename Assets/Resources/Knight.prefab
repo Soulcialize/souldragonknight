@@ -736,8 +736,6 @@ MonoBehaviour:
   buffDuration: 3
   spriteRenderer: {fileID: 7134467020418318920}
   buffedColor: {r: 0.09411766, g: 1, b: 1, a: 1}
-  blinkingDuration: 1
-  blinkingPeriod: 0.2
   photonView: {fileID: 5696632616774609759}
 --- !u!114 &5696632616774609759
 MonoBehaviour:

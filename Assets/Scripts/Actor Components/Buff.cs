@@ -22,8 +22,8 @@ public class Buff : MonoBehaviour
     [SerializeField] private Color buffedColor;
     private Color defaultColor;
 
-    [SerializeField] private float blinkingDuration = 1.0f;
-    [SerializeField] private float blinkingPeriod = 0.2f;
+    private float blinkingDuration = 1.0f;
+    private float blinkingPeriod = 0.2f;
 
     [Space (10)]
 
@@ -49,9 +49,7 @@ public class Buff : MonoBehaviour
             if (buffTimeout != null)
             {
                 StopCoroutine(buffTimeout);
-                StopCoroutine(blinkingTime);
                 buffTimeout = null;
-                blinkingTime = null;
             }
         }
     }
@@ -105,6 +103,6 @@ public class Buff : MonoBehaviour
     [PunRPC]
     private void RPC_StartBlinking()
     {
-        blinkingTime = StartCoroutine(ExpireBlinking());
+        buffTimeout = StartCoroutine(ExpireBlinking());
     }
 }
