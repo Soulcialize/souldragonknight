@@ -105,7 +105,7 @@ public abstract class Interactable : MonoBehaviour
         }
 
         interactableUi.SetInteractionProgressFill(1f);
-        Interact(initiator, endInteractionCallback);
         IsInteracting = false;
+        Interact(initiator, endInteractionCallback);
     }
 }
