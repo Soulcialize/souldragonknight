@@ -65,6 +65,7 @@ public abstract class Interactable : MonoBehaviour
         if (interactionCoroutine != null)
         {
             StopCoroutine(interactionCoroutine);
+            interactableUi.SetInteractionProgressFill(0f);
             interactionCoroutine = null;
             IsInteracting = false;
         }
