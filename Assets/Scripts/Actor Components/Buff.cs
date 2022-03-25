@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class Buff : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color buffedColor;
     private Color defaultColor;
+
+    private float blinkingDuration = 1.0f;
+    private float blinkingPeriod = 0.2f;
 
     [Space (10)]
 
@@ -49,9 +53,29 @@ public class Buff : MonoBehaviour
         }
     }
 
+    private void StartBlinking()
+    {
+        photonView.RPC("RPC_StartBlinking", RpcTarget.All);
+    }
+
     private IEnumerator ExpireBuff() 
     {
-        yield return new WaitForSeconds(buffDuration);
+        yield return new WaitForSeconds(Math.Max(0, buffDuration - blinkingDuration));
+        StartBlinking();
+    }
+
+    private IEnumerator ExpireBlinking()
+    {
+        int numOfBlinks = (int) Math.Floor(Math.Min(blinkingDuration, buffDuration) / blinkingPeriod);
+        int counter = 0;
+
+        while (counter < numOfBlinks) {
+            spriteRenderer.color = defaultColor;
+            yield return new WaitForSeconds(blinkingPeriod / 2);
+            spriteRenderer.color = buffedColor;
+            yield return new WaitForSeconds(blinkingPeriod / 2);
+            counter++;
+        }
 
         RemoveBuff();
     }
@@ -73,5 +97,11 @@ public class Buff : MonoBehaviour
         combat.AttackEffectLayer = defaultTargetLayer;
         spriteRenderer.color = defaultColor;
         IsBuffed = false;
+    }
+
+    [PunRPC]
+    private void RPC_StartBlinking()
+    {
+        buffTimeout = StartCoroutine(ExpireBlinking());
     }
 }

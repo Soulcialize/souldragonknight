@@ -14,25 +14,32 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
     [SerializeField] private string roomSceneName;
     [SerializeField] private TextMeshProUGUI errorMessage;
 
+    private bool isJoinOngoing;
+
     public void JoinRoom()
     {
-        if (roomNameInputField.text=="")
-        {
+        if (roomNameInputField.text=="") {
             errorMessage.text = "Please enter a room name.";
-        } else
-        {
+        } else if (!isJoinOngoing) {
+            isJoinOngoing = true;
             Debug.Log($"Joining room ({roomNameInputField.text})");
             PhotonNetwork.JoinRoom(roomNameInputField.text);
+        } else {
+            Debug.Log($"Joining room ({roomNameInputField.text}) already in progress");
         }
+    
     }
 
     public override void OnJoinedRoom()
     {
+        isJoinOngoing = false;
         PhotonNetwork.LoadLevel(roomSceneName);
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message) {
+    public override void OnJoinRoomFailed(short returnCode, string message) 
+    {
         base.OnJoinRoomFailed(returnCode, message);
+        isJoinOngoing = false;
         if (returnCode == LOBBY_DOES_NOT_EXIST_ERROR_NAME) {
             errorMessage.text = "A lobby with that name does not exist!";
         } else if (returnCode == LOBBY_FULL_ERROR_NAME) {
