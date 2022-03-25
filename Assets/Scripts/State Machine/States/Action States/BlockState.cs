@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace CombatStates
 {
-    public class BlockState : CombatState
+    public class BlockState : ActionState
     {
         public enum Direction { HORIZONTAL, UPWARDS }
 
@@ -61,7 +61,7 @@ namespace CombatStates
                 // check if owner is facing the right the direction from which the hit is coming from
                 if (isOwnerFacingRight && hitDirection.x < 0f || !isOwnerFacingRight && hitDirection.x > 0f)
                 {
-                    owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
+                    owner.ActionStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace CombatStates
             }
             else if (blockDirection == Direction.UPWARDS)
             {
-                owner.CombatStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
+                owner.ActionStateMachine.ChangeState(new BlockHitState(owner, blockHitDuration, blockDirection, blockHitEvent));
             }
         }
     }

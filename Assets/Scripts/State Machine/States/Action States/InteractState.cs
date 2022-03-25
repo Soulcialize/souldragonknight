@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class InteractState : CombatState
+    public class InteractState : ActionState
     {
         private readonly ActorController initiator;
         private readonly Interactable interactable;
@@ -17,7 +17,7 @@ namespace CombatStates
 
         public override void Enter()
         {
-            interactable.StartInteraction(initiator, owner.CombatStateMachine.Exit);
+            interactable.StartInteraction(initiator, owner.ActionStateMachine.Exit);
         }
 
         public override void Execute()
@@ -35,7 +35,7 @@ namespace CombatStates
 
         public void InterruptInteraction()
         {
-            owner.CombatStateMachine.Exit();
+            owner.ActionStateMachine.Exit();
         }
     }
 }

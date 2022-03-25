@@ -4,9 +4,9 @@ using UnityEngine;
 using StateMachines;
 using CombatStates;
 
-public class CombatStateMachine : StateMachine
+public class ActionStateMachine : StateMachine
 {
-    public CombatStateMachine()
+    public ActionStateMachine()
     {
         transitions[typeof(ReadyAttackState)] = new HashSet<System.Type>() { typeof(AttackState), typeof(BlockState), typeof(HurtState), typeof(DeathState) };
         transitions[typeof(AttackState)] = new HashSet<System.Type>() { typeof(BlockState), typeof(StunState), typeof(HurtState), typeof(DeathState) };

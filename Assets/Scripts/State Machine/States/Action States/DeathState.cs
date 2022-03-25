@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class DeathState : CombatState
+    public class DeathState : ActionState
     {
         public DeathState(Combat owner) : base(owner) { }
 

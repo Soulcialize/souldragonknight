@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class DodgeState : CombatState
+    public class DodgeState : ActionState
     {
         private readonly Vector2 direction;
         private readonly float speed;
@@ -47,7 +47,7 @@ namespace CombatStates
         private void EndDodge()
         {
             owner.Rigidbody2d.velocity = Vector2.zero;
-            owner.CombatStateMachine.Exit();
+            owner.ActionStateMachine.Exit();
         }
     }
 }

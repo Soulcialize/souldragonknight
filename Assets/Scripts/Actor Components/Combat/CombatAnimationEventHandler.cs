@@ -14,7 +14,7 @@ public class CombatAnimationEventHandler : MonoBehaviour
 
     public void ExecuteAttackEffect()
     {
-        if (combat.CombatStateMachine.CurrState is AttackState attackState)
+        if (combat.ActionStateMachine.CurrState is AttackState attackState)
         {
             attackState.ExecuteAttackEffect();
         }
@@ -22,25 +22,25 @@ public class CombatAnimationEventHandler : MonoBehaviour
 
     public void OnAttackEnd()
     {
-        if (combat.CombatStateMachine.CurrState is AttackState)
+        if (combat.ActionStateMachine.CurrState is AttackState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 
     public void OnStunEnd()
     {
-        if (combat.CombatStateMachine.CurrState is StunState)
+        if (combat.ActionStateMachine.CurrState is StunState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 
     public void OnHurtEnd()
     {
-        if (combat.CombatStateMachine.CurrState is HurtState)
+        if (combat.ActionStateMachine.CurrState is HurtState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 
@@ -51,9 +51,9 @@ public class CombatAnimationEventHandler : MonoBehaviour
 
     public void OnReviveEnd()
     {
-        if (combat.CombatStateMachine.CurrState is ReviveState)
+        if (combat.ActionStateMachine.CurrState is ReviveState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 }

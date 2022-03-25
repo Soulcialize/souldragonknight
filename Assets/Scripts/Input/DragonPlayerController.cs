@@ -41,7 +41,7 @@ public class DragonPlayerController : PlayerController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
         }
@@ -143,7 +143,7 @@ public class DragonPlayerController : PlayerController
 
     private void HandleStartInteractionInput(InputAction.CallbackContext context)
     {
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             Interactable nearestInteractable = interactableDetector.GetNearestInteractable();
             if (nearestInteractable != null)

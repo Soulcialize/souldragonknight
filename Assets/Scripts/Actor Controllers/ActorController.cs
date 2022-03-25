@@ -43,7 +43,7 @@ public abstract class ActorController : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            Combat.CombatStateMachine.Update();
+            Combat.ActionStateMachine.Update();
         }
     }
 
@@ -59,13 +59,13 @@ public abstract class ActorController : MonoBehaviour
     {
         if (!interactable.IsInteracting)
         {
-            combat.CombatStateMachine.ChangeState(new CombatStates.InteractState(combat, this, interactable));
+            combat.ActionStateMachine.ChangeState(new CombatStates.InteractState(combat, this, interactable));
         }
     }
 
     public void InterruptInteraction()
     {
-        if (combat.CombatStateMachine.CurrState is CombatStates.InteractState interactState)
+        if (combat.ActionStateMachine.CurrState is CombatStates.InteractState interactState)
         {
             interactState.InterruptInteraction();
         }

@@ -21,7 +21,7 @@ public class ReviveInteractable : Interactable
     [PunRPC]
     private void RPC_Revive()
     {
-        if (combat.CombatStateMachine.CurrState is CombatStates.DeathState)
+        if (combat.ActionStateMachine.CurrState is CombatStates.DeathState)
         {
             // should only execute on dead actor's client
             combat.Revive();

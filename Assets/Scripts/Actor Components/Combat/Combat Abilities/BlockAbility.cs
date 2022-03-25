@@ -17,26 +17,26 @@ public class BlockAbility : CombatAbility
 
     public override void Execute(Combat combat, params object[] parameters)
     {
-        if (combat.CombatStateMachine.CurrState is BlockHitState blockHitState)
+        if (combat.ActionStateMachine.CurrState is BlockHitState blockHitState)
         {
             blockHitState.WillReturnToBlock = true;
         }
         else
         {
             BlockState.Direction blockDirection = (BlockState.Direction)parameters[0];
-            combat.CombatStateMachine.ChangeState(new BlockState(combat, blockHitDuration, blockDirection, blockHitEvent));
+            combat.ActionStateMachine.ChangeState(new BlockState(combat, blockHitDuration, blockDirection, blockHitEvent));
         }
     }
 
     public override void End(Combat combat)
     {
-        if (combat.CombatStateMachine.CurrState is BlockHitState blockHitState)
+        if (combat.ActionStateMachine.CurrState is BlockHitState blockHitState)
         {
             blockHitState.WillReturnToBlock = false;
         }
-        else if (combat.CombatStateMachine.CurrState is BlockState)
+        else if (combat.ActionStateMachine.CurrState is BlockState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 }

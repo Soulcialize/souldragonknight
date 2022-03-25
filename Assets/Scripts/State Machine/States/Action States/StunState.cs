@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public abstract class AttackState : CombatState
+    public class StunState : ActionState
     {
-        public AttackState(Combat owner) : base(owner) { }
+        public StunState(Combat owner) : base(owner) { }
 
         public override void Enter()
         {
-            owner.Animator.SetBool("isAttacking", true);
+            Debug.Log($"{owner.gameObject} stunned");
+            owner.Animator.SetBool("isStunned", true);
         }
 
         public override void Execute()
@@ -20,9 +21,7 @@ namespace CombatStates
 
         public override void Exit()
         {
-            owner.Animator.SetBool("isAttacking", false);
+            owner.Animator.SetBool("isStunned", false);
         }
-
-        public abstract void ExecuteAttackEffect();
     }
 }

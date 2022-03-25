@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace CombatStates
 {
-    public class BlockHitState : CombatState
+    public class BlockHitState : ActionState
     {
         private readonly float duration;
         private readonly BlockState.Direction direction;
@@ -51,11 +51,11 @@ namespace CombatStates
                 // switch to block state or exit combat state machine
                 if (WillReturnToBlock)
                 {
-                    owner.CombatStateMachine.ChangeState(new BlockState(owner, duration, direction, blockHitEvent));
+                    owner.ActionStateMachine.ChangeState(new BlockState(owner, duration, direction, blockHitEvent));
                 }
                 else
                 {
-                    owner.CombatStateMachine.Exit();
+                    owner.ActionStateMachine.Exit();
                 }
             }
         }

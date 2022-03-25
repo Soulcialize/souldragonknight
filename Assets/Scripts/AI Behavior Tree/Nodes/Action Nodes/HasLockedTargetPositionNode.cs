@@ -16,7 +16,7 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            return ((ReadyRangedAttackState)ownerCombat.CombatStateMachine.CurrState).HasLockedTargetPosition
+            return ((ReadyRangedAttackState)ownerCombat.ActionStateMachine.CurrState).HasLockedTargetPosition
                 ? NodeState.SUCCESS
                 : NodeState.FAILURE;
         }

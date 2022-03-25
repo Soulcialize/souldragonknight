@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CombatStates
 {
-    public class ReviveState : CombatState
+    public class ReviveState : ActionState
     {
         public ReviveState(Combat owner) : base(owner) { }
 

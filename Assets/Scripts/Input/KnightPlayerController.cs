@@ -40,7 +40,7 @@ public class KnightPlayerController : PlayerController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             movement.UpdateMovement(new Vector2(movementInput, 0f));
         }
@@ -101,7 +101,7 @@ public class KnightPlayerController : PlayerController
 
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             movement.Jump();
         }
@@ -133,7 +133,7 @@ public class KnightPlayerController : PlayerController
 
     private void HandleStartInteractionInput(InputAction.CallbackContext context)
     {
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             Interactable nearestInteractable = interactableDetector.GetNearestInteractable();
             if (nearestInteractable != null)

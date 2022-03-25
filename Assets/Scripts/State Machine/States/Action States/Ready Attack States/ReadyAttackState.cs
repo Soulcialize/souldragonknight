@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace CombatStates
 {
-    public class ReadyAttackState : CombatState
+    public class ReadyAttackState : ActionState
     {
         private readonly float duration;
         private readonly UnityAction<Combat> readyCallback;

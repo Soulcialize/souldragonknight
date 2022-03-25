@@ -72,11 +72,11 @@ public class Combat : MonoBehaviour
     public UnityEvent ReviveStartEvent { get => reviveStartEvent; }
     public UnityEvent ReviveFinishEvent { get => reviveFinishEvent; }
 
-    public CombatStateMachine CombatStateMachine { get; private set; }
+    public ActionStateMachine ActionStateMachine { get; private set; }
 
     protected virtual void Awake()
     {
-        CombatStateMachine = new CombatStateMachine();
+        ActionStateMachine = new ActionStateMachine();
         foreach (SerializedCombatAbility serializedAbility in combatAbilities)
         {
             identifierToAbilityDictionary.Add(serializedAbility.AbilityIdentifier, serializedAbility.Ability);
@@ -133,7 +133,7 @@ public class Combat : MonoBehaviour
 
     public void Stun()
     {
-        CombatStateMachine.ChangeState(new StunState(this));
+        ActionStateMachine.ChangeState(new StunState(this));
     }
 
     public void HandleAttackHit(Combat attacker)
@@ -152,7 +152,7 @@ public class Combat : MonoBehaviour
     protected void LocalHandleAttackHit(float attackerPosX, float attackerPosY)
     {
         movement.UpdateMovement(Vector2.zero);
-        if (CombatStateMachine.CurrState is BlockState blockState)
+        if (ActionStateMachine.CurrState is BlockState blockState)
         {
             blockState.HandleHit(movement.IsFacingRight, ((Vector2)transform.position - new Vector2(attackerPosX, attackerPosY)).normalized);
         }
@@ -170,18 +170,18 @@ public class Combat : MonoBehaviour
 
     public void Hurt()
     {
-        if (!(CombatStateMachine.CurrState is DeathState))
+        if (!(ActionStateMachine.CurrState is DeathState))
         {
             health.Decrement();
 
             if (!health.IsZero())
             {
-                CombatStateMachine.ChangeState(new HurtState(this));
+                ActionStateMachine.ChangeState(new HurtState(this));
                 hurtEvent.Invoke();
             }
             else
             {
-                CombatStateMachine.ChangeState(new DeathState(this));
+                ActionStateMachine.ChangeState(new DeathState(this));
                 deathEvent.Invoke();
             }
         }
@@ -205,6 +205,6 @@ public class Combat : MonoBehaviour
 
     public void Revive()
     {
-        CombatStateMachine.ChangeState(new ReviveState(this));
+        ActionStateMachine.ChangeState(new ReviveState(this));
     }
 }
