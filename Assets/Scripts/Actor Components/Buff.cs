@@ -7,7 +7,6 @@ using Photon.Pun;
 public class Buff : MonoBehaviour
 {
     private Coroutine buffTimeout;
-    private Coroutine blinkingTime;
 
     [Header("Combat Changes")]
 
