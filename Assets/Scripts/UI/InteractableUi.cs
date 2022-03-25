@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class InteractableUi : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textObj;
+    [SerializeField] private TextMeshProUGUI interactionText;
+    [SerializeField] private GameObject interactionProgress;
+    [SerializeField] private Image interactionProgressFill;
 
     private bool isFlipped = false;
 
-    public void DisplayPrompt(string prompt, Vector2 localPosition)
+    public void DisplayPrompt(string prompt, float interactionDuration, Vector2 localPosition)
     {
-        textObj.text = prompt;
+        interactionText.text = prompt;
         transform.localPosition = localPosition;
         if (isFlipped)
         {
@@ -19,6 +22,8 @@ public class InteractableUi : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+        SetInteractionProgressFill(0f);
+        interactionProgress.SetActive(interactionDuration > 0f);
     }
 
     public void HidePrompt()
@@ -36,5 +41,10 @@ public class InteractableUi : MonoBehaviour
         Vector3 localPosition = transform.localPosition;
         localPosition.x = -localPosition.x;
         transform.localPosition = localPosition;
+    }
+
+    public void SetInteractionProgressFill(float percentageFilled)
+    {
+        interactionProgressFill.fillAmount = percentageFilled;
     }
 }

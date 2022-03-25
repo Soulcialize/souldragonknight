@@ -83,7 +83,7 @@ public abstract class Interactable : MonoBehaviour
 
     public void DisplayPrompt()
     {
-        interactableUi.DisplayPrompt(promptText, localPosition);
+        interactableUi.DisplayPrompt(promptText, duration, localPosition);
     }
 
     public void HidePrompt()
@@ -94,12 +94,16 @@ public abstract class Interactable : MonoBehaviour
     private IEnumerator ProcessInteraction(ActorController initiator, UnityAction endInteractionCallback)
     {
         float elapsedTime = 0f;
+        interactableUi.SetInteractionProgressFill(0f);
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
+            interactableUi.SetInteractionProgressFill(elapsedTime / duration);
             yield return null;
         }
 
+        interactableUi.SetInteractionProgressFill(1f);
         Interact(initiator, endInteractionCallback);
         IsInteracting = false;
     }
