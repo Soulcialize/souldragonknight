@@ -644,6 +644,9 @@ MonoBehaviour:
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
   navFastDistanceThreshold: 6
+  flipDirectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   spriteLayer: {fileID: 1672654525746901489}
   jumpForce: 12
   airborneHorizontalMoveSpeed: 1
@@ -703,7 +706,10 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
-  reviveEvent:
+  reviveStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  reviveFinishEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2580839893817942638
@@ -953,7 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnabled: 1
   resourceCost: 0
-  maxRange: 10
+  maxRange: 15
   readyDuration: 4
   timeToLock: 3
   projectilePrefab: {fileID: 2451902509671687090, guid: d75a65ad664c7a147bf5869d211fbe95, type: 3}
