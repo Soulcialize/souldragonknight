@@ -25,7 +25,7 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.AddListener(HandleHurtEvent);
             Combat.DeathEvent.AddListener(HandleDeathEvent);
-            Combat.ReviveEvent.AddListener(HandleReviveEvent);
+            Combat.ReviveFinishEvent.AddListener(HandleReviveFinshEvent);
         }
     }
 
@@ -35,7 +35,7 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.RemoveListener(HandleHurtEvent);
             Combat.DeathEvent.RemoveListener(HandleDeathEvent);
-            Combat.ReviveEvent.RemoveListener(HandleReviveEvent);
+            Combat.ReviveFinishEvent.RemoveListener(HandleReviveFinshEvent);
         }
     }
 
@@ -43,7 +43,7 @@ public abstract class ActorController : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            Combat.CombatStateMachine.Update();
+            Combat.ActionStateMachine.Update();
         }
     }
 
@@ -57,12 +57,23 @@ public abstract class ActorController : MonoBehaviour
 
     public void Interact(Interactable interactable)
     {
-        interactable.Interact(this);
+        if (!interactable.IsInteracting)
+        {
+            combat.ActionStateMachine.ChangeState(new CombatStates.InteractState(combat, this, interactable));
+        }
+    }
+
+    public void InterruptInteraction()
+    {
+        if (combat.ActionStateMachine.CurrState is CombatStates.InteractState interactState)
+        {
+            interactState.InterruptInteraction();
+        }
     }
 
     protected virtual void HandleHurtEvent() { }
 
     protected virtual void HandleDeathEvent() { }
 
-    protected virtual void HandleReviveEvent() { }
+    protected virtual void HandleReviveFinshEvent() { }
 }

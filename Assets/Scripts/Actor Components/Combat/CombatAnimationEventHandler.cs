@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using CombatStates;
 
 public class CombatAnimationEventHandler : MonoBehaviour
 {
     [SerializeField] private Combat combat;
 
+    [Space(10)]
+
+    [SerializeField] private UnityEvent deathAnimationEndEvent;
+
     public void ExecuteAttackEffect()
     {
-        if (combat.CombatStateMachine.CurrState is AttackState attackState)
+        if (combat.ActionStateMachine.CurrState is AttackState attackState)
         {
             attackState.ExecuteAttackEffect();
         }
@@ -17,33 +22,38 @@ public class CombatAnimationEventHandler : MonoBehaviour
 
     public void OnAttackEnd()
     {
-        if (combat.CombatStateMachine.CurrState is AttackState)
+        if (combat.ActionStateMachine.CurrState is AttackState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 
     public void OnStunEnd()
     {
-        if (combat.CombatStateMachine.CurrState is StunState)
+        if (combat.ActionStateMachine.CurrState is StunState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 
     public void OnHurtEnd()
     {
-        if (combat.CombatStateMachine.CurrState is HurtState)
+        if (combat.ActionStateMachine.CurrState is HurtState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
+    }
+
+    public void OnDeathEndEvent()
+    {
+        deathAnimationEndEvent.Invoke();
     }
 
     public void OnReviveEnd()
     {
-        if (combat.CombatStateMachine.CurrState is ReviveState)
+        if (combat.ActionStateMachine.CurrState is ReviveState)
         {
-            combat.CombatStateMachine.Exit();
+            combat.ActionStateMachine.Exit();
         }
     }
 }

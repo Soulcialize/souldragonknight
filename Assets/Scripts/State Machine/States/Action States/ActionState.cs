@@ -5,11 +5,11 @@ using StateMachines;
 
 namespace CombatStates
 {
-    public abstract class CombatState : State
+    public abstract class ActionState : State
     {
         protected readonly Combat owner;
 
-        public CombatState(Combat owner)
+        public ActionState(Combat owner)
         {
             this.owner = owner;
         }

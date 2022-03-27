@@ -6,8 +6,11 @@ using Photon.Pun;
 
 public class MountInteractable : Interactable
 {
+    [Header("Mount")]
+
     [SerializeField] private Transform mount;
     [SerializeField] private Movement mountMovement;
+    [SerializeField] private Combat mountCombat;
     [SerializeField] private Vector2 localOffset;
 
     [Space(10)]
@@ -25,32 +28,47 @@ public class MountInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.MOUNT; }
 
-    public override void Interact(ActorController initiator)
+    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
-        if (!IsEnabled || !(initiator.Movement is GroundMovement groundMovement))
+        if (!(initiator.Movement is GroundMovement groundMovement)
+            || initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
         {
+            endInteractionCallback();
             return;
         }
 
-        if (initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
-        {
-            currentRiderMovement = null;
-            groundMovement.Dismount();
-            photonView.RPC("RPC_Dismount", RpcTarget.Others);
-        }
-        else
-        {
-            // mount
-            currentRiderMovement = groundMovement;
-            groundMovement.Mount(mount, mountMovement, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
-            photonView.RPC("RPC_Mount", RpcTarget.Others);
-        }
+        Mount(groundMovement);
+        endInteractionCallback();
+    }
+
+    public void Mount(GroundMovement riderGroundMovement)
+    {
+        // executed on rider's client
+        currentRiderMovement = riderGroundMovement;
+        SetIsEnabledWithSync(false);
+        riderGroundMovement.Mount(
+            mount, mountMovement, this,
+            mountMovement.IsFacingRight ? localOffset : new Vector2(-localOffset.x, localOffset.y),
+            mountedSpriteLayer, mountedSpriteLayerOrder);
+
+        photonView.RPC("RPC_Mount", RpcTarget.Others, currentRiderMovement.NetworkViewId);
+    }
+
+    public void Dismount(GroundMovement riderGroundMovement)
+    {
+        // executed on rider's client
+        currentRiderMovement = null;
+        SetIsEnabledWithSync(true);
+        riderGroundMovement.Dismount();
+        photonView.RPC("RPC_Dismount", RpcTarget.Others);
     }
 
     [PunRPC]
-    private void RPC_Mount()
+    private void RPC_Mount(int riderMovementViewId)
     {
         // executed on mount's client
+        currentRiderMovement = PhotonView.Find(riderMovementViewId).GetComponent<GroundMovement>();
+        mountCombat.ToggleCombatAbilities(false);
         mountEvent.Invoke();
     }
 
@@ -58,6 +76,8 @@ public class MountInteractable : Interactable
     private void RPC_Dismount()
     {
         // executed on mount's client
+        currentRiderMovement = null;
+        mountCombat.ToggleCombatAbilities(true);
         dismountEvent.Invoke();
     }
 
@@ -72,6 +92,34 @@ public class MountInteractable : Interactable
         }
     }
 
+    private void FlipMountedRider()
+    {
+        if (photonView.IsMine)
+        {
+            // execute only one client since Movement.FlipDirection uses an RPC call of its own
+            currentRiderMovement.FlipDirection(
+                mountMovement.IsFacingRight ? Movement.Direction.RIGHT : Movement.Direction.LEFT);
+        }
+
+        Vector3 riderLocalPos = currentRiderMovement.transform.localPosition;
+        riderLocalPos.x = -riderLocalPos.x;
+        currentRiderMovement.transform.localPosition = riderLocalPos;
+    }
+
+    /// <summary>
+    /// Handles event where mount flips direction.
+    /// </summary>
+    /// <remarks>This method executes on all clients.</remarks>
+    public void MountFlipHandler()
+    {
+        if (currentRiderMovement == null)
+        {
+            return;
+        }
+
+        FlipMountedRider();
+    }
+
     /// <summary>
     /// Handles event where mount dies.
     /// </summary>
@@ -79,7 +127,7 @@ public class MountInteractable : Interactable
     public void MountDeathHandler()
     {
         // rider is separate client, so use RPC to dismount
+        mountCombat.ToggleCombatAbilities(true);
         photonView.RPC("RPC_DismountMountedRider", RpcTarget.Others);
-        dismountEvent.Invoke();
     }
 }

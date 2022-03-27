@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using StateMachines;
 using Photon.Pun;
 
@@ -12,6 +13,7 @@ public abstract class Movement : MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SurfaceDetector groundDetector;
+    [SerializeField] private Transform actorTransform; // mainly used for flipping
 
     [Space(10)]
 
@@ -25,6 +27,10 @@ public abstract class Movement : MonoBehaviour
     [Tooltip("Distance to a navigation target beyond which the actor will move faster.")]
     [SerializeField] private float navFastDistanceThreshold;
 
+    [Space(10)]
+
+    [SerializeField] private UnityEvent flipDirectionEvent;
+
     private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
 
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
@@ -33,7 +39,8 @@ public abstract class Movement : MonoBehaviour
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
     public float NavTargetWalkDistanceThreshold { get => navFastDistanceThreshold; }
 
-    public bool IsFacingRight { get => transform.localScale.x > 0f; }
+    public int NetworkViewId { get => photonView.ViewID; }
+    public bool IsFacingRight { get => actorTransform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
     public MovementSpeedData.Mode MovementMode { get; protected set; }
@@ -67,11 +74,10 @@ public abstract class Movement : MonoBehaviour
 
     public void FlipDirection(float toDirection)
     {
-        Vector3 localScale = transform.localScale;
+        Vector3 localScale = actorTransform.localScale;
         if (toDirection < 0f && localScale.x > 0f || toDirection > 0f && localScale.x < 0f)
         {
-            localScale.x = -localScale.x;
-            transform.localScale = localScale;
+            photonView.RPC("RPC_FlipDirection", RpcTarget.All);
         }
     }
 
@@ -90,5 +96,14 @@ public abstract class Movement : MonoBehaviour
                     $"{System.Enum.GetName(typeof(Direction), toDirection)} " +
                     "is not a valid direction to flip towards");
         }
+    }
+
+    // Needs to be flagged as [PunRPC] in concrete child class.
+    protected virtual void RPC_FlipDirection()
+    {
+        Vector3 localScale = actorTransform.localScale;
+        localScale.x = -localScale.x;
+        actorTransform.localScale = localScale;
+        flipDirectionEvent.Invoke();
     }
 }

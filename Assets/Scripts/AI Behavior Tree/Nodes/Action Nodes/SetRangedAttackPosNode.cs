@@ -33,20 +33,20 @@ namespace AiBehaviorTreeNodes
             }
 
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, ownerMovement is AirMovement
-                ? CalculateAerialReadyPosition(target, currDistanceToTarget, maxRange)
-                : CalculateGroundReadyPosition(target, currDistanceToTarget, maxRange));
+                ? CalculateAerialReadyPosition(target)
+                : CalculateGroundReadyPosition(target, maxRange));
 
             return NodeState.SUCCESS;
         }
 
-        private Vector2 CalculateAerialReadyPosition(Transform target, float currDistanceToTarget, float maxRange)
+        private Vector2 CalculateAerialReadyPosition(Transform target)
         {
             // just keep moving towards target on the horizontal axis
             Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
             return (Vector2)ownerTransform.position + directionToNavTarget;
         }
 
-        private Vector2 CalculateGroundReadyPosition(Transform target, float currDistanceToTarget, float maxRange)
+        private Vector2 CalculateGroundReadyPosition(Transform target, float maxRange)
         {
             // cast ray from target straight down to ground
             RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, maxRange, ownerMovement.GroundDetector.SurfacesLayerMask);

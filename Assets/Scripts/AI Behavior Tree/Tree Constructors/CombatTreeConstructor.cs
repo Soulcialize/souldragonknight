@@ -22,7 +22,7 @@ namespace AiBehaviorTrees
                         new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
                         {
                             // exit state machine if readying attack
-                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
                             new ExitCombatStateMachineNode(combat)
                         })))
                     }),
@@ -33,7 +33,7 @@ namespace AiBehaviorTrees
                         new SequenceNode(new List<BehaviorNode>()
                         {
                             // in ready-attack state
-                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
                             new InverterNode(new SequenceNode(new List<BehaviorNode>()
                             {
                                 // exit ready-attack state if target is no longer in range
@@ -41,7 +41,7 @@ namespace AiBehaviorTrees
                                 new ExitCombatStateMachineNode(combat)
                             }))
                         }),
-                        new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
+                        new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
@@ -87,7 +87,7 @@ namespace AiBehaviorTrees
                         new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
                         {
                             // exit state machine if readying attack
-                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyAttackState)),
+                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
                             new ExitCombatStateMachineNode(combat)
                         })))
                     }),
@@ -98,13 +98,13 @@ namespace AiBehaviorTrees
                         new SequenceNode(new List<BehaviorNode>()
                         {
                             // in ready-attack state
-                            new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(ReadyRangedAttackState)),
+                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyRangedAttackState)),
                             // face target while readying if target position not locked yet
                             new InverterNode(new HasLockedTargetPositionNode(combat)),
                             new SetCombatTargetPosNode(movement),
                             new FaceNavTargetNode(movement)
                         }),
-                        new IsStateMachineInStateNode(combat.CombatStateMachine, typeof(CombatState)),
+                        new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {

@@ -56,7 +56,16 @@
                     "id": "201b485e-954a-41ac-924a-26cff286f9ba",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractStop",
+                    "type": "Button",
+                    "id": "1ef64db1-f289-42b6-be62-3a789828188e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -148,6 +157,17 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea85ff0d-0fae-4bad-827b-e88405dd03fe",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -206,7 +226,16 @@
                     "id": "093b5dce-79ea-4054-a46e-2204dd6a26c6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractAirStop",
+                    "type": "Button",
+                    "id": "3e5bd334-9480-44a0-a908-30cd5355dc35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -318,6 +347,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InteractAir",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b05ef7d-2b17-4240-8adb-95f1f11281fb",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractAirStop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -20,6 +20,7 @@ public class GroundMovement : Movement
 
     [SerializeField] private AnimatorOverrideController mountAnimatorOverride;
 
+    private PhotonTransformViewClassic photonTransformView;
     private RuntimeAnimatorController defaultAnimatorController;
     private GroundMovementStateMachine movementStateMachine;
 
@@ -32,6 +33,7 @@ public class GroundMovement : Movement
     protected override void Awake()
     {
         base.Awake();
+        photonTransformView = photonView.GetComponent<PhotonTransformViewClassic>();
         movementStateMachine = new GroundMovementStateMachine();
     }
 
@@ -70,6 +72,13 @@ public class GroundMovement : Movement
         }
     }
 
+    // This is here because Photon RPC calls don't check the parent class for the RPC method.
+    [PunRPC]
+    protected override void RPC_FlipDirection()
+    {
+        base.RPC_FlipDirection();
+    }
+
     public void Jump()
     {
         if (MovementStateMachine.CurrState is GroundedState groundedState)
@@ -78,12 +87,12 @@ public class GroundMovement : Movement
         }
     }
 
-    public void Mount(Transform mount, Movement mountMovement, Vector2 localOffset,
+    public void Mount(Transform mount, Movement mountMovement, MountInteractable mountInteractable, Vector2 localOffset,
         SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
         if (MovementStateMachine.CurrState is GroundedState || MovementStateMachine.CurrState is AirborneState)
         {
-            MovementStateMachine.ChangeState(new MountedState(this, mountMovement));
+            MovementStateMachine.ChangeState(new MountedState(this, mountMovement, mountInteractable));
             photonView.RPC("RPC_MountRider", RpcTarget.All,
                 mount.GetComponent<PhotonView>().ViewID, localOffset.x, localOffset.y, mountedSortingLayer, mountedSortingLayerOrder);
         }
@@ -102,6 +111,9 @@ public class GroundMovement : Movement
     private void RPC_MountRider(int mountViewId, float localOffsetX, float localOffsetY,
         SpriteLayer.Layer mountedSortingLayer, int mountedSortingLayerOrder)
     {
+        // local position syncing handled in mount interactable via RPC calls
+        photonTransformView.m_PositionModel.SynchronizeEnabled = false;
+
         rigidbody2d.isKinematic = true;
         
         transform.parent = PhotonView.Find(mountViewId).transform;
@@ -120,5 +132,7 @@ public class GroundMovement : Movement
         rigidbody2d.isKinematic = false;
         spriteLayer.ResetLayer();
         GeneralUtility.SwapAnimatorController(animator, defaultAnimatorController, true);
+
+        photonTransformView.m_PositionModel.SynchronizeEnabled = true;
     }
 }

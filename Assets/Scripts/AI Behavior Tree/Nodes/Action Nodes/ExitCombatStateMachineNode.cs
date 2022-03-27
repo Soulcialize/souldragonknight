@@ -15,7 +15,7 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            ownerCombat.CombatStateMachine.Exit();
+            ownerCombat.ActionStateMachine.Exit();
             return NodeState.SUCCESS;
         }
     }

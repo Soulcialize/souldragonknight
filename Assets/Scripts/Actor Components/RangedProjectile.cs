@@ -113,7 +113,7 @@ public class RangedProjectile : MonoBehaviour
 
             if (actorHit.Combat.HasCombatAbility(CombatAbilityIdentifier.BLOCK)
                 && ((BlockAbility)actorHit.Combat.GetCombatAbility(CombatAbilityIdentifier.BLOCK)).CanBlockProjectiles
-                && actorHit.Combat.CombatStateMachine.CurrState is CombatStates.BlockState blockState)
+                && actorHit.Combat.ActionStateMachine.CurrState is CombatStates.BlockState blockState)
             {
                 // actor can block projectiles and is in block state, let block state handle hit
                 blockState.HandleHit(actorHit.Movement.IsFacingRight, direction);

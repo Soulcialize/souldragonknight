@@ -93,6 +93,7 @@ MonoBehaviour:
   - RPC_UpdateStaminaUI
   - RPC_StopRegenManaUI
   - RPC_StopRegenStaminaUI
+  - RPC_FlipDirection
   - RPC_ApplyBuffColor
   - RPC_RemoveBuffColor
   - RPC_StartBlinking

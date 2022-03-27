@@ -12,7 +12,8 @@ public class DragonPlayerController : PlayerController
     private InputAction rangedAttackAction;
     private InputAction rangedAttackDownAction;
     private InputAction dodgeAction;
-    private InputAction interactAction;
+    private InputAction startInteractionAction;
+    private InputAction stopInteractionAction;
 
     private HealthUI healthUI;
     private ConsumableResourceUI manaUI;
@@ -30,7 +31,8 @@ public class DragonPlayerController : PlayerController
         rangedAttackAction = playerInput.actions["RangedAttack"];
         rangedAttackDownAction = playerInput.actions["RangedAttackDown"];
         dodgeAction = playerInput.actions["AirDodge"];
-        interactAction = playerInput.actions["InteractAir"];
+        startInteractionAction = playerInput.actions["InteractAir"];
+        stopInteractionAction = playerInput.actions["InteractAirStop"];
 
         healthUI = FindObjectOfType<HealthUI>();
         manaUI = FindObjectOfType<ConsumableResourceUI>();
@@ -39,7 +41,7 @@ public class DragonPlayerController : PlayerController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
         }
@@ -78,7 +80,8 @@ public class DragonPlayerController : PlayerController
         rangedAttackAction.performed += HandleRangedAttackInput;
         rangedAttackDownAction.performed += HandleRangedAttackDownInput;
         dodgeAction.performed += HandleDodgeInput;
-        interactAction.performed += HandleInteractInput;
+        startInteractionAction.performed += HandleStartInteractionInput;
+        stopInteractionAction.performed += HandleStopInteractionInput;
     }
 
     protected override void UnbindInputActionHandlers()
@@ -88,7 +91,8 @@ public class DragonPlayerController : PlayerController
         rangedAttackAction.performed -= HandleRangedAttackInput;
         rangedAttackDownAction.performed -= HandleRangedAttackDownInput;
         dodgeAction.performed -= HandleDodgeInput;
-        interactAction.performed -= HandleInteractInput;
+        startInteractionAction.performed -= HandleStartInteractionInput;
+        stopInteractionAction.performed -= HandleStopInteractionInput;
     }
 
     private void HandleMoveAirHorizontalInput(InputAction.CallbackContext context)
@@ -137,9 +141,9 @@ public class DragonPlayerController : PlayerController
         }
     }
 
-    private void HandleInteractInput(InputAction.CallbackContext context)
+    private void HandleStartInteractionInput(InputAction.CallbackContext context)
     {
-        if (combat.CombatStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null)
         {
             Interactable nearestInteractable = interactableDetector.GetNearestInteractable();
             if (nearestInteractable != null)
@@ -149,15 +153,20 @@ public class DragonPlayerController : PlayerController
         }
     }
 
+    private void HandleStopInteractionInput(InputAction.CallbackContext context)
+    {
+        InterruptInteraction();
+    }
+
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
         movement.ToggleGravity(true);
     }
 
-    protected override void HandleReviveEvent()
+    protected override void HandleReviveFinshEvent()
     {
-        base.HandleReviveEvent();
+        base.HandleReviveFinshEvent();
         movement.ToggleGravity(false);
         movement.TakeFlight();
     }

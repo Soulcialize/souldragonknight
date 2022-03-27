@@ -15,7 +15,7 @@ public class DodgeAbility : CombatAbility
             combat.Resource.Consume(resourceCost);
 
             Vector2 direction = (Vector2)parameters[0];
-            combat.CombatStateMachine.ChangeState(new DodgeState(combat, direction, speed, distance));
+            combat.ActionStateMachine.ChangeState(new DodgeState(combat, direction, speed, distance));
         }
     }
 }

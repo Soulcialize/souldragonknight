@@ -17,17 +17,17 @@ public class MeleeAttackAbility : CombatAbility
         {
             if (isReadyRequired)
             {
-                combat.CombatStateMachine.ChangeState(new ReadyAttackState(combat, readyDuration, ReadyCallback));
+                combat.ActionStateMachine.ChangeState(new ReadyAttackState(combat, readyDuration, ReadyCallback));
             }
             else
             {
-                combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
+                combat.ActionStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
             }
         }
     }
 
     private void ReadyCallback(Combat combat)
     {
-        combat.CombatStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
+        combat.ActionStateMachine.ChangeState(new MeleeAttackState(combat, attackEffectArea, resourceCost));
     }
 }
