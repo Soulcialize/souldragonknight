@@ -46,8 +46,12 @@ public class MountInteractable : Interactable
         // executed on rider's client
         currentRiderMovement = riderGroundMovement;
         SetIsEnabledWithSync(false);
-        riderGroundMovement.Mount(mount, mountMovement, this, localOffset, mountedSpriteLayer, mountedSpriteLayerOrder);
-        photonView.RPC("RPC_Mount", RpcTarget.Others);
+        riderGroundMovement.Mount(
+            mount, mountMovement, this,
+            mountMovement.IsFacingRight ? localOffset : new Vector2(-localOffset.x, localOffset.y),
+            mountedSpriteLayer, mountedSpriteLayerOrder);
+
+        photonView.RPC("RPC_Mount", RpcTarget.Others, currentRiderMovement.NetworkViewId);
     }
 
     public void Dismount(GroundMovement riderGroundMovement)
@@ -60,9 +64,10 @@ public class MountInteractable : Interactable
     }
 
     [PunRPC]
-    private void RPC_Mount()
+    private void RPC_Mount(int riderMovementViewId)
     {
         // executed on mount's client
+        currentRiderMovement = PhotonView.Find(riderMovementViewId).GetComponent<GroundMovement>();
         mountCombat.ToggleCombatAbilities(false);
         mountEvent.Invoke();
     }
@@ -71,6 +76,7 @@ public class MountInteractable : Interactable
     private void RPC_Dismount()
     {
         // executed on mount's client
+        currentRiderMovement = null;
         mountCombat.ToggleCombatAbilities(true);
         dismountEvent.Invoke();
     }
@@ -84,6 +90,34 @@ public class MountInteractable : Interactable
             currentRiderMovement.Dismount();
             currentRiderMovement = null;
         }
+    }
+
+    private void FlipMountedRider()
+    {
+        if (photonView.IsMine)
+        {
+            // execute only one client since Movement.FlipDirection uses an RPC call of its own
+            currentRiderMovement.FlipDirection(
+                mountMovement.IsFacingRight ? Movement.Direction.RIGHT : Movement.Direction.LEFT);
+        }
+
+        Vector3 riderLocalPos = currentRiderMovement.transform.localPosition;
+        riderLocalPos.x = -riderLocalPos.x;
+        currentRiderMovement.transform.localPosition = riderLocalPos;
+    }
+
+    /// <summary>
+    /// Handles event where mount flips direction.
+    /// </summary>
+    /// <remarks>This method executes on all clients.</remarks>
+    public void MountFlipHandler()
+    {
+        if (currentRiderMovement == null)
+        {
+            return;
+        }
+
+        FlipMountedRider();
     }
 
     /// <summary>

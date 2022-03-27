@@ -39,6 +39,7 @@ public abstract class Movement : MonoBehaviour
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
     public float NavTargetWalkDistanceThreshold { get => navFastDistanceThreshold; }
 
+    public int NetworkViewId { get => photonView.ViewID; }
     public bool IsFacingRight { get => actorTransform.localScale.x > 0f; }
     public Vector2 CachedMovementDirection { get; protected set; }
 
