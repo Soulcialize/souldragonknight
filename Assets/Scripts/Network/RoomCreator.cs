@@ -29,7 +29,6 @@ public class RoomCreator : MonoBehaviourPunCallbacks
         } else {
             Debug.Log($"Creating room ({roomNameInputField.text}) already in progress");
         }
-        
     }
 
     public override void OnCreatedRoom()

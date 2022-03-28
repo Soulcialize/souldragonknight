@@ -27,7 +27,6 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
         } else {
             Debug.Log($"Joining room ({roomNameInputField.text}) already in progress");
         }
-    
     }
 
     public override void OnJoinedRoom()

@@ -968,8 +968,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnabled: 1
   resourceCost: 15
-  speed: 20
-  distance: 4
+  speed: 40
+  distance: 8
 --- !u!1 &8714695237697900579
 GameObject:
   m_ObjectHideFlags: 0
