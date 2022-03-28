@@ -28,6 +28,8 @@ public class MountInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.MOUNT; }
 
+    public override Interactor InteractableInteractor { get => Interactor.KNIGHT; }
+
     public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         if (!(initiator.Movement is GroundMovement groundMovement)

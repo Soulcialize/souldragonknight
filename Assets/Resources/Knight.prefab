@@ -1243,6 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
+  interactorType: 1
 --- !u!1 &8022116657947580006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1347,10 @@ PrefabInstance:
     - target: {fileID: 872087755699480294, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -79.630005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422238948700207976, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187598400027395665, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
       propertyPath: m_AnchorMax.y

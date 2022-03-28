@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+using Interactor = Interactable.Interactor;
+
 public class InteractableDetector : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
+    [SerializeField] private Interactor interactorType;
 
     private HashSet<Interactable> interactablesInRange = new HashSet<Interactable>();
 
@@ -104,8 +107,12 @@ public class InteractableDetector : MonoBehaviour
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {
-            interactablesInRange.Add(interactable);
-            interactable.EnableStatusUpdateEvent.AddListener(UpdateNearestInteractable);
+            if (interactable.InteractableInteractor == Interactor.ALL ||
+                interactable.InteractableInteractor == interactorType)
+            {
+                interactablesInRange.Add(interactable);
+                interactable.EnableStatusUpdateEvent.AddListener(UpdateNearestInteractable);
+            }
         }
 
         UpdateNearestInteractable();
