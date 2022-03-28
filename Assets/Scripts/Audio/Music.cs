@@ -3,7 +3,17 @@ using UnityEngine;
 [System.Serializable]
 public class Music : Sound
 {
+    public enum LibraryIndex
+    {
+        MENU
+    }
+
+    [Space(10)]
+
+    [SerializeField] private LibraryIndex libraryIndex;
     [SerializeField] private AudioClip audioClip;
+
+    public LibraryIndex Index { get => libraryIndex; }
 
     /// <summary>
     /// Sets the sound's audio source to the given AudioSource.

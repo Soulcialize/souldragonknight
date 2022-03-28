@@ -3,8 +3,19 @@ using UnityEngine;
 [System.Serializable]
 public class SoundFx : Sound
 {
+    public enum LibraryIndex
+    {
+        MELEE_ATTACK_HIT,
+        MELEE_ATTACK_HIT_BLOCK
+    }
+
+    [Space(10)]
+
+    [SerializeField] private LibraryIndex libraryIndex;
     [Tooltip("A random audio clip will be chosen from this list each time the sound is played.")]
     [SerializeField] private AudioClip[] audioClips;
+
+    public LibraryIndex Index { get => libraryIndex; }
 
     /// <summary>
     /// Sets the sound's audio source to the given AudioSource.
@@ -16,7 +27,7 @@ public class SoundFx : Sound
     {
         if (audioClips.Length == 0)
         {
-            Debug.LogError($"SoundFx [{name}] has no audio clips set.");
+            Debug.LogError($"SoundFx [{System.Enum.GetName(typeof(LibraryIndex), libraryIndex)}] has no audio clips set.");
             return;
         }
 

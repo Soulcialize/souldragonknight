@@ -25,8 +25,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private SoundFx[] soundFxs;
     [SerializeField] private Music[] musicTracks;
 
-    private Dictionary<string, SoundFx> nameToFxDictionary;
-    private Dictionary<string, Music> nameToMusicDictionary;
+    private Dictionary<SoundFx.LibraryIndex, SoundFx> soundFxLibrary;
+    private Dictionary<Music.LibraryIndex, Music> musicLibrary;
 
     void Awake()
     {
@@ -40,22 +40,22 @@ public class AudioManager : MonoBehaviour
             _instance = this;
         }
 
-        nameToFxDictionary = new Dictionary<string, SoundFx>();
+        soundFxLibrary = new Dictionary<SoundFx.LibraryIndex, SoundFx>();
         foreach (SoundFx soundFx in soundFxs)
         {
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = sfxGroup;
             soundFx.InitialiseSound(audioSource);
-            nameToFxDictionary[soundFx.Name] = soundFx;
+            soundFxLibrary[soundFx.Index] = soundFx;
         }
 
-        nameToMusicDictionary = new Dictionary<string, Music>();
+        musicLibrary = new Dictionary<Music.LibraryIndex, Music>();
         foreach (Music music in musicTracks)
         {
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = musicGroup;
             music.InitialiseSound(audioSource);
-            nameToMusicDictionary[music.Name] = music;
+            musicLibrary[music.Index] = music;
         }
     }
 
@@ -81,18 +81,18 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays the sound FX with the given name.
     /// </summary>
-    /// <param name="name">The name of the sound FX to play.</param>
+    /// <param name="index">The index of the sound FX to play.</param>
     /// <param name="doFade">If true, fades the sound FX in. Else, it starts at default volume.</param>
     /// <param name="fadeTime">The length of the fade in.</param>
-    public void PlaySoundFx(string name, bool doFade = false, float fadeTime = 1f)
+    public void PlaySoundFx(SoundFx.LibraryIndex index, bool doFade = false, float fadeTime = 1f)
     {
-        if (!nameToFxDictionary.ContainsKey(name))
+        if (!soundFxLibrary.ContainsKey(index))
         {
-            Debug.LogError($"SoundFx [{name}] not found in AudioManager.");
+            Debug.LogError($"SoundFx [{index}] not found in AudioManager.");
             return;
         }
 
-        SoundFx soundFx = nameToFxDictionary[name];
+        SoundFx soundFx = soundFxLibrary[index];
         soundFx.Play();
 
         if (doFade)
@@ -108,18 +108,18 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Stops the sound FX with the given name.
     /// </summary>
-    /// <param name="name">The name of the sound FX to stop.</param>
+    /// <param name="index">The index of the sound FX to stop.</param>
     /// <param name="doFade">If true, fades the sound FX out before stopping. Else, it simply stops.</param>
     /// <param name="fadeTime">The length of the fade out.</param>
-    public void StopSoundFx(string name, bool doFade = false, float fadeTime = 1f)
+    public void StopSoundFx(SoundFx.LibraryIndex index, bool doFade = false, float fadeTime = 1f)
     {
-        if (!nameToFxDictionary.ContainsKey(name))
+        if (!soundFxLibrary.ContainsKey(index))
         {
-            Debug.LogError($"SoundFx [{name}] not found in AudioManager.");
+            Debug.LogError($"SoundFx [{index}] not found in AudioManager.");
             return;
         }
 
-        SoundFx soundFx = nameToFxDictionary[name];
+        SoundFx soundFx = soundFxLibrary[index];
         if (doFade)
         {
             StartCoroutine(FadeSound(soundFx, soundFx.Volume, 0, fadeTime, soundFx.Stop));
@@ -133,18 +133,18 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays the music with the given name.
     /// </summary>
-    /// <param name="name">The name of the music to play.</param>
+    /// <param name="index">The index of the music to play.</param>
     /// <param name="doFade">If true, fades the music in. Else, music starts at default volume.</param>
     /// <param name="fadeTime">The length of the fade in.</param>
-    public void PlayMusic(string name, bool doFade = false, float fadeTime = 1f)
+    public void PlayMusic(Music.LibraryIndex index, bool doFade = false, float fadeTime = 1f)
     {
-        if (!nameToMusicDictionary.ContainsKey(name))
+        if (!musicLibrary.ContainsKey(index))
         {
-            Debug.LogError($"Music [{name}] not found in AudioManager.");
+            Debug.LogError($"Music [{index}] not found in AudioManager.");
             return;
         }
 
-        Music music = nameToMusicDictionary[name];
+        Music music = musicLibrary[index];
         music.Play();
 
         if (doFade)
@@ -160,14 +160,21 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Pauses the given music.
     /// </summary>
-    /// <param name="music">The music to pause.</param>
+    /// <param name="index">The index of the music to pause.</param>
     /// <param name="doFade">If true, fades the music out before pausing. Else, music simply pauses.</param>
     /// <param name="fadeTime">The length of the fade out.</param>
-    public void PauseMusic(Music music, bool doFade = false, float fadeTime = 1f)
+    public void PauseMusic(Music.LibraryIndex index, bool doFade = false, float fadeTime = 1f)
     {
+        if (!musicLibrary.ContainsKey(index))
+        {
+            Debug.LogError($"Music [{index}] not found in AudioManager.");
+            return;
+        }
+
+        Music music = musicLibrary[index];
         if (doFade)
         {
-            StartCoroutine(FadeSound(music, music.Volume, 0, fadeTime, () => PauseMusic(music)));
+            StartCoroutine(FadeSound(music, music.Volume, 0, fadeTime, () => PauseMusic(index)));
         }
         else
         {
@@ -178,11 +185,18 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Stops the given music.
     /// </summary>
-    /// <param name="music">The music to stop.</param>
+    /// <param name="index">The index of the music to stop.</param>
     /// <param name="doFade">If true, fades the music out before stopping. Else, music simply stops.</param>
     /// <param name="fadeTime">The length of the fade out.</param>
-    public void StopMusic(Music music, bool doFade = false, float fadeTime = 1f)
+    public void StopMusic(Music.LibraryIndex index, bool doFade = false, float fadeTime = 1f)
     {
+        if (!musicLibrary.ContainsKey(index))
+        {
+            Debug.LogError($"Music [{index}] not found in AudioManager.");
+            return;
+        }
+
+        Music music = musicLibrary[index];
         if (doFade)
         {
             StartCoroutine(FadeSound(music, music.Volume, 0, fadeTime, music.Stop));

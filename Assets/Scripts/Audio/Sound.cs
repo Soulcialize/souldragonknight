@@ -4,12 +4,10 @@ public abstract class Sound
 {
     protected AudioSource audioSource;
 
-    [SerializeField] protected string name;
     [Range(0, 1)]
     [SerializeField] protected float defaultVolume = 1f;
     [SerializeField] protected bool loop = false;
 
-    public string Name { get => name; }
     public float DefaultVolume { get => defaultVolume; }
     public float Volume { get => audioSource.volume; set => audioSource.volume = value; }
     public bool Loop { get => audioSource.loop; set => audioSource.loop = value; }
