@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    #region Public Methods
+    #region Public Methods - Audio
     /// <summary>
     /// Sets the volume of the main mix to the given volume.
     /// </summary>
@@ -77,7 +77,9 @@ public class AudioManager : MonoBehaviour
             StartCoroutine(FadeAllAudio(toVolume, fadeLength));
         }
     }
+    #endregion
 
+    #region Public Methods - SFX
     /// <summary>
     /// Plays the sound FX with the given name.
     /// </summary>
@@ -129,7 +131,9 @@ public class AudioManager : MonoBehaviour
             soundFx.Stop();
         }
     }
+    #endregion
 
+    #region Public Methods - Music
     /// <summary>
     /// Plays the music with the given name.
     /// </summary>
