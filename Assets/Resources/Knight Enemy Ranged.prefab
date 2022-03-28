@@ -538,6 +538,9 @@ MonoBehaviour:
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
   navFastDistanceThreshold: 8
+  flipDirectionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   movementSpeed: 2
 --- !u!114 &1860061280274303189
 MonoBehaviour:
@@ -579,7 +582,10 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
-  reviveEvent:
+  reviveStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  reviveFinishEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4948305080866607028
@@ -755,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnabled: 1
   resourceCost: 0
-  maxRange: 5
+  maxRange: 10
   readyDuration: 4
   timeToLock: 3
   projectilePrefab: {fileID: 2451902509671687090, guid: d75a65ad664c7a147bf5869d211fbe95, type: 3}
