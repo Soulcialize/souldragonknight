@@ -13,6 +13,8 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     [SerializeField] private string roomSceneName;
     [SerializeField] private TextMeshProUGUI errorMessage;
 
+    private bool isCreateOngoing;
+
     public void CreateRoom()
     {
         if (roomNameInputField.text == "") {
@@ -32,11 +34,14 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
+        isCreateOngoing = false;
         LevelSelectManager.SetLevelsCleared(0);
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message) {
+    public override void OnCreateRoomFailed(short returnCode, string message) 
+    {
         base.OnCreateRoomFailed(returnCode, message);
+        isCreateOngoing = false;
         if (returnCode == LOBBY_ALREADY_EXISTS_ERROR_NAME) {
             errorMessage.text = "A lobby with that name already exists!";
         }
