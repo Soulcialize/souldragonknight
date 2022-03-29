@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+using PlayerType = RoleSelectManager.PlayerType;
+
 public class PuzzleManager : MonoBehaviour
 {
     [Header("Runes")]
 
     [SerializeField] public Sprite[] runeSprites;
     [SerializeField] private SpriteRenderer[] answerRunes;
+    [SerializeField] private RuneInteractable[] runeRocks;
 
     [Header("Photon")]
 
@@ -34,6 +37,38 @@ public class PuzzleManager : MonoBehaviour
             GenerateRandomAnswer();
             photonView.RPC("RPC_SetPuzzleAnswer", RpcTarget.All, runeAnswer);
         }
+
+        PlayerType playerType = (PlayerType)PhotonNetwork.LocalPlayer
+            .CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
+
+        if (playerType == PlayerType.KNIGHT)
+        {
+            HideAnswerRunes();
+        } 
+        else if (playerType == PlayerType.DRAGON)
+        {
+            HideRockRunes();
+        } 
+        else
+        {
+            throw new System.ArgumentException("Unknown player type");
+        }
+    }
+
+    private void OnEnable()
+    {
+        foreach (RuneInteractable runeRock in runeRocks)
+        {
+            runeRock.RuneUpdateEvent.AddListener(HandleRuneUpdate);
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (RuneInteractable runeRock in runeRocks)
+        {
+            runeRock.RuneUpdateEvent.RemoveListener(HandleRuneUpdate);
+        }
     }
 
     private void GenerateRandomAnswer()
@@ -53,6 +88,27 @@ public class PuzzleManager : MonoBehaviour
 
             values.RemoveAt(randomIndex);
         }
+    }
+
+    private void HideAnswerRunes()
+    {
+        foreach (SpriteRenderer sprite in answerRunes)
+        {
+            sprite.gameObject.SetActive(false);
+        }
+    }
+
+    private void HideRockRunes()
+    {
+        foreach (RuneInteractable runeRock in runeRocks)
+        {
+            runeRock.HideRune();
+        }
+    }
+
+    private void HandleRuneUpdate()
+    {
+        Debug.Log("Rune was switched");
     }
 
     [PunRPC]

@@ -5,11 +5,20 @@ using UnityEngine.Events;
 
 public class RuneInteractable : Interactable
 {
+    [Header("Puzzle")]
+
     [SerializeField] private SpriteRenderer currentRune;
     [SerializeField] private PuzzleManager puzzleManager;
 
+    [Header("Puzzle Events")]
+
+    [SerializeField] private UnityEvent runeUpdateEvent;
+
     private int currentRuneIndex;
     private int runeCount;
+
+    public UnityEvent RuneUpdateEvent { get => runeUpdateEvent; }
+    public int CurrentRuneIndex { get => currentRuneIndex; }
 
     private void Start()
     {
@@ -26,6 +35,8 @@ public class RuneInteractable : Interactable
     {
         currentRuneIndex = (currentRuneIndex + 1) % runeCount;
         currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
+        RuneUpdateEvent.Invoke();
+        endInteractionCallback();
     }
 
     public void HideRune()

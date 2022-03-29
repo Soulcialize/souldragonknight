@@ -95,7 +95,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   currentRune: {fileID: 404255884834568728}
-  runes: []
+  puzzleManager: {fileID: 0}
+  runeUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2357607602269234631
 MonoBehaviour:
   m_ObjectHideFlags: 0
