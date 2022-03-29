@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 using PlayerType = RoleSelectManager.PlayerType;
@@ -12,6 +13,10 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] public Sprite[] runeSprites;
     [SerializeField] private SpriteRenderer[] answerRunes;
     [SerializeField] private RuneInteractable[] runeRocks;
+
+    [Header("Events")]
+
+    [SerializeField] private UnityEvent puzzleCompleteEvent;
 
     [Header("Photon")]
 
@@ -38,21 +43,7 @@ public class PuzzleManager : MonoBehaviour
             photonView.RPC("RPC_SetPuzzleAnswer", RpcTarget.All, runeAnswer);
         }
 
-        PlayerType playerType = (PlayerType)PhotonNetwork.LocalPlayer
-            .CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-
-        if (playerType == PlayerType.KNIGHT)
-        {
-            HideAnswerRunes();
-        } 
-        else if (playerType == PlayerType.DRAGON)
-        {
-            HideRockRunes();
-        } 
-        else
-        {
-            throw new System.ArgumentException("Unknown player type");
-        }
+        HidePuzzleHalf();
     }
 
     private void OnEnable()
@@ -90,6 +81,24 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
+    private void HidePuzzleHalf()
+    {
+        PlayerType playerType = PlayerSpawner.GetLocalPlayerType();
+
+        if (playerType == PlayerType.KNIGHT)
+        {
+            HideAnswerRunes();
+        }
+        else if (playerType == PlayerType.DRAGON)
+        {
+            HideRockRunes();
+        }
+        else
+        {
+            throw new System.ArgumentException("Unknown player type");
+        }
+    }
+
     private void HideAnswerRunes()
     {
         foreach (SpriteRenderer sprite in answerRunes)
@@ -108,7 +117,33 @@ public class PuzzleManager : MonoBehaviour
 
     private void HandleRuneUpdate()
     {
-        Debug.Log("Rune was switched");
+        int longestMatch = 0;
+
+        for (int i = 0; i < answerLength; i++)
+        {
+            if (runeRocks[i].CurrentRuneIndex == runeAnswer[i])
+            {
+                longestMatch++;
+            } 
+            else
+            {
+                break;
+            }
+        }
+
+        if (longestMatch == answerLength)
+        {
+            DisablePuzzleInput();
+            photonView.RPC("RPC_SyncPuzzleCompleted", RpcTarget.All);
+        }
+    }
+
+    private void DisablePuzzleInput()
+    {
+        foreach (RuneInteractable runeRock in runeRocks)
+        {
+            runeRock.SetIsEnabledWithoutSync(false);
+        }
     }
 
     [PunRPC]
@@ -120,5 +155,12 @@ public class PuzzleManager : MonoBehaviour
         {
             answerRunes[i].sprite = runeSprites[answer[i]];
         }
+    }
+
+    [PunRPC]
+    private void RPC_SyncPuzzleCompleted() 
+    {
+        Debug.Log("The puzzle was solved");
+        puzzleCompleteEvent.Invoke();
     }
 }
