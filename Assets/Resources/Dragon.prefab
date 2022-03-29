@@ -179,6 +179,7 @@ MonoBehaviour:
   photonView: {fileID: 3076819617650144031}
   isEnabledByDefault: 1
   duration: 0
+  interactableInteractor: 1
   interactableUi: {fileID: 9181799526264454090}
   promptText: Mount
   localPosition: {x: -52, y: 68}
@@ -236,6 +237,7 @@ MonoBehaviour:
   photonView: {fileID: 3076819617650144031}
   isEnabledByDefault: 0
   duration: 3
+  interactableInteractor: 1
   interactableUi: {fileID: 9181799526264454090}
   promptText: Revive
   localPosition: {x: 0, y: -154}

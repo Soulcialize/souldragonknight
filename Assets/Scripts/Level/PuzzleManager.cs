@@ -117,25 +117,16 @@ public class PuzzleManager : MonoBehaviour
 
     private void HandleRuneUpdate()
     {
-        int longestMatch = 0;
-
         for (int i = 0; i < answerLength; i++)
         {
-            if (runeRocks[i].CurrentRuneIndex == runeAnswer[i])
+            if (runeRocks[i].CurrentRuneIndex != runeAnswer[i])
             {
-                longestMatch++;
-            } 
-            else
-            {
-                break;
+                return;
             }
         }
-
-        if (longestMatch == answerLength)
-        {
-            DisablePuzzleInput();
-            photonView.RPC("RPC_SyncPuzzleCompleted", RpcTarget.All);
-        }
+        
+        DisablePuzzleInput();
+        photonView.RPC("RPC_SyncPuzzleCompleted", RpcTarget.All);
     }
 
     private void DisablePuzzleInput()

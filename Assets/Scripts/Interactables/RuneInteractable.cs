@@ -19,6 +19,7 @@ public class RuneInteractable : Interactable
 
     public UnityEvent RuneUpdateEvent { get => runeUpdateEvent; }
     public int CurrentRuneIndex { get => currentRuneIndex; }
+    public override Interaction InteractableInteraction { get => Interaction.SWITCH; }
 
     private void Start()
     {
@@ -26,10 +27,6 @@ public class RuneInteractable : Interactable
         currentRuneIndex = Random.Range(0, runeCount);
         currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
     }
-
-    public override Interaction InteractableInteraction { get => Interaction.SWITCH; }
-
-    public override Interactor InteractableInteractor { get => Interactor.KNIGHT; }
 
     public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {

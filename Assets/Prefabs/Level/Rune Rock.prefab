@@ -88,6 +88,7 @@ MonoBehaviour:
   photonView: {fileID: 2357607602269234631}
   isEnabledByDefault: 1
   duration: 0
+  interactableInteractor: 1
   interactableUi: {fileID: 3647434817902305575}
   promptText: Switch Rune
   localPosition: {x: 0, y: 0}
