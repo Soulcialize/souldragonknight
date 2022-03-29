@@ -6,18 +6,16 @@ using UnityEngine.Events;
 public class RuneInteractable : Interactable
 {
     [SerializeField] private SpriteRenderer currentRune;
-    [SerializeField] private Sprite[] runes;
+    [SerializeField] private PuzzleManager puzzleManager;
 
     private int currentRuneIndex;
     private int runeCount;
 
-    public int CurrentRuneIndex { get => currentRuneIndex; }
-
     private void Start()
     {
-        runeCount = runes.Length;
-        currentRuneIndex = Random.Range(0, runeCount - 1);
-        currentRune.sprite = runes[currentRuneIndex];
+        runeCount = puzzleManager.runeSprites.Length;
+        currentRuneIndex = Random.Range(0, runeCount);
+        currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
     }
 
     public override Interaction InteractableInteraction { get => Interaction.SWITCH; }
@@ -27,7 +25,7 @@ public class RuneInteractable : Interactable
     public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         currentRuneIndex = (currentRuneIndex + 1) % runeCount;
-        currentRune.sprite = runes[currentRuneIndex];
+        currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
     }
 
     public void HideRune()

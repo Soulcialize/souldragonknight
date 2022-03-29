@@ -97,6 +97,8 @@ MonoBehaviour:
   - RPC_ApplyBuffColor
   - RPC_RemoveBuffColor
   - RPC_StartBlinking
+  - SetPuzzleAnswer
+  - RPC_SetPuzzleAnswer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
