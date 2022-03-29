@@ -48,6 +48,7 @@ public class Buff : MonoBehaviour
             if (buffTimeout != null)
             {
                 StopCoroutine(buffTimeout);
+                IsBuffed = false;
                 buffTimeout = null;
             }
         }
@@ -61,7 +62,7 @@ public class Buff : MonoBehaviour
     private IEnumerator ExpireBuff() 
     {
         yield return new WaitForSeconds(Math.Max(0, buffDuration - blinkingDuration));
-        StartBlinking();
+        if (IsBuffed) StartBlinking();
     }
 
     private IEnumerator ExpireBlinking()
@@ -72,8 +73,15 @@ public class Buff : MonoBehaviour
         while (counter < numOfBlinks) {
             spriteRenderer.color = defaultColor;
             yield return new WaitForSeconds(blinkingPeriod / 2);
+            if (!IsBuffed) break;
+
             spriteRenderer.color = buffedColor;
             yield return new WaitForSeconds(blinkingPeriod / 2);
+            if (!IsBuffed) {
+                spriteRenderer.color = defaultColor;
+                break;
+            }
+
             counter++;
         }
 
