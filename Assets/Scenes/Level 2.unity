@@ -1178,6 +1178,36 @@ MonoBehaviour:
   cameraBoundary: {fileID: 958347279}
   minLocalPos: {x: -18.25, y: -0.5}
   maxLocalPos: {x: 18.25, y: 0.5}
+--- !u!1 &447048457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 447048458}
+  m_Layer: 0
+  m_Name: Knight Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &447048458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447048457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.5, y: 1.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 793111528}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,9 +1360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knightPrefab: {fileID: 5696632616774609732, guid: d92136aa6e1dd884aa99b51f2b950227, type: 3}
-  knightSpawnPoint: {fileID: 0}
+  knightSpawnPoint: {fileID: 447048458}
   dragonPrefab: {fileID: 4470413134207635880, guid: 9a8705b2cb40d94409b88940b0d7828a, type: 3}
-  dragonSpawnPoint: {fileID: 0}
+  dragonSpawnPoint: {fileID: 1061252694}
   CVCamera: {fileID: 1166123395}
   knightCameraSize: 6
   dragonCameraSize: 7
@@ -1363,7 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f808901d79de3419e06667deb68fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Test
+  gameSceneName: Level 2
   mainMenuSceneName: Lobby
   roomSceneName: Room
   requestRestartEvent:
@@ -1495,6 +1525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+--- !u!4 &793111528 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6991227341289546158, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+  m_PrefabInstance: {fileID: 793111527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794630386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1952,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1061252693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061252694}
+  m_Layer: 0
+  m_Name: Dragon Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061252694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061252693}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.0200005, y: 3.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 793111528}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123770701
 GameObject:
   m_ObjectHideFlags: 0
