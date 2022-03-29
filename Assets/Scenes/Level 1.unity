@@ -2899,6 +2899,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EscapeMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4381396471862673648, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4381396473350132993, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
