@@ -35,7 +35,7 @@ public class RoomCreator : MonoBehaviourPunCallbacks
     {
         base.OnCreatedRoom();
         isCreateOngoing = false;
-        LevelSelectManager.SetLevelsCleared(0);
+        LevelSelectManager.SetLevelsCleared(1);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message) 

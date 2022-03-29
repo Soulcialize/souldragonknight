@@ -13,9 +13,11 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     public static readonly string PLAYER_PROPERTIES_LEVEL_SELECTED = "levelSelected";
 
     [SerializeField] private Button startButton;
-    [SerializeField] private string gameSceneName;
+    [SerializeField] private string[] gameSceneNames;
     [SerializeField] private string roleSelectSceneName;
     [SerializeField] private LevelButton[] levelSelectButtons;
+
+    private int selectedLevel;
 
     private void Start()
     {
@@ -34,6 +36,11 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
                 int levelNumber = (int)playerTypeObj;
                 bool isLocalPlayer = (player == PhotonNetwork.LocalPlayer);
                 levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
+
+                if (isLocalPlayer)
+                {
+                    selectedLevel = levelNumber;
+                }
             }
         }
 
@@ -58,6 +65,11 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         int levelNumber = (int)targetPlayer.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
         bool isLocalPlayer = (targetPlayer == PhotonNetwork.LocalPlayer);
         Debug.Log($"Player {targetPlayer.ActorNumber} chose level {levelNumber}");
+
+        if (isLocalPlayer)
+        {
+            selectedLevel = levelNumber;
+        }
 
         startButton.interactable = CanStart();
         foreach (LevelButton button in levelSelectButtons)
@@ -100,7 +112,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        // TODO: Change when more levels are added.
         Debug.Log("Starting game...");
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }
@@ -113,7 +124,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_LoadGameLevel()
     {
-        PhotonNetwork.LoadLevel(gameSceneName);
+        PhotonNetwork.LoadLevel(gameSceneNames[selectedLevel - 1]);
         ResetLevelChoice();
     }
 
