@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 7469548531130885798}
+  collider2d: {fileID: 8441073910932432511}
 --- !u!114 &7469548531130885798
 MonoBehaviour:
   m_ObjectHideFlags: 0

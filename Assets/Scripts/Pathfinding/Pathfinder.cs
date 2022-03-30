@@ -60,7 +60,7 @@ namespace Pathfinding
                 }
             }
 
-            Debug.Log($"Could not find path from {fromPos} to {toPos}");
+            // Debug.Log($"Could not find path from {fromPos} to {toPos}");
             return null;
         }
 

@@ -34,5 +34,11 @@ namespace Pathfinding
         {
             Neighbours = neighbours;
         }
+
+        public void UpdateInfo(bool isWalkable, float distanceFromSurfaceBelow)
+        {
+            IsWalkable = isWalkable;
+            DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
+        }
     }
 }
