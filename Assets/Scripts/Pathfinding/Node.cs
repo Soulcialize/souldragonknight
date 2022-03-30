@@ -6,16 +6,20 @@ namespace Pathfinding
 {
     public class Node
     {
-        private Vector2 worldPos;
-        private int gridX, gridY;
+        public Vector2 WorldPos { get; private set; }
+        public int GridX { get; private set; }
+        public int GridY { get; private set; }
 
-        public Vector2 WorldPos { get => worldPos; }
+        public bool IsWalkable { get; private set; }
+        public float DistanceFromSurfaceBelow { get; private set; }
 
-        public Node(Vector2 worldPos, int gridX, int gridY)
+        public Node(Vector2 worldPos, int gridX, int gridY, bool isWalkable, float distanceFromSurfaceBelow)
         {
-            this.worldPos = worldPos;
-            this.gridX = gridX;
-            this.gridY = gridY;
+            WorldPos = worldPos;
+            GridX = gridX;
+            GridY = gridY;
+            IsWalkable = isWalkable;
+            DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
         }
     }
 }

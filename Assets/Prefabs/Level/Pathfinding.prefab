@@ -46,3 +46,6 @@ MonoBehaviour:
   center: {x: 61, y: 1.4}
   worldSize: {x: 248, y: 16}
   nodeRadius: 0.4
+  surfacesLayerMask:
+    serializedVersion: 2
+    m_Bits: 131136
