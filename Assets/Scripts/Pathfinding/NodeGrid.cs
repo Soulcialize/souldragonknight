@@ -6,6 +6,9 @@ namespace Pathfinding
 {
     public class NodeGrid : MonoBehaviour
     {
+        private static readonly int axisAlignedDistanceBetweenNeighbours = 10;
+        private static readonly int diagonalDistanceBetweenNeighbours = 14;
+
         [SerializeField] private Vector2 center;
         [SerializeField] private Vector2 worldSize;
         [SerializeField] private float nodeRadius;
@@ -127,9 +130,25 @@ namespace Pathfinding
             float percentY = ((worldPos.y - center.y) / worldSize.y) + 0.5f;
 
             int x = Mathf.FloorToInt(Mathf.Clamp(percentX * gridSizeX, 0, gridSizeX - 1));
-            int y = Mathf.RoundToInt(percentY * gridSizeY);
+            int y = Mathf.RoundToInt(Mathf.Clamp(percentY * gridSizeY, 0, gridSizeY - 1));
 
             return grid[x, y];
+        }
+
+        public int GetGridDistance(Node from, Node to)
+        {
+            int distanceX = Mathf.Abs(from.GridX - to.GridX);
+            int distanceY = Mathf.Abs(from.GridY - to.GridY);
+            if (distanceX > distanceY)
+            {
+                return distanceY * diagonalDistanceBetweenNeighbours +
+                    (distanceX - distanceY) * axisAlignedDistanceBetweenNeighbours;
+            }
+            else
+            {
+                return distanceX * diagonalDistanceBetweenNeighbours +
+                    (distanceY - distanceX) * axisAlignedDistanceBetweenNeighbours;
+            }
         }
 
         private void OnDrawGizmos()

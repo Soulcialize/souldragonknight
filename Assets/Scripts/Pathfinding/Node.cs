@@ -15,6 +15,12 @@ namespace Pathfinding
 
         public List<Node> Neighbours { get; private set; }
 
+        public int GCost { get; set; }
+        public int HCost { get; set; }
+        public int FCost { get => GCost + HCost; }
+
+        public Node Parent { get; set; }
+
         public Node(Vector2 worldPos, int gridX, int gridY, bool isWalkable, float distanceFromSurfaceBelow)
         {
             WorldPos = worldPos;
