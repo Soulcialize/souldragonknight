@@ -8,12 +8,18 @@ public abstract class Interactable : MonoBehaviour
 {
     public enum Interaction
     {
-        MOUNT, REVIVE
+        MOUNT, REVIVE, SWITCH
+    }
+
+    public enum Interactor
+    {
+        ALL, KNIGHT, DRAGON
     }
 
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected bool isEnabledByDefault;
     [SerializeField] protected float duration;
+    [SerializeField] protected Interactor interactableInteractor;
 
     [Header("UI")]
 
@@ -30,6 +36,7 @@ public abstract class Interactable : MonoBehaviour
     public bool IsEnabled { get; protected set; }
     public bool IsInteracting { get; private set; }
     public abstract Interaction InteractableInteraction { get; }
+    public Interactor InteractableInteractor { get => interactableInteractor; }
 
     public UnityEvent EnableStatusUpdateEvent { get => enableStatusUpdateEvent; }
 
