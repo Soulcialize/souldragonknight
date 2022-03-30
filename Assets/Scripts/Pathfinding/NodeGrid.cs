@@ -121,6 +121,17 @@ namespace Pathfinding
             textMesh.GetComponent<MeshRenderer>().sortingLayerName = "Knight";
         }
 
+        public Node GetNodeFromWorldPoint(Vector2 worldPos)
+        {
+            float percentX = ((worldPos.x - center.x) / worldSize.x) + 0.5f;
+            float percentY = ((worldPos.y - center.y) / worldSize.y) + 0.5f;
+
+            int x = Mathf.FloorToInt(Mathf.Clamp(percentX * gridSizeX, 0, gridSizeX - 1));
+            int y = Mathf.RoundToInt(percentY * gridSizeY);
+
+            return grid[x, y];
+        }
+
         private void OnDrawGizmos()
         {
             if (grid == null)
@@ -128,16 +139,18 @@ namespace Pathfinding
                 return;
             }
 
+            Color walkableColor = Color.white;
+            Color unwalkableColor = new Color(0, 0, 0, 0.5f);
             foreach (Node node in grid)
             {
                 if (node.IsWalkable)
                 {
-                    Gizmos.color = Color.white;
+                    Gizmos.color = walkableColor;
                     Gizmos.DrawWireCube(node.WorldPos, Vector2.one * nodeDiameter);
                 }
                 else
                 {
-                    Gizmos.color = Color.black;
+                    Gizmos.color = unwalkableColor;
                     Gizmos.DrawCube(node.WorldPos, Vector2.one * nodeDiameter);
                 }
             }
