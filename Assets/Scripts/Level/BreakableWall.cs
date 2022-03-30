@@ -21,7 +21,7 @@ public class BreakableWall : MonoBehaviour
         Vector2 updateRegionMaxPoint = collider2d.bounds.max;
 
         collider2d.enabled = false;
-        Pathfinding.NodeGrid.Instance.UpdateGridRegion(updateRegionMinPoint, updateRegionMaxPoint);
+        Pathfinding.NodeGrid.Instance.RequestGridUpdate(updateRegionMinPoint, updateRegionMaxPoint);
 
         PhotonNetwork.Destroy(gameObject);
     }

@@ -51,7 +51,7 @@ public class LevelSectionGate : MonoBehaviour
         for (float i = 0; i < duration; i += updateInterval)
         {
             yield return new WaitForSeconds(0.5f);
-            Pathfinding.NodeGrid.Instance.UpdateGridRegion(updateRegionMinPoint, updateRegionMaxPoint);
+            Pathfinding.NodeGrid.Instance.RequestGridUpdate(updateRegionMinPoint, updateRegionMaxPoint);
         }
     }
 }
