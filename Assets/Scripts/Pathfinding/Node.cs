@@ -13,6 +13,8 @@ namespace Pathfinding
         public bool IsWalkable { get; private set; }
         public float DistanceFromSurfaceBelow { get; private set; }
 
+        public List<Node> Neighbours { get; private set; }
+
         public Node(Vector2 worldPos, int gridX, int gridY, bool isWalkable, float distanceFromSurfaceBelow)
         {
             WorldPos = worldPos;
@@ -20,6 +22,11 @@ namespace Pathfinding
             GridY = gridY;
             IsWalkable = isWalkable;
             DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
+        }
+
+        public void SetNeighbours(List<Node> neighbours)
+        {
+            Neighbours = neighbours;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Pathfinding
             gridSizeX = Mathf.RoundToInt(worldSize.x / nodeDiameter);
             gridSizeY = Mathf.RoundToInt(worldSize.y / nodeDiameter);
             CreateGrid();
+            SetGridNodesNeighbours();
         }
 
         private void CreateGrid()
@@ -62,6 +63,45 @@ namespace Pathfinding
                     }
                 }
             }
+        }
+
+        private void SetGridNodesNeighbours()
+        {
+            for (int x = 0; x < gridSizeX; x++)
+            {
+                for (int y = 0; y < gridSizeY; y++)
+                {
+                    Node node = grid[x, y];
+                    node.SetNeighbours(GetNodeNeighbours(node));
+                }
+            }
+        }
+
+        private List<Node> GetNodeNeighbours(Node node)
+        {
+            List<Node> neighbours = new List<Node>();
+            for (int xModifier = -1; xModifier <= 1; xModifier++)
+            {
+                for (int yModifier = -1; yModifier <= 1; yModifier++)
+                {
+                    if (xModifier == 0 && yModifier == 0)
+                    {
+                        // current node
+                        continue;
+                    }
+
+                    int neighbourGridX = node.GridX + xModifier;
+                    int neighbourGridY = node.GridY + yModifier;
+                    if (neighbourGridX >= 0 && neighbourGridX < gridSizeX
+                        && neighbourGridY >= 0 && neighbourGridY < gridSizeY)
+                    {
+                        // neighbouring node is inside grid
+                        neighbours.Add(grid[neighbourGridX, neighbourGridY]);
+                    }
+                }
+            }
+
+            return neighbours;
         }
 
         private void PrintNodeInformation(Node node)
