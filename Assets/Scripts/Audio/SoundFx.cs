@@ -6,7 +6,7 @@ public class SoundFx : Sound
     public enum LibraryIndex
     {
         MENU_BUTTON,
-        ROLE_CHARACTER_BUTTON,
+        ROLE_LEVEL_BUTTON,
         DRAGON_ATTACK,
         DRAGON_DASH,
         DRAGON_DIE,

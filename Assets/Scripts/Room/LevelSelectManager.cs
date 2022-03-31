@@ -48,6 +48,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     }
     public static void SelectLevel(int levelNumber)
     {
+        AudioManagerSynced.Instance.PlaySoundFx(SoundFx.LibraryIndex.ROLE_LEVEL_BUTTON);
         Hashtable playerProperties = new Hashtable();
         playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = levelNumber;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
@@ -112,12 +113,16 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
+        AudioManagerSynced.Instance.StopMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
+        AudioManagerSynced.Instance.PlayMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
         Debug.Log("Starting game...");
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }
 
     public void ReturnToRoleSelect()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         photonView.RPC("RPC_LoadRoleSelectLevel", RpcTarget.All);
     }
 
