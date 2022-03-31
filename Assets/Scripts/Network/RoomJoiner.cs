@@ -18,6 +18,7 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         if (roomNameInputField.text=="") {
             errorMessage.text = "Please enter a room name.";
         } else if (!isJoinOngoing) {

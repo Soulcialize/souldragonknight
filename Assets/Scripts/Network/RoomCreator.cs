@@ -17,6 +17,7 @@ public class RoomCreator : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         if (roomNameInputField.text == "") {
             errorMessage.text = "Please enter a room name.";
         } else if (!isCreateOngoing) {

@@ -114,11 +114,13 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 
     public void MoveToLevelSelect()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         photonView.RPC("RPC_LoadLevelSelect", RpcTarget.All);
     }
 
     public void MoveToMenu()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         ResetRole();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(menuSceneName);
