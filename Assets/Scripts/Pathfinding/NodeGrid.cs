@@ -77,10 +77,13 @@ namespace Pathfinding
                     CalculateNodeInfo(x, y, worldPoint, out bool isWalkable, out float distanceFromSurfaceBelow);
                     grid[x, y] = new Node(worldPoint, x, y, isWalkable, distanceFromSurfaceBelow);
 
+                    /*
                     if (isWalkable)
                     {
-                        PrintNodeInformation(grid[x, y]);
+                        GeneralUtility.CreateWorldTextObject(
+                            $"{grid[x, y].GridX}, {grid[x, y].GridY}", worldPoint, transform, distanceFromSurfaceBelow.ToString("F2"));
                     }
+                    */
                 }
             }
         }
@@ -145,23 +148,6 @@ namespace Pathfinding
             }
 
             return neighbours;
-        }
-
-        private void PrintNodeInformation(Node node)
-        {
-            // create text object displaying information at node's world position
-            GameObject gameObject = new GameObject($"{node.GridX}, {node.GridY}", typeof(TextMesh));
-            Transform transform = gameObject.transform;
-            transform.position = node.WorldPos;
-            transform.localScale *= 0.1f;
-            transform.SetParent(this.transform);
-            TextMesh textMesh = gameObject.GetComponent<TextMesh>();
-            textMesh.anchor = TextAnchor.MiddleCenter;
-            textMesh.alignment = TextAlignment.Center;
-            textMesh.fontSize = 20;
-            textMesh.color = Color.white;
-            textMesh.text = node.DistanceFromSurfaceBelow.ToString("F2");
-            textMesh.GetComponent<MeshRenderer>().sortingLayerName = "Knight";
         }
 
         public Node GetNodeFromWorldPoint(Vector2 worldPos)
