@@ -11,10 +11,15 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     private bool isRequestingRestart = false;
+    private bool isRequestingExit = false;
+
+    [Header("Scene Names")]
 
     [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
     [SerializeField] private string roomSceneName;
+
+    [Header("Events")]
 
     [SerializeField] private UnityEvent requestRestartEvent;
     [SerializeField] private UnityEvent cancelRestartEvent;
