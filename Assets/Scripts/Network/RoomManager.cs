@@ -115,12 +115,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Partner is requesting restart");
         isRequestingRestart = true;
+        isRequestingExit = false;
     }
 
     [PunRPC]
     private void RPC_RequestExit()
     {
         Debug.Log("Partner is requesting to exit");
+        isRequestingRestart = false;
         isRequestingExit = true;
     }
 

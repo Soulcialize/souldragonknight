@@ -10,6 +10,7 @@ public class GameMessage : MonoBehaviour
     [SerializeField] private float timerDuration = 3.0f;
     [SerializeField] private PhotonView photonView;
 
+    private bool hasPartnerMessage = false;
     private Coroutine timeoutMessage;
 
     public void UpdateMessage(string message, bool hasTimeout)
@@ -23,6 +24,14 @@ public class GameMessage : MonoBehaviour
         }
 
         photonView.RPC("RPC_SyncMessage", RpcTarget.Others, message);
+    }
+
+    public void ClearOwnMessageIfExist()
+    {
+        if (!hasPartnerMessage && textObject.text != "")
+        {
+            ClearMessage();
+        }
     }
 
     private void ClearMessage()
@@ -54,5 +63,7 @@ public class GameMessage : MonoBehaviour
     {
         textObject.text = message;
         StopTimeoutIfRunning();
+
+        hasPartnerMessage = (message != "");
     }
 }

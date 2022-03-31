@@ -50,6 +50,7 @@ public class GameMessageUI : MonoBehaviour
             message += MESSAGE_CANCELLED + MESSAGE_RESTART;
             restartMessage.UpdateMessage(message, true);
         }
+        exitMessage.ClearOwnMessageIfExist();
     }
 
     public void UpdateExitMessage(bool isRequesting)
@@ -66,5 +67,6 @@ public class GameMessageUI : MonoBehaviour
             message += MESSAGE_CANCELLED + MESSAGE_EXIT;
             exitMessage.UpdateMessage(message, true);
         }
+        restartMessage.ClearOwnMessageIfExist();
     }
 }

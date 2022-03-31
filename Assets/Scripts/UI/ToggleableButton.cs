@@ -69,4 +69,13 @@ public class ToggleableButton : MonoBehaviour, IPointerClickHandler
             toggleOffEvent.Invoke();
         }
     }
+
+    public void ToggleOffIfToggledOn()
+    {
+        if (isToggled)
+        {
+            isToggled = false;
+            UpdateVisuals();
+        }
+    }
 }
