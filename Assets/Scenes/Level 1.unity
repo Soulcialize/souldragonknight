@@ -919,6 +919,8 @@ GameObject:
   - component: {fileID: 208754546}
   - component: {fileID: 208754548}
   - component: {fileID: 208754547}
+  - component: {fileID: 208754549}
+  - component: {fileID: 208754550}
   m_Layer: 5
   m_Name: Restart_Message
   m_TagString: Untagged
@@ -1042,6 +1044,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208754545}
   m_CullTransparentMesh: 1
+--- !u!114 &208754549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208754545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa5117b97c08854582d20276eff5435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObject: {fileID: 208754547}
+  timerDuration: 3
+  photonView: {fileID: 208754550}
+--- !u!114 &208754550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208754545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 26
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &246114858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1876,6 +1915,36 @@ MonoBehaviour:
       - m_Target: {fileID: 1710262033}
         m_TargetAssemblyTypeName: GameMessageUI, Assembly-CSharp
         m_MethodName: UpdateRestartMessage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  requestExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710262033}
+        m_TargetAssemblyTypeName: GameMessageUI, Assembly-CSharp
+        m_MethodName: UpdateExitMessage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  cancelExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710262033}
+        m_TargetAssemblyTypeName: GameMessageUI, Assembly-CSharp
+        m_MethodName: UpdateExitMessage
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2733,6 +2802,8 @@ GameObject:
   - component: {fileID: 1350348366}
   - component: {fileID: 1350348368}
   - component: {fileID: 1350348367}
+  - component: {fileID: 1350348369}
+  - component: {fileID: 1350348370}
   m_Layer: 5
   m_Name: Exit_Message
   m_TagString: Untagged
@@ -2856,6 +2927,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350348365}
   m_CullTransparentMesh: 1
+--- !u!114 &1350348369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350348365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa5117b97c08854582d20276eff5435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObject: {fileID: 1350348367}
+  timerDuration: 3
+  photonView: {fileID: 1350348370}
+--- !u!114 &1350348370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350348365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 27
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1355652608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,6 +3044,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 65787071}
     m_Modifications:
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 765560306}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 765560306}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttemptExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelExitRequest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958532653574078223, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+      propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4381396471472462812, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3087,7 +3251,7 @@ PrefabInstance:
     - target: {fileID: 4381396473350132993, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1710262033}
+      objectReference: {fileID: 0}
     - target: {fileID: 4381396473350132993, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3095,7 +3259,7 @@ PrefabInstance:
     - target: {fileID: 4381396473350132993, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: toggleOffEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1710262033}
+      objectReference: {fileID: 0}
     - target: {fileID: 4381396473350132993, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: toggleOnEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3614,8 +3778,8 @@ GameObject:
   - component: {fileID: 1710262029}
   - component: {fileID: 1710262030}
   - component: {fileID: 1710262031}
-  - component: {fileID: 1710262033}
   - component: {fileID: 1710262034}
+  - component: {fileID: 1710262033}
   - component: {fileID: 1710262032}
   m_Layer: 5
   m_Name: InGame_UI
@@ -3709,8 +3873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c580c104f44d9a04c9c65e411d4e7a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 1710262032}
-  textObject: {fileID: 208754547}
+  restartMessage: {fileID: 208754549}
+  exitMessage: {fileID: 1350348369}
 --- !u!114 &1710262034
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,6 +23,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private UnityEvent requestRestartEvent;
     [SerializeField] private UnityEvent cancelRestartEvent;
+    [SerializeField] private UnityEvent requestExitEvent;
+    [SerializeField] private UnityEvent cancelExitEvent;
 
     public static void UpdateRoomProperty(string key, object value)
     {
@@ -63,10 +65,29 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void AttemptExit()
+    {
+        if (isRequestingExit)
+        {
+            ExitToRoom();
+        }
+        else
+        {
+            RequestExit();
+            requestExitEvent.Invoke();
+        }
+    }
+
     public void CancelRestartRequest()
     {
         photonView.RPC("RPC_CancelRestartRequest", RpcTarget.Others);
         cancelRestartEvent.Invoke();
+    }
+
+    public void CancelExitRequest()
+    {
+        photonView.RPC("RPC_CancelExitRequest", RpcTarget.Others);
+        cancelExitEvent.Invoke();
     }
 
     private void RequestRestart()
@@ -74,9 +95,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
         photonView.RPC("RPC_RequestRestart", RpcTarget.Others);
     }
 
+    private void RequestExit()
+    {
+        photonView.RPC("RPC_RequestExit", RpcTarget.Others);
+    }
+
     private void RestartLevel()
     {
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
+    }
+
+    private void ExitToRoom()
+    {
+        photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
     }
 
     [PunRPC]
@@ -87,10 +118,24 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    private void RPC_RequestExit()
+    {
+        Debug.Log("Partner is requesting to exit");
+        isRequestingExit = true;
+    }
+
+    [PunRPC]
     private void RPC_CancelRestartRequest()
     {
         Debug.Log("Partner is no longer requesting restart");
         isRequestingRestart = false;
+    }
+
+    [PunRPC]
+    private void RPC_CancelExitRequest()
+    {
+        Debug.Log("Partner is no longer requesting to exit");
+        isRequestingExit = false;
     }
 
     [PunRPC]
