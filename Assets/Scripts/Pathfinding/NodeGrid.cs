@@ -30,10 +30,6 @@ namespace Pathfinding
         private int gridSizeX, gridSizeY;
         private Vector2 nodeBoxWalkableTester;
 
-        private Queue<(Vector2 updateRegionMin, Vector2 updateRegionMax)> gridUpdateRequestQueue;
-        private Coroutine gridUpdateCoroutine;
-        private bool isUpdatingGrid = false;
-
         private List<Node> path;
 
         private void Awake()
@@ -52,8 +48,6 @@ namespace Pathfinding
             gridSizeX = Mathf.RoundToInt(worldSize.x / nodeDiameter);
             gridSizeY = Mathf.RoundToInt(worldSize.y / nodeDiameter);
             nodeBoxWalkableTester = new Vector2(nodeDiameter * 0.9f, nodeDiameter * 0.9f);
-
-            gridUpdateRequestQueue = new Queue<(Vector2 updateRegionMin, Vector2 updateRegionMax)>();
 
             CreateGrid();
             SetGridNodesNeighbours();
@@ -177,23 +171,7 @@ namespace Pathfinding
             }
         }
 
-        public void RequestGridUpdate(Vector2 regionMinPoint, Vector2 regionMaxPoint)
-        {
-            gridUpdateRequestQueue.Enqueue((regionMinPoint, regionMaxPoint));
-            ProcessGridUpdateQueue();
-        }
-
-        private void ProcessGridUpdateQueue()
-        {
-            if (!isUpdatingGrid && gridUpdateRequestQueue.Count > 0)
-            {
-                isUpdatingGrid = true;
-                (Vector2 regionMinPoint, Vector2 regionMaxPoint) = gridUpdateRequestQueue.Dequeue();
-                gridUpdateCoroutine = StartCoroutine(UpdateGridRegion(regionMinPoint, regionMaxPoint));
-            }
-        }
-
-        private IEnumerator UpdateGridRegion(Vector2 regionMinPoint, Vector2 regionMaxPoint)
+        public void UpdateGridRegion(Vector2 regionMinPoint, Vector2 regionMaxPoint)
         {
             Node minNode = GetNodeFromWorldPoint(regionMinPoint);
             Node maxNode = GetNodeFromWorldPoint(regionMaxPoint);
@@ -206,11 +184,6 @@ namespace Pathfinding
                     grid[x, y].UpdateInfo(isWalkable, distanceFromSurfaceBelow);
                 }
             }
-
-            yield return null;
-
-            isUpdatingGrid = false;
-            ProcessGridUpdateQueue();
         }
 
         private void OnDrawGizmos()
