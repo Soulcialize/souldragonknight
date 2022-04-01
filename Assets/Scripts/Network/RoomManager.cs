@@ -29,8 +29,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         Debug.Log($"Player {otherPlayer.ActorNumber} has left the game");
-
         photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
+        AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        AudioManager.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         base.OnPlayerLeftRoom(otherPlayer);
     }
 
@@ -42,6 +43,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
+        AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        AudioManager.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         PhotonNetwork.LoadLevel(mainMenuSceneName);
     }
 

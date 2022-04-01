@@ -15,6 +15,12 @@ namespace CombatStates
             this.attackCost = attackCost;
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Attack);
+        }
+
         public override void ExecuteAttackEffect()
         {
             Collider2D[] hits = Physics2D.OverlapBoxAll(

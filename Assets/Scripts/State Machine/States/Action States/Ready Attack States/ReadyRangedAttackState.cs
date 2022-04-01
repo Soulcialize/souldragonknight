@@ -28,6 +28,7 @@ namespace CombatStates
 
         public override void Enter()
         {
+            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
             base.Enter();
             projectilePathDisplay.StartDrawingProjectilePath(target);
         }

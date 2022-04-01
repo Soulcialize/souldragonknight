@@ -30,6 +30,7 @@ namespace CombatStates
 
         public override void Enter()
         {
+            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Attack);
             base.Enter();
             if (Vector2.Angle(Vector2.up, attackDirection) > 170f)
             {
