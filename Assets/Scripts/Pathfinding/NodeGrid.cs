@@ -60,7 +60,7 @@ namespace Pathfinding
 
         private void Update()
         {
-            path = Pathfinder.FindPath(seeker.position, target.position, this);
+            path = Pathfinder.FindPath(this, seeker.position, target.position);
         }
 
         public static void CalculateNodeTraversalData(Vector2 worldPoint, float nodeDiameter,
@@ -102,7 +102,6 @@ namespace Pathfinding
             foreach (SerializedNode serializedNode in precomputedGridData.PrecomputedNodes)
             {
                 grid[serializedNode.GridX, serializedNode.GridY] = new Node(serializedNode);
-                /*
                 // draw node data in scene
                 Node node = grid[serializedNode.GridX, serializedNode.GridY];
                 if (node.IsWalkable)
@@ -110,7 +109,6 @@ namespace Pathfinding
                     GeneralUtility.CreateWorldTextObject(
                         $"{node.GridX}, {node.GridY}", node.WorldPos, transform, node.DistanceFromSurfaceBelow.ToString("F2"));
                 }
-                */
             }
 
             // set nodes' neighbours
