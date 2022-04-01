@@ -22,6 +22,10 @@ namespace Pathfinding
 
         [Space(10)]
 
+        [SerializeField] private PathfindingGridData precomputedGridData;
+
+        [Space(10)]
+
         [SerializeField] private Transform seeker;
         [SerializeField] private Transform target;
 
@@ -31,6 +35,13 @@ namespace Pathfinding
         private Vector2 nodeBoxWalkableTester;
 
         private List<Node> path;
+
+        public Vector2 Center { get => center; }
+        public Vector2 WorldSize { get => worldSize; }
+        public float NodeRadius { get => nodeRadius; }
+        public LayerMask SurfacesLayerMask { get => surfacesLayerMask; }
+
+        public PathfindingGridData PrecomputedGridData { get => precomputedGridData; }
 
         private void Awake()
         {
@@ -44,13 +55,7 @@ namespace Pathfinding
                 _instance = this;
             }
 
-            nodeDiameter = nodeRadius * 2;
-            gridSizeX = Mathf.RoundToInt(worldSize.x / nodeDiameter);
-            gridSizeY = Mathf.RoundToInt(worldSize.y / nodeDiameter);
-            nodeBoxWalkableTester = new Vector2(nodeDiameter * 0.9f, nodeDiameter * 0.9f);
-
-            CreateGrid();
-            SetGridNodesNeighbours();
+            LoadPrecomputedGridData();
         }
 
         private void Update()
@@ -58,40 +63,19 @@ namespace Pathfinding
             path = Pathfinder.FindPath(seeker.position, target.position, this);
         }
 
-        private void CreateGrid()
-        {
-            grid = new Node[gridSizeX, gridSizeY];
-
-            Vector2 worldBottomLeft = center + Vector2.left * worldSize.x / 2 + Vector2.down * worldSize.y / 2;
-            for (int x = 0; x < gridSizeX; x++)
-            {
-                for (int y = 0; y < gridSizeY; y++)
-                {
-                    Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeRadius) + Vector2.up * (y * nodeDiameter + nodeRadius);
-                    CalculateNodeInfo(x, y, worldPoint, out bool isWalkable, out float distanceFromSurfaceBelow);
-                    grid[x, y] = new Node(worldPoint, x, y, isWalkable, distanceFromSurfaceBelow);
-
-                    /*
-                    if (isWalkable)
-                    {
-                        GeneralUtility.CreateWorldTextObject(
-                            $"{grid[x, y].GridX}, {grid[x, y].GridY}", worldPoint, transform, distanceFromSurfaceBelow.ToString("F2"));
-                    }
-                    */
-                }
-            }
-        }
-
-        private void CalculateNodeInfo(int nodeGridX, int nodeGridY, Vector2 worldPoint, out bool isWalkable, out float distanceFromSurfaceBelow)
+        public static void CalculateNodeTraversalData(Vector2 worldPoint, float nodeDiameter,
+            Vector2 nodeBoxWalkableTester, LayerMask surfacesLayerMask,
+            bool isNodeBelowWalkable, float distanceFromNodeBelowToSurfaceBelow,
+            out bool isWalkable, out float distanceFromSurfaceBelow)
         {
             isWalkable = Physics2D.OverlapBox(worldPoint, nodeBoxWalkableTester, 0f, surfacesLayerMask) == null;
             distanceFromSurfaceBelow = 0f;
             if (isWalkable)
             {
-                if (nodeGridY > 0 && grid[nodeGridX, nodeGridY - 1].IsWalkable)
+                if (isNodeBelowWalkable)
                 {
                     // add on to existing distance of node directly below this one
-                    distanceFromSurfaceBelow = grid[nodeGridX, nodeGridY - 1].DistanceFromSurfaceBelow + nodeDiameter;
+                    distanceFromSurfaceBelow = distanceFromNodeBelowToSurfaceBelow + nodeDiameter;
                 }
                 else
                 {
@@ -105,43 +89,41 @@ namespace Pathfinding
             }
         }
 
-        private void SetGridNodesNeighbours()
+        private void LoadPrecomputedGridData()
         {
-            for (int x = 0; x < gridSizeX; x++)
-            {
-                for (int y = 0; y < gridSizeY; y++)
-                {
-                    Node node = grid[x, y];
-                    node.SetNeighbours(GetNodeNeighbours(node));
-                }
-            }
-        }
+            nodeDiameter = precomputedGridData.NodeDiameter;
+            gridSizeX = precomputedGridData.GridSizeX;
+            gridSizeY = precomputedGridData.GridSizeY;
+            nodeBoxWalkableTester = precomputedGridData.NodeBoxWalkableTester;
 
-        private List<Node> GetNodeNeighbours(Node node)
-        {
-            List<Node> neighbours = new List<Node>();
-            for (int xModifier = -1; xModifier <= 1; xModifier++)
-            {
-                for (int yModifier = -1; yModifier <= 1; yModifier++)
-                {
-                    if (xModifier == 0 && yModifier == 0)
-                    {
-                        // current node
-                        continue;
-                    }
+            grid = new Node[gridSizeX, gridSizeY];
 
-                    int neighbourGridX = node.GridX + xModifier;
-                    int neighbourGridY = node.GridY + yModifier;
-                    if (neighbourGridX >= 0 && neighbourGridX < gridSizeX
-                        && neighbourGridY >= 0 && neighbourGridY < gridSizeY)
-                    {
-                        // neighbouring node is inside grid
-                        neighbours.Add(grid[neighbourGridX, neighbourGridY]);
-                    }
+            // create nodes
+            foreach (SerializedNode serializedNode in precomputedGridData.PrecomputedNodes)
+            {
+                grid[serializedNode.GridX, serializedNode.GridY] = new Node(serializedNode);
+                /*
+                // draw node data in scene
+                Node node = grid[serializedNode.GridX, serializedNode.GridY];
+                if (node.IsWalkable)
+                {
+                    GeneralUtility.CreateWorldTextObject(
+                        $"{node.GridX}, {node.GridY}", node.WorldPos, transform, node.DistanceFromSurfaceBelow.ToString("F2"));
                 }
+                */
             }
 
-            return neighbours;
+            // set nodes' neighbours
+            foreach (SerializedNode serializedNode in precomputedGridData.PrecomputedNodes)
+            {
+                List<Node> neighbours = new List<Node>();
+                foreach (Vector2 neighbourGridPos in serializedNode.Neighbours)
+                {
+                    neighbours.Add(grid[(int)neighbourGridPos.x, (int)neighbourGridPos.y]);
+                }
+
+                grid[serializedNode.GridX, serializedNode.GridY].SetNeighbours(neighbours);
+            }
         }
 
         public Node GetNodeFromWorldPoint(Vector2 worldPos)
@@ -176,12 +158,29 @@ namespace Pathfinding
             Node minNode = GetNodeFromWorldPoint(regionMinPoint);
             Node maxNode = GetNodeFromWorldPoint(regionMaxPoint);
 
+            bool isNodeBelowWalkable;
+            float distanceFromNodeBelowToSurfaceBelow;
             for (int x = minNode.GridX; x <= maxNode.GridX; x++)
             {
                 for (int y = minNode.GridY; y <= maxNode.GridY; y++)
                 {
-                    CalculateNodeInfo(x, y, grid[x, y].WorldPos, out bool isWalkable, out float distanceFromSurfaceBelow);
-                    grid[x, y].UpdateInfo(isWalkable, distanceFromSurfaceBelow);
+                    if (y > 0)
+                    {
+                        isNodeBelowWalkable = grid[x, y - 1].IsWalkable;
+                        distanceFromNodeBelowToSurfaceBelow = grid[x, y - 1].DistanceFromSurfaceBelow;
+                    }
+                    else
+                    {
+                        isNodeBelowWalkable = false;
+                        distanceFromNodeBelowToSurfaceBelow = 0f;
+                    }
+
+                    CalculateNodeTraversalData(
+                        grid[x, y].WorldPos, nodeDiameter,
+                        nodeBoxWalkableTester, surfacesLayerMask,
+                        isNodeBelowWalkable, distanceFromNodeBelowToSurfaceBelow,
+                        out bool isWalkable, out float distanceFromSurfaceBelow);
+                    grid[x, y].UpdateTraversalData(isWalkable, distanceFromSurfaceBelow);
                 }
             }
         }

@@ -26,16 +26,26 @@ namespace Pathfinding
             WorldPos = worldPos;
             GridX = gridX;
             GridY = gridY;
-            IsWalkable = isWalkable;
-            DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
+            
+            UpdateTraversalData(isWalkable, distanceFromSurfaceBelow);
+        }
+
+        public Node(SerializedNode serializedNode)
+        {
+            WorldPos = serializedNode.WorldPos;
+            GridX = serializedNode.GridX;
+            GridY = serializedNode.GridY;
+
+            UpdateTraversalData(serializedNode.IsWalkable, serializedNode.DistanceFromSurfaceBelow);
         }
 
         public void SetNeighbours(List<Node> neighbours)
         {
+            // neighbours can only be set after the rest of the grid's nodes have been created
             Neighbours = neighbours;
         }
 
-        public void UpdateInfo(bool isWalkable, float distanceFromSurfaceBelow)
+        public void UpdateTraversalData(bool isWalkable, float distanceFromSurfaceBelow)
         {
             IsWalkable = isWalkable;
             DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
