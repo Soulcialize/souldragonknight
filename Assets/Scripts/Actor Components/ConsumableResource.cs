@@ -79,7 +79,7 @@ public class ConsumableResource : MonoBehaviour
 
     public void RestartRegeneration()
     {
-        Debug.Log("regenerate with delay");
+        Debug.Log("Regenerate with delay");
         regen = StartCoroutine(RegenerateWithDelay());
     }
 

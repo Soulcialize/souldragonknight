@@ -18,6 +18,7 @@ public class RoleSelectButton : MonoBehaviour
 
     public void HandleRoleButtonClick()
     {
+        AudioManagerSynced.Instance.PlaySoundFx(SoundFx.LibraryIndex.ROLE_LEVEL_BUTTON);
         roleSelectEvent.Invoke(playerType);
     }
 }
