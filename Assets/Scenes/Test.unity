@@ -278,8 +278,8 @@ RectTransform:
   m_Children:
   - {fileID: 208754546}
   - {fileID: 1710262029}
-  - {fileID: 1388879152}
   - {fileID: 1364343041}
+  - {fileID: 1388879152}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1800,7 +1800,6 @@ GameObject:
   - component: {fileID: 765560305}
   - component: {fileID: 765560306}
   - component: {fileID: 765560304}
-  - component: {fileID: 765560308}
   - component: {fileID: 765560307}
   m_Layer: 0
   m_Name: GameManager
@@ -1840,6 +1839,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 189221692}
+  - {fileID: 2069959853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f808901d79de3419e06667deb68fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Level 1
+  gameSceneName: Test
   mainMenuSceneName: Lobby
   roomSceneName: Room
   requestRestartEvent:
@@ -1910,20 +1910,6 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &765560308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765560303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c6cd34a04c6564f8164d90b02c5be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathScreen: {fileID: 1364343040}
-  photonView: {fileID: 765560307}
 --- !u!1 &794630386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4381396471472462812, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4381396471472462812, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3926,6 +3912,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2068160358}
+--- !u!1 &2069959852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069959853}
+  - component: {fileID: 2069959855}
+  - component: {fileID: 2069959854}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069959853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069959852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 765560305}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069959854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069959852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 26
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2069959855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069959852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c6cd34a04c6564f8164d90b02c5be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreen: {fileID: 1364343040}
+  photonView: {fileID: 2069959854}
 --- !u!1001 &2081068685114946851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3998,6 +4052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 4077554320111797268, guid: c5ff3bd650afcb04f8f708f9440b478e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4077554320111797269, guid: c5ff3bd650afcb04f8f708f9440b478e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4008,7 +4066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077554320111797269, guid: c5ff3bd650afcb04f8f708f9440b478e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4077554320111797269, guid: c5ff3bd650afcb04f8f708f9440b478e, type: 3}
       propertyPath: m_AnchorMax.x

@@ -105,6 +105,8 @@ MonoBehaviour:
   - RPC_StopMusic
   - RPC_StopSoundFx
   - RPC_SyncPuzzleCompleted
+  - RPC_DecrementDeath
+  - RPC_IncrementDeath
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

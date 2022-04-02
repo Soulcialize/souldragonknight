@@ -29,5 +29,30 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void IncrementDeathCount()
+    {
+        photonView.RPC("RPC_IncrementDeath", RpcTarget.All);
+    }
 
+    public void DecrementDeathCount()
+    {
+        photonView.RPC("RPC_DecrementDeath", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void RPC_IncrementDeath()
+    {
+        deadPlayerCount++;
+
+        if (deadPlayerCount >= deadPlayerLimit)
+        {
+            deathScreen.SetActive(true);
+        }
+    }
+
+    [PunRPC]
+    private void RPC_DecrementDeath()
+    {
+        deadPlayerCount--;
+    }
 }
