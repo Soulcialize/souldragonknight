@@ -189,7 +189,7 @@ MonoBehaviour:
   mount: {fileID: 4470413134207635894}
   mountMovement: {fileID: 4470413134207635889}
   mountCombat: {fileID: 3483110514655366300}
-  localOffset: {x: 0.43, y: 0.923}
+  localOffset: {x: 0.8, y: 1}
   mountedSpriteLayer: 4
   mountedSpriteLayerOrder: 0
   mountEvent:

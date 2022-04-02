@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
         {
             _instance = this;
         }
+        DontDestroyOnLoad(gameObject);
 
         soundFxLibrary = new Dictionary<SoundFx.LibraryIndex, SoundFx>();
         foreach (SoundFx soundFx in soundFxs)
