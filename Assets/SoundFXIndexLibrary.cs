@@ -11,7 +11,7 @@ public class SoundFXIndexLibrary : MonoBehaviour
     [SerializeField] private SoundFx.LibraryIndex blockhit;
     [SerializeField] private SoundFx.LibraryIndex revive;
     [SerializeField] private SoundFx.LibraryIndex readyattack;
-
+    [SerializeField] private SoundFx.LibraryIndex jump;
 
     public SoundFx.LibraryIndex Attack { get => attack; }
     public SoundFx.LibraryIndex Dodge { get => dodge; }
@@ -20,5 +20,5 @@ public class SoundFXIndexLibrary : MonoBehaviour
     public SoundFx.LibraryIndex BlockHit { get => blockhit; }
     public SoundFx.LibraryIndex Revive { get => revive; }
     public SoundFx.LibraryIndex ReadyAttack { get => readyattack; }
-
+    public SoundFx.LibraryIndex Jump { get => jump; }
 }

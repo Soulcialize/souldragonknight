@@ -110,6 +110,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void ExitToRoom()
     {
+        AudioManagerSynced.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        AudioManagerSynced.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
     }
 

@@ -60,7 +60,7 @@ MonoBehaviour:
     libraryIndex: 1
     audioClips:
     - {fileID: 8300000, guid: a00aa6cdc122ab54b8903389c1c71562, type: 3}
-  - defaultVolume: 1
+  - defaultVolume: 0.6
     loop: 0
     libraryIndex: 2
     audioClips:
@@ -164,7 +164,7 @@ MonoBehaviour:
     loop: 0
     libraryIndex: 22
     audioClips:
-    - {fileID: 8300000, guid: 86371f796cd44c34b9e3eb2e668068bf, type: 3}
+    - {fileID: 8300000, guid: 17d947bf92c2e184695c8c7d6f8e6645, type: 3}
   - defaultVolume: 1
     loop: 0
     libraryIndex: 23
@@ -184,7 +184,7 @@ MonoBehaviour:
     loop: 0
     libraryIndex: 26
     audioClips:
-    - {fileID: 8300000, guid: a24892a61eb4b6a4386d9fc1b50092aa, type: 3}
+    - {fileID: 8300000, guid: 17d947bf92c2e184695c8c7d6f8e6645, type: 3}
   - defaultVolume: 1
     loop: 0
     libraryIndex: 27
