@@ -4,24 +4,40 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class ToggleableButton : MonoBehaviour, IPointerClickHandler
 {
     private bool isToggled = false;
     private Color untoggledColor;
     private Color toggledColor;
+    private string untoggledText;
     
+    [Header("UI")]
+
     [SerializeField] private Button button;
+    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private string toggledText;
+
+    [Header("Events")]
+
     [SerializeField] private UnityEvent toggleOnEvent;
     [SerializeField] private UnityEvent toggleOffEvent;
 
     void Start()
     {
+        
         untoggledColor = button.colors.normalColor;
         toggledColor = button.colors.pressedColor;
+        untoggledText = buttonText.text;
+
+        if (toggledText == "")
+        {
+            toggledText = untoggledText;
+        }
     }
 
-    private void UpdateColor()
+    private void UpdateVisuals()
     {
         ColorBlock cb = button.colors;
 
@@ -29,18 +45,20 @@ public class ToggleableButton : MonoBehaviour, IPointerClickHandler
         {
             cb.normalColor = toggledColor;
             button.colors = cb;
+            buttonText.text = toggledText;
         }
         else
         {
             cb.normalColor = untoggledColor;
             button.colors = cb;
+            buttonText.text = untoggledText;
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         isToggled = !isToggled;
-        UpdateColor();
+        UpdateVisuals();
 
         if (isToggled)
         {
@@ -49,6 +67,15 @@ public class ToggleableButton : MonoBehaviour, IPointerClickHandler
         else
         {
             toggleOffEvent.Invoke();
+        }
+    }
+
+    public void ToggleOffIfToggledOn()
+    {
+        if (isToggled)
+        {
+            isToggled = false;
+            UpdateVisuals();
         }
     }
 }
