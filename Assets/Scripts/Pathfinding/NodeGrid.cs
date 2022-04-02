@@ -68,7 +68,29 @@ namespace Pathfinding
             bool isNodeBelowWalkable, float distanceFromNodeBelowToSurfaceBelow,
             out bool isWalkable, out float distanceFromSurfaceBelow)
         {
+            // calculate if walkable
             isWalkable = Physics2D.OverlapBox(worldPoint, nodeBoxWalkableTester, 0f, surfacesLayerMask) == null;
+            if (!isWalkable)
+            {
+                // if surfaces occupy less than 50% of node, consider it walkable
+                int numWalkableQuadrants = 0;
+                float nodeRadius = nodeDiameter / 2f;
+                float nodeHalfRadius = nodeRadius / 2f;
+                Vector2 nodeQuadrantWalkableTester = new Vector2(nodeHalfRadius * 0.9f, nodeHalfRadius * 0.9f);
+                for (float x = worldPoint.x - nodeHalfRadius; x < worldPoint.x + nodeRadius; x += nodeRadius)
+                {
+                    for (float y = worldPoint.y - nodeHalfRadius; y < worldPoint.y + nodeRadius; y += nodeRadius)
+                    {
+                        numWalkableQuadrants +=
+                            Physics2D.OverlapBox(new Vector2(x, y), nodeQuadrantWalkableTester, 0f, surfacesLayerMask) == null
+                                ? 1 : 0;
+                    }
+                }
+
+                isWalkable = numWalkableQuadrants > 1;
+            }
+
+            // calculate distance to surface below
             distanceFromSurfaceBelow = 0f;
             if (isWalkable)
             {
@@ -130,7 +152,7 @@ namespace Pathfinding
             float percentY = ((worldPos.y - center.y) / worldSize.y) + 0.5f;
 
             int x = Mathf.FloorToInt(Mathf.Clamp(percentX * gridSizeX, 0, gridSizeX - 1));
-            int y = Mathf.RoundToInt(Mathf.Clamp(percentY * gridSizeY, 0, gridSizeY - 1));
+            int y = Mathf.FloorToInt(Mathf.Clamp(percentY * gridSizeY, 0, gridSizeY - 1));
 
             return grid[x, y];
         }
