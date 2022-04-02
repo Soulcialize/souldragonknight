@@ -24,6 +24,7 @@ public class Combat : MonoBehaviour
     [SerializeField] protected SpriteLayer spriteLayer;
     [SerializeField] protected CollisionLayer collisionLayer;
     [SerializeField] protected Movement movement;
+    [SerializeField] protected SoundFXIndexLibrary soundFXIndexLibrary;
 
     [Space(10)]
 
@@ -58,6 +59,7 @@ public class Combat : MonoBehaviour
     public Animator Animator { get => animator; }
     public SpriteLayer SpriteLayer { get => spriteLayer; }
     public CollisionLayer CollisionLayer { get => collisionLayer; }
+    public SoundFXIndexLibrary SoundFXIndexLibrary { get => soundFXIndexLibrary; }
 
     public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
     public Health Health { get => health; }

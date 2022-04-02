@@ -10,6 +10,7 @@ namespace CombatStates
 
         public override void Enter()
         {
+            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Die);
             Debug.Log($"{owner.gameObject.name} died");
 
             owner.Debuff();

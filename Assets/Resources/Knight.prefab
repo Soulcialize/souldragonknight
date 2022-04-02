@@ -79,9 +79,61 @@ Transform:
   - {fileID: 1784289309786822353}
   - {fileID: 8788491003870426397}
   - {fileID: 6128370761676518506}
+  - {fileID: 1491488448137390511}
   m_Father: {fileID: 5696632616774609734}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &494271888593129160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491488448137390511}
+  - component: {fileID: 532688599575579423}
+  m_Layer: 8
+  m_Name: ActorFXLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491488448137390511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494271888593129160}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8281021094209829082}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &532688599575579423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494271888593129160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2654c4af28cf046b8f50236241d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 15
+  dodge: 31
+  die: 17
+  hurt: 18
+  blockhit: 16
+  revive: 20
+  readyattack: 31
+  jump: 19
 --- !u!1 &2345183453493097578
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFXIndexLibrary: {fileID: 532688599575579423}
   photonView: {fileID: 5696632616774609759}
   rigidbody2d: {fileID: 5696632616774609753}
   animator: {fileID: 977637900953337948}
@@ -690,6 +743,7 @@ MonoBehaviour:
   spriteLayer: {fileID: 2826182381347841401}
   collisionLayer: {fileID: 4469721297075192466}
   movement: {fileID: 6669902685249964190}
+  soundFXIndexLibrary: {fileID: 532688599575579423}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 576
@@ -1543,6 +1597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
+--- !u!224 &3008795496914663244 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8365311388106351289, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
+  m_PrefabInstance: {fileID: 6761853518224512501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &875855890118716395 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5904579443468992030, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
@@ -1554,8 +1613,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51651bd2e10274b47b9574d0f6fe40e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3008795496914663244 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8365311388106351289, guid: 638ed5dd99e3b8d4ebad0a700b34bf12, type: 3}
-  m_PrefabInstance: {fileID: 6761853518224512501}
-  m_PrefabAsset: {fileID: 0}

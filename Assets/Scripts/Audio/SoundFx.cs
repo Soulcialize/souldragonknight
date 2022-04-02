@@ -10,7 +10,6 @@ public class SoundFx : Sound
         DRAGON_ATTACK,
         DRAGON_DASH,
         DRAGON_DIE,
-        DRAGON_FLY,
         DRAGON_HURT,
         DRAGON_ENEMY_ATTACK,
         DRAGON_ENEMY_DIE,
@@ -23,11 +22,9 @@ public class SoundFx : Sound
         DRAGON_RANGED_ENEMY_READY_ATTACK,
         KNIGHT_ATTACK,
         KNIGHT_BLOCK_HIT,
-        KNIGHT_BUFFED,
         KNIGHT_DIE,
         KNIGHT_HURT,
         KNIGHT_JUMP,
-        KNIGHT_RUN,
         KNIGHT_DRAGON_REVIVE,
         KNIGHT_ENEMY_ATTACK,
         KNIGHT_ENEMY_DIE,
@@ -38,7 +35,8 @@ public class SoundFx : Sound
         KNIGHT_RANGED_ENEMY_HURT,
         KNIGHT_RANGED_ENEMY_READY_ATTACK,
         LEVEL_START,
-        LEVEL_VICTORY
+        LEVEL_VICTORY,
+        NO_SOUND
     }
 
     [Space(10)]
