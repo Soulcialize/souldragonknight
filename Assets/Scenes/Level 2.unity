@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: Level 2
-  mainMenuSceneName: Lobby
+  mainMenuSceneName: Start
   roomSceneName: Room
   requestRestartEvent:
     m_PersistentCalls:
@@ -1127,6 +1127,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  requestExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  cancelExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &765560307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2483,8 +2489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c580c104f44d9a04c9c65e411d4e7a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 1710262032}
-  textObject: {fileID: 208754547}
+  restartMessage: {fileID: 0}
+  exitMessage: {fileID: 0}
 --- !u!114 &1710262034
 MonoBehaviour:
   m_ObjectHideFlags: 0

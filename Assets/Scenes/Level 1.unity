@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: Level 1
-  mainMenuSceneName: Lobby
+  mainMenuSceneName: Start
   roomSceneName: Room
   requestRestartEvent:
     m_PersistentCalls:

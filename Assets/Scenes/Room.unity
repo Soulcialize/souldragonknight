@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSelectButton: {fileID: 73208751}
   levelSelectSceneName: LevelSelect
-  menuSceneName: Lobby
+  menuSceneName: Start
   yourRoleIndicator:
   - {fileID: 1357137120}
   - {fileID: 1699733281}

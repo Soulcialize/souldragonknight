@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac62dd02f3ec8243bf90273344ac34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbySceneName: Lobby
+  startSceneName: Start
   connectionFailedSceneName: ConnectionFailed
 --- !u!1 &796766798
 GameObject:
