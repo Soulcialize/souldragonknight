@@ -107,6 +107,9 @@ MonoBehaviour:
   - RPC_SyncPuzzleCompleted
   - RPC_DecrementDeath
   - RPC_IncrementDeath
+  - RPC_SyncMessage
+  - RPC_CancelExitRequest
+  - RPC_RequestExit
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using TMPro;
 
 using PlayerType = RoleSelectManager.PlayerType;
 
+public enum MessageType { RESTART, EXIT }
+
 public class GameMessageUI : MonoBehaviour
 {
-    public static readonly string MESSAGE_REQUESTING_RESTART = " is requesting to restart.";
-    public static readonly string MESSAGE_CANCELLED_RESTART = " is no longer requesting to restart.";
-
-    private readonly float timerDuration = 3.0f;
+    public static readonly string MESSAGE_REQUESTING = " is requesting to";
+    public static readonly string MESSAGE_CANCELLED= " is no longer requesting to";
+    public static readonly string MESSAGE_RESTART = " restart.";
+    public static readonly string MESSAGE_EXIT = " exit to role select.";
 
     private string playerString;
-    private Coroutine timeoutMessage;
 
-    [SerializeField] PhotonView photonView;
-    [SerializeField] private TextMeshProUGUI textObject;
+    [SerializeField] private GameMessage restartMessage;
+    [SerializeField] private GameMessage exitMessage;
 
     private void Start()
     {
@@ -36,53 +36,37 @@ public class GameMessageUI : MonoBehaviour
         }
     }
 
-    public void UpdateRestartMessage(bool isRestarting)
+    public void UpdateRestartMessage(bool isRequesting)
     {
-        string suffix;
+        string message = playerString;
 
-        if (isRestarting)
+        if (isRequesting)
         {
-            suffix = MESSAGE_REQUESTING_RESTART;
+            message += MESSAGE_REQUESTING + MESSAGE_RESTART;
+            restartMessage.UpdateMessage(message, false);
         } 
         else
         {
-            suffix = MESSAGE_CANCELLED_RESTART;
-            timeoutMessage = StartCoroutine(ExpireMessage());
+            message += MESSAGE_CANCELLED + MESSAGE_RESTART;
+            restartMessage.UpdateMessage(message, true);
         }
-
-        photonView.RPC("RPC_UpdateMessage", RpcTarget.All, playerString + suffix);
+        exitMessage.ClearOwnMessageIfExist();
     }
 
-    private void ClearRequestMessageIfExist()
+    public void UpdateExitMessage(bool isRequesting)
     {
-        if (timeoutMessage != null)
+        string message = playerString;
+
+        if (isRequesting)
         {
-            StopCoroutine(timeoutMessage);
-            timeoutMessage = null;
+            message += MESSAGE_REQUESTING + MESSAGE_EXIT;
+            exitMessage.UpdateMessage(message, false);
         }
-
-        if (textObject.text.Equals(playerString + MESSAGE_CANCELLED_RESTART))
+        else
         {
-            photonView.RPC("RPC_ResetMessage", RpcTarget.All);
+            message += MESSAGE_CANCELLED + MESSAGE_EXIT;
+            exitMessage.UpdateMessage(message, true);
         }
-    }
-
-    private IEnumerator ExpireMessage()
-    {
-        yield return new WaitForSeconds(timerDuration);
-
-        ClearRequestMessageIfExist();
-    }
-
-    [PunRPC]
-    private void RPC_UpdateMessage(string message)
-    {
-        textObject.text = message;
-    }
-
-    [PunRPC]
-    private void RPC_ResetMessage()
-    {
-        textObject.text = "";
+        restartMessage.ClearOwnMessageIfExist();
     }
 }
