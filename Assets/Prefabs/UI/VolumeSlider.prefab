@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8725182674427577703}
-  - component: {fileID: 3015296853643881085}
+  - component: {fileID: 3521590642264432883}
   m_Layer: 5
-  m_Name: OptionSlider
+  m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 380, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3015296853643881085
+--- !u!114 &3521590642264432883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7411690277028284039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc3c1b35ee4aed43851a76971711fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: b6cef263fce947446933a786204e6d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 8801704057057387911}

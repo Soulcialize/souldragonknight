@@ -7,19 +7,19 @@ using TMPro;
 
 public class OptionSlider : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
-    [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] protected Slider slider;
+    [SerializeField] protected TextMeshProUGUI valueText;
 
-    void OnEnable()
+    protected void OnEnable()
     {
         slider.onValueChanged.AddListener(UpdateValue);
     }
-    void OnDisable()
+    protected void OnDisable()
     {
         slider.onValueChanged.RemoveListener(UpdateValue);
     }
 
-    private void UpdateValue(float value)
+    protected virtual void UpdateValue(float value)
     {
         valueText.text = value.ToString();
     }
