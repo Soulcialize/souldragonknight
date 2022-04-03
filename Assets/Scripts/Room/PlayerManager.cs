@@ -26,7 +26,6 @@ public class PlayerManager : MonoBehaviour
         {
             _instance = this;
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     public void IncrementDeathCount()

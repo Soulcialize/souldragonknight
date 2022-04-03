@@ -160,9 +160,9 @@ public class KnightPlayerController : PlayerController
         PlayerManager.Instance.IncrementDeathCount();
     }
 
-    protected override void HandleReviveFinishEvent()
+    protected override void HandleReviveStartEvent()
     {
-        base.HandleReviveFinishEvent();
+        base.HandleReviveStartEvent();
         PlayerManager.Instance.DecrementDeathCount();
     }
 }
