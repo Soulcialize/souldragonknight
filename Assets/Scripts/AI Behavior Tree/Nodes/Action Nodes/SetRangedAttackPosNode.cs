@@ -20,46 +20,69 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
-            Transform target = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform;
+            ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
+            Transform targetTransform = target.transform;
 
-            float currDistanceToTarget = Vector2.Distance(ownerTransform.position, target.position);
+            float currDistanceToTarget = Vector2.Distance(ownerTransform.position, targetTransform.position);
             float maxRange = ((RangedAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
 
-            if (currDistanceToTarget <= maxRange)
+            RaycastHit2D raycastToTarget = Physics2D.Raycast(
+                ownerTransform.position, targetTransform.position - ownerTransform.position, currDistanceToTarget,
+                ownerMovement.GroundDetector.SurfacesLayerMask | ownerCombat.AttackEffectLayer);
+
+            if (currDistanceToTarget <= maxRange && raycastToTarget.collider == target.Combat.Collider2d)
             {
-                // already in range, remain at current position
+                // in range and can see target; remain at current position
                 Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)ownerTransform.position);
                 return NodeState.SUCCESS;
             }
 
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, ownerMovement is AirMovement
-                ? CalculateAerialReadyPosition(target)
-                : CalculateGroundReadyPosition(target, maxRange));
+                ? CalculateAerialReadyPosition(targetTransform)
+                : CalculateGroundReadyPosition(targetTransform));
 
             return NodeState.SUCCESS;
         }
 
         private Vector2 CalculateAerialReadyPosition(Transform target)
         {
-            // just keep moving towards target on the horizontal axis
-            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
-            return (Vector2)ownerTransform.position + directionToNavTarget;
+            // just keep moving towards target while trying to maintain distance above the ground
+            FindPathToAerialReadyPosition(target.position, 3f);
+            return target.position;
         }
 
-        private Vector2 CalculateGroundReadyPosition(Transform target, float maxRange)
+        private Vector2 CalculateGroundReadyPosition(Transform target)
         {
-            // cast ray from target straight down to ground
-            RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, maxRange, ownerMovement.GroundDetector.SurfacesLayerMask);
-            if (groundHit.distance >= maxRange)
-            {
-                // impossible to hit even if target is directly above attacker; return point under target for now
-                return groundHit.point;
-            }
+            // head for ground underneath target
+            RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, Mathf.Infinity, ownerMovement.GroundDetector.SurfacesLayerMask);
+            FindPathToGroundReadyPosition(groundHit.point + Vector2.up * ownerCombat.Collider2d.bounds.extents.y);
+            return groundHit.point;
+        }
 
-            // get horizontal distance to the point from which an attack can be made
-            float horizontalDistance = Mathf.Sqrt(maxRange * maxRange - groundHit.distance * groundHit.distance);
-            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
-            return (Vector2)ownerTransform.position + directionToNavTarget * horizontalDistance;
+        private void FindPathToAerialReadyPosition(Vector2 navTarget, float minHeightAboveGround)
+        {
+            Blackboard.SetData(
+                GeneralBlackboardKeys.NAV_TARGET_PATH,
+                Pathfinding.Pathfinder.FindPath(
+                    Pathfinding.NodeGrid.Instance,
+                    ownerTransform.position,
+                    navTarget,
+                    false,
+                    node => node.DistanceFromSurfaceBelow >= minHeightAboveGround));
+        }
+
+        private void FindPathToGroundReadyPosition(Vector2 navTarget)
+        {
+            RaycastHit2D groundHit = Physics2D.Raycast(ownerTransform.position, Vector2.down, Mathf.Infinity, ownerMovement.GroundDetector.SurfacesLayerMask);
+            float maxDistanceFromGround = groundHit.distance + ((GroundMovement)ownerMovement).MaxReachableHeight;
+            Blackboard.SetData(
+                GeneralBlackboardKeys.NAV_TARGET_PATH,
+                Pathfinding.Pathfinder.FindPath(
+                    Pathfinding.NodeGrid.Instance,
+                    ownerTransform.position,
+                    navTarget,
+                    true,
+                    node => node.DistanceFromSurfaceBelow <= maxDistanceFromGround));
         }
     }
 }

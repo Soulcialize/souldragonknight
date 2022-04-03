@@ -42,6 +42,13 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
+            List<Pathfinding.Node> pathToTarget = (List<Pathfinding.Node>)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_PATH);
+            Pathfinding.NodeGrid.Instance.path = pathToTarget;
+            if (pathToTarget == null)
+            {
+                return NodeState.FAILURE;
+            }
+
             bool isDistanceGreaterThanWalkThreshold = distanceToTarget > ownerMovement.NavTargetWalkDistanceThreshold;
             if (ownerMovement.MovementMode == MovementSpeedData.Mode.SLOW && isDistanceGreaterThanWalkThreshold)
             {
@@ -52,7 +59,8 @@ namespace AiBehaviorTreeNodes
                 ownerMovement.SetMovementMode(MovementSpeedData.Mode.SLOW);
             }
 
-            ownerMovement.UpdateMovement(navTargetPos - currentPos);
+            Vector2 targetPathNextPos = pathToTarget[0].WorldPos;
+            ownerMovement.UpdateMovement(targetPathNextPos - currentPos);
             return NodeState.RUNNING;
         }
     }

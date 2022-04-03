@@ -45,13 +45,12 @@ namespace AiBehaviorTrees
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetCombatTargetPosNode(movement),
+                            new SetCombatTargetPosNode(movement, combat),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new CanReachNavTargetNode(movement),
                                     new GoToNavTargetNode(movement, true),
                                     new StopMovingNode(movement),
                                     new FaceNavTargetNode(movement),
@@ -101,7 +100,7 @@ namespace AiBehaviorTrees
                             new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyRangedAttackState)),
                             // face target while readying if target position not locked yet
                             new InverterNode(new HasLockedTargetPositionNode(combat)),
-                            new SetCombatTargetPosNode(movement),
+                            new SetCombatTargetPosNode(movement, combat),
                             new FaceNavTargetNode(movement)
                         }),
                         new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
@@ -114,7 +113,6 @@ namespace AiBehaviorTrees
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new CanReachNavTargetNode(movement),
                                     new GoToNavTargetNode(movement, false),
                                     new StopMovingNode(movement),
                                     new StartRangedAttackNode(combat)

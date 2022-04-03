@@ -34,7 +34,7 @@ namespace Pathfinding
         private int gridSizeX, gridSizeY;
         private Vector2 nodeBoxWalkableTester;
 
-        private List<Node> path;
+        public List<Node> path;
 
         public Vector2 Center { get => center; }
         public Vector2 WorldSize { get => worldSize; }
@@ -60,7 +60,7 @@ namespace Pathfinding
 
         private void Update()
         {
-            path = Pathfinder.FindPath(this, seeker.position, target.position);
+            // path = Pathfinder.FindPath(this, seeker.position, target.position);
         }
 
         public static void CalculateNodeTraversalData(Vector2 worldPoint, float nodeDiameter,
@@ -76,7 +76,7 @@ namespace Pathfinding
                 int numWalkableQuadrants = 0;
                 float nodeRadius = nodeDiameter / 2f;
                 float nodeHalfRadius = nodeRadius / 2f;
-                Vector2 nodeQuadrantWalkableTester = new Vector2(nodeHalfRadius * 0.9f, nodeHalfRadius * 0.9f);
+                Vector2 nodeQuadrantWalkableTester = new Vector2(nodeRadius * 0.9f, nodeRadius * 0.9f);
                 for (float x = worldPoint.x - nodeHalfRadius; x < worldPoint.x + nodeRadius; x += nodeRadius)
                 {
                     for (float y = worldPoint.y - nodeHalfRadius; y < worldPoint.y + nodeRadius; y += nodeRadius)
@@ -225,6 +225,15 @@ namespace Pathfinding
                 {
                     Gizmos.color = walkableColor;
                     Gizmos.DrawWireCube(node.WorldPos, Vector2.one * nodeDiameter);
+                    float nodeRadius = nodeDiameter / 2f;
+                    float nodeHalfRadius = nodeRadius / 2f;
+                    for (float x = node.WorldPos.x - nodeHalfRadius; x < node.WorldPos.x + nodeRadius; x += nodeRadius)
+                    {
+                        for (float y = node.WorldPos.y - nodeHalfRadius; y < node.WorldPos.y + nodeRadius; y += nodeRadius)
+                        {
+                            Gizmos.DrawWireCube(new Vector2(x, y), 0.9f * nodeRadius * Vector2.one);
+                        }
+                    }
                 }
                 else
                 {
