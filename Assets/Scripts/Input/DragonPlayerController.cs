@@ -162,11 +162,18 @@ public class DragonPlayerController : PlayerController
     {
         base.HandleDeathEvent();
         movement.ToggleGravity(true);
+        PlayerManager.Instance.IncrementDeathCount();
     }
 
-    protected override void HandleReviveFinshEvent()
+    protected override void HandleReviveStartEvent()
     {
-        base.HandleReviveFinshEvent();
+        base.HandleReviveStartEvent();
+        PlayerManager.Instance.DecrementDeathCount();
+    }
+
+    protected override void HandleReviveFinishEvent()
+    {
+        base.HandleReviveFinishEvent();
         movement.ToggleGravity(false);
         movement.TakeFlight();
     }

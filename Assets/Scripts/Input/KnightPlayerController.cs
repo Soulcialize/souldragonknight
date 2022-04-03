@@ -157,5 +157,12 @@ public class KnightPlayerController : PlayerController
     {
         base.HandleDeathEvent();
         movement.Dismount();
+        PlayerManager.Instance.IncrementDeathCount();
+    }
+
+    protected override void HandleReviveStartEvent()
+    {
+        base.HandleReviveStartEvent();
+        PlayerManager.Instance.DecrementDeathCount();
     }
 }
