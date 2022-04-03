@@ -304,7 +304,19 @@ MonoBehaviour:
       m_Calls: []
   escapeMenuCloseEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388879154}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &77894361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,7 +3190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4381396471472462812, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4381396471472462812, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3410,6 +3422,11 @@ RectTransform:
 --- !u!1 &1388879153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4381396471862673648, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
+  m_PrefabInstance: {fileID: 1388879151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1388879154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4108128851718896790, guid: 84db37f7c2637a24cbe1eae2cda843ee, type: 3}
   m_PrefabInstance: {fileID: 1388879151}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1408170908 stripped
