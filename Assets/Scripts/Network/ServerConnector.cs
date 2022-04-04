@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 public class ServerConnector : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private string lobbySceneName;
+    [SerializeField] private string startSceneName;
     [SerializeField] private string connectionFailedSceneName;
 
     private void Start()
@@ -24,7 +24,7 @@ public class ServerConnector : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-        SceneManager.LoadScene(lobbySceneName);
+        SceneManager.LoadScene(startSceneName);
     }
 
     public override void OnDisconnected(DisconnectCause cause)

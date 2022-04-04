@@ -12,13 +12,18 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance;
     public static AudioManager Instance { get => _instance; }
 
-    [SerializeField] private AudioMixer mainMix;
+    [SerializeField] private AudioMixerGroup mainGroup;
     [SerializeField] private string mainMixVolumeParam = "MasterVolume";
 
     [Space(10)]
 
     [SerializeField] private AudioMixerGroup sfxGroup;
+    [SerializeField] private string sfxMixVolumeParam = "SoundEffectsVolume";
+
+    [Space(10)]
+
     [SerializeField] private AudioMixerGroup musicGroup;
+    [SerializeField] private string musicMixVolumeParam = "MusicVolume";
 
     [Space(10)]
 
@@ -71,12 +76,18 @@ public class AudioManager : MonoBehaviour
     {
         if (!doFade)
         {
-            mainMix.SetFloat(mainMixVolumeParam, toVolume);
+            mainGroup.audioMixer.SetFloat(mainMixVolumeParam, toVolume);
         }
         else
         {
             StartCoroutine(FadeAllAudio(toVolume, fadeLength));
         }
+    }
+
+    public float GetAudioVolume()
+    {
+        mainGroup.audioMixer.GetFloat(mainMixVolumeParam, out float volume);
+        return volume;
     }
     #endregion
 
@@ -131,6 +142,17 @@ public class AudioManager : MonoBehaviour
         {
             soundFx.Stop();
         }
+    }
+
+    public void SetSfxVolume(float toVolume)
+    {
+        sfxGroup.audioMixer.SetFloat(sfxMixVolumeParam, toVolume);
+    }
+
+    public float GetSfxVolume()
+    {
+        sfxGroup.audioMixer.GetFloat(sfxMixVolumeParam, out float volume);
+        return volume;
     }
     #endregion
 
@@ -211,6 +233,17 @@ public class AudioManager : MonoBehaviour
             music.Stop();
         }
     }
+
+    public void SetMusicVolume(float toVolume)
+    {
+        musicGroup.audioMixer.SetFloat(musicMixVolumeParam, toVolume);
+    }
+
+    public float GetMusicVolume()
+    {
+        musicGroup.audioMixer.GetFloat(musicMixVolumeParam, out float volume);
+        return volume;
+    }
     #endregion
 
     #region Private Methods
@@ -222,18 +255,18 @@ public class AudioManager : MonoBehaviour
     /// <returns>IEnumerator; this is a coroutine.</returns>
     private IEnumerator FadeAllAudio(float toVolume, float fadeLength)
     {
-        mainMix.GetFloat(mainMixVolumeParam, out float fromVolume);
+        mainGroup.audioMixer.GetFloat(mainMixVolumeParam, out float fromVolume);
 
         float elapsedTime = 0f;
         while (elapsedTime < fadeLength)
         {
             // linear volume change
-            mainMix.SetFloat(mainMixVolumeParam, Mathf.Lerp(fromVolume, toVolume, elapsedTime / fadeLength));
+            mainGroup.audioMixer.SetFloat(mainMixVolumeParam, Mathf.Lerp(fromVolume, toVolume, elapsedTime / fadeLength));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        mainMix.SetFloat(mainMixVolumeParam, toVolume);
+        mainGroup.audioMixer.SetFloat(mainMixVolumeParam, toVolume);
     }
 
     /// <summary>

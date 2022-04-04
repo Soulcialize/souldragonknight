@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac62dd02f3ec8243bf90273344ac34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbySceneName: Lobby
+  startSceneName: Start
   connectionFailedSceneName: ConnectionFailed
 --- !u!1 &796766798
 GameObject:
@@ -254,6 +254,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2081068685261307422, guid: fd53fcba92972e441a68132e6ba3b4b9, type: 3}
+      propertyPath: mainGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
+    - target: {fileID: 2081068685261307422, guid: fd53fcba92972e441a68132e6ba3b4b9, type: 3}
+      propertyPath: mainMixGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
     - target: {fileID: 2081068685261307423, guid: fd53fcba92972e441a68132e6ba3b4b9, type: 3}
       propertyPath: m_RootOrder
       value: 3
