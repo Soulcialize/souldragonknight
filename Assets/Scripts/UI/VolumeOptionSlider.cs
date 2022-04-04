@@ -54,11 +54,15 @@ public class VolumeOptionSlider : OptionSlider
 
     private float ConvertToValue(float volume)
     {
-        return volume == -80f ? 0f : Mathf.Pow(10, (volume / 40f)) * (VOLUME_MAX - VOLUME_MIN);
+        return volume == AudioManager.MAIN_VOLUME_MIN 
+            ? VOLUME_MIN 
+            : Mathf.Pow(10, (volume / 40f)) * (VOLUME_MAX - VOLUME_MIN);
     }
 
     private float ConvertToVolume(float value)
     {
-        return value == 0 ? -80f : Mathf.Log10(value / (VOLUME_MAX - VOLUME_MIN)) * 40f;
+        return value == VOLUME_MIN 
+            ? AudioManager.MAIN_VOLUME_MIN 
+            : Mathf.Log10(value / (VOLUME_MAX - VOLUME_MIN)) * 40f;
     }
 }
