@@ -135,7 +135,7 @@ namespace Pathfinding
             float distanceFromNodeBelowToSurfaceBelow;
             for (int x = minNode.GridX; x <= maxNode.GridX; x++)
             {
-                for (int y = minNode.GridY; y <= maxNode.GridY; y++)
+                for (int y = minNode.GridY; y < gridSizeY; y++)
                 {
                     if (y > 0)
                     {
@@ -153,7 +153,14 @@ namespace Pathfinding
                         nodeBoxWalkableTester, surfacesLayerMask,
                         isNodeBelowWalkable, distanceFromNodeBelowToSurfaceBelow,
                         out bool isWalkable, out float distanceFromSurfaceBelow);
+
                     grid[x, y].UpdateTraversalData(isWalkable, distanceFromSurfaceBelow);
+
+                    if (y > maxNode.GridY && !isWalkable)
+                    {
+                        // encountered unwalkable node; can stop updating nodes above
+                        break;
+                    }
                 }
             }
         }
