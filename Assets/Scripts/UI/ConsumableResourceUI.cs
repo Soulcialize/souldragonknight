@@ -62,7 +62,7 @@ public class ConsumableResourceUI : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_RegenerateStaminaUI(float regenSpeed )
+    private void RPC_RegenerateStaminaUI(float regenSpeed)
     {
         staminaBar.StartRegeneration(regenSpeed);
     }
