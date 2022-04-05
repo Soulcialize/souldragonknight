@@ -57,6 +57,7 @@ public class DragonPlayerController : PlayerController
             Combat.Resource.UpdateResourceEvent.AddListener(manaUI.UpdateManaUI);
             Combat.Resource.RegenerateResourceEvent.AddListener(manaUI.RegenerateManaUI);
             Combat.Resource.StopRegenResourceEvent.AddListener(manaUI.StopRegenManaUI);
+            Combat.Resource.InsufficientResourceEvent.AddListener(manaUI.FlashManaWarning);
         }
     }
 
@@ -70,6 +71,7 @@ public class DragonPlayerController : PlayerController
             Combat.Resource.UpdateResourceEvent.RemoveListener(manaUI.UpdateManaUI);
             Combat.Resource.RegenerateResourceEvent.RemoveListener(manaUI.RegenerateManaUI);
             Combat.Resource.StopRegenResourceEvent.RemoveListener(manaUI.StopRegenManaUI);
+            Combat.Resource.InsufficientResourceEvent.RemoveListener(manaUI.FlashManaWarning);
         }
     }
 

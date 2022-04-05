@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9fd62af3f10c4ea5115dc206e4963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMix: {fileID: 24100000, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
+  mainGroup: {fileID: 24300002, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
   mainMixVolumeParam: MasterVolume
   sfxGroup: {fileID: 7196020780452657341, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
+  sfxMixVolumeParam: SoundEffectsVolume
   musicGroup: {fileID: 9131962080079578087, guid: 13cf87b401c663b41a7775fba705b2a5, type: 2}
+  musicMixVolumeParam: MusicVolume
   soundFxs:
   - defaultVolume: 1
     loop: 0
@@ -210,6 +212,21 @@ MonoBehaviour:
     libraryIndex: 31
     audioClips:
     - {fileID: 8300000, guid: 6e4b53a05d0b36b42b84496fbd754f0c, type: 3}
+  - defaultVolume: 1
+    loop: 0
+    libraryIndex: 32
+    audioClips:
+    - {fileID: 8300000, guid: 049fdfb0c3a0efd4d898df6bf66baae1, type: 3}
+  - defaultVolume: 1
+    loop: 0
+    libraryIndex: 33
+    audioClips:
+    - {fileID: 8300000, guid: 0f59e881b67cc94489146e264ee25750, type: 3}
+  - defaultVolume: 1
+    loop: 0
+    libraryIndex: 34
+    audioClips:
+    - {fileID: 8300000, guid: cb2d29d6dfcecd94098391eb15459bad, type: 3}
   musicTracks:
   - defaultVolume: 1
     loop: 1

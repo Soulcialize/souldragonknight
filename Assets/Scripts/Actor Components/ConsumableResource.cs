@@ -19,6 +19,7 @@ public class ConsumableResource : MonoBehaviour
     [SerializeField] private RegenerateResourceEvent regenerateResourceEvent;
     [SerializeField] private UpdateResourceEvent updateResourceEvent;
     [SerializeField] private UnityEvent stopRegenResourceEvent;
+    [SerializeField] private UnityEvent insufficientResourceEvent;
     [SerializeField] private PhotonView photonView;
 
     private Coroutine regen;
@@ -28,6 +29,7 @@ public class ConsumableResource : MonoBehaviour
     public RegenerateResourceEvent RegenerateResourceEvent { get => regenerateResourceEvent; }
     public UpdateResourceEvent UpdateResourceEvent { get => updateResourceEvent; }
     public UnityEvent StopRegenResourceEvent { get => stopRegenResourceEvent; }
+    public UnityEvent InsufficientResourceEvent { get => insufficientResourceEvent; }
 
     private void Start()
     {
@@ -36,7 +38,16 @@ public class ConsumableResource : MonoBehaviour
 
     public bool CanConsume(float amount)
     {
-        return CurrentAmount - amount >= 0;
+        if (CurrentAmount - amount >= 0)
+        {
+            return true;
+        } 
+        else
+        {
+            AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.INSUFFICIENT_RESOURCE);
+            insufficientResourceEvent.Invoke();
+            return false;
+        }
     }
 
     public void Consume(float amount)
