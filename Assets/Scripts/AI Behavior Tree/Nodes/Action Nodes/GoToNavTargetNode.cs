@@ -47,6 +47,14 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
+            Pathfinder.PathfindResult pathfindResult = owner.Pathfinder.Pathfind(navTargetPos);
+            if (pathfindResult == Pathfinder.PathfindResult.FAILURE)
+            {
+                // no path to reach or move nearer to target at all
+                return NodeState.FAILURE;
+            }
+
+            // there is a path to the target
             bool isDistanceGreaterThanWalkThreshold = distanceToTarget > owner.Movement.NavTargetWalkDistanceThreshold;
             if (owner.Movement.MovementMode == MovementSpeedData.Mode.SLOW && isDistanceGreaterThanWalkThreshold)
             {
@@ -57,9 +65,7 @@ namespace AiBehaviorTreeNodes
                 owner.Movement.SetMovementMode(MovementSpeedData.Mode.SLOW);
             }
 
-            return owner.Pathfinder.Pathfind(navTargetPos)
-                ? NodeState.RUNNING
-                : NodeState.FAILURE;
+            return NodeState.RUNNING;
         }
     }
 }

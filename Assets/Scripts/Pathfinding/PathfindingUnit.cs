@@ -23,6 +23,7 @@ public class PathfindingUnit : MonoBehaviour
 
     private Coroutine pathfindProcess;
     private List<Node> path;
+    private Pathfinder.PathfindResult lastPathfindResult;
     private int targetNodeIndex;
 
     public int HeightInNodes { get => unitHeightInNodes; }
@@ -38,6 +39,7 @@ public class PathfindingUnit : MonoBehaviour
         };
 
         timeOfLastPathfind = 0f;
+        lastPathfindResult = Pathfinder.PathfindResult.FAILURE;
         targetNodeIndex = 0;
     }
 
@@ -53,32 +55,34 @@ public class PathfindingUnit : MonoBehaviour
     /// <param name="targetPos">The target end point. It is expected to be the final center top of the unit's collider.</param>
     /// <param name="filters">Filters to apply to nodes while pathfinding.</param>
     /// <returns>True if path to target found. False otherwise.</returns>
-    public bool Pathfind(Vector2 targetPos)
+    public Pathfinder.PathfindResult Pathfind(Vector2 targetPos)
     {
         if (Time.time - timeOfLastPathfind < MIN_PATHFIND_INTERVAL)
         {
-            return pathfindProcess != null;
+            return lastPathfindResult;
         }
 
         StopPathfind();
 
         // factor in collider height while pathfinding
         filters.hardFilters.AddRange(commonHardNeighbourFilters);
-        (bool isPathfindSuccessful, List<Node> newPath) = Pathfinder.FindPath(
+        (Pathfinder.PathfindResult result, List<Node> newPath) = Pathfinder.FindPath(
             NodeGrid.Instance,
             GetCurrentPosForPathfinding(),
             targetPos,
             filters);
 
         path = newPath;
-        if (!isPathfindSuccessful)
+        lastPathfindResult = result;
+        if (result == Pathfinder.PathfindResult.FAILURE)
         {
-            return false;
+            // cannot reach or advance any nearer to target position
+            return result;
         }
 
         timeOfLastPathfind = Time.time;
         pathfindProcess = StartCoroutine(Pathfind());
-        return true;
+        return result;
     }
 
     public void StopPathfind()

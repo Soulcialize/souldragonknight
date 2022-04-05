@@ -9,18 +9,21 @@ namespace AiBehaviorTreeNodes
     {
         private readonly Transform ownerTransform;
         private readonly Movement ownerMovement;
-        private readonly Combat ownerCombat;
         
-        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement, Combat ownerCombat)
+        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement)
         {
-            ownerTransform = ownerCombat.transform;
+            ownerTransform = ownerMovement.transform;
             this.ownerMovement = ownerMovement;
-            this.ownerCombat = ownerCombat;
         }
 
         public override NodeState Execute()
         {
             Bounds targetColliderBounds = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).Combat.Collider2d.bounds;
+
+            if (ownerMovement is GroundMovement groundMovement && targetColliderBounds.center.y > groundMovement.MaxReachableHeight)
+            {
+                return NodeState.FAILURE;
+            }
 
             // only fail if target's entire collider is behind actor
             return ownerMovement.IsFacingRight && targetColliderBounds.max.x < ownerTransform.position.x

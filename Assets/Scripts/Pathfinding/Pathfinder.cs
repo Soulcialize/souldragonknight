@@ -7,7 +7,14 @@ namespace Pathfinding
 {
     public static class Pathfinder
     {
-        public static (bool, List<Node>) FindPath(
+        public enum PathfindResult
+        {
+            SUCCESS, // can reach given target
+            FAILURE, // cannot move to any node that is nearer to the target than the current position
+            NEAREST // cannot reach target, but can reach a node near to it
+        }
+
+        public static (PathfindResult, List<Node>) FindPath(
             NodeGrid grid, Vector2 fromPos, Vector2 toPos,
             (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) filters)
         {
@@ -16,21 +23,24 @@ namespace Pathfinding
 
             if (fromNode.WorldPos == toNode.WorldPos)
             {
-                return (true, RetracePath(fromNode, toNode));
+                return (PathfindResult.SUCCESS, RetracePath(fromNode, toNode));
             }
 
             List<Node> openSet = new List<Node>();
             HashSet<Node> closedSet = new HashSet<Node>();
             openSet.Add(fromNode);
 
-            Node currentNode = null;
-            Node nodeWithLowestHCost = null;
+            Node currentNode = fromNode;
+            currentNode.GCost = 0;
+            currentNode.HCost = grid.GetGridDistance(fromNode, toNode);
+
+            Node nodeWithLowestHCost = fromNode;
             HashSet<Node> nonPreferredNeighbours = new HashSet<Node>();
             while (openSet.Count > 0)
             {
-                // set the current node to the node with the lowest f_cost in the open set
+                // set the current node to the node with the lowest F cost in the open set
                 currentNode = GetNodeWithLowestFCost(openSet);
-                if (nodeWithLowestHCost == null || currentNode.HCost < nodeWithLowestHCost.HCost)
+                if (currentNode.HCost < nodeWithLowestHCost.HCost)
                 {
                     nodeWithLowestHCost = currentNode;
                 }
@@ -41,7 +51,7 @@ namespace Pathfinding
                 if (currentNode == toNode)
                 {
                     // found path
-                    return (true, RetracePath(fromNode, toNode));
+                    return (PathfindResult.SUCCESS, RetracePath(fromNode, toNode));
                 }
 
                 foreach (Node neighbour in currentNode.Neighbours)
@@ -87,8 +97,9 @@ namespace Pathfinding
                 }
             }
 
-            // could not find path to target node; return path to the closest node we could find
-            return (false, RetracePath(fromNode, nodeWithLowestHCost));
+            // could not find path to target node; try to return path to the closest node we could find
+            List<Node> closestPathToTarget = RetracePath(fromNode, nodeWithLowestHCost);
+            return (closestPathToTarget.Count == 0 ? PathfindResult.FAILURE : PathfindResult.NEAREST, closestPathToTarget);
         }
 
         private static Node GetNodeWithLowestFCost(List<Node> nodeList)
