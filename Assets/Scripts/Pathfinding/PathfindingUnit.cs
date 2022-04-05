@@ -7,7 +7,7 @@ using Filter = System.Predicate<Pathfinding.Node>;
 
 public class PathfindingUnit : MonoBehaviour
 {
-    public static readonly float MIN_PATHFIND_INTERVAL = 0.5f;
+    public static readonly float MIN_PATHFIND_INTERVAL = 0.1f;
 
     [SerializeField] private Collider2D collider2d;
     [SerializeField] private Movement movement;
@@ -100,7 +100,7 @@ public class PathfindingUnit : MonoBehaviour
             currentPosNode = GetCurrentPositionAsNode();
             if (currentPosNode == path[targetNodeIndex])
             {
-                // reached current target nod; advance to next node
+                // reached current target node; advance to next node
                 targetNodeIndex++;
                 if (targetNodeIndex >= path.Count)
                 {
