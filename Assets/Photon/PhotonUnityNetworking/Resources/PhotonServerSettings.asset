@@ -105,6 +105,8 @@ MonoBehaviour:
   - RPC_StopMusic
   - RPC_StopSoundFx
   - RPC_SyncPuzzleCompleted
+  - RPC_DecrementDeath
+  - RPC_IncrementDeath
   - RPC_SyncMessage
   - RPC_CancelExitRequest
   - RPC_RequestExit

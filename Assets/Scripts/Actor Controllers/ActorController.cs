@@ -27,7 +27,8 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.AddListener(HandleHurtEvent);
             Combat.DeathEvent.AddListener(HandleDeathEvent);
-            Combat.ReviveFinishEvent.AddListener(HandleReviveFinshEvent);
+            Combat.ReviveStartEvent.AddListener(HandleReviveStartEvent);
+            Combat.ReviveFinishEvent.AddListener(HandleReviveFinishEvent);
         }
     }
 
@@ -37,7 +38,8 @@ public abstract class ActorController : MonoBehaviour
         {
             Combat.HurtEvent.RemoveListener(HandleHurtEvent);
             Combat.DeathEvent.RemoveListener(HandleDeathEvent);
-            Combat.ReviveFinishEvent.RemoveListener(HandleReviveFinshEvent);
+            Combat.ReviveStartEvent.RemoveListener(HandleReviveStartEvent);
+            Combat.ReviveFinishEvent.RemoveListener(HandleReviveFinishEvent);
         }
     }
 
@@ -80,5 +82,7 @@ public abstract class ActorController : MonoBehaviour
         pathfinder.StopPathfind();
     }
 
-    protected virtual void HandleReviveFinshEvent() { }
+    protected virtual void HandleReviveStartEvent() { }
+
+    protected virtual void HandleReviveFinishEvent() { }
 }

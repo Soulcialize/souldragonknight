@@ -97,6 +97,8 @@ public class Buff : MonoBehaviour
         combat.AttackEffectLayer = buffedTargetLayer;
         spriteRenderer.color = buffedColor;
         IsBuffed = true;
+
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.BUFF);
     }
 
     [PunRPC]
@@ -105,6 +107,8 @@ public class Buff : MonoBehaviour
         combat.AttackEffectLayer = defaultTargetLayer;
         spriteRenderer.color = defaultColor;
         IsBuffed = false;
+
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.DEBUFF);
     }
 
     [PunRPC]

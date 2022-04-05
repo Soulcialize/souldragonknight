@@ -9,6 +9,7 @@ public abstract class Movement : MonoBehaviour
 {
     public enum Direction { LEFT, RIGHT }
 
+    [SerializeField] protected SoundFXIndexLibrary soundFXIndexLibrary;
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Rigidbody2D rigidbody2d;
     [SerializeField] protected Animator animator;
@@ -33,6 +34,7 @@ public abstract class Movement : MonoBehaviour
 
     private Dictionary<MovementSpeedData.Mode, float> movementModeToSpeedDictionary;
 
+    public SoundFXIndexLibrary SoundFXIndexLibrary { get => soundFXIndexLibrary; }
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public SurfaceDetector GroundDetector { get => groundDetector; }

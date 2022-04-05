@@ -137,6 +137,7 @@ Transform:
   - {fileID: 5693331146666542378}
   - {fileID: 5693331146226388551}
   - {fileID: 2862898516975400696}
+  - {fileID: 5167242016382952994}
   m_Father: {fileID: 5693331145748344923}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc35197771b35d459217c8a6409bcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFXIndexLibrary: {fileID: 400359374148292433}
   photonView: {fileID: 5693331145748344914}
   rigidbody2d: {fileID: 5693331145748344916}
   animator: {fileID: 3091961783657160481}
@@ -465,6 +467,7 @@ MonoBehaviour:
   spriteLayer: {fileID: 693705184267070998}
   collisionLayer: {fileID: 8833465501210280286}
   movement: {fileID: 5693331145748344913}
+  soundFXIndexLibrary: {fileID: 400359374148292433}
   attackEffectLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -738,6 +741,57 @@ MonoBehaviour:
   surfacesLayerMask:
     serializedVersion: 2
     m_Bits: 131136
+--- !u!1 &6708621580835892495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5167242016382952994}
+  - component: {fileID: 400359374148292433}
+  m_Layer: 8
+  m_Name: ActorFXLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5167242016382952994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708621580835892495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7596657803369997891}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400359374148292433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708621580835892495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2654c4af28cf046b8f50236241d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 21
+  dodge: 31
+  die: 22
+  hurt: 23
+  blockhit: 31
+  revive: 31
+  readyattack: 24
+  jump: 31
 --- !u!1 &7469574417147423826
 GameObject:
   m_ObjectHideFlags: 0

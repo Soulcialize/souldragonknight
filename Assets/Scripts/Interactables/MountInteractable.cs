@@ -112,12 +112,10 @@ public class MountInteractable : Interactable
     /// <remarks>This method executes on all clients.</remarks>
     public void MountFlipHandler()
     {
-        if (currentRiderMovement == null)
+        if (currentRiderMovement != null)
         {
-            return;
-        }
-
-        FlipMountedRider();
+            FlipMountedRider();
+        }   
     }
 
     /// <summary>
