@@ -35,6 +35,7 @@ namespace Pathfinding
         public LayerMask SurfacesLayerMask { get => surfacesLayerMask; }
 
         public float NodeDiameter { get => nodeDiameter; }
+        public Vector2 NodeBoxWalkableTester { get => nodeBoxWalkableTester; }
 
         public PathfindingGridData PrecomputedGridData { get => precomputedGridData; }
 
@@ -56,35 +57,6 @@ namespace Pathfinding
         private void Update()
         {
             // path = Pathfinder.FindPath(this, seeker.position, target.position);
-        }
-
-        public static void CalculateNodeTraversalData(Vector2 worldPoint, float nodeDiameter,
-            Vector2 nodeBoxWalkableTester, LayerMask surfacesLayerMask,
-            bool isNodeBelowWalkable, float distanceFromNodeBelowToSurfaceBelow,
-            out bool isWalkable, out float distanceFromSurfaceBelow)
-        {
-            // calculate if walkable
-            isWalkable = Physics2D.OverlapBox(worldPoint, nodeBoxWalkableTester, 0f, surfacesLayerMask) == null;
-
-            // calculate distance to surface below
-            distanceFromSurfaceBelow = 0f;
-            if (isWalkable)
-            {
-                if (isNodeBelowWalkable)
-                {
-                    // add on to existing distance of node directly below this one
-                    distanceFromSurfaceBelow = distanceFromNodeBelowToSurfaceBelow + nodeDiameter;
-                }
-                else
-                {
-                    // no walkable node below this one; use raycast to find distance to surface below
-                    RaycastHit2D raycastDownHit = Physics2D.Raycast(worldPoint, Vector2.down, Mathf.Infinity, surfacesLayerMask);
-                    if (raycastDownHit.collider != null)
-                    {
-                        distanceFromSurfaceBelow = raycastDownHit.distance;
-                    }
-                }
-            }
         }
 
         private void LoadPrecomputedGridData()
@@ -176,7 +148,7 @@ namespace Pathfinding
                         distanceFromNodeBelowToSurfaceBelow = 0f;
                     }
 
-                    CalculateNodeTraversalData(
+                    NodeTraversalCalculator.CalculateNodeTraversalData(
                         grid[x, y].WorldPos, nodeDiameter,
                         nodeBoxWalkableTester, surfacesLayerMask,
                         isNodeBelowWalkable, distanceFromNodeBelowToSurfaceBelow,

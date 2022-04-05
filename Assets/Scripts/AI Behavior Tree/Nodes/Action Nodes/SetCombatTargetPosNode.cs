@@ -4,16 +4,14 @@ using UnityEngine;
 using AiBehaviorTreeBlackboards;
 using Pathfinding;
 
-using Filter = System.Predicate<Pathfinding.Node>;
-
 namespace AiBehaviorTreeNodes
 {
     public class SetCombatTargetPosNode : BehaviorNode
     {
         private readonly ActorController owner;
 
-        private readonly (List<Filter> hardFilters, List<Filter> softFilters) aerialNavTargetPositionFilters;
-        private readonly (List<Filter> hardFilters, List<Filter> softFilters) groundNavTargetPositionFilters;
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) aerialNavTargetPositionFilters;
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) groundNavTargetPositionFilters;
 
         public SetCombatTargetPosNode(ActorController owner)
         {
@@ -50,19 +48,20 @@ namespace AiBehaviorTreeNodes
             return NodeState.SUCCESS;
         }
 
-        private (List<Filter>, List<Filter>) GetAerialNavTargetPositionFilters()
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetAerialNavTargetPositionFilters()
         {
-            return (new List<Filter>(), new List<Filter>());
+            return (new List<NodeNeighbourFilter>(), new List<NodeNeighbourFilter>());
         }
 
-        private (List<Filter>, List<Filter>) GetGroundNavTargetPositionFilters()
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetGroundNavTargetPositionFilters()
         {
-            List<Filter> hardFilters = new List<Filter>()
+            List<NodeNeighbourFilter> hardFilters = new List<NodeNeighbourFilter>()
             {
-                node => node.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes
+                new NodeNeighbourFilter(
+                    (node, neighbour) => neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes)
             };
 
-            return (hardFilters, new List<Filter>());
+            return (hardFilters, new List<NodeNeighbourFilter>());
         }
     }
 }

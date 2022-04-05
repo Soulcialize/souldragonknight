@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-using Filter = System.Predicate<Pathfinding.Node>;
-
 public class PathfindingUnit : MonoBehaviour
 {
     public static readonly float MIN_PATHFIND_INTERVAL = 0.1f;
@@ -14,7 +12,12 @@ public class PathfindingUnit : MonoBehaviour
 
     private Transform unitTransform;
     private int unitHeightInNodes;
-    private (List<Filter> hardFilters, List<Filter> softFilters) filters;
+    private (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) filters;
+
+    /// <summary>
+    /// This list of soft filters is used for every unit alongside whatever gets passed during pathfinding.
+    /// </summary>
+    private List<NodeNeighbourFilter> commonHardNeighbourFilters;
 
     private float timeOfLastPathfind;
 
@@ -28,11 +31,17 @@ public class PathfindingUnit : MonoBehaviour
     {
         unitTransform = transform;
         unitHeightInNodes = Mathf.CeilToInt(collider2d.bounds.size.y / NodeGrid.Instance.NodeDiameter);
+
+        commonHardNeighbourFilters = new List<NodeNeighbourFilter>()
+        {
+            new NodeNeighbourFilter((node, neighbour) => NodeGrid.Instance.AreNodesBelowWalkable(neighbour, unitHeightInNodes - 1))
+        };
+
         timeOfLastPathfind = 0f;
         targetNodeIndex = 0;
     }
 
-    public void SetFilters ((List<Filter>, List<Filter>) filters)
+    public void SetFilters ((List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) filters)
     {
         this.filters = filters;
     }
@@ -54,21 +63,20 @@ public class PathfindingUnit : MonoBehaviour
         StopPathfind();
 
         // factor in collider height while pathfinding
-        bool heightFilter(Node node) => NodeGrid.Instance.AreNodesBelowWalkable(node, unitHeightInNodes - 1);
-        filters.hardFilters.Add(heightFilter);
-        List<Node> newPath = Pathfinder.FindPath(
+        filters.hardFilters.AddRange(commonHardNeighbourFilters);
+        (bool isPathfindSuccessful, List<Node> newPath) = Pathfinder.FindPath(
             NodeGrid.Instance,
             GetCurrentPosForPathfinding(),
             targetPos,
             filters);
 
-        if (newPath == null)
+        path = newPath;
+        if (!isPathfindSuccessful)
         {
             return false;
         }
 
         timeOfLastPathfind = Time.time;
-        path = newPath;
         pathfindProcess = StartCoroutine(Pathfind());
         return true;
     }

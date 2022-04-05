@@ -4,8 +4,6 @@ using UnityEngine;
 using AiBehaviorTreeBlackboards;
 using Pathfinding;
 
-using Filter = System.Predicate<Pathfinding.Node>;
-
 namespace AiBehaviorTreeNodes
 {
     public class SetRangedAttackPosNode : BehaviorNode
@@ -16,8 +14,8 @@ namespace AiBehaviorTreeNodes
         private readonly Transform projectileOrigin;
         private readonly RangedProjectile projectile;
 
-        private readonly (List<Filter> hardFilters, List<Filter> softFilters) aerialReadyPositionFilters;
-        private readonly (List<Filter> hardFilters, List<Filter> softFilters) groundReadyPositionFilters;
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) aerialReadyPositionFilters;
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) groundReadyPositionFilters;
 
         public SetRangedAttackPosNode(ActorController owner)
         {
@@ -74,24 +72,25 @@ namespace AiBehaviorTreeNodes
                 + Vector2.up * owner.Combat.Collider2d.bounds.size.y;
         }
 
-        private (List<Filter>, List<Filter>) GetAerialReadyPositionFilters()
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetAerialReadyPositionFilters()
         {
-            List<Filter> softFilters = new List<Filter>()
+            List<NodeNeighbourFilter> softFilters = new List<NodeNeighbourFilter>()
             {
-                node => node.DistanceFromSurfaceBelow >= 3f
+                new NodeNeighbourFilter((node, neighbour) => neighbour.DistanceFromSurfaceBelow >= 2.5f)
             };
 
-            return (new List<Filter>(), softFilters);
+            return (new List<NodeNeighbourFilter>(), softFilters);
         }
 
-        private (List<Filter>, List<Filter>) GetGroundReadyPositionFilters()
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetGroundReadyPositionFilters()
         {
-            List<Filter> hardFilters = new List<Filter>()
+            List<NodeNeighbourFilter> hardFilters = new List<NodeNeighbourFilter>()
             {
-                node => node.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes
+                new NodeNeighbourFilter(
+                    (node, neighbour) => neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes)
             };
 
-            return (hardFilters, new List<Filter>());
+            return (hardFilters, new List<NodeNeighbourFilter>());
         }
     }
 }

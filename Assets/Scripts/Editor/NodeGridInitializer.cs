@@ -51,7 +51,7 @@ namespace Pathfinding
                 nodeBoxWalkableTester = new Vector2(nodeDiameter * 0.1f, nodeDiameter * 0.1f);
 
                 // precompute grid nodes with neighbours and save data to scriptable object
-                SerializedNode[,] grid = PrecomputeGridNodes(nodeGrid, nodeDiameter, gridSizeX, gridSizeY, nodeBoxWalkableTester);
+                SerializedNode[,] grid = CreateGridNodes(nodeGrid, nodeDiameter, gridSizeX, gridSizeY, nodeBoxWalkableTester);
                 SetGridNodesNeighbours(grid);
                 SavePrecomputedGrid(nodeGrid, grid, nodeDiameter, nodeBoxWalkableTester);
             }
@@ -59,7 +59,7 @@ namespace Pathfinding
             Debug.Log($"Completed grids initialization for {activeScene.name}");
         }
 
-        private static SerializedNode[,] PrecomputeGridNodes(
+        private static SerializedNode[,] CreateGridNodes(
             NodeGrid nodeGrid, float nodeDiameter, int gridSizeX, int gridSizeY, Vector2 nodeBoxWalkableTester)
         {
             SerializedNode[,] grid = new SerializedNode[gridSizeX, gridSizeY];
@@ -86,7 +86,7 @@ namespace Pathfinding
                         : nodeBelowCurrent.DistanceFromSurfaceBelow;
 
                     // calculate traversal data of current node
-                    NodeGrid.CalculateNodeTraversalData(
+                    NodeTraversalCalculator.CalculateNodeTraversalData(
                         worldPoint, nodeDiameter,
                         nodeBoxWalkableTester, nodeGrid.SurfacesLayerMask,
                         isNodeBelowWalkable, distanceFromNodeBelowToSurfaceBelow,

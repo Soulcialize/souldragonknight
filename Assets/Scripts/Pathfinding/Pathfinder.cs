@@ -7,27 +7,33 @@ namespace Pathfinding
 {
     public static class Pathfinder
     {
-        public static List<Node> FindPath(
+        public static (bool, List<Node>) FindPath(
             NodeGrid grid, Vector2 fromPos, Vector2 toPos,
-            (List<Predicate<Node>> hardFilters, List<Predicate<Node>> softFilters) filters)
+            (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) filters)
         {
             Node fromNode = grid.GetNodeFromWorldPoint(fromPos);
             Node toNode = grid.GetNodeFromWorldPoint(toPos);
 
             if (fromNode.WorldPos == toNode.WorldPos)
             {
-                return null;
+                return (true, RetracePath(fromNode, toNode));
             }
 
             List<Node> openSet = new List<Node>();
             HashSet<Node> closedSet = new HashSet<Node>();
             openSet.Add(fromNode);
 
+            Node currentNode = null;
+            Node nodeWithLowestHCost = null;
             HashSet<Node> nonPreferredNeighbours = new HashSet<Node>();
             while (openSet.Count > 0)
             {
                 // set the current node to the node with the lowest f_cost in the open set
-                Node currentNode = GetNodeWithLowestFCost(openSet);
+                currentNode = GetNodeWithLowestFCost(openSet);
+                if (nodeWithLowestHCost == null || currentNode.HCost < nodeWithLowestHCost.HCost)
+                {
+                    nodeWithLowestHCost = currentNode;
+                }
 
                 openSet.Remove(currentNode);
                 closedSet.Add(currentNode);
@@ -35,7 +41,7 @@ namespace Pathfinding
                 if (currentNode == toNode)
                 {
                     // found path
-                    return RetracePath(fromNode, toNode);
+                    return (true, RetracePath(fromNode, toNode));
                 }
 
                 foreach (Node neighbour in currentNode.Neighbours)
@@ -54,12 +60,12 @@ namespace Pathfinding
 
                         if (!openSet.Contains(neighbour))
                         {
-                            if (filters.hardFilters != null && !DoesNodePassFilters(neighbour, filters.hardFilters))
+                            if (filters.hardFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.hardFilters))
                             {
                                 // neighbour doesn't pass hard filters
                                 closedSet.Add(neighbour);
                             }
-                            else if (filters.softFilters != null && !DoesNodePassFilters(neighbour, filters.softFilters))
+                            else if (filters.softFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.softFilters))
                             {
                                 // keep non-preferred neighbours in consideration in case no other path exists
                                 nonPreferredNeighbours.Add(neighbour);
@@ -81,8 +87,8 @@ namespace Pathfinding
                 }
             }
 
-            // Debug.Log($"Could not find path from {fromPos} to {toPos}");
-            return null;
+            // could not find path to target node; return path to the closest node we could find
+            return (false, RetracePath(fromNode, nodeWithLowestHCost));
         }
 
         private static Node GetNodeWithLowestFCost(List<Node> nodeList)
@@ -106,11 +112,11 @@ namespace Pathfinding
             return currentNode;
         }
 
-        private static bool DoesNodePassFilters(Node node, List<Predicate<Node>> filters)
+        private static bool DoesNeighbourPassFilters(Node node, Node neighbour, List<NodeNeighbourFilter> filters)
         {
-            foreach (Predicate<Node> filter in filters)
+            foreach (NodeNeighbourFilter filter in filters)
             {
-                if (!filter(node))
+                if (!filter.DoesNodePass(node, neighbour))
                 {
                     return false;
                 }
