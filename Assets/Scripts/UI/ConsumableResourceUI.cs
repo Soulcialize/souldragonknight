@@ -39,6 +39,16 @@ public class ConsumableResourceUI : MonoBehaviour
         photonView.RPC("RPC_StopRegenManaUI", RpcTarget.All);
     }
 
+    public void FlashStaminaWarning()
+    {
+        staminaBar.FlashWarningIfNotRunning();
+    }
+
+    public void FlashManaWarning()
+    {
+        manaBar.FlashWarningIfNotRunning();
+    }
+
     [PunRPC]
     private void RPC_UpdateStaminaUI(float currAmount)
     {
@@ -52,7 +62,7 @@ public class ConsumableResourceUI : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_RegenerateStaminaUI(float regenSpeed )
+    private void RPC_RegenerateStaminaUI(float regenSpeed)
     {
         staminaBar.StartRegeneration(regenSpeed);
     }

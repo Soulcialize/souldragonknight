@@ -7,16 +7,22 @@ public class ProjectilePathDisplay : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Color lockOnLineColor;
+    [SerializeField] private float lockOnLineWidthIncrease;
     [SerializeField] private Transform projectileOrigin;
     [SerializeField] private LayerMask projectileObstaclesLayer;
 
     private bool isDrawingProjectilePath = false;
     private Transform target;
+    private Color defaultLineColor;
+    private float defaultLineWidth;
     private Vector3[] projectilePathPositions = new Vector3[2];
 
     private void Awake()
     {
         lineRenderer.positionCount = 2;
+        defaultLineColor = lineRenderer.startColor;
+        defaultLineWidth = lineRenderer.startWidth;
     }
 
     private void Update()
@@ -38,6 +44,14 @@ public class ProjectilePathDisplay : MonoBehaviour
             : projectileHit.point;
 
         lineRenderer.SetPositions(projectilePathPositions);
+    }
+
+    private void UpdateLineVisuals(Color color, float width)
+    {
+        lineRenderer.startWidth = width;
+        lineRenderer.endWidth = width;
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
     }
 
     public void StartDrawingProjectilePath(Transform target)
@@ -71,11 +85,15 @@ public class ProjectilePathDisplay : MonoBehaviour
     {
         isDrawingProjectilePath = false;
         UpdateProjectilePath();
+
+        UpdateLineVisuals(lockOnLineColor, defaultLineWidth + lockOnLineWidthIncrease);
     }
 
     [PunRPC]
     private void RPC_StopDrawingProjectilePath()
     {
         gameObject.SetActive(false);
+
+        UpdateLineVisuals(defaultLineColor, defaultLineWidth);
     }
 }

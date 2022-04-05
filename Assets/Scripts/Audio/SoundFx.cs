@@ -36,7 +36,10 @@ public class SoundFx : Sound
         KNIGHT_RANGED_ENEMY_READY_ATTACK,
         LEVEL_START,
         LEVEL_VICTORY,
-        NO_SOUND
+        NO_SOUND,
+        BUFF,
+        DEBUFF,
+        INSUFFICIENT_RESOURCE
     }
 
     [Space(10)]

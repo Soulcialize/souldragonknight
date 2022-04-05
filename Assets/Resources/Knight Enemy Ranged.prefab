@@ -145,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 8854737906805811875}
   lineRenderer: {fileID: 8931084091332783711}
+  lockOnLineColor: {r: 0.8584906, g: 0, b: 0, a: 1}
+  lockOnLineWidthIncrease: 0.03
   projectileOrigin: {fileID: 2649109914065820118}
   projectileObstaclesLayer:
     serializedVersion: 2
