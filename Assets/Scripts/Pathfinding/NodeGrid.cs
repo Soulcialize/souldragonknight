@@ -54,11 +54,6 @@ namespace Pathfinding
             LoadPrecomputedGridData();
         }
 
-        private void Update()
-        {
-            // path = Pathfinder.FindPath(this, seeker.position, target.position);
-        }
-
         private void LoadPrecomputedGridData()
         {
             nodeDiameter = precomputedGridData.NodeDiameter;
@@ -72,15 +67,6 @@ namespace Pathfinding
             foreach (SerializedNode serializedNode in precomputedGridData.PrecomputedNodes)
             {
                 grid[serializedNode.GridX, serializedNode.GridY] = new Node(serializedNode);
-                /*
-                // draw node data in scene
-                Node node = grid[serializedNode.GridX, serializedNode.GridY];
-                if (node.IsWalkable)
-                {
-                    GeneralUtility.CreateWorldTextObject(
-                        $"{node.GridX}, {node.GridY}", node.WorldPos, transform, node.DistanceFromSurfaceBelow.ToString("F2"));
-                }
-                */
             }
 
             // set nodes' neighbours
@@ -178,6 +164,24 @@ namespace Pathfinding
             }
 
             return true;
+        }
+
+        private void DrawNodeDataInScene()
+        {
+            Node node;
+            for (int x = 0; x < gridSizeX; x++)
+            {
+                for (int y = 0; y < gridSizeY; y++)
+                {
+                    // draw node data in scene
+                    node = grid[x, y];
+                    if (node.IsWalkable)
+                    {
+                        GeneralUtility.CreateWorldTextObject(
+                            $"{x}, {y}", node.WorldPos, transform, node.DistanceFromSurfaceBelow.ToString("F2"));
+                    }
+                }
+            }
         }
 
         private void OnDrawGizmos()
