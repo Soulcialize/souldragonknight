@@ -144,7 +144,7 @@ public class PathfindingUnit : MonoBehaviour
         if (path != null)
         {
             // draw path
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
             for (int i = targetNodeIndex; i < path.Count; i++)
             {
                 Gizmos.DrawCube(path[i].WorldPos, Vector2.one * 0.2f);

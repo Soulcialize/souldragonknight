@@ -7,7 +7,7 @@ namespace Pathfinding
     public class NodeGrid : MonoBehaviour
     {
         private static readonly int axisAlignedDistanceBetweenNeighbours = 10;
-        private static readonly int diagonalDistanceBetweenNeighbours = 14;
+        private static readonly int diagonalDistanceBetweenNeighbours = 20;
 
         /// <summary>Minimum interval that individual classes should use when updating the grid.</summary>
         public static readonly float MIN_GRID_UPDATE_INTERVAL = 0.1f;

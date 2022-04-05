@@ -86,8 +86,12 @@ namespace AiBehaviorTreeNodes
         {
             List<NodeNeighbourFilter> hardFilters = new List<NodeNeighbourFilter>()
             {
-                new NodeNeighbourFilter(
-                    (node, neighbour) => neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes)
+                new NodeNeighbourFilter((node, neighbour) =>
+                {
+                    // make sure the path only involves jumping up a step or going off a drop
+                    return neighbour.GridY <= node.GridY
+                        || neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+                })
             };
 
             return (hardFilters, new List<NodeNeighbourFilter>());
