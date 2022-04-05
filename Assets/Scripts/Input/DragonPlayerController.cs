@@ -41,7 +41,7 @@ public class DragonPlayerController : PlayerController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (combat.ActionStateMachine.CurrState == null)
+        if (combat.ActionStateMachine.CurrState == null || combat.ActionStateMachine.CurrState is CombatStates.AttackState)
         {
             movement.UpdateMovement(new Vector2(horizontalMovementInput, verticalMovementInput));
         }
@@ -109,7 +109,6 @@ public class DragonPlayerController : PlayerController
     {
         if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
         {
-            movement.UpdateMovement(Vector2.zero);
             Vector2 direction = movement.IsFacingRight ? Vector2.right : Vector2.left;
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED, direction);
         }
@@ -119,7 +118,6 @@ public class DragonPlayerController : PlayerController
     {
         if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
         {
-            movement.UpdateMovement(Vector2.zero);
             combat.ExecuteCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED, Vector2.down);
         }
     }
