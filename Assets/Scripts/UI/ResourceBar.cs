@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResourceBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+    [SerializeField] private GameObject warningIndicator;
+    [SerializeField] private GameObject warningText;
 
     private float maxValue = 1.0f;
     private Coroutine regen;
+    private Coroutine warning;
 
     private void Start()
     {
@@ -39,6 +43,14 @@ public class ResourceBar : MonoBehaviour
         }
     }
 
+    public void FlashWarningIfNotRunning()
+    {
+        if (warning == null)
+        {
+            warning = StartCoroutine(FlashWarning());
+        }
+    }
+
     public IEnumerator Regenerate(float regenSpeed)
     {
         while (slider.value < maxValue)
@@ -48,5 +60,21 @@ public class ResourceBar : MonoBehaviour
             yield return null;
         }
         regen = null;
+    }
+
+    private IEnumerator FlashWarning()
+    {
+        warningText.SetActive(true);
+
+        for (int i = 0; i < 5; i++)
+        {
+            warningIndicator.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            warningIndicator.SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        warningText.SetActive(false);
+        warning = null;
     }
 }
