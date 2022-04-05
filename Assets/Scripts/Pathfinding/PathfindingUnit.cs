@@ -54,7 +54,7 @@ public class PathfindingUnit : MonoBehaviour
     /// <remarks>A strict minimum interval is kept between consecutive updates of the path.</remarks>
     /// <param name="targetPos">The target end point. It is expected to be the final center top of the unit's collider.</param>
     /// <param name="filters">Filters to apply to nodes while pathfinding.</param>
-    /// <returns>True if path to target found. False otherwise.</returns>
+    /// <returns>The result of the pathfinding as an enumeration.</returns>
     public Pathfinder.PathfindResult Pathfind(Vector2 targetPos)
     {
         if (Time.time - timeOfLastPathfind < MIN_PATHFIND_INTERVAL)
