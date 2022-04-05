@@ -156,7 +156,12 @@ public class KnightPlayerController : PlayerController
     protected override void HandleDeathEvent()
     {
         base.HandleDeathEvent();
-        movement.Dismount();
+
+        if (Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState mountedState)
+        {
+            mountedState.Dismount();
+        }
+
         PlayerManager.Instance.IncrementDeathCount();
     }
 
