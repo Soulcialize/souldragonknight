@@ -131,6 +131,12 @@ public class DragonPlayerController : PlayerController
         if (movement.MovementStateMachine.CurrState is AirMovementStates.AirborneState)
         {
             movement.UpdateMovement(Vector2.zero);
+            if (horizontalMovementInput < 0f && movement.IsFacingRight
+                || horizontalMovementInput > 0f && !movement.IsFacingRight)
+            {
+                movement.FlipDirection(
+                    movement.IsFacingRight ? Movement.Direction.LEFT : Movement.Direction.RIGHT);
+            }
 
             Vector2 direction = new Vector2(horizontalMovementInput, verticalMovementInput);
             if (direction == Vector2.zero)
