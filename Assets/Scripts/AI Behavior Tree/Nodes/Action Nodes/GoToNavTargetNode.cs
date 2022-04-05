@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AiBehaviorTreeBlackboards;
+using Pathfinding;
 
 namespace AiBehaviorTreeNodes
 {
@@ -15,18 +16,23 @@ namespace AiBehaviorTreeNodes
     /// </remarks>
     public class GoToNavTargetNode : BehaviorNode
     {
+        private readonly Transform ownerTransform;
         private readonly Movement ownerMovement;
+        private readonly Combat ownerCombat;
         private readonly bool useStoppingDistance;
 
         /// <param name="ownerMovement">The actor's movement component.</param>
+        /// <param name="ownerCombat">The actor's combat component</param>
         /// <param name="useStoppingDistance">
         /// If true, this node returns success when the actor is within
         /// its stopping distance (retrieved from the movement component) from the target position.
         /// Else, this node only returns success when the actor is almost exactly at the target position.
         /// </param>
-        public GoToNavTargetNode(Movement ownerMovement, bool useStoppingDistance)
+        public GoToNavTargetNode(Movement ownerMovement, Combat ownerCombat, bool useStoppingDistance)
         {
+            ownerTransform = ownerMovement.transform;
             this.ownerMovement = ownerMovement;
+            this.ownerCombat = ownerCombat;
             this.useStoppingDistance = useStoppingDistance;
         }
 
@@ -42,8 +48,8 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
-            List<Pathfinding.Node> pathToTarget = (List<Pathfinding.Node>)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_PATH);
-            Pathfinding.NodeGrid.Instance.path = pathToTarget;
+            List<Node> pathToTarget = (List<Node>)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_PATH);
+            NodeGrid.Instance.path = pathToTarget;
             if (pathToTarget == null)
             {
                 return NodeState.FAILURE;
@@ -59,9 +65,25 @@ namespace AiBehaviorTreeNodes
                 ownerMovement.SetMovementMode(MovementSpeedData.Mode.SLOW);
             }
 
-            Vector2 targetPathNextPos = pathToTarget[0].WorldPos;
-            ownerMovement.UpdateMovement(targetPathNextPos - currentPos);
+            Node currentPosNode = GetCurrentPositionAsNode();
+            Node targetPathNextNode = pathToTarget[0];
+            if (ownerMovement is GroundMovement groundMovement
+                && targetPathNextNode.WorldPos.y > currentPosNode.WorldPos.y)
+            {
+                groundMovement.Jump();
+            }
+            else 
+            {
+                ownerMovement.UpdateMovement(targetPathNextNode.WorldPos - currentPosNode.WorldPos);
+            }
+
             return NodeState.RUNNING;
+        }
+
+        private Node GetCurrentPositionAsNode()
+        {
+            return NodeGrid.Instance.GetNodeFromWorldPoint(
+                new Vector2(ownerTransform.position.x, ownerCombat.Collider2d.bounds.max.y));
         }
     }
 }

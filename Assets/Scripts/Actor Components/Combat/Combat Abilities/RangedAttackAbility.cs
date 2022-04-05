@@ -21,6 +21,10 @@ public class RangedAttackAbility : CombatAbility
     [SerializeField] private RangedProjectileEvent fireRangedProjectileEvent;
 
     public float MaxRange { get => maxRange; }
+
+    public RangedProjectile ProjectilePrefab { get => projectilePrefab; }
+    public Transform ProjectileOrigin { get => projectileOrigin; }
+
     public RangedProjectileEvent FireRangedProjectileEvent { get => fireRangedProjectileEvent; }
 
     private void OnDisable()

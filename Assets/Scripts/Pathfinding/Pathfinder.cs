@@ -7,10 +7,17 @@ namespace Pathfinding
 {
     public static class Pathfinder
     {
-        public static List<Node> FindPath(NodeGrid grid, Vector2 fromPos, Vector2 toPos, bool areFiltersHard = true, params Predicate<Node>[] filters)
+        public static List<Node> FindPath(
+            NodeGrid grid, Vector2 fromPos, Vector2 toPos,
+            (List<Predicate<Node>> hardFilters, List<Predicate<Node>> softFilters) filters)
         {
             Node fromNode = grid.GetNodeFromWorldPoint(fromPos);
             Node toNode = grid.GetNodeFromWorldPoint(toPos);
+
+            if (fromNode.WorldPos == toNode.WorldPos)
+            {
+                return null;
+            }
 
             List<Node> openSet = new List<Node>();
             HashSet<Node> closedSet = new HashSet<Node>();
@@ -47,18 +54,20 @@ namespace Pathfinding
 
                         if (!openSet.Contains(neighbour))
                         {
-                            if (DoesNodePassFilters(neighbour, filters))
+                            if (filters.hardFilters != null && !DoesNodePassFilters(neighbour, filters.hardFilters))
                             {
-                                openSet.Add(neighbour);
-                            }
-                            else if (areFiltersHard)
-                            {
+                                // neighbour doesn't pass hard filters
                                 closedSet.Add(neighbour);
                             }
-                            else
+                            else if (filters.softFilters != null && !DoesNodePassFilters(neighbour, filters.softFilters))
                             {
                                 // keep non-preferred neighbours in consideration in case no other path exists
                                 nonPreferredNeighbours.Add(neighbour);
+                            }
+                            else
+                            {
+                                // neighbour passes all filters
+                                openSet.Add(neighbour);
                             }
                         }
                     }
@@ -80,7 +89,7 @@ namespace Pathfinding
         {
             if (nodeList.Count == 0)
             {
-                throw new System.ArgumentException($"There needs to be at least 1 node in the given list");
+                throw new ArgumentException($"There needs to be at least 1 node in the given list");
             }
 
             Node currentNode = nodeList[0];
@@ -97,7 +106,7 @@ namespace Pathfinding
             return currentNode;
         }
 
-        private static bool DoesNodePassFilters(Node node, Predicate<Node>[] filters)
+        private static bool DoesNodePassFilters(Node node, List<Predicate<Node>> filters)
         {
             foreach (Predicate<Node> filter in filters)
             {

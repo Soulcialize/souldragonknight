@@ -10,7 +10,7 @@ public class BreakableWall : MonoBehaviour
 
     public void HandleHit()
     {
-        photonView.RPC("RPC_HandleHit", RpcTarget.MasterClient);
+        photonView.RPC("RPC_HandleHit", RpcTarget.All);
     }
 
     [PunRPC]
@@ -23,6 +23,9 @@ public class BreakableWall : MonoBehaviour
         collider2d.enabled = false;
         Pathfinding.NodeGridUpdater.Instance.RequestGridUpdate(updateRegionMinPoint, updateRegionMaxPoint);
 
-        PhotonNetwork.Destroy(gameObject);
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 }

@@ -51,7 +51,7 @@ namespace AiBehaviorTrees
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new GoToNavTargetNode(movement, true),
+                                    new GoToNavTargetNode(movement, combat, true),
                                     new StopMovingNode(movement),
                                     new FaceNavTargetNode(movement),
                                     new StartMeleeAttackNode(combat)
@@ -113,7 +113,7 @@ namespace AiBehaviorTrees
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new GoToNavTargetNode(movement, false),
+                                    new GoToNavTargetNode(movement, combat, false),
                                     new StopMovingNode(movement),
                                     new StartRangedAttackNode(combat)
                                 }),

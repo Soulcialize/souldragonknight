@@ -41,6 +41,8 @@ namespace Pathfinding
         public float NodeRadius { get => nodeRadius; }
         public LayerMask SurfacesLayerMask { get => surfacesLayerMask; }
 
+        public float NodeDiameter { get => nodeDiameter; }
+
         public PathfindingGridData PrecomputedGridData { get => precomputedGridData; }
 
         private void Awake()
@@ -70,25 +72,6 @@ namespace Pathfinding
         {
             // calculate if walkable
             isWalkable = Physics2D.OverlapBox(worldPoint, nodeBoxWalkableTester, 0f, surfacesLayerMask) == null;
-            if (!isWalkable)
-            {
-                // if surfaces occupy less than 50% of node, consider it walkable
-                int numWalkableQuadrants = 0;
-                float nodeRadius = nodeDiameter / 2f;
-                float nodeHalfRadius = nodeRadius / 2f;
-                Vector2 nodeQuadrantWalkableTester = new Vector2(nodeRadius * 0.9f, nodeRadius * 0.9f);
-                for (float x = worldPoint.x - nodeHalfRadius; x < worldPoint.x + nodeRadius; x += nodeRadius)
-                {
-                    for (float y = worldPoint.y - nodeHalfRadius; y < worldPoint.y + nodeRadius; y += nodeRadius)
-                    {
-                        numWalkableQuadrants +=
-                            Physics2D.OverlapBox(new Vector2(x, y), nodeQuadrantWalkableTester, 0f, surfacesLayerMask) == null
-                                ? 1 : 0;
-                    }
-                }
-
-                isWalkable = numWalkableQuadrants > 1;
-            }
 
             // calculate distance to surface below
             distanceFromSurfaceBelow = 0f;
@@ -144,6 +127,11 @@ namespace Pathfinding
 
                 grid[serializedNode.GridX, serializedNode.GridY].SetNeighbours(neighbours);
             }
+        }
+
+        public Node GetNodeFromGridPos(int gridX, int gridY)
+        {
+            return grid[gridX, gridY];
         }
 
         public Node GetNodeFromWorldPoint(Vector2 worldPos)
@@ -205,6 +193,24 @@ namespace Pathfinding
             }
         }
 
+        public int GetColliderHeightInNodes(Collider2D collider)
+        {
+            return Mathf.CeilToInt(collider.bounds.size.y / nodeDiameter);
+        }
+
+        public bool AreNodesBelowWalkable(Node node, int numToCheck)
+        {
+            for (int y = node.GridY - 1; y >= Mathf.Max(0, node.GridY - numToCheck); y--)
+            {
+                if (!grid[node.GridX, y].IsWalkable)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void OnDrawGizmos()
         {
             if (grid == null)
@@ -225,20 +231,13 @@ namespace Pathfinding
                 {
                     Gizmos.color = walkableColor;
                     Gizmos.DrawWireCube(node.WorldPos, Vector2.one * nodeDiameter);
-                    float nodeRadius = nodeDiameter / 2f;
-                    float nodeHalfRadius = nodeRadius / 2f;
-                    for (float x = node.WorldPos.x - nodeHalfRadius; x < node.WorldPos.x + nodeRadius; x += nodeRadius)
-                    {
-                        for (float y = node.WorldPos.y - nodeHalfRadius; y < node.WorldPos.y + nodeRadius; y += nodeRadius)
-                        {
-                            Gizmos.DrawWireCube(new Vector2(x, y), 0.9f * nodeRadius * Vector2.one);
-                        }
-                    }
+                    Gizmos.DrawWireCube(node.WorldPos, nodeBoxWalkableTester);
                 }
                 else
                 {
                     Gizmos.color = unwalkableColor;
                     Gizmos.DrawCube(node.WorldPos, Vector2.one * nodeDiameter);
+                    Gizmos.DrawWireCube(node.WorldPos, nodeBoxWalkableTester);
                 }
             }
         }

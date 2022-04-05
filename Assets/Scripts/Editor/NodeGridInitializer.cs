@@ -48,7 +48,7 @@ namespace Pathfinding
                 nodeDiameter = nodeGrid.NodeRadius * 2;
                 gridSizeX = Mathf.RoundToInt(nodeGrid.WorldSize.x / nodeDiameter);
                 gridSizeY = Mathf.RoundToInt(nodeGrid.WorldSize.y / nodeDiameter);
-                nodeBoxWalkableTester = new Vector2(nodeDiameter * 0.9f, nodeDiameter * 0.9f);
+                nodeBoxWalkableTester = new Vector2(nodeDiameter * 0.1f, nodeDiameter * 0.1f);
 
                 // precompute grid nodes with neighbours and save data to scriptable object
                 SerializedNode[,] grid = PrecomputeGridNodes(nodeGrid, nodeDiameter, gridSizeX, gridSizeY, nodeBoxWalkableTester);
