@@ -16,7 +16,7 @@ public class KnightEnemyController : EnemyController
             {
                 // construct behavior trees
                 {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(movement, combat)
+                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(this, movement, combat)
                 }
             },
             BehaviorTree.Function.COMBAT);

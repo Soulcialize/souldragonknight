@@ -75,7 +75,7 @@ namespace Pathfinding
 
                 if (openSet.Count == 0 && nonPreferredNeighbours.Count > 0)
                 {
-                    // no path can be found within using viable neighbours that don't pass the filters
+                    // no path can be found without using viable neighbours that don't pass the soft filters
                     openSet.AddRange(nonPreferredNeighbours);
                     nonPreferredNeighbours.Clear();
                 }

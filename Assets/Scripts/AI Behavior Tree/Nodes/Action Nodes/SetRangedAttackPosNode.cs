@@ -10,49 +10,40 @@ namespace AiBehaviorTreeNodes
 {
     public class SetRangedAttackPosNode : BehaviorNode
     {
+        private readonly ActorController owner;
         private readonly Transform ownerTransform;
-        private readonly Movement ownerMovement;
-        private readonly Combat ownerCombat;
 
-        private readonly int actorHeight;
         private readonly Transform projectileOrigin;
         private readonly RangedProjectile projectile;
 
         private readonly (List<Filter> hardFilters, List<Filter> softFilters) aerialReadyPositionFilters;
         private readonly (List<Filter> hardFilters, List<Filter> softFilters) groundReadyPositionFilters;
 
-        public SetRangedAttackPosNode(Movement ownerMovement, Combat ownerCombat)
+        public SetRangedAttackPosNode(ActorController owner)
         {
-            ownerTransform = ownerMovement.transform;
-            this.ownerMovement = ownerMovement;
-            this.ownerCombat = ownerCombat;
+            this.owner = owner;
+            ownerTransform = owner.transform;
 
-            actorHeight = NodeGrid.Instance.GetColliderHeightInNodes(ownerCombat.Collider2d);
-            RangedAttackAbility rangedAttackAbility = (RangedAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
+            RangedAttackAbility rangedAttackAbility = (RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
             projectileOrigin = rangedAttackAbility.ProjectileOrigin;
             projectile = rangedAttackAbility.ProjectilePrefab;
 
             aerialReadyPositionFilters = GetAerialReadyPositionFilters();
             groundReadyPositionFilters = GetGroundReadyPositionFilters();
-
-            // factor in collider height when pathfinding
-            bool heightFilter(Node node) => NodeGrid.Instance.AreNodesBelowWalkable(node, actorHeight - 1);
-            aerialReadyPositionFilters.hardFilters.Add(heightFilter);
-            groundReadyPositionFilters.hardFilters.Add(heightFilter);
         }
 
         public override NodeState Execute()
         {
             ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
-            Transform targetTransform = target.transform;
+            Vector3 targetCenter = target.Combat.Collider2d.bounds.center;
 
-            float currDistanceToTarget = Vector2.Distance(projectileOrigin.position, targetTransform.position);
-            float maxRange = ((RangedAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
+            float currDistanceToTarget = Vector2.Distance(projectileOrigin.position, targetCenter);
+            float maxRange = ((RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
 
             RaycastHit2D circleCastToTarget = Physics2D.CircleCast(
                 projectileOrigin.position, projectile.GetHeight() / 2f,
-                targetTransform.position - projectileOrigin.position, currDistanceToTarget,
-                ownerMovement.GroundDetector.SurfacesLayerMask | ownerCombat.AttackEffectLayer);
+                targetCenter - projectileOrigin.position, currDistanceToTarget,
+                owner.Movement.GroundDetector.SurfacesLayerMask | owner.Combat.AttackEffectLayer);
 
             if (currDistanceToTarget <= maxRange && circleCastToTarget.collider == target.Combat.Collider2d)
             {
@@ -61,53 +52,26 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
-            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, ownerMovement is AirMovement
-                ? CalculateAerialReadyPosition(targetTransform)
-                : CalculateGroundReadyPosition(targetTransform));
+            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, owner.Movement is AirMovement
+                ? CalculateAerialReadyPosition(targetCenter)
+                : CalculateGroundReadyPosition(targetCenter));
 
             return NodeState.SUCCESS;
         }
 
-        private Vector2 CalculateAerialReadyPosition(Transform target)
+        private Vector2 CalculateAerialReadyPosition(Vector2 targetCenterPos)
         {
             // just keep moving towards target while trying to maintain distance above the ground
-            FindPathToAerialReadyPosition(target.position);
-            return target.position;
+            owner.Pathfinder.SetFilters(aerialReadyPositionFilters);
+            return targetCenterPos + Vector2.up * owner.Combat.Collider2d.bounds.extents.y;
         }
 
-        private Vector2 CalculateGroundReadyPosition(Transform target)
+        private Vector2 CalculateGroundReadyPosition(Vector2 targetCenterPos)
         {
             // head for ground underneath target
-            RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, Mathf.Infinity, ownerMovement.GroundDetector.SurfacesLayerMask);
-            FindPathToGroundReadyPosition(groundHit.point + Vector2.up * ownerCombat.Collider2d.bounds.size.y);
-            return groundHit.point;
-        }
-
-        private Vector2 GetPathfindingStartPosition()
-        {
-            return new Vector2(ownerTransform.position.x, ownerCombat.Collider2d.bounds.max.y);
-        }
-
-        private void FindPathToAerialReadyPosition(Vector2 navTarget)
-        {
-            Blackboard.SetData(
-                GeneralBlackboardKeys.NAV_TARGET_PATH,
-                Pathfinder.FindPath(
-                    NodeGrid.Instance,
-                    GetPathfindingStartPosition(),
-                    navTarget + Vector2.up * ownerCombat.Collider2d.bounds.extents.y,
-                    aerialReadyPositionFilters));
-        }
-
-        private void FindPathToGroundReadyPosition(Vector2 navTarget)
-        {
-            Blackboard.SetData(
-                GeneralBlackboardKeys.NAV_TARGET_PATH,
-                Pathfinder.FindPath(
-                    NodeGrid.Instance,
-                    GetPathfindingStartPosition(),
-                    navTarget,
-                    groundReadyPositionFilters));
+            owner.Pathfinder.SetFilters(groundReadyPositionFilters);
+            return Physics2D.Raycast(targetCenterPos, Vector2.down, Mathf.Infinity, owner.Movement.GroundDetector.SurfacesLayerMask).point
+                + Vector2.up * owner.Combat.Collider2d.bounds.size.y;
         }
 
         private (List<Filter>, List<Filter>) GetAerialReadyPositionFilters()
@@ -124,7 +88,7 @@ namespace AiBehaviorTreeNodes
         {
             List<Filter> hardFilters = new List<Filter>()
             {
-                node => node.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * actorHeight
+                node => node.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes
             };
 
             return (hardFilters, new List<Filter>());

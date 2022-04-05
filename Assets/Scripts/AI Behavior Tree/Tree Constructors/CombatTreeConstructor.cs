@@ -8,7 +8,7 @@ namespace AiBehaviorTrees
 {
     public static class CombatTreeConstructor
     {
-        public static BehaviorTree ConstructMeleeCombatTree(Movement movement, Combat combat)
+        public static BehaviorTree ConstructMeleeCombatTree(ActorController actor, Movement movement, Combat combat)
         {
             return new BehaviorTree(
                 new GetVisibleCombatTargetNode(combat),
@@ -45,13 +45,13 @@ namespace AiBehaviorTrees
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetCombatTargetPosNode(movement, combat),
+                            new SetCombatTargetPosNode(actor),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new GoToNavTargetNode(movement, combat, true),
+                                    new GoToNavTargetNode(actor, true),
                                     new StopMovingNode(movement),
                                     new FaceNavTargetNode(movement),
                                     new StartMeleeAttackNode(combat)
@@ -68,7 +68,7 @@ namespace AiBehaviorTrees
                 }));
         }
 
-        public static BehaviorTree ConstructRangedCombatTree(Movement movement, Combat combat)
+        public static BehaviorTree ConstructRangedCombatTree(ActorController actor, Movement movement, Combat combat)
         {
             return new BehaviorTree(
                 new SequenceNode(new List<BehaviorNode>()
@@ -100,20 +100,20 @@ namespace AiBehaviorTrees
                             new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyRangedAttackState)),
                             // face target while readying if target position not locked yet
                             new InverterNode(new HasLockedTargetPositionNode(combat)),
-                            new SetCombatTargetPosNode(movement, combat),
+                            new SetCombatTargetPosNode(actor),
                             new FaceNavTargetNode(movement)
                         }),
                         new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetRangedAttackPosNode(movement, combat),
+                            new SetRangedAttackPosNode(actor),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new GoToNavTargetNode(movement, combat, false),
+                                    new GoToNavTargetNode(actor, false),
                                     new StopMovingNode(movement),
                                     new StartRangedAttackNode(combat)
                                 }),

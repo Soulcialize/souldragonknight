@@ -24,17 +24,10 @@ namespace Pathfinding
 
         [SerializeField] private PathfindingGridData precomputedGridData;
 
-        [Space(10)]
-
-        [SerializeField] private Transform seeker;
-        [SerializeField] private Transform target;
-
         private Node[,] grid;
         private float nodeDiameter;
         private int gridSizeX, gridSizeY;
         private Vector2 nodeBoxWalkableTester;
-
-        public List<Node> path;
 
         public Vector2 Center { get => center; }
         public Vector2 WorldSize { get => worldSize; }
@@ -193,11 +186,6 @@ namespace Pathfinding
             }
         }
 
-        public int GetColliderHeightInNodes(Collider2D collider)
-        {
-            return Mathf.CeilToInt(collider.bounds.size.y / nodeDiameter);
-        }
-
         public bool AreNodesBelowWalkable(Node node, int numToCheck)
         {
             for (int y = node.GridY - 1; y >= Mathf.Max(0, node.GridY - numToCheck); y--)
@@ -222,12 +210,7 @@ namespace Pathfinding
             Color unwalkableColor = new Color(0, 0, 0, 0.5f);
             foreach (Node node in grid)
             {
-                if (path != null && path.Contains(node))
-                {
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawCube(node.WorldPos, Vector2.one * nodeDiameter);
-                }
-                else if (node.IsWalkable)
+                if (node.IsWalkable)
                 {
                     Gizmos.color = walkableColor;
                     Gizmos.DrawWireCube(node.WorldPos, Vector2.one * nodeDiameter);

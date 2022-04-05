@@ -15,7 +15,7 @@ public class RangedKnightEnemyController : EnemyController
             new Dictionary<BehaviorTree.Function, BehaviorTree>()
             {
                 {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructRangedCombatTree(movement, combat)
+                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructRangedCombatTree(this, movement, combat)
                 }
             },
             BehaviorTree.Function.COMBAT);
