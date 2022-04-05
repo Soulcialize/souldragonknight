@@ -44,6 +44,7 @@ public class ConsumableResource : MonoBehaviour
         } 
         else
         {
+            AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.INSUFFICIENT_RESOURCE);
             insufficientResourceEvent.Invoke();
             return false;
         }
