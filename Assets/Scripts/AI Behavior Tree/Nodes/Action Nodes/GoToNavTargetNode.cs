@@ -56,12 +56,13 @@ namespace AiBehaviorTreeNodes
             }
 
             // there is a path to the target or a path to a position that is nearer to the target than the current position
-            bool isDistanceGreaterThanWalkThreshold = distanceToTarget > owner.Movement.NavTargetWalkDistanceThreshold;
-            if (owner.Movement.MovementMode == MovementSpeedData.Mode.SLOW && isDistanceGreaterThanWalkThreshold)
+            if (owner.Movement.MovementMode == MovementSpeedData.Mode.SLOW
+                && distanceToTarget > owner.Movement.NavTargetFastDistanceThreshold)
             {
                 owner.Movement.SetMovementMode(MovementSpeedData.Mode.FAST);
             }
-            else if (owner.Movement.MovementMode == MovementSpeedData.Mode.FAST && !isDistanceGreaterThanWalkThreshold)
+            else if (owner.Movement.MovementMode == MovementSpeedData.Mode.FAST
+                && distanceToTarget <= owner.Movement.NavTargetSlowDistanceThreshold)
             {
                 owner.Movement.SetMovementMode(MovementSpeedData.Mode.SLOW);
             }

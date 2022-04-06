@@ -542,7 +542,8 @@ MonoBehaviour:
   defaultMovementMode: 0
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
-  navFastDistanceThreshold: 8
+  navSlowDistanceThreshold: 8
+  navFastDistanceThreshold: 10
   flipDirectionEvent:
     m_PersistentCalls:
       m_Calls: []

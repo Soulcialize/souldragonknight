@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 5696632616774609759}
   combat: {fileID: 4584270387848782332}
+  pathfinder: {fileID: 0}
   playerInput: {fileID: 5696632616774609755}
   persistentActionMaps: []
   interactableDetector: {fileID: 6397929481459963310}
@@ -703,7 +704,8 @@ MonoBehaviour:
   defaultMovementMode: 1
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
-  navFastDistanceThreshold: 6
+  navSlowDistanceThreshold: 6
+  navFastDistanceThreshold: 8
   flipDirectionEvent:
     m_PersistentCalls:
       m_Calls:
