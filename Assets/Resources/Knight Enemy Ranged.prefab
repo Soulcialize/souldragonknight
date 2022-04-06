@@ -150,7 +150,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 2649109914065820118}
   projectileObstaclesLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
 --- !u!114 &8854737906805811875
 MonoBehaviour:
   m_ObjectHideFlags: 0
