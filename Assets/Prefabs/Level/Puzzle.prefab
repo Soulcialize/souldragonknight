@@ -415,6 +415,9 @@ MonoBehaviour:
   - {fileID: 1840523581343821610}
   - {fileID: 3172023870863027871}
   - {fileID: 7784457655952257544}
+  puzzleCompleteEvent:
+    m_PersistentCalls:
+      m_Calls: []
   photonView: {fileID: 5237219089910039916}
 --- !u!114 &5237219089910039916
 MonoBehaviour:
@@ -585,6 +588,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -41.815002
       objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 940767405828074019, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -677,6 +696,10 @@ PrefabInstance:
       propertyPath: puzzleManager
       value: 
       objectReference: {fileID: 6316831334902340963}
+    - target: {fileID: 2699633652557436346, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: spritesData
+      value: 
+      objectReference: {fileID: 11400000, guid: d28f71259018efc43a9f617ad61a0c32, type: 2}
     - target: {fileID: 3672566661858193816, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_Name
       value: Rune Rock (1)
@@ -764,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 7711995342337185455, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c7f14ad48bbf1cc48a744e42f62b82f2, type: 3}
+      objectReference: {fileID: 21300000, guid: 8d7ab3c078de343489f26397deb50538, type: 3}
     - target: {fileID: 8031407069650287071, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -829,6 +852,22 @@ PrefabInstance:
     - target: {fileID: 58678417913223528, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -41.815002
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1428572
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1428572
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940767405828074019, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_IsActive
@@ -922,6 +961,10 @@ PrefabInstance:
       propertyPath: runes.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2699633652557436346, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: spritesData
+      value: 
+      objectReference: {fileID: 11400000, guid: dcaa1bad82866e244bcb9d2b4824f8a9, type: 2}
     - target: {fileID: 3672566661858193816, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_Name
       value: Rune Rock
@@ -994,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -35.315002
       objectReference: {fileID: 0}
+    - target: {fileID: 7711995342337185455, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 970644242ac03bd4ea01b1800aa6608f, type: 3}
     - target: {fileID: 8031407069650287071, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1058,6 +1105,22 @@ PrefabInstance:
     - target: {fileID: 58678417913223528, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -41.815002
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 404255884834568728, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940767405828074019, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_IsActive
@@ -1147,6 +1210,10 @@ PrefabInstance:
       propertyPath: puzzleManager
       value: 
       objectReference: {fileID: 6316831334902340963}
+    - target: {fileID: 2699633652557436346, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: spritesData
+      value: 
+      objectReference: {fileID: 11400000, guid: e08f9fc0482af0241812096eb92f4121, type: 2}
     - target: {fileID: 3672566661858193816, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_Name
       value: Rune Rock (2)
@@ -1234,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 7711995342337185455, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a6a8e34dab06f6d4ca6707b91af1b62f, type: 3}
+      objectReference: {fileID: 21300000, guid: 3ccf345df37c5a94d9aaed80f89c7d5c, type: 3}
     - target: {fileID: 8031407069650287071, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
