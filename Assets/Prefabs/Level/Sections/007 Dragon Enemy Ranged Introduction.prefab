@@ -354,7 +354,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
       propertyPath: secondsToTimeout
-      value: 15
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293839603464412397, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7822122764442229628, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
       propertyPath: m_PresetInfoIsWorld
