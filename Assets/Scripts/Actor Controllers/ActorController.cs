@@ -7,9 +7,11 @@ public abstract class ActorController : MonoBehaviour
 {
     [SerializeField] protected PhotonView photonView;
     [SerializeField] protected Combat combat;
+    [SerializeField] protected PathfindingUnit pathfinder;
 
     public abstract Movement Movement { get; }
     public Combat Combat { get => combat; }
+    public PathfindingUnit Pathfinder { get => pathfinder; }
 
     public int NetworkViewId { get => photonView.ViewID; }
     public bool IsNetworkOwner { get => photonView.IsMine; }

@@ -150,7 +150,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 2649109914065820118}
   projectileObstaclesLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
 --- !u!114 &8854737906805811875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 4948305080866607028}
   - component: {fileID: 2369876310287700112}
   - component: {fileID: 8145762069085459480}
+  - component: {fileID: 8024515209172871131}
   - component: {fileID: 2315394145704112158}
   - component: {fileID: 2072683001291248131}
   - component: {fileID: 461345042696894267}
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 2315394145704112158}
   combat: {fileID: 1860061280274303189}
+  pathfinder: {fileID: 8024515209172871131}
   hideVisibility: 1
   visibility: {fileID: 8145762069085459480}
   hurtRevealDuration: 0.6
@@ -540,7 +542,8 @@ MonoBehaviour:
   defaultMovementMode: 0
   isDefaultFacingRight: 1
   defaultStoppingDistanceFromNavTargets: 1.4
-  navFastDistanceThreshold: 8
+  navSlowDistanceThreshold: 8
+  navFastDistanceThreshold: 10
   flipDirectionEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -632,6 +635,9 @@ MonoBehaviour:
   stopRegenResourceEvent:
     m_PersistentCalls:
       m_Calls: []
+  insufficientResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
   photonView: {fileID: 2315394145704112158}
 --- !u!114 &8145762069085459480
 MonoBehaviour:
@@ -646,6 +652,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4826769299319132632}
+--- !u!114 &8024515209172871131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861795074019271563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ddd954f97d6564a895de2a7a4427bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider2d: {fileID: 3812630226607940506}
+  movement: {fileID: 2080431000792514480}
 --- !u!114 &2315394145704112158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GeneralUtility
 {
+    #region Public Methods
     public static bool IsLayerInLayerMask(int layer, LayerMask layerMask)
     {
         return layerMask == (layerMask | (1 << layer));
@@ -42,6 +43,25 @@ public static class GeneralUtility
         animator.Update(0.0f);
     }
 
+    public static void CreateWorldTextObject(string name, Vector3 position, Transform parent, string text)
+    {
+        // create text object in world space
+        GameObject gameObject = new GameObject(name, typeof(TextMesh));
+        Transform transform = gameObject.transform;
+        transform.position = position;
+        transform.localScale *= 0.1f;
+        transform.SetParent(parent);
+        TextMesh textMesh = gameObject.GetComponent<TextMesh>();
+        textMesh.anchor = TextAnchor.MiddleCenter;
+        textMesh.alignment = TextAlignment.Center;
+        textMesh.fontSize = 20;
+        textMesh.color = Color.white;
+        textMesh.text = text;
+        textMesh.GetComponent<MeshRenderer>().sortingLayerName = "Knight";
+    }
+    #endregion
+
+    #region Private Methods
     private static Dictionary<string, (AnimatorControllerParameterType, object)> SaveAnimatorParameters(Animator animator)
     {
         Dictionary<string, (AnimatorControllerParameterType, object)> savedParameters
@@ -92,4 +112,5 @@ public static class GeneralUtility
             }
         }
     }
+    #endregion
 }

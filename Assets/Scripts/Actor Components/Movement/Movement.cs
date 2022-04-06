@@ -25,7 +25,15 @@ public abstract class Movement : MonoBehaviour
 
     [SerializeField] private bool isDefaultFacingRight = true;
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
-    [Tooltip("Distance to a navigation target beyond which the actor will move faster.")]
+
+    /*
+     * By having a gap between the two thresholds, we avoid a situation where the actor could
+     * flip between walking and running every frame, which can happen if there were a single
+     * threshold and their navigation target constantly goes in and out of that threshold.
+     */
+    [Tooltip("Distance to a navigation target within which the actor will start moving slower.")]
+    [SerializeField] private float navSlowDistanceThreshold;
+    [Tooltip("Distance to a navigation target beyond which the actor will start moving faster.")]
     [SerializeField] private float navFastDistanceThreshold;
 
     [Space(10)]
@@ -39,7 +47,8 @@ public abstract class Movement : MonoBehaviour
     public Animator Animator { get => animator; }
     public SurfaceDetector GroundDetector { get => groundDetector; }
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
-    public float NavTargetWalkDistanceThreshold { get => navFastDistanceThreshold; }
+    public float NavTargetSlowDistanceThreshold { get => navSlowDistanceThreshold; }
+    public float NavTargetFastDistanceThreshold { get => navFastDistanceThreshold; }
 
     public int NetworkViewId { get => photonView.ViewID; }
     public bool IsFacingRight { get => actorTransform.localScale.x > 0f; }

@@ -2,64 +2,99 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AiBehaviorTreeBlackboards;
+using Pathfinding;
 
 namespace AiBehaviorTreeNodes
 {
     public class SetRangedAttackPosNode : BehaviorNode
     {
+        private readonly ActorController owner;
         private readonly Transform ownerTransform;
-        private readonly Movement ownerMovement;
-        private readonly Combat ownerCombat;
 
-        public SetRangedAttackPosNode(Movement ownerMovement, Combat ownerCombat)
+        private readonly Transform projectileOrigin;
+        private readonly RangedProjectile projectile;
+
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) aerialReadyPositionFilters;
+        private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) groundReadyPositionFilters;
+
+        public SetRangedAttackPosNode(ActorController owner)
         {
-            ownerTransform = ownerMovement.transform;
-            this.ownerMovement = ownerMovement;
-            this.ownerCombat = ownerCombat;
+            this.owner = owner;
+            ownerTransform = owner.transform;
+
+            RangedAttackAbility rangedAttackAbility = (RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
+            projectileOrigin = rangedAttackAbility.ProjectileOrigin;
+            projectile = rangedAttackAbility.ProjectilePrefab;
+
+            aerialReadyPositionFilters = GetAerialReadyPositionFilters();
+            groundReadyPositionFilters = GetGroundReadyPositionFilters();
         }
 
         public override NodeState Execute()
         {
-            Transform target = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).transform;
+            ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
+            Vector3 targetCenter = target.Combat.Collider2d.bounds.center;
 
-            float currDistanceToTarget = Vector2.Distance(ownerTransform.position, target.position);
-            float maxRange = ((RangedAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
+            float currDistanceToTarget = Vector2.Distance(projectileOrigin.position, targetCenter);
+            float maxRange = ((RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
 
-            if (currDistanceToTarget <= maxRange)
+            RaycastHit2D circleCastToTarget = Physics2D.CircleCast(
+                projectileOrigin.position, projectile.GetHeight() / 2f,
+                targetCenter - projectileOrigin.position, currDistanceToTarget,
+                owner.Movement.GroundDetector.SurfacesLayerMask | owner.Combat.AttackEffectLayer);
+
+            if (currDistanceToTarget <= maxRange && circleCastToTarget.collider == target.Combat.Collider2d)
             {
-                // already in range, remain at current position
+                // in range and can see target; remain at current position
                 Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)ownerTransform.position);
                 return NodeState.SUCCESS;
             }
 
-            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, ownerMovement is AirMovement
-                ? CalculateAerialReadyPosition(target)
-                : CalculateGroundReadyPosition(target, maxRange));
+            Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, owner.Movement is AirMovement
+                ? CalculateAerialReadyPosition(targetCenter)
+                : CalculateGroundReadyPosition(targetCenter));
 
             return NodeState.SUCCESS;
         }
 
-        private Vector2 CalculateAerialReadyPosition(Transform target)
+        private Vector2 CalculateAerialReadyPosition(Vector2 targetCenterPos)
         {
-            // just keep moving towards target on the horizontal axis
-            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
-            return (Vector2)ownerTransform.position + directionToNavTarget;
+            // just keep moving towards target while trying to maintain distance above the ground
+            owner.Pathfinder.SetFilters(aerialReadyPositionFilters);
+            return targetCenterPos + Vector2.up * owner.Combat.Collider2d.bounds.extents.y;
         }
 
-        private Vector2 CalculateGroundReadyPosition(Transform target, float maxRange)
+        private Vector2 CalculateGroundReadyPosition(Vector2 targetCenterPos)
         {
-            // cast ray from target straight down to ground
-            RaycastHit2D groundHit = Physics2D.Raycast(target.position, Vector2.down, maxRange, ownerMovement.GroundDetector.SurfacesLayerMask);
-            if (groundHit.distance >= maxRange)
-            {
-                // impossible to hit even if target is directly above attacker; return point under target for now
-                return groundHit.point;
-            }
+            // head for ground underneath target
+            owner.Pathfinder.SetFilters(groundReadyPositionFilters);
+            return Physics2D.Raycast(targetCenterPos, Vector2.down, Mathf.Infinity, owner.Movement.GroundDetector.SurfacesLayerMask).point
+                + Vector2.up * owner.Combat.Collider2d.bounds.size.y;
+        }
 
-            // get horizontal distance to the point from which an attack can be made
-            float horizontalDistance = Mathf.Sqrt(maxRange * maxRange - groundHit.distance * groundHit.distance);
-            Vector2 directionToNavTarget = new Vector2(target.position.x > ownerTransform.position.x ? 1f : -1f, 0f);
-            return (Vector2)ownerTransform.position + directionToNavTarget * horizontalDistance;
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetAerialReadyPositionFilters()
+        {
+            List<NodeNeighbourFilter> softFilters = new List<NodeNeighbourFilter>()
+            {
+                new NodeNeighbourFilter((node, neighbour) => neighbour.DistanceFromSurfaceBelow >= 2.5f)
+            };
+
+            return (new List<NodeNeighbourFilter>(), softFilters);
+        }
+
+        private (List<NodeNeighbourFilter>, List<NodeNeighbourFilter>) GetGroundReadyPositionFilters()
+        {
+            List<NodeNeighbourFilter> hardFilters = new List<NodeNeighbourFilter>()
+            {
+                new NodeNeighbourFilter((node, neighbour) =>
+                {
+                    // make sure the path only involves jumping up a step or going off a drop
+                    return neighbour.GridY <= node.GridY
+                        || neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+                })
+            };
+
+            return (hardFilters, new List<NodeNeighbourFilter>());
         }
     }
 }

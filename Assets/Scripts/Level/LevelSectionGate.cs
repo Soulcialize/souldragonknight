@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelSectionGate : MonoBehaviour
 {
+    [SerializeField] private Collider2D collider2d;
     [SerializeField] private float raisedHeight;
     [SerializeField] private float speed;
 
@@ -31,6 +32,7 @@ public class LevelSectionGate : MonoBehaviour
         float timeTaken = raisedHeight / speed;
         float elapsedTime = 0f;
 
+        StartCoroutine(UpdatePathfindingGrid(timeTaken));
         while (elapsedTime < timeTaken)
         {
             gateTransform.position = Vector2.Lerp(startPos, finalPos, elapsedTime / timeTaken);
@@ -39,5 +41,17 @@ public class LevelSectionGate : MonoBehaviour
         }
 
         gateTransform.position = finalPos;
+    }
+
+    private IEnumerator UpdatePathfindingGrid(float duration)
+    {
+        Vector2 updateRegionMinPoint = collider2d.bounds.min;
+        Vector2 updateRegionMaxPoint = collider2d.bounds.max + Vector3.up * raisedHeight;
+        float updateInterval = Pathfinding.NodeGrid.MIN_GRID_UPDATE_INTERVAL;
+        for (float i = 0; i < duration; i += updateInterval)
+        {
+            yield return new WaitForSeconds(0.5f);
+            Pathfinding.NodeGridUpdater.Instance.RequestGridUpdate(updateRegionMinPoint, updateRegionMaxPoint);
+        }
     }
 }

@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 7404829110624881476}
   - component: {fileID: 5584288266804474021}
   - component: {fileID: 4282329958813357994}
+  - component: {fileID: 7462624240792649142}
   - component: {fileID: 6640825776839568949}
   - component: {fileID: 6640825776839568944}
   - component: {fileID: 6640825776839568951}
@@ -528,6 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 6640825776839568949}
   combat: {fileID: 7213589635427211298}
+  pathfinder: {fileID: 7462624240792649142}
   hideVisibility: 1
   visibility: {fileID: 7404829110624881476}
   hurtRevealDuration: 0.6
@@ -554,7 +556,8 @@ MonoBehaviour:
   defaultMovementMode: 0
   isDefaultFacingRight: 0
   defaultStoppingDistanceFromNavTargets: 0.91
-  navFastDistanceThreshold: 8
+  navSlowDistanceThreshold: 8
+  navFastDistanceThreshold: 10
   flipDirectionEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -659,7 +662,24 @@ MonoBehaviour:
   stopRegenResourceEvent:
     m_PersistentCalls:
       m_Calls: []
+  insufficientResourceEvent:
+    m_PersistentCalls:
+      m_Calls: []
   photonView: {fileID: 6640825776839568949}
+--- !u!114 &7462624240792649142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640825776839569100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ddd954f97d6564a895de2a7a4427bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider2d: {fileID: 6758016192082639341}
+  movement: {fileID: 6640825776839569099}
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
