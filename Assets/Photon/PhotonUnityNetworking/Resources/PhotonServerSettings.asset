@@ -110,6 +110,7 @@ MonoBehaviour:
   - RPC_SyncMessage
   - RPC_CancelExitRequest
   - RPC_RequestExit
+  - RPC_RevealHint
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
