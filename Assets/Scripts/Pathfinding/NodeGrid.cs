@@ -24,6 +24,10 @@ namespace Pathfinding
 
         [SerializeField] private PathfindingGridData precomputedGridData;
 
+        [Space(10)]
+
+        [SerializeField] private bool drawGridInEditor;
+
         private Node[,] grid;
         private float nodeDiameter;
         private int gridSizeX, gridSizeY;
@@ -35,6 +39,8 @@ namespace Pathfinding
         public LayerMask SurfacesLayerMask { get => surfacesLayerMask; }
 
         public float NodeDiameter { get => nodeDiameter; }
+        public int GridSizeX { get => gridSizeX; }
+        public int GridSizeY { get => gridSizeY; }
         public Vector2 NodeBoxWalkableTester { get => nodeBoxWalkableTester; }
 
         public PathfindingGridData PrecomputedGridData { get => precomputedGridData; }
@@ -186,7 +192,7 @@ namespace Pathfinding
 
         private void OnDrawGizmos()
         {
-            if (grid == null)
+            if (!drawGridInEditor || grid == null)
             {
                 return;
             }

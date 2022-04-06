@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Pathfinding
 {
-    public class Node
+    public class Node : IHeapItem<Node>
     {
+        private int heapIndex;
+
         public Vector2 WorldPos { get; private set; }
         public int GridX { get; private set; }
         public int GridY { get; private set; }
@@ -20,6 +22,8 @@ namespace Pathfinding
         public int FCost { get => GCost + HCost; }
 
         public Node Parent { get; set; }
+
+        public int HeapIndex { get => heapIndex; set => heapIndex = value; }
 
         public Node(Vector2 worldPos, int gridX, int gridY, bool isWalkable, float distanceFromSurfaceBelow)
         {
@@ -49,6 +53,18 @@ namespace Pathfinding
         {
             IsWalkable = isWalkable;
             DistanceFromSurfaceBelow = distanceFromSurfaceBelow;
+        }
+
+        public int CompareTo(Node other)
+        {
+            int result = FCost.CompareTo(other.FCost);
+            if (result == 0)
+            {
+                result = HCost.CompareTo(other.HCost);
+            }
+
+            // node with lower F Cost / H Cost should have higher priority
+            return -result;
         }
     }
 }

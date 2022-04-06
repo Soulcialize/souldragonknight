@@ -26,7 +26,7 @@ namespace Pathfinding
                 return (PathfindResult.SUCCESS, RetracePath(fromNode, toNode));
             }
 
-            List<Node> openSet = new List<Node>();
+            Heap<Node> openSet = new Heap<Node>(grid.GridSizeX * grid.GridSizeY);
             HashSet<Node> closedSet = new HashSet<Node>();
             openSet.Add(fromNode);
 
@@ -39,14 +39,12 @@ namespace Pathfinding
             while (openSet.Count > 0)
             {
                 // set the current node to the node with the lowest F cost in the open set
-                currentNode = GetNodeWithLowestFCost(openSet);
+                currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
                 if (currentNode.HCost < nodeWithLowestHCost.HCost)
                 {
                     nodeWithLowestHCost = currentNode;
                 }
-
-                openSet.Remove(currentNode);
-                closedSet.Add(currentNode);
 
                 if (currentNode == toNode)
                 {
@@ -92,7 +90,11 @@ namespace Pathfinding
                 if (openSet.Count == 0 && nonPreferredNeighbours.Count > 0)
                 {
                     // no path can be found without using viable neighbours that don't pass the soft filters
-                    openSet.AddRange(nonPreferredNeighbours);
+                    foreach (Node neighbour in nonPreferredNeighbours)
+                    {
+                        openSet.Add(neighbour);
+                    }
+
                     nonPreferredNeighbours.Clear();
                 }
             }
@@ -100,27 +102,6 @@ namespace Pathfinding
             // could not find path to target node; try to return path to the closest node we could find
             List<Node> closestPathToTarget = RetracePath(fromNode, nodeWithLowestHCost);
             return (closestPathToTarget.Count == 0 ? PathfindResult.FAILURE : PathfindResult.NEAREST, closestPathToTarget);
-        }
-
-        private static Node GetNodeWithLowestFCost(List<Node> nodeList)
-        {
-            if (nodeList.Count == 0)
-            {
-                throw new ArgumentException($"There needs to be at least 1 node in the given list");
-            }
-
-            Node currentNode = nodeList[0];
-            for (int i = 0; i < nodeList.Count; i++)
-            {
-                // if the two nodes have the same f_cost, use the node with the lower h_cost
-                if (nodeList[i].FCost < currentNode.FCost
-                    || nodeList[i].FCost == currentNode.FCost && nodeList[i].HCost < currentNode.HCost)
-                {
-                    currentNode = nodeList[i];
-                }
-            }
-
-            return currentNode;
         }
 
         private static bool DoesNeighbourPassFilters(Node node, Node neighbour, List<NodeNeighbourFilter> filters)
