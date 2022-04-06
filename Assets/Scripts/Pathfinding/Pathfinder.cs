@@ -132,7 +132,25 @@ namespace Pathfinding
             }
 
             path.Reverse();
-            return path;
+            return SimplifyPath(path);
+        }
+
+        private static List<Node> SimplifyPath(List<Node> path)
+        {
+            List<Node> simplifiedPath = new List<Node>();
+            Vector2 prevDirection = Vector2.zero;
+            for (int i = 1; i < path.Count; i++)
+            {
+                Vector2 currDirection = path[i].WorldPos - path[i - 1].WorldPos;
+                if (currDirection != prevDirection)
+                {
+                    simplifiedPath.Add(path[i]);
+                }
+
+                prevDirection = currDirection;
+            }
+
+            return simplifiedPath;
         }
     }
 }
