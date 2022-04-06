@@ -18,6 +18,9 @@ public class LevelSectionGate : MonoBehaviour
 
     public void Open()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.GATE_OPENING);
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.GATE_FULLY_OPEN);
+
         if (openGateCoroutine == null)
         {
             openGateCoroutine = StartCoroutine(OpenGate());
