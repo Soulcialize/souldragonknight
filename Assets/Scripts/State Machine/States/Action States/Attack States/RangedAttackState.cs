@@ -9,23 +9,25 @@ namespace CombatStates
     {
         private readonly RangedProjectile projectilePrefab;
         private readonly Transform projectileOrigin;
+        private readonly ProjectileLauncher projectileLauncher;
         private readonly Vector2 attackDirection;
         private readonly LayerMask actorHitLayer;
-        private RangedProjectileEvent fireRangedProjectileEvent;
         private readonly float attackCost;
+        private readonly RangedProjectileEvent fireRangedProjectileEvent;
 
         public RangedAttackState(
-            Combat owner, RangedProjectile projectilePrefab,
-            Transform projectileOrigin, Vector2 attackDirection, LayerMask actorHitLayer,
-            RangedProjectileEvent fireRangedProjectileEvent,
-            float attackCost) : base(owner)
+            Combat owner,
+            RangedProjectile projectilePrefab, Transform projectileOrigin, ProjectileLauncher projectileLauncher,
+            Vector2 attackDirection, LayerMask actorHitLayer, float attackCost,
+            RangedProjectileEvent fireRangedProjectileEvent) : base(owner)
         {
             this.projectilePrefab = projectilePrefab;
             this.projectileOrigin = projectileOrigin;
+            this.projectileLauncher = projectileLauncher;
             this.attackDirection = attackDirection.normalized;
             this.actorHitLayer = actorHitLayer;
-            this.fireRangedProjectileEvent = fireRangedProjectileEvent;
             this.attackCost = attackCost;
+            this.fireRangedProjectileEvent = fireRangedProjectileEvent;
         }
 
         public override void Enter()
@@ -56,6 +58,10 @@ namespace CombatStates
         {
             base.Exit();
             owner.Animator.SetBool("isAttackingDown", false);
+            if (projectileLauncher != null)
+            {
+                projectileLauncher.HideProjectileLauncher();
+            }
         }
     }
 }
