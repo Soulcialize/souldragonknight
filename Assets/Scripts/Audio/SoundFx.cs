@@ -40,6 +40,8 @@ public class SoundFx : Sound
         BUFF,
         DEBUFF,
         INSUFFICIENT_RESOURCE,
+        GATE_OPENING,
+        GATE_FULLY_OPEN,
         WALL_DESTROY
     }
 
