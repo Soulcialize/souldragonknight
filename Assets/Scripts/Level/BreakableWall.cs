@@ -10,6 +10,7 @@ public class BreakableWall : MonoBehaviour
 
     public void HandleHit()
     {
+        AudioManagerSynced.Instance.PlaySoundFx(SoundFx.LibraryIndex.WALL_DESTROY);
         photonView.RPC("RPC_HandleHit", RpcTarget.All);
     }
 
