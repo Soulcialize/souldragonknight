@@ -39,7 +39,8 @@ public class SoundFx : Sound
         NO_SOUND,
         BUFF,
         DEBUFF,
-        INSUFFICIENT_RESOURCE
+        INSUFFICIENT_RESOURCE,
+        WALL_DESTROY
     }
 
     [Space(10)]

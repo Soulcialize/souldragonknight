@@ -227,6 +227,11 @@ MonoBehaviour:
     libraryIndex: 34
     audioClips:
     - {fileID: 8300000, guid: cb2d29d6dfcecd94098391eb15459bad, type: 3}
+  - defaultVolume: 1
+    loop: 0
+    libraryIndex: 35
+    audioClips:
+    - {fileID: 8300000, guid: 148fbbdd4f6d3cb45b5a1794689d9d8b, type: 3}
   musicTracks:
   - defaultVolume: 1
     loop: 1
