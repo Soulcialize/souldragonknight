@@ -36,14 +36,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         Debug.Log($"Player {otherPlayer.ActorNumber} has left the game");
-        photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
+
+        PhotonNetwork.LoadLevel(roomSceneName);
+        RoleSelectManager.HadDisconnect = true;
         AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
         AudioManager.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
+
         base.OnPlayerLeftRoom(otherPlayer);
     }
 
     public void LeaveRoom()
     {
+        RoleSelectManager.ResetRole();
         PhotonNetwork.LeaveRoom();
     }
 
