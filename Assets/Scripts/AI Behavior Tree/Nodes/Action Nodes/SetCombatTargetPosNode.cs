@@ -43,7 +43,7 @@ namespace AiBehaviorTreeNodes
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, navTargetPos);
             Blackboard.SetData(
                 GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE,
-                Mathf.Min(owner.Movement.DefaultStoppingDistanceFromNavTargets, target.Movement.DefaultStoppingDistanceFromNavTargets));
+                Mathf.Max(owner.Movement.DefaultStoppingDistanceFromNavTargets, target.Movement.DefaultStoppingDistanceFromNavTargets));
 
             return NodeState.SUCCESS;
         }

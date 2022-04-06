@@ -25,6 +25,12 @@ public abstract class Movement : MonoBehaviour
 
     [SerializeField] private bool isDefaultFacingRight = true;
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
+
+    /*
+     * By having a gap between the two thresholds, we avoid a situation where the actor could
+     * flip between walking and running every frame, which can happen if there were a single
+     * threshold and their navigation target constantly goes in and out of that threshold.
+     */
     [Tooltip("Distance to a navigation target within which the actor will start moving slower.")]
     [SerializeField] private float navSlowDistanceThreshold;
     [Tooltip("Distance to a navigation target beyond which the actor will start moving faster.")]

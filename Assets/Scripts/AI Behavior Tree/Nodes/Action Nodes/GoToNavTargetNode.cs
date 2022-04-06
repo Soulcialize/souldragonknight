@@ -37,7 +37,7 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
-            Vector2 currentPos = owner.Pathfinder.GetCurrentPosForPathfinding();
+            Vector2 currentPos = owner.transform.position;
 
             float distanceToTarget = Vector2.Distance(currentPos, navTargetPos);
             if (useStoppingDistance && distanceToTarget <= (float)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE)

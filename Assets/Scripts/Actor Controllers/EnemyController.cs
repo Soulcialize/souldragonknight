@@ -48,6 +48,7 @@ public abstract class EnemyController : ActorController
     {
         base.HandleDeathEvent();
         BehaviorTreesManager?.SwitchActiveTree(AiBehaviorTrees.BehaviorTree.Function.NONE);
+        pathfinder.StopPathfind();
         visibility.Reveal();
     }
 }
