@@ -8,7 +8,7 @@ namespace CombatStates
     public class ReadyRangedAttackState : ReadyAttackState
     {
         private readonly Transform target;
-        private ProjectilePathDisplay projectilePathDisplay;
+        private readonly ProjectilePathDisplay projectilePathDisplay;
         private readonly float lockTargetPositionTime;
 
         public bool HasLockedTargetPosition { get; private set; }
@@ -28,9 +28,9 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
             base.Enter();
             projectilePathDisplay.StartDrawingProjectilePath(target);
+            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
         }
 
         public override void Execute()
@@ -46,6 +46,7 @@ namespace CombatStates
         {
             base.Exit();
             projectilePathDisplay.StopDrawingProjectilePath();
+            AudioManagerSynced.Instance.StopSoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
         }
 
         private void LockTargetPosition()
