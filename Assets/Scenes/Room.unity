@@ -915,7 +915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &514606721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1418,7 +1418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &807213970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2537,7 +2537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1357137121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2842,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1699733282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3343,6 +3343,7 @@ MonoBehaviour:
   partnerRoleIndicator:
   - {fileID: 807213969}
   - {fileID: 514606720}
+  roomMessage: {fileID: 896313238}
 --- !u!114 &2129010575
 MonoBehaviour:
   m_ObjectHideFlags: 0

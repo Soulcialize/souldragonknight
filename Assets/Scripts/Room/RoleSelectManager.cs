@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -11,14 +12,26 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
 {
     public enum PlayerType { KNIGHT, DRAGON };
 
+    public readonly string ROOM_MESSAGE_PLAYER_JOINED = "A player has joined the room";
+    public readonly string ROOM_MESSAGE_PLAYER_LEFT = "Your partner has left the room";
+
+    public static bool HadDisconnect { get; set; }
+
     [SerializeField] private Button levelSelectButton;
     [SerializeField] private string levelSelectSceneName;
     [SerializeField] private string menuSceneName;
     [SerializeField] private GameObject[] yourRoleIndicator;
     [SerializeField] private GameObject[] partnerRoleIndicator;
+    [SerializeField] private TextMeshProUGUI roomMessage;
+
+    private Coroutine messageTimeout;
 
     private void Start()
     {
+        if (HadDisconnect) {
+            UpdateRoomMessage(ROOM_MESSAGE_PLAYER_LEFT);
+        }
+
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
             if (player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
@@ -59,6 +72,13 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        HadDisconnect = false;
+        UpdateRoomMessage(ROOM_MESSAGE_PLAYER_JOINED);
+        base.OnPlayerEnteredRoom(newPlayer);
+    }
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
@@ -66,6 +86,18 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         levelSelectButton.interactable = false;
         partnerRoleIndicator[0].SetActive(false);
         partnerRoleIndicator[1].SetActive(false);
+
+        UpdateRoomMessage(ROOM_MESSAGE_PLAYER_LEFT);
+    }
+
+    public void UpdateRoomMessage(string message)
+    {
+        if (messageTimeout != null)
+        {
+            StopCoroutine(messageTimeout); 
+        }
+
+        messageTimeout = StartCoroutine(DisplayMessageWithTimeout(message));
     }
 
     private bool CanPickLevel()
@@ -124,6 +156,14 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         ResetRole();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(menuSceneName);
+    }
+
+    private IEnumerator DisplayMessageWithTimeout(string message)
+    {
+        roomMessage.text = message;
+        yield return new WaitForSeconds(3);
+        roomMessage.text = "";
+        messageTimeout = null;
     }
 
     [PunRPC]
