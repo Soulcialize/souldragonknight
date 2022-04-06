@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Pathfinding;
 
 public class PathfindingUnit : MonoBehaviour
@@ -23,10 +24,10 @@ public class PathfindingUnit : MonoBehaviour
 
     private Coroutine pathfindProcess;
     private List<Node> path;
-    private Pathfinder.PathfindResult lastPathfindResult;
     private int targetNodeIndex;
 
     public int HeightInNodes { get => unitHeightInNodes; }
+    public Pathfinder.PathfindResult LastPathfindResult { get; private set; }
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class PathfindingUnit : MonoBehaviour
         };
 
         timeOfLastPathfind = 0f;
-        lastPathfindResult = Pathfinder.PathfindResult.FAILURE;
+        LastPathfindResult = Pathfinder.PathfindResult.FAILURE;
         targetNodeIndex = 0;
     }
 
@@ -48,16 +49,9 @@ public class PathfindingUnit : MonoBehaviour
         this.filters = filters;
     }
 
-    /// <summary>
-    /// Gets the unit's position for pathfinding.
-    /// </summary>
-    /// <remarks>
-    /// For pathfinding purposes, the position is the center-top of the unit's collider bounds.
-    /// </remarks>
-    /// <returns>The position as a Vector 2.</returns>
-    public Vector2 GetCurrentPos()
+    public Vector2 GetCurrentPosForPathfinding()
     {
-        return new Vector2(collider2d.bounds.center.x, collider2d.bounds.max.y);
+        return new Vector2(unitTransform.position.x, collider2d.bounds.max.y);
     }
 
     /// <summary>
@@ -65,36 +59,23 @@ public class PathfindingUnit : MonoBehaviour
     /// </summary>
     /// <remarks>A strict minimum interval is kept between consecutive updates of the path.</remarks>
     /// <param name="targetPos">The target end point. It is expected to be the final center top of the unit's collider.</param>
-    /// <param name="filters">Filters to apply to nodes while pathfinding.</param>
-    /// <returns>The result of the pathfinding as an enumeration.</returns>
-    public Pathfinder.PathfindResult Pathfind(Vector2 targetPos)
+    public void Pathfind(Vector2 targetPos)
     {
         if (Time.time - timeOfLastPathfind < MIN_PATHFIND_INTERVAL)
         {
-            return lastPathfindResult;
+            return;
         }
 
+        timeOfLastPathfind = Time.time;
         StopPathfind();
 
         // factor in collider height while pathfinding
         filters.hardFilters.AddRange(commonHardNeighbourFilters);
-        (Pathfinder.PathfindResult result, List<Node> newPath) = Pathfinder.FindPath(
-            NodeGrid.Instance,
+        PathfindingRequestManager.Instance.RequestPath(
             GetCurrentPosForPathfinding(),
             targetPos,
-            filters);
-
-        path = newPath;
-        lastPathfindResult = result;
-        if (result == Pathfinder.PathfindResult.FAILURE)
-        {
-            // cannot reach or advance any nearer to target position
-            return result;
-        }
-
-        timeOfLastPathfind = Time.time;
-        pathfindProcess = StartCoroutine(Pathfind());
-        return result;
+            filters,
+            ProcessPathfindResult);
     }
 
     public void StopPathfind()
@@ -105,17 +86,26 @@ public class PathfindingUnit : MonoBehaviour
         }
     }
 
-    private Vector2 GetCurrentPosForPathfinding()
-    {
-        return new Vector2(unitTransform.position.x, collider2d.bounds.max.y);
-    }
-
     private Node GetCurrentPositionAsNode()
     {
         return NodeGrid.Instance.GetNodeFromWorldPoint(GetCurrentPosForPathfinding());
     }
 
-    private IEnumerator Pathfind()
+    private void ProcessPathfindResult(Pathfinder.PathfindResult result, List<Node> newPath)
+    {
+        path = newPath;
+        LastPathfindResult = result;
+        if (result == Pathfinder.PathfindResult.FAILURE)
+        {
+            // cannot reach or advance any nearer to target position
+            return;
+        }
+
+        pathfindProcess = StartCoroutine(MoveAlongPath());
+        return;
+    }
+
+    private IEnumerator MoveAlongPath()
     {
         Node currentPosNode;
         targetNodeIndex = 0;

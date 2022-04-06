@@ -37,7 +37,7 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
-            Vector2 currentPos = owner.Pathfinder.GetCurrentPos();
+            Vector2 currentPos = owner.Pathfinder.GetCurrentPosForPathfinding();
 
             float distanceToTarget = Vector2.Distance(currentPos, navTargetPos);
             if (useStoppingDistance && distanceToTarget <= (float)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE)
@@ -47,15 +47,15 @@ namespace AiBehaviorTreeNodes
                 return NodeState.SUCCESS;
             }
 
-            Pathfinder.PathfindResult pathfindResult = owner.Pathfinder.Pathfind(navTargetPos);
-            if (pathfindResult == Pathfinder.PathfindResult.FAILURE)
+            owner.Pathfinder.Pathfind(navTargetPos);
+            if (owner.Pathfinder.LastPathfindResult == Pathfinder.PathfindResult.FAILURE)
             {
                 // no path to reach or move nearer to target at all
                 owner.Pathfinder.StopPathfind();
                 return NodeState.FAILURE;
             }
 
-            // there is a path to the target
+            // there is a path to the target or a path to a position that is nearer to the target than the current position
             bool isDistanceGreaterThanWalkThreshold = distanceToTarget > owner.Movement.NavTargetWalkDistanceThreshold;
             if (owner.Movement.MovementMode == MovementSpeedData.Mode.SLOW && isDistanceGreaterThanWalkThreshold)
             {
