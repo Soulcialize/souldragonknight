@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 5977773600834975663}
   - component: {fileID: 3800208176596402631}
   m_Layer: 0
-  m_Name: Basics Tutorial Canvas
+  m_Name: Knight Enemy Tutorial Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1939,6 +1939,7 @@ GameObject:
   - component: {fileID: 7862449281721554752}
   - component: {fileID: 3751183755037821718}
   - component: {fileID: 1677065247763911337}
+  - component: {fileID: 6322825164584183899}
   m_Layer: 0
   m_Name: 002 Knight Enemy Introduction
   m_TagString: Untagged
@@ -2015,6 +2016,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6322825164584183899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862449281721554753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75c9056abd20484e9c79c52f2ec0ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knightTutorials:
+  - {fileID: 5980830761811576955}
+  dragonTutorials:
+  - {fileID: 2395395968224805902}
 --- !u!1 &7931343952599431040
 GameObject:
   m_ObjectHideFlags: 0
