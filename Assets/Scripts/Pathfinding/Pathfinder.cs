@@ -66,23 +66,26 @@ namespace Pathfinding
                         neighbour.HCost = grid.GetGridDistance(neighbour, toNode);
                         neighbour.Parent = currentNode;
 
-                        if (!openSet.Contains(neighbour))
+                        if (openSet.Contains(neighbour))
                         {
-                            if (filters.hardFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.hardFilters))
-                            {
-                                // neighbour doesn't pass hard filters
-                                closedSet.Add(neighbour);
-                            }
-                            else if (filters.softFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.softFilters))
-                            {
-                                // keep non-preferred neighbours in consideration in case no other path exists
-                                nonPreferredNeighbours.Add(neighbour);
-                            }
-                            else
-                            {
-                                // neighbour passes all filters
-                                openSet.Add(neighbour);
-                            }
+                            openSet.UpdateItem(neighbour);
+                            continue;
+                        }
+
+                        if (filters.hardFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.hardFilters))
+                        {
+                            // neighbour doesn't pass hard filters
+                            closedSet.Add(neighbour);
+                        }
+                        else if (filters.softFilters != null && !DoesNeighbourPassFilters(currentNode, neighbour, filters.softFilters))
+                        {
+                            // keep non-preferred neighbours in consideration in case no other path exists
+                            nonPreferredNeighbours.Add(neighbour);
+                        }
+                        else
+                        {
+                            // neighbour passes all filters
+                            openSet.Add(neighbour);
                         }
                     }
                 }
