@@ -49,6 +49,18 @@ public class PathfindingUnit : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets the unit's position for pathfinding.
+    /// </summary>
+    /// <remarks>
+    /// For pathfinding purposes, the position is the center-top of the unit's collider bounds.
+    /// </remarks>
+    /// <returns>The position as a Vector 2.</returns>
+    public Vector2 GetCurrentPos()
+    {
+        return new Vector2(collider2d.bounds.center.x, collider2d.bounds.max.y);
+    }
+
+    /// <summary>
     /// Moves the unit along a path to the given target.
     /// </summary>
     /// <remarks>A strict minimum interval is kept between consecutive updates of the path.</remarks>
