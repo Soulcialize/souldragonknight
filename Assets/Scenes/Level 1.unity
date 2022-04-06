@@ -4199,6 +4199,50 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 1836642738990601460, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836642738990601460, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911542146308890060, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911542146308890060, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911542146308890060, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911542146308890060, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248405493983745231, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248405493983745231, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248405493983745231, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248405493983745231, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675803184165967108, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
+      propertyPath: sceneViewId
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 4736631742872169148, guid: 920b90e07478259458bcce1a8c5dd8a4, type: 3}
       propertyPath: m_Name
       value: 009 Knight Enemy Ranged Introduction
@@ -4430,6 +4474,10 @@ PrefabInstance:
     - target: {fileID: 4697770371068912277, guid: 7b7d57ba6b48f3c499090802f383c4d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508064325698788678, guid: 7b7d57ba6b48f3c499090802f383c4d9, type: 3}
+      propertyPath: sceneViewId
+      value: 29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7d57ba6b48f3c499090802f383c4d9, type: 3}
