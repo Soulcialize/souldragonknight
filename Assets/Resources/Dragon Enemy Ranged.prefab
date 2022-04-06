@@ -990,6 +990,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2451902509671687090, guid: d75a65ad664c7a147bf5869d211fbe95, type: 3}
   projectileOrigin: {fileID: 9076783464814098838}
   projectilePathDisplay: {fileID: 2930949771930136818}
+  projectileLauncher: {fileID: 0}
   fireRangedProjectileEvent:
     m_PersistentCalls:
       m_Calls: []

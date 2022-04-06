@@ -6,6 +6,7 @@ using Photon.Pun;
 public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
+    [SerializeField] private Transform transformToRotate;
 
     private bool isAimingAtTarget;
     private Transform target;
@@ -18,21 +19,15 @@ public class ProjectileLauncher : MonoBehaviour
         }
     }
 
-    public void ShowProjectileLauncher()
-    {
-        photonView.RPC("RPC_ShowProjectileLauncher", RpcTarget.All);
-    }
-
     public void StartAimingProjectileLauncher(Transform target)
     {
-        isAimingAtTarget = true;
-        this.target = target;
+        photonView.RPC("RPC_StartAimingProjectileLauncher", RpcTarget.All,
+            target.GetComponent<PhotonView>().ViewID);
     }
 
     public void StopAimingProjectileLauncher()
     {
-        isAimingAtTarget = false;
-        UpdateAimDirection();
+        photonView.RPC("RPC_StopAimingProjectileLauncher", RpcTarget.All);
     }
 
     public void HideProjectileLauncher()
@@ -42,25 +37,38 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void UpdateAimDirection()
     {
-        Vector2 direction = target.position - transform.position;
-
-        // clamp direction to right-facing direction, since left-facing is handled by actor being flipped
-        direction = new Vector2(Mathf.Clamp(direction.x, 0f, direction.x), direction.y);
-
-        transform.rotation = Quaternion.AngleAxis(
+        Vector2 direction = target.position - transformToRotate.position;
+        transformToRotate.rotation = Quaternion.AngleAxis(
             Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg,
             Vector3.forward);
     }
 
+    public void FlipDirection()
+    {
+        Vector3 localScale = transformToRotate.localScale;
+        localScale.x = -localScale.x;
+        transformToRotate.localScale = localScale;
+    }
+
     [PunRPC]
-    private void RPC_ShowProjectileLauncher()
+    private void RPC_StartAimingProjectileLauncher(int targetPhotonViewId)
     {
         gameObject.SetActive(true);
+        target = PhotonView.Find(targetPhotonViewId).transform;
+        isAimingAtTarget = true;
+    }
+
+    [PunRPC]
+    private void RPC_StopAimingProjectileLauncher()
+    {
+        isAimingAtTarget = false;
+        UpdateAimDirection();
     }
 
     [PunRPC]
     private void RPC_HideProjectileLauncher()
     {
         gameObject.SetActive(false);
+        isAimingAtTarget = false;
     }
 }

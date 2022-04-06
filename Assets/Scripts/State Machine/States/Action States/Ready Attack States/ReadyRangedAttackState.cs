@@ -35,7 +35,6 @@ namespace CombatStates
             projectilePathDisplay.StartDrawingProjectilePath(target);
             if (projectileLauncher != null)
             {
-                projectileLauncher.ShowProjectileLauncher();
                 projectileLauncher.StartAimingProjectileLauncher(target);
             }
 
