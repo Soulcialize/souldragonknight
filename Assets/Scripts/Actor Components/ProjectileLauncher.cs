@@ -6,10 +6,13 @@ using Photon.Pun;
 public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform transformToRotate;
 
     private bool isAimingAtTarget;
     private Transform target;
+
+    public Animator Animator { get => animator; }
 
     private void Update()
     {

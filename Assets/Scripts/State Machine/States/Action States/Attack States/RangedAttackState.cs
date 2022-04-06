@@ -50,6 +50,11 @@ namespace CombatStates
                 projectileOrigin.position,
                 RangedProjectile.GetRotationForDirection(attackDirection)).GetComponent<RangedProjectile>();
 
+            if (projectileLauncher != null)
+            {
+                projectileLauncher.Animator.SetBool("isAttacking", true);
+            }
+
             projectile.Direction = attackDirection;
             projectile.ActorTargetsLayer = actorHitLayer;
             fireRangedProjectileEvent.Invoke(projectile);
@@ -62,6 +67,7 @@ namespace CombatStates
             if (projectileLauncher != null)
             {
                 projectileLauncher.HideProjectileLauncher();
+                projectileLauncher.Animator.SetBool("isAttacking", false);
             }
         }
     }
