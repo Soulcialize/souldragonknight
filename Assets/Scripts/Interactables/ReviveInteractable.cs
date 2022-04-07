@@ -12,7 +12,7 @@ public class ReviveInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.REVIVE; }
 
-    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
+    protected override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         photonView.RPC("RPC_Revive", RpcTarget.All);
         endInteractionCallback();

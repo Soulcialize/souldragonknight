@@ -28,7 +28,7 @@ public class RuneInteractable : Interactable
         currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
     }
 
-    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
+    protected override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         currentRuneIndex = (currentRuneIndex + 1) % runeCount;
         currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];

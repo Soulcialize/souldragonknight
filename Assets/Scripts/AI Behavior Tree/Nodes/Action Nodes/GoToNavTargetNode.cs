@@ -4,8 +4,6 @@ using UnityEngine;
 using AiBehaviorTreeBlackboards;
 using Pathfinding;
 
-using Filter = System.Predicate<Pathfinding.Node>;
-
 namespace AiBehaviorTreeNodes
 {
     /// <summary>
@@ -19,7 +17,6 @@ namespace AiBehaviorTreeNodes
     public class GoToNavTargetNode : BehaviorNode
     {
         private readonly ActorController owner;
-        private readonly bool useStoppingDistance;
 
         /// <param name="ownerMovement">The actor's movement component.</param>
         /// <param name="ownerCombat">The actor's combat component</param>
@@ -28,34 +25,29 @@ namespace AiBehaviorTreeNodes
         /// its stopping distance (retrieved from the movement component) from the target position.
         /// Else, this node only returns success when the actor is almost exactly at the target position.
         /// </param>
-        public GoToNavTargetNode(ActorController owner, bool useStoppingDistance)
+        public GoToNavTargetNode(ActorController owner)
         {
             this.owner = owner;
-            this.useStoppingDistance = useStoppingDistance;
         }
 
         public override NodeState Execute()
         {
             Vector2 navTargetPos = (Vector2)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET);
-            Vector2 currentPos = owner.transform.position;
-
-            float distanceToTarget = Vector2.Distance(currentPos, navTargetPos);
-            if (useStoppingDistance && distanceToTarget <= (float)Blackboard.GetData(GeneralBlackboardKeys.NAV_TARGET_STOPPING_DISTANCE)
-                || !useStoppingDistance && distanceToTarget <= 0.01f)
-            {
-                owner.Pathfinder.StopPathfind();
-                return NodeState.SUCCESS;
-            }
 
             owner.Pathfinder.Pathfind(navTargetPos);
             if (owner.Pathfinder.LastPathfindResult == Pathfinder.PathfindResult.FAILURE)
             {
                 // no path to reach or move nearer to target at all
-                owner.Pathfinder.StopPathfind();
                 return NodeState.FAILURE;
+            }
+            else if (owner.Pathfinder.HasReachedFinalPathNode)
+            {
+                // reached final node in path
+                return NodeState.SUCCESS;
             }
 
             // there is a path to the target or a path to a position that is nearer to the target than the current position
+            float distanceToTarget = Vector2.Distance(owner.Pathfinder.GetCurrentPosForPathfinding(), navTargetPos);
             if (owner.Movement.MovementMode == MovementSpeedData.Mode.SLOW
                 && distanceToTarget > owner.Movement.NavTargetFastDistanceThreshold)
             {

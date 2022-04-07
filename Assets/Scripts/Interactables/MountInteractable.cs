@@ -28,11 +28,12 @@ public class MountInteractable : Interactable
 
     public override Interaction InteractableInteraction { get => Interaction.MOUNT; }
 
-    public override void Interact(ActorController initiator, UnityAction endInteractionCallback)
+    protected override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         if (!(initiator.Movement is GroundMovement groundMovement)
             || initiator.Movement.MovementStateMachine.CurrState is GroundMovementStates.MountedState)
         {
+            // only actors who primarily move on the ground and are not mounted can start mounting
             endInteractionCallback();
             return;
         }
@@ -125,6 +126,7 @@ public class MountInteractable : Interactable
     public void MountDeathHandler()
     {
         // rider is separate client, so use RPC to dismount
+        currentRiderMovement = null;
         mountCombat.ToggleCombatAbilities(true);
         photonView.RPC("RPC_DismountMountedRider", RpcTarget.Others);
     }

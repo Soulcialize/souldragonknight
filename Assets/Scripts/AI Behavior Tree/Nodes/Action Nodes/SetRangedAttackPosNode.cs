@@ -9,7 +9,6 @@ namespace AiBehaviorTreeNodes
     public class SetRangedAttackPosNode : BehaviorNode
     {
         private readonly ActorController owner;
-        private readonly Transform ownerTransform;
 
         private readonly Transform projectileOrigin;
         private readonly RangedProjectile projectile;
@@ -20,7 +19,6 @@ namespace AiBehaviorTreeNodes
         public SetRangedAttackPosNode(ActorController owner)
         {
             this.owner = owner;
-            ownerTransform = owner.transform;
 
             RangedAttackAbility rangedAttackAbility = (RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
             projectileOrigin = rangedAttackAbility.ProjectileOrigin;
@@ -33,26 +31,27 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             ActorController target = (ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
-            Vector3 targetCenter = target.Combat.Collider2d.bounds.center;
+            Vector3 targetPos = target.transform.position;
 
-            float currDistanceToTarget = Vector2.Distance(projectileOrigin.position, targetCenter);
+            float currDistanceToTarget = Vector2.Distance(projectileOrigin.position, targetPos);
             float maxRange = ((RangedAttackAbility)owner.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED)).MaxRange;
 
+            // use double the height of the projectile so we can ensure we have a clear shot
             RaycastHit2D circleCastToTarget = Physics2D.CircleCast(
-                projectileOrigin.position, projectile.GetHeight() / 2f,
-                targetCenter - projectileOrigin.position, currDistanceToTarget,
+                projectileOrigin.position, projectile.GetHeight() * 2f,
+                targetPos - projectileOrigin.position, currDistanceToTarget,
                 owner.Movement.GroundDetector.SurfacesLayerMask | owner.Combat.AttackEffectLayer);
 
             if (currDistanceToTarget <= maxRange && circleCastToTarget.collider == target.Combat.Collider2d)
             {
                 // in range and can see target; remain at current position
-                Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, (Vector2)ownerTransform.position);
+                Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, owner.Pathfinder.GetCurrentPosForPathfinding());
                 return NodeState.SUCCESS;
             }
 
             Blackboard.SetData(GeneralBlackboardKeys.NAV_TARGET, owner.Movement is AirMovement
-                ? CalculateAerialReadyPosition(targetCenter)
-                : CalculateGroundReadyPosition(targetCenter));
+                ? CalculateAerialReadyPosition(target.Combat.Collider2d.bounds.center)
+                : CalculateGroundReadyPosition(target.Combat.Collider2d.bounds.center));
 
             return NodeState.SUCCESS;
         }
