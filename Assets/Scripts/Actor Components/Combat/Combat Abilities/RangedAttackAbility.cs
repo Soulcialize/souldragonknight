@@ -15,6 +15,7 @@ public class RangedAttackAbility : CombatAbility
     [SerializeField] private RangedProjectile projectilePrefab;
     [SerializeField] private Transform projectileOrigin;
     [SerializeField] private ProjectilePathDisplay projectilePathDisplay;
+    [SerializeField] private ProjectileLauncher projectileLauncher;
 
     [Space(10)]
 
@@ -40,14 +41,15 @@ public class RangedAttackAbility : CombatAbility
             {
                 Transform target = (Transform)parameters[0];
                 combat.ActionStateMachine.ChangeState(new ReadyRangedAttackState(
-                    combat, target, projectilePathDisplay, timeToLock, readyDuration, ReadyCallback));
+                    combat, target, projectilePathDisplay, projectileLauncher,
+                    timeToLock, readyDuration, ReadyCallback));
             }
             else
             {
                 Vector2 direction = (Vector2)parameters[0];
                 combat.ActionStateMachine.ChangeState(new RangedAttackState(
-                    combat, projectilePrefab, projectileOrigin, direction, 
-                    combat.AttackEffectLayer, fireRangedProjectileEvent, resourceCost));
+                    combat, projectilePrefab, projectileOrigin, projectileLauncher, direction,
+                    combat.AttackEffectLayer, resourceCost, fireRangedProjectileEvent));
             }
         }
     }
@@ -56,7 +58,7 @@ public class RangedAttackAbility : CombatAbility
     {
         Vector2 direction = ((ReadyRangedAttackState)combat.ActionStateMachine.CurrState).TargetPosition - (Vector2)transform.position;
         combat.ActionStateMachine.ChangeState(new RangedAttackState(
-            combat, projectilePrefab, projectileOrigin, direction, 
-            combat.AttackEffectLayer, fireRangedProjectileEvent, resourceCost));
+            combat, projectilePrefab, projectileOrigin, projectileLauncher, direction, 
+            combat.AttackEffectLayer, resourceCost, fireRangedProjectileEvent));
     }
 }
