@@ -403,10 +403,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeSprites:
-  - {fileID: 21300000, guid: 29ae0c4afc88d5842ae662e2e3d95e35, type: 3}
-  - {fileID: 21300000, guid: cbf1aadb8c2e7644ab1cad4fb96e28ab, type: 3}
-  - {fileID: 21300000, guid: 6efc96899dbac404f8cf9912a5f7ca10, type: 3}
-  - {fileID: 21300000, guid: 89713fd2957b7a34aacbdee9326bc23a, type: 3}
+  - {fileID: 21300000, guid: 7b50a6f9784501440ae3a3a2c0101434, type: 3}
+  - {fileID: 21300000, guid: 691d0a280fee4134dbef8a4f9ee83844, type: 3}
+  - {fileID: 21300000, guid: 0636e3709e9a9a14eaa5bee8b13f7a68, type: 3}
+  - {fileID: 21300000, guid: ff58f5aec4e20954b9691bc0c18a8983, type: 3}
+  - {fileID: 21300000, guid: 01f15c5b0140001468a117029b5c7c83, type: 3}
+  - {fileID: 21300000, guid: 1b2e3460e0f6a6f4ab9e386820c47b79, type: 3}
+  - {fileID: 21300000, guid: 4d88e46ae8b643842a133aabf6611a3c, type: 3}
+  - {fileID: 21300000, guid: 2a8ecc8349f5a994dbd95478ede989d3, type: 3}
+  - {fileID: 21300000, guid: 70b3b6a8ad96bb24d86cf2f82f4289cb, type: 3}
+  - {fileID: 21300000, guid: e8dc27f864e8f9e46af2379c3a7a3d0b, type: 3}
   answerRunes:
   - {fileID: 8630958677999667571}
   - {fileID: 6031256765771340320}
@@ -751,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 4174811199011003873, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911155910494139274, guid: d38644d6e80069a4092f691c037631ca, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6681372106253389667, guid: d38644d6e80069a4092f691c037631ca, type: 3}
       propertyPath: m_LocalPosition.y
