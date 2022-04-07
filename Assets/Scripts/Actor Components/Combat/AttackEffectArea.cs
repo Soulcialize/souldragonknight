@@ -10,11 +10,24 @@ public class AttackEffectArea : MonoBehaviour
 
     public Vector2 Size { get => size; }
 
-    public Vector2 TopCornerPos { get; private set; }
+    public Vector2 LocalPos { get; private set; }
+
+    /// <summary>
+    /// The local position of the area's bottom left corner while facing right.
+    /// </summary>
+    public Vector2 MinLocalPos { get; private set; }
+
+    /// <summary>
+    /// The local position of the area's top right corner while facing right.
+    /// </summary>
+    public Vector2 MaxLocalPos { get; private set; }
 
     private void Awake()
     {
-        TopCornerPos = (Vector2)transform.localPosition + new Vector2(size.x / 2f, size.y / 2f);
+        Vector2 extents = new Vector2(size.x / 2f, size.y / 2f);
+        LocalPos = transform.localPosition;
+        MinLocalPos = (Vector2)transform.localPosition - extents;
+        MaxLocalPos = (Vector2)transform.localPosition + extents;
     }
 
     private void OnDrawGizmos()

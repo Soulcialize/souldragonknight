@@ -14,16 +14,17 @@ namespace AiBehaviorTreeNodes
     /// </remarks>
     public class StopMovingNode : BehaviorNode
     {
-        private readonly Movement ownerMovement;
+        private readonly ActorController owner;
 
-        public StopMovingNode(Movement ownerMovement)
+        public StopMovingNode(ActorController owner)
         {
-            this.ownerMovement = ownerMovement;
+            this.owner = owner;
         }
 
         public override NodeState Execute()
         {
-            ownerMovement.UpdateMovement(Vector2.zero);
+            owner.Pathfinder.StopPathfind();
+            owner.Movement.UpdateMovement(Vector2.zero);
             return NodeState.SUCCESS;
         }
     }
