@@ -23,15 +23,15 @@ public class RuneInteractable : Interactable
 
     private void Start()
     {
-        runeCount = puzzleManager.runeSprites.Length;
+        runeCount = puzzleManager.knightRuneSprites.Length;
         currentRuneIndex = Random.Range(0, runeCount);
-        currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
+        currentRune.sprite = puzzleManager.knightRuneSprites[currentRuneIndex];
     }
 
     protected override void Interact(ActorController initiator, UnityAction endInteractionCallback)
     {
         currentRuneIndex = (currentRuneIndex + 1) % runeCount;
-        currentRune.sprite = puzzleManager.runeSprites[currentRuneIndex];
+        currentRune.sprite = puzzleManager.knightRuneSprites[currentRuneIndex];
         RuneUpdateEvent.Invoke();
         endInteractionCallback();
     }

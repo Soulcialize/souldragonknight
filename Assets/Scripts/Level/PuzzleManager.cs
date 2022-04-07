@@ -10,7 +10,8 @@ public class PuzzleManager : MonoBehaviour
 {
     [Header("Runes")]
 
-    [SerializeField] public Sprite[] runeSprites;
+    [SerializeField] public Sprite[] knightRuneSprites;
+    [SerializeField] public Sprite[] dragonRuneSprites;
     [SerializeField] private SpriteRenderer[] answerRunes;
     [SerializeField] private RuneInteractable[] runeRocks;
 
@@ -27,7 +28,12 @@ public class PuzzleManager : MonoBehaviour
 
     private void OnValidate()
     {
-        if (answerRunes.Length > runeSprites.Length)
+        if (knightRuneSprites.Length != dragonRuneSprites.Length)
+        {
+            Debug.LogWarning("There needs to be equal number of sprites for both the Knight and the Dragon!");
+        }
+
+        if (answerRunes.Length > knightRuneSprites.Length)
         {
             Debug.LogWarning("There are not enough unique sprites to support the answer length!");
         }
@@ -67,7 +73,7 @@ public class PuzzleManager : MonoBehaviour
         runeAnswer = new int[answerLength];
         List<int> values = new List<int>();
 
-        for (int i = 0; i < runeSprites.Length; i++)
+        for (int i = 0; i < knightRuneSprites.Length; i++)
         {
             values.Add(i);
         }
@@ -144,7 +150,7 @@ public class PuzzleManager : MonoBehaviour
 
         for (int i = 0; i < answerLength; i++)
         {
-            answerRunes[i].sprite = runeSprites[answer[i]];
+            answerRunes[i].sprite = dragonRuneSprites[answer[i]];
         }
     }
 
