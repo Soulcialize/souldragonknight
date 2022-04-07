@@ -28,6 +28,7 @@ public class PathfindingUnit : MonoBehaviour
 
     public int HeightInNodes { get => unitHeightInNodes; }
     public Pathfinder.PathfindResult LastPathfindResult { get; private set; }
+    public bool HasReachedFinalPathNode { get; private set; }
 
     private void Awake()
     {
@@ -95,6 +96,7 @@ public class PathfindingUnit : MonoBehaviour
     {
         path = newPath;
         LastPathfindResult = result;
+        HasReachedFinalPathNode = false;
         if (result == Pathfinder.PathfindResult.FAILURE)
         {
             // cannot reach or advance any nearer to target position
@@ -137,8 +139,7 @@ public class PathfindingUnit : MonoBehaviour
             yield return null;
         }
 
-        // pathfinding complete
-        StopPathfind();
+        HasReachedFinalPathNode = true;
     }
 
     private void OnDrawGizmos()

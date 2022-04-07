@@ -37,7 +37,7 @@ namespace AiBehaviorTrees
                             new InverterNode(new SequenceNode(new List<BehaviorNode>()
                             {
                                 // exit ready-attack state if target is no longer in range
-                                new InverterNode(new IsCombatTargetInMeleeRangeNode(movement)),
+                                new InverterNode(new IsCombatTargetInMeleeRangeNode(movement, combat, true)),
                                 new ExitCombatStateMachineNode(combat)
                             }))
                         }),
@@ -45,22 +45,22 @@ namespace AiBehaviorTrees
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetCombatTargetPosNode(actor),
+                            new SetMeleePosNode(actor),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
-                                    // can reach target
-                                    new GoToNavTargetNode(actor, true),
-                                    new StopMovingNode(movement),
+                                    // move to target and attack if in melee range
+                                    new GoToNavTargetNode(actor),
+                                    new StopMovingNode(actor),
                                     new FaceNavTargetNode(movement),
-                                    new IsCombatTargetInMeleeRangeNode(movement),
+                                    new IsCombatTargetInMeleeRangeNode(movement, combat, false),
                                     new StartMeleeAttackNode(combat)
                                 }),
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
-                                    // cannot reach target
-                                    new StopMovingNode(movement),
+                                    // not in melee range and cannot reach target
+                                    new StopMovingNode(actor),
                                     new FaceNavTargetNode(movement)
                                 })
                             })
@@ -101,7 +101,7 @@ namespace AiBehaviorTrees
                             new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyRangedAttackState)),
                             // face target while readying if target position not locked yet
                             new InverterNode(new HasLockedTargetPositionNode(combat)),
-                            new SetCombatTargetPosNode(actor),
+                            new SetCombatTargetPosNode(),
                             new FaceNavTargetNode(movement)
                         }),
                         new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
@@ -114,14 +114,14 @@ namespace AiBehaviorTrees
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // can reach target
-                                    new GoToNavTargetNode(actor, false),
-                                    new StopMovingNode(movement),
+                                    new GoToNavTargetNode(actor),
+                                    new StopMovingNode(actor),
                                     new StartRangedAttackNode(combat)
                                 }),
                                 new SequenceNode(new List<BehaviorNode>()
                                 {
                                     // cannot reach target
-                                    new StopMovingNode(movement),
+                                    new StopMovingNode(actor),
                                     new FaceNavTargetNode(movement)
                                 })
                             })

@@ -137,7 +137,13 @@ namespace Pathfinding
 
         private static List<Node> SimplifyPath(List<Node> path)
         {
-            List<Node> simplifiedPath = new List<Node>();
+            if (path.Count == 0)
+            {
+                return path;
+            }
+
+            List<Node> simplifiedPath = new List<Node> { path[0] };
+
             Vector2 prevDirection = Vector2.zero;
             for (int i = 1; i < path.Count; i++)
             {

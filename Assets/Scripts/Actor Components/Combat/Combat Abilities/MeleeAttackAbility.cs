@@ -9,7 +9,9 @@ public class MeleeAttackAbility : CombatAbility
     [SerializeField] private float readyDuration;
     [SerializeField] private AttackEffectArea attackEffectArea;
 
-    public float MaximumReach { get => Vector2.Distance(transform.localPosition, attackEffectArea.TopCornerPos); }
+    public AttackEffectArea AttackEffectArea { get => attackEffectArea; }
+
+    public float MaximumReach { get => Vector2.Distance(transform.localPosition, attackEffectArea.MaxLocalPos); }
 
     public override void Execute(Combat combat, params object[] parameters)
     {
