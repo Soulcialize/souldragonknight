@@ -45,7 +45,7 @@ namespace AiBehaviorTrees
                         // chasing target
                         new SequenceNode(new List<BehaviorNode>()
                         {
-                            new SetCombatTargetPosNode(actor),
+                            new SetMeleePosNode(actor),
                             new SelectorNode(new List<BehaviorNode>()
                             {
                                 new SequenceNode(new List<BehaviorNode>()
@@ -101,7 +101,7 @@ namespace AiBehaviorTrees
                             new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyRangedAttackState)),
                             // face target while readying if target position not locked yet
                             new InverterNode(new HasLockedTargetPositionNode(combat)),
-                            new SetCombatTargetPosNode(actor),
+                            new SetCombatTargetPosNode(),
                             new FaceNavTargetNode(movement)
                         }),
                         new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ActionState)),
