@@ -29,13 +29,13 @@ namespace AiBehaviorTreeNodes
             if (owner.Movement is GroundMovement)
             {
                 navTargetPos = Physics2D.Raycast(
-                    target.transform.position, Vector2.down, Mathf.Infinity, owner.Movement.GroundDetector.SurfacesLayerMask).point;
+                    target.Combat.Collider2d.bounds.center, Vector2.down, Mathf.Infinity, owner.Movement.GroundDetector.SurfacesLayerMask).point;
                 navTargetPos += Vector2.up * owner.Combat.Collider2d.bounds.size.y;
                 owner.Pathfinder.SetFilters(groundNavTargetPositionFilters);
             }
             else if (owner.Movement is AirMovement)
             {
-                navTargetPos = (Vector2)target.Combat.Collider2d.transform.position + target.Combat.Collider2d.offset;
+                navTargetPos = (Vector2)target.Combat.Collider2d.bounds.center + target.Combat.Collider2d.offset;
                 navTargetPos += Vector2.up * owner.Combat.Collider2d.bounds.extents.y;
                 owner.Pathfinder.SetFilters(aerialNavTargetPositionFilters);
             }

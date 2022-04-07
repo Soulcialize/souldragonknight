@@ -37,7 +37,7 @@ namespace AiBehaviorTrees
                             new InverterNode(new SequenceNode(new List<BehaviorNode>()
                             {
                                 // exit ready-attack state if target is no longer in range
-                                new InverterNode(new IsCombatTargetInMeleeRangeNode(movement)),
+                                new InverterNode(new IsCombatTargetInMeleeRangeNode(movement, combat)),
                                 new ExitCombatStateMachineNode(combat)
                             }))
                         }),
@@ -54,7 +54,7 @@ namespace AiBehaviorTrees
                                     new GoToNavTargetNode(actor, true),
                                     new StopMovingNode(movement),
                                     new FaceNavTargetNode(movement),
-                                    new IsCombatTargetInMeleeRangeNode(movement),
+                                    new IsCombatTargetInMeleeRangeNode(movement, combat),
                                     new StartMeleeAttackNode(combat)
                                 }),
                                 new SequenceNode(new List<BehaviorNode>()

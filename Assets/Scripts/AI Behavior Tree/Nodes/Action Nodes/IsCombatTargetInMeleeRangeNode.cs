@@ -9,25 +9,31 @@ namespace AiBehaviorTreeNodes
     {
         private readonly Transform ownerTransform;
         private readonly Movement ownerMovement;
-        
-        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement)
+        private readonly Combat ownerCombat;
+
+        public IsCombatTargetInMeleeRangeNode(Movement ownerMovement, Combat ownerCombat)
         {
             ownerTransform = ownerMovement.transform;
             this.ownerMovement = ownerMovement;
+            this.ownerCombat = ownerCombat;
         }
 
         public override NodeState Execute()
         {
-            Bounds targetColliderBounds = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).Combat.Collider2d.bounds;
+            Collider2D targetCollider = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).Combat.Collider2d;
 
-            if (ownerMovement is GroundMovement groundMovement && targetColliderBounds.center.y > groundMovement.MaxReachableHeight)
+            if (ownerMovement is GroundMovement groundMovement && targetCollider.bounds.center.y > groundMovement.MaxReachableHeight)
             {
+                // target is too high above
                 return NodeState.FAILURE;
             }
 
-            // only fail if target's entire collider is behind actor
-            return ownerMovement.IsFacingRight && targetColliderBounds.max.x < ownerTransform.position.x
-                || !ownerMovement.IsFacingRight && targetColliderBounds.min.x > ownerTransform.position.x
+            AttackEffectArea attackEffectArea =
+                ((MeleeAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE)).AttackEffectArea;
+
+            // check if target's collider is within width of attack effect area on either side
+            return ownerTransform.position.x + attackEffectArea.TopCornerPos.x < targetCollider.bounds.min.x
+                || ownerTransform.position.x - attackEffectArea.TopCornerPos.x > targetCollider.bounds.max.x
                 ? NodeState.FAILURE
                 : NodeState.SUCCESS;
         }
