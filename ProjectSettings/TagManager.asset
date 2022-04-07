@@ -56,3 +56,6 @@ TagManager:
   - name: Knight
     uniqueID: 2967941379
     locked: 0
+  - name: Weapon
+    uniqueID: 2942850939
+    locked: 0

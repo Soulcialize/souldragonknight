@@ -110,6 +110,10 @@ MonoBehaviour:
   - RPC_SyncMessage
   - RPC_CancelExitRequest
   - RPC_RequestExit
+  - RPC_HideProjectileLauncher
+  - RPC_ShowProjectileLauncher
+  - RPC_StartAimingProjectileLauncher
+  - RPC_StopAimingProjectileLauncher
   - RPC_RevealHint
   DisableAutoOpenWizard: 1
   ShowSettings: 0
