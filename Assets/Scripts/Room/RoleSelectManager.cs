@@ -154,6 +154,8 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     {
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         ResetRole();
+        HadDisconnect = false;
+
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(menuSceneName);
     }
