@@ -63,6 +63,11 @@ public class InteractableDetector : MonoBehaviour
 
     private void UpdateNearestInteractable()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interactable nearestInteractable = GetNearestInteractable();
 
         // no nearby interactables
