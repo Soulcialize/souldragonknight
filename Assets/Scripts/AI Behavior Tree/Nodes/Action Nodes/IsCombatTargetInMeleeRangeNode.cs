@@ -38,13 +38,16 @@ namespace AiBehaviorTreeNodes
                 ((MeleeAttackAbility)ownerCombat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_MELEE)).AttackEffectArea;
 
             // check if target's collider is within attack effect area
-            bool isTargetInFrontInMeleeRange = IsTargetInMeleeRange(true, ownerMovement.IsFacingRight, attackEffectArea, targetCollider);
+            bool isTargetInFrontInMeleeRange
+                = IsTargetInMeleeRange(true, ownerMovement.IsFacingRight, ownerTransform, attackEffectArea, targetCollider);
+            
             if (!isBackConsidered)
             {
                 return isTargetInFrontInMeleeRange ? NodeState.SUCCESS : NodeState.FAILURE;
             }
 
-            return isTargetInFrontInMeleeRange || IsTargetInMeleeRange(false, ownerMovement.IsFacingRight, attackEffectArea, targetCollider)
+            return isTargetInFrontInMeleeRange
+                || IsTargetInMeleeRange(false, ownerMovement.IsFacingRight, ownerTransform, attackEffectArea, targetCollider)
                 ? NodeState.SUCCESS
                 : NodeState.FAILURE;
         }
@@ -54,11 +57,12 @@ namespace AiBehaviorTreeNodes
         /// </summary>
         /// <param name="isFrontFacing">Whether to check in front of or behind the actor for the target.</param>
         /// <param name="isFacingRight">Whether the actor is facing right or left.</param>
+        /// <param name="attacker">The attacker's transform component.</param>
         /// <param name="attackEffectArea">The attack effect area to use for checking.</param>
         /// <param name="targetCollider">The target collider to check for.</param>
         /// <returns>True if given target collider is within given attack effect area. False otherwise.</returns>
-        private bool IsTargetInMeleeRange(
-            bool isFrontFacing, bool isFacingRight, AttackEffectArea attackEffectArea, Collider2D targetCollider)
+        public static bool IsTargetInMeleeRange(
+            bool isFrontFacing, bool isFacingRight, Transform attacker, AttackEffectArea attackEffectArea, Collider2D targetCollider)
         {
             if (!isFrontFacing)
             {
@@ -66,11 +70,11 @@ namespace AiBehaviorTreeNodes
             }
 
             Vector2 minPos = isFacingRight
-                ? (Vector2)ownerTransform.position + attackEffectArea.MinLocalPos
-                : (Vector2)ownerTransform.position + new Vector2(-attackEffectArea.MaxLocalPos.x, attackEffectArea.MinLocalPos.y);
+                ? (Vector2)attacker.position + attackEffectArea.MinLocalPos
+                : (Vector2)attacker.position + new Vector2(-attackEffectArea.MaxLocalPos.x, attackEffectArea.MinLocalPos.y);
             Vector2 maxPos = isFacingRight
-                ? (Vector2)ownerTransform.position + attackEffectArea.MaxLocalPos
-                : (Vector2)ownerTransform.position + new Vector2(-attackEffectArea.MinLocalPos.x, attackEffectArea.MaxLocalPos.y);
+                ? (Vector2)attacker.position + attackEffectArea.MaxLocalPos
+                : (Vector2)attacker.position + new Vector2(-attackEffectArea.MinLocalPos.x, attackEffectArea.MaxLocalPos.y);
 
             return minPos.x < targetCollider.bounds.max.x
                 && targetCollider.bounds.min.x < maxPos.x
