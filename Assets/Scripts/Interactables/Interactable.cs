@@ -50,7 +50,7 @@ public abstract class Interactable : MonoBehaviour
         enableStatusUpdateEvent.RemoveAllListeners();
     }
 
-    public abstract void Interact(ActorController initiator, UnityAction endInteractionCallback);
+    protected abstract void Interact(ActorController initiator, UnityAction endInteractionCallback);
 
     public void StartInteraction(ActorController initiator, UnityAction endInteractionCallback)
     {
