@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 766a5d9164512cd43a731c073446c45f, type: 3}
-  m_Name: Background
+  m_Name: Clouds
   m_EditorClassIdentifier: 
-  knightPovSprite: {fileID: 21300000, guid: d24efc3ad8996b14a88c964963ff7513, type: 3}
-  dragonPovSprite: {fileID: 21300000, guid: 86e6446f6d59caa478ef0b99256136af, type: 3}
+  knightPovSprite: {fileID: 21300000, guid: c7a2a0eb9ca4e82469bf173979caa0f8, type: 3}
+  dragonPovSprite: {fileID: 21300000, guid: 6afe6cab563a94643b479cb80683b6a4, type: 3}
