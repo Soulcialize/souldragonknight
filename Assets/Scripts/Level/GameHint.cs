@@ -10,10 +10,20 @@ public class GameHint : MonoBehaviour
     [SerializeField] private PhotonView photonView;
 
     private Coroutine timeout;
+    private bool isEnabled;
+
+    private void Start()
+    {
+        isEnabled = (bool)PhotonNetwork.CurrentRoom
+            .CustomProperties[LevelSelectManager.ROOM_PROPERTIES_HINTS_ENABLED];
+    }
 
     public void StartTimer()
     {
-        timeout = StartCoroutine(RevealHintAfterTimeout());
+        if (isEnabled)
+        {
+            timeout = StartCoroutine(RevealHintAfterTimeout());
+        }
     }
 
     public void StopTimerIfRunning()

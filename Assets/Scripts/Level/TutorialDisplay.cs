@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 using PlayerType = RoleSelectManager.PlayerType;
 
@@ -22,7 +23,10 @@ public class TutorialDisplay : MonoBehaviour
         PlayerType localPlayerType = PlayerSpawner.GetLocalPlayerType();
         foreach (var typeToTutorials in playerTypeToTutorialsDictionary)
         {
-            bool isActive = localPlayerType == typeToTutorials.Key;
+            bool isEnabled = (bool)PhotonNetwork.CurrentRoom
+                .CustomProperties[LevelSelectManager.ROOM_PROPERTIES_HINTS_ENABLED];
+            bool isActive = isEnabled && (localPlayerType == typeToTutorials.Key);
+
             foreach (GameObject tutorialObj in typeToTutorials.Value)
             {
                 tutorialObj.SetActive(isActive);

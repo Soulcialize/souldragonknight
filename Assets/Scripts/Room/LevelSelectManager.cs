@@ -10,40 +10,30 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class LevelSelectManager : MonoBehaviourPunCallbacks
 {
     public static readonly string ROOM_PROPERTIES_LEVELS_CLEARED = "levelsCleared";
+    public static readonly string ROOM_PROPERTIES_HINTS_ENABLED = "hintsEnabled";
     public static readonly string PLAYER_PROPERTIES_LEVEL_SELECTED = "levelSelected";
 
     [SerializeField] private Button startButton;
-    [SerializeField] private string[] gameSceneNames;
-    [SerializeField] private string roleSelectSceneName;
+    [SerializeField] private Toggle hintsToggle;
     [SerializeField] private LevelButton[] levelSelectButtons;
+    [SerializeField] private string roleSelectSceneName;
+    [SerializeField] private string[] gameSceneNames;
 
     private int selectedLevel;
 
     private void Start()
     {
-        int levelsCleared = (int)PhotonNetwork.CurrentRoom.CustomProperties[ROOM_PROPERTIES_LEVELS_CLEARED];
+        int levelsCleared = (int)PhotonNetwork.CurrentRoom
+            .CustomProperties[ROOM_PROPERTIES_LEVELS_CLEARED];
+
+        hintsToggle.SetIsOnWithoutNotify((bool)PhotonNetwork.CurrentRoom
+            .CustomProperties[ROOM_PROPERTIES_HINTS_ENABLED]);
 
         for (int i = 0; i <= levelsCleared; i++)
         {
             levelSelectButtons[i].SetInteractable(true);
         }
-
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            object playerTypeObj = player.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
-            if (playerTypeObj != null)
-            {
-                int levelNumber = (int)playerTypeObj;
-                bool isLocalPlayer = (player == PhotonNetwork.LocalPlayer);
-                levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
-
-                if (isLocalPlayer)
-                {
-                    selectedLevel = levelNumber;
-                }
-            }
-        }
-
+        SetSelectedLevels();
         startButton.interactable = CanStart();
     }
     public static void SelectLevel(int levelNumber)
@@ -57,6 +47,18 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     public static void SetLevelsCleared(int levelsCleared)
     {
         RoomManager.UpdateRoomProperty(ROOM_PROPERTIES_LEVELS_CLEARED, levelsCleared);
+    }
+
+    public void OnHintToggleChange()
+    {
+        SetHintsEnabled(hintsToggle.isOn);
+        photonView.RPC("RPC_FlipHintToggle", RpcTarget.Others);
+    }
+
+
+    public static void SetHintsEnabled(bool isEnabled)
+    {
+        RoomManager.UpdateRoomProperty(ROOM_PROPERTIES_HINTS_ENABLED, isEnabled);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
@@ -78,6 +80,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
             button.UpdateIndicators(levelNumber, isLocalPlayer);
         }
     }
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
@@ -126,6 +129,25 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         photonView.RPC("RPC_LoadRoleSelectLevel", RpcTarget.All);
     }
 
+    private void SetSelectedLevels()
+    {
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            object playerTypeObj = player.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
+            if (playerTypeObj != null)
+            {
+                int levelNumber = (int)playerTypeObj;
+                bool isLocalPlayer = (player == PhotonNetwork.LocalPlayer);
+                levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
+
+                if (isLocalPlayer)
+                {
+                    selectedLevel = levelNumber;
+                }
+            }
+        }
+    }
+
     [PunRPC]
     private void RPC_LoadGameLevel()
     {
@@ -138,5 +160,11 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel(roleSelectSceneName);
         ResetLevelChoice();
+    }
+
+    [PunRPC]
+    private void RPC_FlipHintToggle()
+    {
+        hintsToggle.SetIsOnWithoutNotify(!hintsToggle.isOn);
     }
 }

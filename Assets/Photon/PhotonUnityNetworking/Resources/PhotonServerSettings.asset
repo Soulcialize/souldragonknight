@@ -115,6 +115,7 @@ MonoBehaviour:
   - RPC_StartAimingProjectileLauncher
   - RPC_StopAimingProjectileLauncher
   - RPC_RevealHint
+  - RPC_FlipHintToggle
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
