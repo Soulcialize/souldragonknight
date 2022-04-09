@@ -16,7 +16,6 @@ public class GameHint : MonoBehaviour
     {
         isEnabled = (bool)PhotonNetwork.CurrentRoom
             .CustomProperties[LevelSelectManager.ROOM_PROPERTIES_HINTS_ENABLED];
-        Debug.Log(isEnabled);
     }
 
     public void StartTimer()
