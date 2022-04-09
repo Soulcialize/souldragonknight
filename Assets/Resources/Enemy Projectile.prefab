@@ -80,6 +80,7 @@ MonoBehaviour:
   friendliesLayer:
     serializedVersion: 2
     m_Bits: 0
+  hitEffectPrefab: {fileID: 7355031264218379094, guid: 98c9cf59b585ba0409f0e19fedd577a7, type: 3}
   hitEvent:
     m_PersistentCalls:
       m_Calls: []

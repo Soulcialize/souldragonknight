@@ -25,6 +25,10 @@ public class RangedProjectile : MonoBehaviour
 
     [Space(10)]
 
+    [SerializeField] private RangedProjectileHitEffect hitEffectPrefab;
+
+    [Space(10)]
+
     [SerializeField] private UnityEvent hitEvent;
 
     private Vector2 startPos;
@@ -68,7 +72,7 @@ public class RangedProjectile : MonoBehaviour
             rigidbody2d.velocity = Direction * speed;
             if (Vector2.Distance(startPos, transform.position) > maxDistance)
             {
-                EndLifecycle();
+                EndLifecycle(true);
             }
         }
     }
@@ -87,15 +91,20 @@ public class RangedProjectile : MonoBehaviour
         throw new System.ArgumentException($"Collider height calculation not implemented");
     }
 
-    private void EndLifecycle()
+    private void EndLifecycle(bool spawnHitEffect)
     {
-        photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All);
+        photonView.RPC("RPC_EndProjectileLifecycle", RpcTarget.All, spawnHitEffect);
     }
 
     [PunRPC]
-    private void RPC_EndProjectileLifecycle()
+    private void RPC_EndProjectileLifecycle(bool spawnHitEffect)
     {
         hitEvent.Invoke();
+        if (spawnHitEffect)
+        {
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 
@@ -124,7 +133,7 @@ public class RangedProjectile : MonoBehaviour
                 actorHit.Combat.Hurt();
             }
 
-            EndLifecycle();
+            EndLifecycle(true);
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, friendliesLayer))
         {
@@ -132,7 +141,7 @@ public class RangedProjectile : MonoBehaviour
 
             // projectile hit friendly
             actorHit.Combat.Buff();
-            EndLifecycle();
+            EndLifecycle(false);
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
@@ -143,7 +152,7 @@ public class RangedProjectile : MonoBehaviour
                 breakableWall.HandleHit();
             }
 
-            EndLifecycle();
+            EndLifecycle(true);
         } 
     }
 }
