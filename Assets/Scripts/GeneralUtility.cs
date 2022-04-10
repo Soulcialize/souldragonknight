@@ -5,6 +5,26 @@ using UnityEngine;
 public static class GeneralUtility
 {
     #region Public Methods
+    /// <summary>
+    /// Returns the clockwise angle from the global up direction to the given direction.
+    /// </summary>
+    /// <param name="direction">The direction from one vector position to another to convert.</param>
+    public static float ConvertDirectionToAngle(Vector2 direction)
+    {
+        float angle = -Vector2.SignedAngle(Vector2.up, direction);
+        return angle < 0 ? angle + 360f : angle;
+    }
+
+    /// <summary>
+    /// Returns the normalized vector that is parted from the global up direction by the given angle.
+    /// </summary>
+    /// <param name="angle">The clockwise angle from the global up direction that defines the direction vector.</param>
+    public static Vector2 ConvertAngleToDirection(float angle)
+    {
+        float angleRad = angle * Mathf.Deg2Rad;
+        return new Vector2(Mathf.Sin(angleRad), Mathf.Cos(angleRad));
+    }
+
     public static bool IsLayerInLayerMask(int layer, LayerMask layerMask)
     {
         return layerMask == (layerMask | (1 << layer));
