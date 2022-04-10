@@ -27,11 +27,6 @@ public class Detection : MonoBehaviour
         halfFov = fov / 2f;
     }
 
-    private void LateUpdate()
-    {
-        DrawDebugViewAngle();
-    }
-
     public bool IsVisible(Collider2D target)
     {
         Vector2 actorPosition = actorTransform.position;
@@ -64,16 +59,5 @@ public class Detection : MonoBehaviour
     public void LookStraight(bool isFacingRight)
     {
         CurrViewAngle = isFacingRight ? STRAIGHT_ANGLE_RIGHT : STRAIGHT_ANGLE_LEFT;
-    }
-
-    private void DrawDebugViewAngle()
-    {
-        if (actorTransform != null)
-        {
-            RaycastHit2D raycast = Physics2D.Raycast(
-                actorTransform.position, GeneralUtility.ConvertAngleToDirection(CurrViewAngle), viewDistance, viewLayer);
-            Debug.Log($"Angle: {CurrViewAngle}; Direction: {GeneralUtility.ConvertAngleToDirection(CurrViewAngle)}");
-            Debug.DrawLine(actorTransform.position, raycast.point, Color.magenta);
-        }
     }
 }
