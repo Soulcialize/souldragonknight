@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class EnemyController : ActorController
 {
-    [Tooltip("This toggle is for allowing enemy visibility during debugging only.")]
-    [SerializeField] protected bool hideVisibility;
+    [SerializeField] protected Detection detection;
     [SerializeField] protected Visibility visibility;
     [SerializeField] protected float hurtRevealDuration;
+
+    public Detection Detection { get => detection; }
 
     public BehaviorTreesManager BehaviorTreesManager { get; private set; }
 
@@ -15,11 +16,7 @@ public abstract class EnemyController : ActorController
     {
         if (photonView.IsMine)
         {
-            if (hideVisibility)
-            {
-                visibility.Hide();
-            }
-
+            visibility.Hide();
             BehaviorTreesManager = InitializeBehaviorTreesManager();
         }
     }
@@ -38,10 +35,7 @@ public abstract class EnemyController : ActorController
     protected override void HandleHurtEvent()
     {
         base.HandleHurtEvent();
-        if (hideVisibility)
-        {
-            visibility.RevealBriefly(hurtRevealDuration);
-        }
+        visibility.RevealBriefly(hurtRevealDuration);
     }
 
     protected override void HandleDeathEvent()
