@@ -8,24 +8,33 @@ namespace AiBehaviorTrees
 {
     public static class CombatTreeConstructor
     {
+        private static BehaviorNode CreateDetectionNodes(ActorController actor, Combat combat)
+        {
+            // get visible combat target
+            return new SelectorNode(new List<BehaviorNode>()
+            {
+                new GetVisibleCombatTargetNode(combat),
+                // failed to get visible combat target; fail out of tree
+                new InverterNode(new SequenceNode(new List<BehaviorNode>()
+                {
+                    new SucceederNode(new SequenceNode(new List<BehaviorNode>()
+                    {
+                        // exit state machine if readying attack
+                        new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
+                        new ExitCombatStateMachineNode(combat)
+                    })),
+                    new StopMovingNode(actor)
+                }))
+            });
+        }
+
         public static BehaviorTree ConstructMeleeCombatTree(ActorController actor, Movement movement, Combat combat)
         {
             return new BehaviorTree(
                 new GetVisibleCombatTargetNode(combat),
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    // get visible combat target
-                    new SelectorNode(new List<BehaviorNode>()
-                    {
-                        new GetVisibleCombatTargetNode(combat),
-                        // failed to get visible combat target; fail out of tree
-                        new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
-                        {
-                            // exit state machine if readying attack
-                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
-                            new ExitCombatStateMachineNode(combat)
-                        })))
-                    }),
+                    CreateDetectionNodes(actor, combat),
                     // found visible combat target
                     new SelectorNode(new List<BehaviorNode>()
                     {
@@ -79,18 +88,7 @@ namespace AiBehaviorTrees
                 }),
                 new SequenceNode(new List<BehaviorNode>()
                 {
-                    // get visible combat target
-                    new SelectorNode(new List<BehaviorNode>()
-                    {
-                        new GetVisibleCombatTargetNode(combat),
-                        // failed to get visible combat target; fail out of tree
-                        new InverterNode(new SucceederNode(new SequenceNode(new List<BehaviorNode>()
-                        {
-                            // exit state machine if readying attack
-                            new IsStateMachineInStateNode(combat.ActionStateMachine, typeof(ReadyAttackState)),
-                            new ExitCombatStateMachineNode(combat)
-                        })))
-                    }),
+                    CreateDetectionNodes(actor, combat),
                     // found visible combat target
                     new SelectorNode(new List<BehaviorNode>()
                     {
