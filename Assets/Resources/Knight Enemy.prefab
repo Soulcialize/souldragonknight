@@ -415,7 +415,7 @@ MonoBehaviour:
   photonView: {fileID: 5693331145748344914}
   combat: {fileID: 7568959259614269199}
   pathfinder: {fileID: 6627211745345578115}
-  hideVisibility: 1
+  hideVisibility: 0
   visibility: {fileID: 7653389214318838471}
   hurtRevealDuration: 0.8
   movement: {fileID: 5693331145748344913}
