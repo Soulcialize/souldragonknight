@@ -624,6 +624,7 @@ MonoBehaviour:
   photonView: {fileID: 2580839893817942634}
   combat: {fileID: 2580839893817942632}
   pathfinder: {fileID: 4523498490414467193}
+  hideVisibility: 0
   detection: {fileID: 3624367314101692565}
   visibility: {fileID: 2580839893817942635}
   hurtRevealDuration: 0.6
@@ -805,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fov: 50
-  viewDistance: 10
+  viewDistance: 15
   viewLayer:
     serializedVersion: 2
     m_Bits: 131392
