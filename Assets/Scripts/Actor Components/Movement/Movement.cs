@@ -23,6 +23,7 @@ public abstract class Movement : MonoBehaviour
 
     [Space(10)]
 
+    [Tooltip("Whether the actor's sprite faces right or left by default.")]
     [SerializeField] private bool isDefaultFacingRight = true;
     [SerializeField] private float defaultStoppingDistanceFromNavTargets;
 
@@ -46,6 +47,8 @@ public abstract class Movement : MonoBehaviour
     public Rigidbody2D Rigidbody2d { get => rigidbody2d; }
     public Animator Animator { get => animator; }
     public SurfaceDetector GroundDetector { get => groundDetector; }
+
+    public bool IsDefaultFacingRight { get => isDefaultFacingRight; }
     public float DefaultStoppingDistanceFromNavTargets { get => defaultStoppingDistanceFromNavTargets; }
     public float NavTargetSlowDistanceThreshold { get => navSlowDistanceThreshold; }
     public float NavTargetFastDistanceThreshold { get => navFastDistanceThreshold; }

@@ -16,10 +16,7 @@ public class RangedKnightEnemyController : EnemyController
 
         if (photonView.IsMine)
         {
-            if (hideVisibility)
-            {
-                projectileLauncherVisibility.Hide();
-            }
+            projectileLauncherVisibility.Hide();
         }
     }
 
@@ -28,11 +25,10 @@ public class RangedKnightEnemyController : EnemyController
         return new BehaviorTreesManager(
             new Dictionary<BehaviorTree.Function, BehaviorTree>()
             {
-                {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructRangedCombatTree(this, movement, combat)
-                }
+                { BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructRangedCombatTree(this, movement, combat, detection) },
+                { BehaviorTree.Function.IDLE, IdleTreeConstructor.ConstructIdleTree(this, movement, combat, detection) }
             },
-            BehaviorTree.Function.COMBAT);
+            BehaviorTree.Function.IDLE);
     }
 
     protected override void HandleDeathEvent()

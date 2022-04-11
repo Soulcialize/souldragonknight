@@ -15,11 +15,10 @@ public class DragonEnemyController : EnemyController
             new Dictionary<BehaviorTree.Function, BehaviorTree>()
             {
                 // construct behavior trees
-                {
-                    BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(this, movement, combat)
-                }
+                { BehaviorTree.Function.COMBAT, CombatTreeConstructor.ConstructMeleeCombatTree(this, movement, combat, detection) },
+                { BehaviorTree.Function.IDLE, IdleTreeConstructor.ConstructIdleTree(this, movement, combat, detection) }
             },
-            BehaviorTree.Function.COMBAT);
+            BehaviorTree.Function.IDLE);
     }
 
     protected override void HandleDeathEvent()

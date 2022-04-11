@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 8780044099606125065}
   - component: {fileID: 2580839893817942635}
   - component: {fileID: 4523498490414467193}
+  - component: {fileID: 3624367314101692565}
   - component: {fileID: 2580839893817942634}
   - component: {fileID: 2580839893817942645}
   - component: {fileID: 2580839893817942644}
@@ -623,7 +624,7 @@ MonoBehaviour:
   photonView: {fileID: 2580839893817942634}
   combat: {fileID: 2580839893817942632}
   pathfinder: {fileID: 4523498490414467193}
-  hideVisibility: 1
+  detection: {fileID: 3624367314101692565}
   visibility: {fileID: 2580839893817942635}
   hurtRevealDuration: 0.6
   movement: {fileID: 2580839893817942633}
@@ -791,6 +792,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider2d: {fileID: 2580839893422323836}
   movement: {fileID: 2580839893817942633}
+--- !u!114 &3624367314101692565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580839893817942653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fov: 50
+  viewDistance: 10
+  viewLayer:
+    serializedVersion: 2
+    m_Bits: 131392
 --- !u!114 &2580839893817942634
 MonoBehaviour:
   m_ObjectHideFlags: 0
