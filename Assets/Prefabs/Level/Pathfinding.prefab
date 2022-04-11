@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6646830660512496571}
   - component: {fileID: 7964667273574457280}
   - component: {fileID: -4079278744649468255}
+  - component: {fileID: 2661391498423079531}
   - component: {fileID: 3353630529265617265}
   m_Layer: 0
   m_Name: Pathfinding
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8fb909a49e8a6944b66bea4e829e292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2661391498423079531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295373995106864164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42144e868a963940b6c650f09abdc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3353630529265617265

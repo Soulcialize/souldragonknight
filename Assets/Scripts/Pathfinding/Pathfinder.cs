@@ -54,7 +54,7 @@ namespace Pathfinding
 
                 foreach (Node neighbour in currentNode.Neighbours)
                 {
-                    if (!neighbour.IsWalkable || closedSet.Contains(neighbour))
+                    if (!neighbour.IsWalkable || neighbour.IsOccupied || closedSet.Contains(neighbour))
                     {
                         continue;
                     }
