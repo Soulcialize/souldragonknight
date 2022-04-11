@@ -141,7 +141,10 @@ public class PathfindingUnit : MonoBehaviour
 
             Node currentTargetNode = path[targetNodeIndex];
             if (movement is GroundMovement groundMovement
-                && currentTargetNode.WorldPos.y > currentPosNode.WorldPos.y)
+                && currentTargetNode.WorldPos.y > currentPosNode.WorldPos.y
+                && currentTargetNode.DistanceFromSurfaceBelow <= currentPosNode.DistanceFromSurfaceBelow + NodeGrid.Instance.NodeRadius
+                && (movement.IsFacingRight && currentTargetNode.WorldPos.x > currentPosNode.WorldPos.x
+                    || !movement.IsFacingRight && currentTargetNode.WorldPos.x < currentPosNode.WorldPos.x))
             {
                 groundMovement.Jump();
             }
