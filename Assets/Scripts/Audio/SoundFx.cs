@@ -42,7 +42,9 @@ public class SoundFx : Sound
         INSUFFICIENT_RESOURCE,
         GATE_OPENING,
         GATE_FULLY_OPEN,
-        WALL_DESTROY
+        RUNE_SWITCH,
+        WALL_DESTROY,
+        PROJECTILE_EXPLOSION
     }
 
     [Space(10)]

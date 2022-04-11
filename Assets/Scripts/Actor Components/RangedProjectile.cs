@@ -103,6 +103,7 @@ public class RangedProjectile : MonoBehaviour
         if (spawnHitEffect)
         {
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.PROJECTILE_EXPLOSION);
         }
 
         Destroy(gameObject);
