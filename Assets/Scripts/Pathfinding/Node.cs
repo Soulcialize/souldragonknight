@@ -25,6 +25,8 @@ namespace Pathfinding
 
         public int HeapIndex { get => heapIndex; set => heapIndex = value; }
 
+        public bool IsOccupied { get; set; }
+
         public Node(Vector2 worldPos, int gridX, int gridY, bool isWalkable, float distanceFromSurfaceBelow)
         {
             WorldPos = worldPos;
@@ -65,6 +67,22 @@ namespace Pathfinding
 
             // node with lower F Cost / H Cost should have higher priority
             return -result;
+        }
+
+        public override bool Equals(object obj)
+        {
+            Node otherNode = obj as Node;
+            if (otherNode == null)
+            {
+                return false;
+            }
+
+            return GridX == otherNode.GridX && GridY == otherNode.GridY;
+        }
+
+        public override int GetHashCode()
+        {
+            return GridX.GetHashCode() ^ GridY.GetHashCode();
         }
     }
 }
