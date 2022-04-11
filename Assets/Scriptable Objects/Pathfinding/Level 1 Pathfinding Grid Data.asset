@@ -24458,7 +24458,7 @@ MonoBehaviour:
     gridX: 89
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.39012542
+    distanceFromSurfaceBelow: 0.49012533
     neighbours:
     - {x: 88, y: 7}
     - {x: 88, y: 8}
@@ -24472,7 +24472,7 @@ MonoBehaviour:
     gridX: 89
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 1.2901254
     neighbours:
     - {x: 88, y: 8}
     - {x: 88, y: 9}
@@ -24486,7 +24486,7 @@ MonoBehaviour:
     gridX: 89
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 2.0901253
     neighbours:
     - {x: 88, y: 9}
     - {x: 88, y: 10}
@@ -24500,7 +24500,7 @@ MonoBehaviour:
     gridX: 89
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.8901253
     neighbours:
     - {x: 88, y: 10}
     - {x: 88, y: 11}
@@ -24732,7 +24732,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.39012542
+    distanceFromSurfaceBelow: 0.49012533
     neighbours:
     - {x: 89, y: 7}
     - {x: 89, y: 8}
@@ -24746,7 +24746,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 1.2901254
     neighbours:
     - {x: 89, y: 8}
     - {x: 89, y: 9}
@@ -24760,7 +24760,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 2.0901253
     neighbours:
     - {x: 89, y: 9}
     - {x: 89, y: 10}
@@ -24774,7 +24774,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.8901253
     neighbours:
     - {x: 89, y: 10}
     - {x: 89, y: 11}
@@ -24788,7 +24788,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 3.6901252
     neighbours:
     - {x: 89, y: 11}
     - {x: 89, y: 12}
@@ -24802,7 +24802,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 89, y: 12}
     - {x: 89, y: 13}
@@ -24816,7 +24816,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 89, y: 13}
     - {x: 89, y: 14}
@@ -24830,7 +24830,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 89, y: 14}
     - {x: 89, y: 15}
@@ -24844,7 +24844,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 89, y: 15}
     - {x: 89, y: 16}
@@ -24858,7 +24858,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 89, y: 16}
     - {x: 89, y: 17}
@@ -24872,7 +24872,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 89, y: 17}
     - {x: 89, y: 18}
@@ -24886,7 +24886,7 @@ MonoBehaviour:
     gridX: 90
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 89, y: 18}
     - {x: 89, y: 19}
@@ -25006,7 +25006,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.39012542
+    distanceFromSurfaceBelow: 0.49012533
     neighbours:
     - {x: 90, y: 7}
     - {x: 90, y: 8}
@@ -25020,7 +25020,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 1.2901254
     neighbours:
     - {x: 90, y: 8}
     - {x: 90, y: 9}
@@ -25034,7 +25034,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 2.0901253
     neighbours:
     - {x: 90, y: 9}
     - {x: 90, y: 10}
@@ -25048,7 +25048,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.8901253
     neighbours:
     - {x: 90, y: 10}
     - {x: 90, y: 11}
@@ -25062,7 +25062,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 3.6901252
     neighbours:
     - {x: 90, y: 11}
     - {x: 90, y: 12}
@@ -25076,7 +25076,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 90, y: 12}
     - {x: 90, y: 13}
@@ -25090,7 +25090,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 90, y: 13}
     - {x: 90, y: 14}
@@ -25104,7 +25104,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 90, y: 14}
     - {x: 90, y: 15}
@@ -25118,7 +25118,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 90, y: 15}
     - {x: 90, y: 16}
@@ -25132,7 +25132,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 90, y: 16}
     - {x: 90, y: 17}
@@ -25146,7 +25146,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 90, y: 17}
     - {x: 90, y: 18}
@@ -25160,7 +25160,7 @@ MonoBehaviour:
     gridX: 91
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 90, y: 18}
     - {x: 90, y: 19}
@@ -25280,7 +25280,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.39012542
+    distanceFromSurfaceBelow: 0.49012533
     neighbours:
     - {x: 91, y: 7}
     - {x: 91, y: 8}
@@ -25294,7 +25294,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 1.2901254
     neighbours:
     - {x: 91, y: 8}
     - {x: 91, y: 9}
@@ -25308,7 +25308,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 2.0901253
     neighbours:
     - {x: 91, y: 9}
     - {x: 91, y: 10}
@@ -25322,7 +25322,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.8901253
     neighbours:
     - {x: 91, y: 10}
     - {x: 91, y: 11}
@@ -25336,7 +25336,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 3.6901252
     neighbours:
     - {x: 91, y: 11}
     - {x: 91, y: 12}
@@ -25350,7 +25350,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 91, y: 12}
     - {x: 91, y: 13}
@@ -25364,7 +25364,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 91, y: 13}
     - {x: 91, y: 14}
@@ -25378,7 +25378,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 91, y: 14}
     - {x: 91, y: 15}
@@ -25392,7 +25392,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 91, y: 15}
     - {x: 91, y: 16}
@@ -25406,7 +25406,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 91, y: 16}
     - {x: 91, y: 17}
@@ -25420,7 +25420,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 91, y: 17}
     - {x: 91, y: 18}
@@ -25434,7 +25434,7 @@ MonoBehaviour:
     gridX: 92
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 91, y: 18}
     - {x: 91, y: 19}
@@ -25497,8 +25497,8 @@ MonoBehaviour:
   - worldPos: {x: 19.800003, y: -2.9999998}
     gridX: 93
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 92, y: 3}
     - {x: 92, y: 4}
@@ -25553,8 +25553,8 @@ MonoBehaviour:
   - worldPos: {x: 19.800003, y: 0.20000029}
     gridX: 93
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.4140001
     neighbours:
     - {x: 92, y: 7}
     - {x: 92, y: 8}
@@ -25568,7 +25568,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.40399987
+    distanceFromSurfaceBelow: 1.2140001
     neighbours:
     - {x: 92, y: 8}
     - {x: 92, y: 9}
@@ -25582,7 +25582,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2039999
+    distanceFromSurfaceBelow: 2.0140002
     neighbours:
     - {x: 92, y: 9}
     - {x: 92, y: 10}
@@ -25596,7 +25596,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.004
+    distanceFromSurfaceBelow: 2.8140001
     neighbours:
     - {x: 92, y: 10}
     - {x: 92, y: 11}
@@ -25610,7 +25610,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.804
+    distanceFromSurfaceBelow: 3.614
     neighbours:
     - {x: 92, y: 11}
     - {x: 92, y: 12}
@@ -25624,7 +25624,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6039999
+    distanceFromSurfaceBelow: 4.414
     neighbours:
     - {x: 92, y: 12}
     - {x: 92, y: 13}
@@ -25638,7 +25638,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.404
+    distanceFromSurfaceBelow: 5.214
     neighbours:
     - {x: 92, y: 13}
     - {x: 92, y: 14}
@@ -25652,7 +25652,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.204
+    distanceFromSurfaceBelow: 6.0140004
     neighbours:
     - {x: 92, y: 14}
     - {x: 92, y: 15}
@@ -25666,7 +25666,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.004
+    distanceFromSurfaceBelow: 6.8140006
     neighbours:
     - {x: 92, y: 15}
     - {x: 92, y: 16}
@@ -25680,7 +25680,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8040004
+    distanceFromSurfaceBelow: 7.614001
     neighbours:
     - {x: 92, y: 16}
     - {x: 92, y: 17}
@@ -25694,7 +25694,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6040006
+    distanceFromSurfaceBelow: 8.4140005
     neighbours:
     - {x: 92, y: 17}
     - {x: 92, y: 18}
@@ -25708,7 +25708,7 @@ MonoBehaviour:
     gridX: 93
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.404
+    distanceFromSurfaceBelow: 9.214001
     neighbours:
     - {x: 92, y: 18}
     - {x: 92, y: 19}
@@ -25771,8 +25771,8 @@ MonoBehaviour:
   - worldPos: {x: 20.599998, y: -2.9999998}
     gridX: 94
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 93, y: 3}
     - {x: 93, y: 4}
@@ -25827,8 +25827,8 @@ MonoBehaviour:
   - worldPos: {x: 20.599998, y: 0.20000029}
     gridX: 94
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.4140001
     neighbours:
     - {x: 93, y: 7}
     - {x: 93, y: 8}
@@ -25842,7 +25842,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.40399987
+    distanceFromSurfaceBelow: 1.2140001
     neighbours:
     - {x: 93, y: 8}
     - {x: 93, y: 9}
@@ -25856,7 +25856,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2039999
+    distanceFromSurfaceBelow: 2.0140002
     neighbours:
     - {x: 93, y: 9}
     - {x: 93, y: 10}
@@ -25870,7 +25870,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.004
+    distanceFromSurfaceBelow: 2.8140001
     neighbours:
     - {x: 93, y: 10}
     - {x: 93, y: 11}
@@ -25884,7 +25884,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.804
+    distanceFromSurfaceBelow: 3.614
     neighbours:
     - {x: 93, y: 11}
     - {x: 93, y: 12}
@@ -25898,7 +25898,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6039999
+    distanceFromSurfaceBelow: 4.414
     neighbours:
     - {x: 93, y: 12}
     - {x: 93, y: 13}
@@ -25912,7 +25912,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.404
+    distanceFromSurfaceBelow: 5.214
     neighbours:
     - {x: 93, y: 13}
     - {x: 93, y: 14}
@@ -25926,7 +25926,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.204
+    distanceFromSurfaceBelow: 6.0140004
     neighbours:
     - {x: 93, y: 14}
     - {x: 93, y: 15}
@@ -25940,7 +25940,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.004
+    distanceFromSurfaceBelow: 6.8140006
     neighbours:
     - {x: 93, y: 15}
     - {x: 93, y: 16}
@@ -25954,7 +25954,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8040004
+    distanceFromSurfaceBelow: 7.614001
     neighbours:
     - {x: 93, y: 16}
     - {x: 93, y: 17}
@@ -25968,7 +25968,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6040006
+    distanceFromSurfaceBelow: 8.4140005
     neighbours:
     - {x: 93, y: 17}
     - {x: 93, y: 18}
@@ -25982,7 +25982,7 @@ MonoBehaviour:
     gridX: 94
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.404
+    distanceFromSurfaceBelow: 9.214001
     neighbours:
     - {x: 93, y: 18}
     - {x: 93, y: 19}
@@ -26045,8 +26045,8 @@ MonoBehaviour:
   - worldPos: {x: 21.400002, y: -2.9999998}
     gridX: 95
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 94, y: 3}
     - {x: 94, y: 4}
@@ -26101,8 +26101,8 @@ MonoBehaviour:
   - worldPos: {x: 21.400002, y: 0.20000029}
     gridX: 95
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.4140001
     neighbours:
     - {x: 94, y: 7}
     - {x: 94, y: 8}
@@ -26116,7 +26116,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.40399987
+    distanceFromSurfaceBelow: 1.2140001
     neighbours:
     - {x: 94, y: 8}
     - {x: 94, y: 9}
@@ -26130,7 +26130,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2039999
+    distanceFromSurfaceBelow: 2.0140002
     neighbours:
     - {x: 94, y: 9}
     - {x: 94, y: 10}
@@ -26144,7 +26144,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.004
+    distanceFromSurfaceBelow: 2.8140001
     neighbours:
     - {x: 94, y: 10}
     - {x: 94, y: 11}
@@ -26158,7 +26158,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.804
+    distanceFromSurfaceBelow: 3.614
     neighbours:
     - {x: 94, y: 11}
     - {x: 94, y: 12}
@@ -26172,7 +26172,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6039999
+    distanceFromSurfaceBelow: 4.414
     neighbours:
     - {x: 94, y: 12}
     - {x: 94, y: 13}
@@ -26186,7 +26186,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.404
+    distanceFromSurfaceBelow: 5.214
     neighbours:
     - {x: 94, y: 13}
     - {x: 94, y: 14}
@@ -26200,7 +26200,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.204
+    distanceFromSurfaceBelow: 6.0140004
     neighbours:
     - {x: 94, y: 14}
     - {x: 94, y: 15}
@@ -26214,7 +26214,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.004
+    distanceFromSurfaceBelow: 6.8140006
     neighbours:
     - {x: 94, y: 15}
     - {x: 94, y: 16}
@@ -26228,7 +26228,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8040004
+    distanceFromSurfaceBelow: 7.614001
     neighbours:
     - {x: 94, y: 16}
     - {x: 94, y: 17}
@@ -26242,7 +26242,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6040006
+    distanceFromSurfaceBelow: 8.4140005
     neighbours:
     - {x: 94, y: 17}
     - {x: 94, y: 18}
@@ -26256,7 +26256,7 @@ MonoBehaviour:
     gridX: 95
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.404
+    distanceFromSurfaceBelow: 9.214001
     neighbours:
     - {x: 94, y: 18}
     - {x: 94, y: 19}
@@ -26319,8 +26319,8 @@ MonoBehaviour:
   - worldPos: {x: 22.200005, y: -2.9999998}
     gridX: 96
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 95, y: 3}
     - {x: 95, y: 4}
@@ -26375,8 +26375,8 @@ MonoBehaviour:
   - worldPos: {x: 22.200005, y: 0.20000029}
     gridX: 96
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.4140001
     neighbours:
     - {x: 95, y: 7}
     - {x: 95, y: 8}
@@ -26390,7 +26390,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.40399987
+    distanceFromSurfaceBelow: 1.2140001
     neighbours:
     - {x: 95, y: 8}
     - {x: 95, y: 9}
@@ -26404,7 +26404,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2039999
+    distanceFromSurfaceBelow: 2.0140002
     neighbours:
     - {x: 95, y: 9}
     - {x: 95, y: 10}
@@ -26418,7 +26418,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.004
+    distanceFromSurfaceBelow: 2.8140001
     neighbours:
     - {x: 95, y: 10}
     - {x: 95, y: 11}
@@ -26432,7 +26432,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.804
+    distanceFromSurfaceBelow: 3.614
     neighbours:
     - {x: 95, y: 11}
     - {x: 95, y: 12}
@@ -26446,7 +26446,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6039999
+    distanceFromSurfaceBelow: 4.414
     neighbours:
     - {x: 95, y: 12}
     - {x: 95, y: 13}
@@ -26460,7 +26460,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.404
+    distanceFromSurfaceBelow: 5.214
     neighbours:
     - {x: 95, y: 13}
     - {x: 95, y: 14}
@@ -26474,7 +26474,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.204
+    distanceFromSurfaceBelow: 6.0140004
     neighbours:
     - {x: 95, y: 14}
     - {x: 95, y: 15}
@@ -26488,7 +26488,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.004
+    distanceFromSurfaceBelow: 6.8140006
     neighbours:
     - {x: 95, y: 15}
     - {x: 95, y: 16}
@@ -26502,7 +26502,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8040004
+    distanceFromSurfaceBelow: 7.614001
     neighbours:
     - {x: 95, y: 16}
     - {x: 95, y: 17}
@@ -26516,7 +26516,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6040006
+    distanceFromSurfaceBelow: 8.4140005
     neighbours:
     - {x: 95, y: 17}
     - {x: 95, y: 18}
@@ -26530,7 +26530,7 @@ MonoBehaviour:
     gridX: 96
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.404
+    distanceFromSurfaceBelow: 9.214001
     neighbours:
     - {x: 95, y: 18}
     - {x: 95, y: 19}
@@ -26607,8 +26607,8 @@ MonoBehaviour:
   - worldPos: {x: 23, y: -2.1999998}
     gridX: 97
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 96, y: 4}
     - {x: 96, y: 5}
@@ -26621,8 +26621,8 @@ MonoBehaviour:
   - worldPos: {x: 23, y: -1.3999996}
     gridX: 97
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 96, y: 5}
     - {x: 96, y: 6}
@@ -26663,8 +26663,8 @@ MonoBehaviour:
   - worldPos: {x: 23, y: 1}
     gridX: 97
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.7730001
     neighbours:
     - {x: 96, y: 8}
     - {x: 96, y: 9}
@@ -26678,7 +26678,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300094
+    distanceFromSurfaceBelow: 1.5730002
     neighbours:
     - {x: 96, y: 9}
     - {x: 96, y: 10}
@@ -26692,7 +26692,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.213001
+    distanceFromSurfaceBelow: 2.3730001
     neighbours:
     - {x: 96, y: 10}
     - {x: 96, y: 11}
@@ -26706,7 +26706,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.013001
+    distanceFromSurfaceBelow: 3.173
     neighbours:
     - {x: 96, y: 11}
     - {x: 96, y: 12}
@@ -26720,7 +26720,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.813001
+    distanceFromSurfaceBelow: 3.973
     neighbours:
     - {x: 96, y: 12}
     - {x: 96, y: 13}
@@ -26734,7 +26734,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130009
+    distanceFromSurfaceBelow: 4.7730002
     neighbours:
     - {x: 96, y: 13}
     - {x: 96, y: 14}
@@ -26748,7 +26748,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.413001
+    distanceFromSurfaceBelow: 5.5730004
     neighbours:
     - {x: 96, y: 14}
     - {x: 96, y: 15}
@@ -26762,7 +26762,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2130013
+    distanceFromSurfaceBelow: 6.3730006
     neighbours:
     - {x: 96, y: 15}
     - {x: 96, y: 16}
@@ -26776,7 +26776,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0130014
+    distanceFromSurfaceBelow: 7.173001
     neighbours:
     - {x: 96, y: 16}
     - {x: 96, y: 17}
@@ -26790,7 +26790,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8130016
+    distanceFromSurfaceBelow: 7.973001
     neighbours:
     - {x: 96, y: 17}
     - {x: 96, y: 18}
@@ -26804,7 +26804,7 @@ MonoBehaviour:
     gridX: 97
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.613002
+    distanceFromSurfaceBelow: 8.773001
     neighbours:
     - {x: 96, y: 18}
     - {x: 96, y: 19}
@@ -26881,8 +26881,8 @@ MonoBehaviour:
   - worldPos: {x: 23.800003, y: -2.1999998}
     gridX: 98
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 97, y: 4}
     - {x: 97, y: 5}
@@ -26895,8 +26895,8 @@ MonoBehaviour:
   - worldPos: {x: 23.800003, y: -1.3999996}
     gridX: 98
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 97, y: 5}
     - {x: 97, y: 6}
@@ -26937,8 +26937,8 @@ MonoBehaviour:
   - worldPos: {x: 23.800003, y: 1}
     gridX: 98
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.7730001
     neighbours:
     - {x: 97, y: 8}
     - {x: 97, y: 9}
@@ -26952,7 +26952,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300094
+    distanceFromSurfaceBelow: 1.5730002
     neighbours:
     - {x: 97, y: 9}
     - {x: 97, y: 10}
@@ -26966,7 +26966,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.213001
+    distanceFromSurfaceBelow: 2.3730001
     neighbours:
     - {x: 97, y: 10}
     - {x: 97, y: 11}
@@ -26980,7 +26980,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.013001
+    distanceFromSurfaceBelow: 3.173
     neighbours:
     - {x: 97, y: 11}
     - {x: 97, y: 12}
@@ -26994,7 +26994,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.813001
+    distanceFromSurfaceBelow: 3.973
     neighbours:
     - {x: 97, y: 12}
     - {x: 97, y: 13}
@@ -27008,7 +27008,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130009
+    distanceFromSurfaceBelow: 4.7730002
     neighbours:
     - {x: 97, y: 13}
     - {x: 97, y: 14}
@@ -27022,7 +27022,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.413001
+    distanceFromSurfaceBelow: 5.5730004
     neighbours:
     - {x: 97, y: 14}
     - {x: 97, y: 15}
@@ -27036,7 +27036,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2130013
+    distanceFromSurfaceBelow: 6.3730006
     neighbours:
     - {x: 97, y: 15}
     - {x: 97, y: 16}
@@ -27050,7 +27050,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0130014
+    distanceFromSurfaceBelow: 7.173001
     neighbours:
     - {x: 97, y: 16}
     - {x: 97, y: 17}
@@ -27064,7 +27064,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8130016
+    distanceFromSurfaceBelow: 7.973001
     neighbours:
     - {x: 97, y: 17}
     - {x: 97, y: 18}
@@ -27078,7 +27078,7 @@ MonoBehaviour:
     gridX: 98
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.613002
+    distanceFromSurfaceBelow: 8.773001
     neighbours:
     - {x: 97, y: 18}
     - {x: 97, y: 19}
@@ -27155,8 +27155,8 @@ MonoBehaviour:
   - worldPos: {x: 24.599998, y: -2.1999998}
     gridX: 99
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 98, y: 4}
     - {x: 98, y: 5}
@@ -27169,8 +27169,8 @@ MonoBehaviour:
   - worldPos: {x: 24.599998, y: -1.3999996}
     gridX: 99
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 98, y: 5}
     - {x: 98, y: 6}
@@ -27211,8 +27211,8 @@ MonoBehaviour:
   - worldPos: {x: 24.599998, y: 1}
     gridX: 99
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.7730001
     neighbours:
     - {x: 98, y: 8}
     - {x: 98, y: 9}
@@ -27226,7 +27226,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300094
+    distanceFromSurfaceBelow: 1.5730002
     neighbours:
     - {x: 98, y: 9}
     - {x: 98, y: 10}
@@ -27240,7 +27240,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.213001
+    distanceFromSurfaceBelow: 2.3730001
     neighbours:
     - {x: 98, y: 10}
     - {x: 98, y: 11}
@@ -27254,7 +27254,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.013001
+    distanceFromSurfaceBelow: 3.173
     neighbours:
     - {x: 98, y: 11}
     - {x: 98, y: 12}
@@ -27268,7 +27268,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.813001
+    distanceFromSurfaceBelow: 3.973
     neighbours:
     - {x: 98, y: 12}
     - {x: 98, y: 13}
@@ -27282,7 +27282,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130009
+    distanceFromSurfaceBelow: 4.7730002
     neighbours:
     - {x: 98, y: 13}
     - {x: 98, y: 14}
@@ -27296,7 +27296,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.413001
+    distanceFromSurfaceBelow: 5.5730004
     neighbours:
     - {x: 98, y: 14}
     - {x: 98, y: 15}
@@ -27310,7 +27310,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2130013
+    distanceFromSurfaceBelow: 6.3730006
     neighbours:
     - {x: 98, y: 15}
     - {x: 98, y: 16}
@@ -27324,7 +27324,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0130014
+    distanceFromSurfaceBelow: 7.173001
     neighbours:
     - {x: 98, y: 16}
     - {x: 98, y: 17}
@@ -27338,7 +27338,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8130016
+    distanceFromSurfaceBelow: 7.973001
     neighbours:
     - {x: 98, y: 17}
     - {x: 98, y: 18}
@@ -27352,7 +27352,7 @@ MonoBehaviour:
     gridX: 99
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.613002
+    distanceFromSurfaceBelow: 8.773001
     neighbours:
     - {x: 98, y: 18}
     - {x: 98, y: 19}
@@ -27457,8 +27457,8 @@ MonoBehaviour:
   - worldPos: {x: 25.400002, y: -0.5999999}
     gridX: 100
     gridY: 7
-    isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 99, y: 6}
     - {x: 99, y: 7}
@@ -27472,7 +27472,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.567068
+    distanceFromSurfaceBelow: 0.41012537
     neighbours:
     - {x: 99, y: 7}
     - {x: 99, y: 8}
@@ -27485,8 +27485,8 @@ MonoBehaviour:
   - worldPos: {x: 25.400002, y: 1}
     gridX: 100
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.2101254
     neighbours:
     - {x: 99, y: 8}
     - {x: 99, y: 9}
@@ -27500,7 +27500,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41150105
+    distanceFromSurfaceBelow: 2.0101254
     neighbours:
     - {x: 99, y: 9}
     - {x: 99, y: 10}
@@ -27514,7 +27514,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2115011
+    distanceFromSurfaceBelow: 2.8101254
     neighbours:
     - {x: 99, y: 10}
     - {x: 99, y: 11}
@@ -27528,7 +27528,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.011501
+    distanceFromSurfaceBelow: 3.6101253
     neighbours:
     - {x: 99, y: 11}
     - {x: 99, y: 12}
@@ -27542,7 +27542,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.811501
+    distanceFromSurfaceBelow: 4.4101253
     neighbours:
     - {x: 99, y: 12}
     - {x: 99, y: 13}
@@ -27556,7 +27556,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.611501
+    distanceFromSurfaceBelow: 5.2101254
     neighbours:
     - {x: 99, y: 13}
     - {x: 99, y: 14}
@@ -27570,7 +27570,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.411501
+    distanceFromSurfaceBelow: 6.0101256
     neighbours:
     - {x: 99, y: 14}
     - {x: 99, y: 15}
@@ -27584,7 +27584,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.211501
+    distanceFromSurfaceBelow: 6.810126
     neighbours:
     - {x: 99, y: 15}
     - {x: 99, y: 16}
@@ -27598,7 +27598,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0115013
+    distanceFromSurfaceBelow: 7.610126
     neighbours:
     - {x: 99, y: 16}
     - {x: 99, y: 17}
@@ -27612,7 +27612,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8115015
+    distanceFromSurfaceBelow: 8.410126
     neighbours:
     - {x: 99, y: 17}
     - {x: 99, y: 18}
@@ -27626,7 +27626,7 @@ MonoBehaviour:
     gridX: 100
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6115017
+    distanceFromSurfaceBelow: 9.210126
     neighbours:
     - {x: 99, y: 18}
     - {x: 99, y: 19}
@@ -27731,8 +27731,8 @@ MonoBehaviour:
   - worldPos: {x: 26.200005, y: -0.5999999}
     gridX: 101
     gridY: 7
-    isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 100, y: 6}
     - {x: 100, y: 7}
@@ -27745,8 +27745,8 @@ MonoBehaviour:
   - worldPos: {x: 26.200005, y: 0.20000029}
     gridX: 101
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.41012537
     neighbours:
     - {x: 100, y: 7}
     - {x: 100, y: 8}
@@ -27759,8 +27759,8 @@ MonoBehaviour:
   - worldPos: {x: 26.200005, y: 1}
     gridX: 101
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.2101254
     neighbours:
     - {x: 100, y: 8}
     - {x: 100, y: 9}
@@ -27774,7 +27774,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41150105
+    distanceFromSurfaceBelow: 2.0101254
     neighbours:
     - {x: 100, y: 9}
     - {x: 100, y: 10}
@@ -27788,7 +27788,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2115011
+    distanceFromSurfaceBelow: 2.8101254
     neighbours:
     - {x: 100, y: 10}
     - {x: 100, y: 11}
@@ -27802,7 +27802,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.011501
+    distanceFromSurfaceBelow: 3.6101253
     neighbours:
     - {x: 100, y: 11}
     - {x: 100, y: 12}
@@ -27816,7 +27816,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.811501
+    distanceFromSurfaceBelow: 4.4101253
     neighbours:
     - {x: 100, y: 12}
     - {x: 100, y: 13}
@@ -27830,7 +27830,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.611501
+    distanceFromSurfaceBelow: 5.2101254
     neighbours:
     - {x: 100, y: 13}
     - {x: 100, y: 14}
@@ -27844,7 +27844,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.411501
+    distanceFromSurfaceBelow: 6.0101256
     neighbours:
     - {x: 100, y: 14}
     - {x: 100, y: 15}
@@ -27858,7 +27858,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.211501
+    distanceFromSurfaceBelow: 6.810126
     neighbours:
     - {x: 100, y: 15}
     - {x: 100, y: 16}
@@ -27872,7 +27872,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0115013
+    distanceFromSurfaceBelow: 7.610126
     neighbours:
     - {x: 100, y: 16}
     - {x: 100, y: 17}
@@ -27886,7 +27886,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8115015
+    distanceFromSurfaceBelow: 8.410126
     neighbours:
     - {x: 100, y: 17}
     - {x: 100, y: 18}
@@ -27900,7 +27900,7 @@ MonoBehaviour:
     gridX: 101
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6115017
+    distanceFromSurfaceBelow: 9.210126
     neighbours:
     - {x: 100, y: 18}
     - {x: 100, y: 19}
@@ -28005,8 +28005,8 @@ MonoBehaviour:
   - worldPos: {x: 27, y: -0.5999999}
     gridX: 102
     gridY: 7
-    isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 101, y: 6}
     - {x: 101, y: 7}
@@ -28019,8 +28019,8 @@ MonoBehaviour:
   - worldPos: {x: 27, y: 0.20000029}
     gridX: 102
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.41012537
     neighbours:
     - {x: 101, y: 7}
     - {x: 101, y: 8}
@@ -28033,8 +28033,8 @@ MonoBehaviour:
   - worldPos: {x: 27, y: 1}
     gridX: 102
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.2101254
     neighbours:
     - {x: 101, y: 8}
     - {x: 101, y: 9}
@@ -28048,7 +28048,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41150105
+    distanceFromSurfaceBelow: 2.0101254
     neighbours:
     - {x: 101, y: 9}
     - {x: 101, y: 10}
@@ -28062,7 +28062,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2115011
+    distanceFromSurfaceBelow: 2.8101254
     neighbours:
     - {x: 101, y: 10}
     - {x: 101, y: 11}
@@ -28076,7 +28076,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.011501
+    distanceFromSurfaceBelow: 3.6101253
     neighbours:
     - {x: 101, y: 11}
     - {x: 101, y: 12}
@@ -28090,7 +28090,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.811501
+    distanceFromSurfaceBelow: 4.4101253
     neighbours:
     - {x: 101, y: 12}
     - {x: 101, y: 13}
@@ -28104,7 +28104,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.611501
+    distanceFromSurfaceBelow: 5.2101254
     neighbours:
     - {x: 101, y: 13}
     - {x: 101, y: 14}
@@ -28118,7 +28118,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.411501
+    distanceFromSurfaceBelow: 6.0101256
     neighbours:
     - {x: 101, y: 14}
     - {x: 101, y: 15}
@@ -28132,7 +28132,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.211501
+    distanceFromSurfaceBelow: 6.810126
     neighbours:
     - {x: 101, y: 15}
     - {x: 101, y: 16}
@@ -28146,7 +28146,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0115013
+    distanceFromSurfaceBelow: 7.610126
     neighbours:
     - {x: 101, y: 16}
     - {x: 101, y: 17}
@@ -28160,7 +28160,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8115015
+    distanceFromSurfaceBelow: 8.410126
     neighbours:
     - {x: 101, y: 17}
     - {x: 101, y: 18}
@@ -28174,7 +28174,7 @@ MonoBehaviour:
     gridX: 102
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6115017
+    distanceFromSurfaceBelow: 9.210126
     neighbours:
     - {x: 101, y: 18}
     - {x: 101, y: 19}
@@ -28279,8 +28279,8 @@ MonoBehaviour:
   - worldPos: {x: 27.800003, y: -0.5999999}
     gridX: 103
     gridY: 7
-    isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 102, y: 6}
     - {x: 102, y: 7}
@@ -28293,8 +28293,8 @@ MonoBehaviour:
   - worldPos: {x: 27.800003, y: 0.20000029}
     gridX: 103
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.41012537
     neighbours:
     - {x: 102, y: 7}
     - {x: 102, y: 8}
@@ -28308,7 +28308,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.42012513
+    distanceFromSurfaceBelow: 1.2101254
     neighbours:
     - {x: 102, y: 8}
     - {x: 102, y: 9}
@@ -28322,7 +28322,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201252
+    distanceFromSurfaceBelow: 2.0101254
     neighbours:
     - {x: 102, y: 9}
     - {x: 102, y: 10}
@@ -28336,7 +28336,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201252
+    distanceFromSurfaceBelow: 2.8101254
     neighbours:
     - {x: 102, y: 10}
     - {x: 102, y: 11}
@@ -28350,7 +28350,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.820125
+    distanceFromSurfaceBelow: 3.6101253
     neighbours:
     - {x: 102, y: 11}
     - {x: 102, y: 12}
@@ -28364,7 +28364,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.620125
+    distanceFromSurfaceBelow: 4.4101253
     neighbours:
     - {x: 102, y: 12}
     - {x: 102, y: 13}
@@ -28378,7 +28378,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.420125
+    distanceFromSurfaceBelow: 5.2101254
     neighbours:
     - {x: 102, y: 13}
     - {x: 102, y: 14}
@@ -28392,7 +28392,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.220125
+    distanceFromSurfaceBelow: 6.0101256
     neighbours:
     - {x: 102, y: 14}
     - {x: 102, y: 15}
@@ -28406,7 +28406,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0201254
+    distanceFromSurfaceBelow: 6.810126
     neighbours:
     - {x: 102, y: 15}
     - {x: 102, y: 16}
@@ -28420,7 +28420,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8201256
+    distanceFromSurfaceBelow: 7.610126
     neighbours:
     - {x: 102, y: 16}
     - {x: 102, y: 17}
@@ -28434,7 +28434,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.620126
+    distanceFromSurfaceBelow: 8.410126
     neighbours:
     - {x: 102, y: 17}
     - {x: 102, y: 18}
@@ -28448,7 +28448,7 @@ MonoBehaviour:
     gridX: 103
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.420126
+    distanceFromSurfaceBelow: 9.210126
     neighbours:
     - {x: 102, y: 18}
     - {x: 102, y: 19}
@@ -28567,8 +28567,8 @@ MonoBehaviour:
   - worldPos: {x: 28.599998, y: 0.20000029}
     gridX: 104
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.40200025
     neighbours:
     - {x: 103, y: 7}
     - {x: 103, y: 8}
@@ -28582,7 +28582,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.42012513
+    distanceFromSurfaceBelow: 1.2020003
     neighbours:
     - {x: 103, y: 8}
     - {x: 103, y: 9}
@@ -28596,7 +28596,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201252
+    distanceFromSurfaceBelow: 2.0020003
     neighbours:
     - {x: 103, y: 9}
     - {x: 103, y: 10}
@@ -28610,7 +28610,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201252
+    distanceFromSurfaceBelow: 2.8020003
     neighbours:
     - {x: 103, y: 10}
     - {x: 103, y: 11}
@@ -28624,7 +28624,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.820125
+    distanceFromSurfaceBelow: 3.6020002
     neighbours:
     - {x: 103, y: 11}
     - {x: 103, y: 12}
@@ -28638,7 +28638,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.620125
+    distanceFromSurfaceBelow: 4.4020004
     neighbours:
     - {x: 103, y: 12}
     - {x: 103, y: 13}
@@ -28652,7 +28652,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.420125
+    distanceFromSurfaceBelow: 5.2020006
     neighbours:
     - {x: 103, y: 13}
     - {x: 103, y: 14}
@@ -28666,7 +28666,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.220125
+    distanceFromSurfaceBelow: 6.002001
     neighbours:
     - {x: 103, y: 14}
     - {x: 103, y: 15}
@@ -28680,7 +28680,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0201254
+    distanceFromSurfaceBelow: 6.802001
     neighbours:
     - {x: 103, y: 15}
     - {x: 103, y: 16}
@@ -28694,7 +28694,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8201256
+    distanceFromSurfaceBelow: 7.602001
     neighbours:
     - {x: 103, y: 16}
     - {x: 103, y: 17}
@@ -28708,7 +28708,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.620126
+    distanceFromSurfaceBelow: 8.402001
     neighbours:
     - {x: 103, y: 17}
     - {x: 103, y: 18}
@@ -28722,7 +28722,7 @@ MonoBehaviour:
     gridX: 104
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.420126
+    distanceFromSurfaceBelow: 9.202002
     neighbours:
     - {x: 103, y: 18}
     - {x: 103, y: 19}
@@ -29677,8 +29677,8 @@ MonoBehaviour:
   - worldPos: {x: 31.800003, y: 1}
     gridX: 108
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.170125
     neighbours:
     - {x: 107, y: 8}
     - {x: 107, y: 9}
@@ -29692,7 +29692,7 @@ MonoBehaviour:
     gridX: 108
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4201256
+    distanceFromSurfaceBelow: 2.970125
     neighbours:
     - {x: 107, y: 9}
     - {x: 107, y: 10}
@@ -29706,7 +29706,7 @@ MonoBehaviour:
     gridX: 108
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201257
+    distanceFromSurfaceBelow: 3.770125
     neighbours:
     - {x: 107, y: 10}
     - {x: 107, y: 11}
@@ -29720,7 +29720,7 @@ MonoBehaviour:
     gridX: 108
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201256
+    distanceFromSurfaceBelow: 4.570125
     neighbours:
     - {x: 107, y: 11}
     - {x: 107, y: 12}
@@ -29734,7 +29734,7 @@ MonoBehaviour:
     gridX: 108
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8201256
+    distanceFromSurfaceBelow: 5.3701253
     neighbours:
     - {x: 107, y: 12}
     - {x: 107, y: 13}
@@ -29951,8 +29951,8 @@ MonoBehaviour:
   - worldPos: {x: 32.6, y: 1}
     gridX: 109
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.170125
     neighbours:
     - {x: 108, y: 8}
     - {x: 108, y: 9}
@@ -29966,7 +29966,7 @@ MonoBehaviour:
     gridX: 109
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4201256
+    distanceFromSurfaceBelow: 2.970125
     neighbours:
     - {x: 108, y: 9}
     - {x: 108, y: 10}
@@ -29980,7 +29980,7 @@ MonoBehaviour:
     gridX: 109
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201257
+    distanceFromSurfaceBelow: 3.770125
     neighbours:
     - {x: 108, y: 10}
     - {x: 108, y: 11}
@@ -29994,7 +29994,7 @@ MonoBehaviour:
     gridX: 109
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201256
+    distanceFromSurfaceBelow: 4.570125
     neighbours:
     - {x: 108, y: 11}
     - {x: 108, y: 12}
@@ -30008,7 +30008,7 @@ MonoBehaviour:
     gridX: 109
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8201256
+    distanceFromSurfaceBelow: 5.3701253
     neighbours:
     - {x: 108, y: 12}
     - {x: 108, y: 13}
@@ -30225,8 +30225,8 @@ MonoBehaviour:
   - worldPos: {x: 33.4, y: 1}
     gridX: 110
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8030002
     neighbours:
     - {x: 109, y: 8}
     - {x: 109, y: 9}
@@ -30240,7 +30240,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4201256
+    distanceFromSurfaceBelow: 3.6030002
     neighbours:
     - {x: 109, y: 9}
     - {x: 109, y: 10}
@@ -30254,7 +30254,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201257
+    distanceFromSurfaceBelow: 4.4030004
     neighbours:
     - {x: 109, y: 10}
     - {x: 109, y: 11}
@@ -30268,7 +30268,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201256
+    distanceFromSurfaceBelow: 5.2030005
     neighbours:
     - {x: 109, y: 11}
     - {x: 109, y: 12}
@@ -30282,7 +30282,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8201256
+    distanceFromSurfaceBelow: 6.0030007
     neighbours:
     - {x: 109, y: 12}
     - {x: 109, y: 13}
@@ -30296,7 +30296,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6201255
+    distanceFromSurfaceBelow: 6.803001
     neighbours:
     - {x: 109, y: 13}
     - {x: 109, y: 14}
@@ -30310,7 +30310,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4201255
+    distanceFromSurfaceBelow: 7.603001
     neighbours:
     - {x: 109, y: 14}
     - {x: 109, y: 15}
@@ -30324,7 +30324,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2201257
+    distanceFromSurfaceBelow: 8.403001
     neighbours:
     - {x: 109, y: 15}
     - {x: 109, y: 16}
@@ -30338,7 +30338,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.020126
+    distanceFromSurfaceBelow: 9.203001
     neighbours:
     - {x: 109, y: 16}
     - {x: 109, y: 17}
@@ -30352,7 +30352,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.820126
+    distanceFromSurfaceBelow: 10.003001
     neighbours:
     - {x: 109, y: 17}
     - {x: 109, y: 18}
@@ -30366,7 +30366,7 @@ MonoBehaviour:
     gridX: 110
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6201262
+    distanceFromSurfaceBelow: 10.803001
     neighbours:
     - {x: 109, y: 18}
     - {x: 109, y: 19}
@@ -30499,8 +30499,8 @@ MonoBehaviour:
   - worldPos: {x: 34.200005, y: 1}
     gridX: 111
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8030002
     neighbours:
     - {x: 110, y: 8}
     - {x: 110, y: 9}
@@ -30514,7 +30514,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4201256
+    distanceFromSurfaceBelow: 3.6030002
     neighbours:
     - {x: 110, y: 9}
     - {x: 110, y: 10}
@@ -30528,7 +30528,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2201257
+    distanceFromSurfaceBelow: 4.4030004
     neighbours:
     - {x: 110, y: 10}
     - {x: 110, y: 11}
@@ -30542,7 +30542,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0201256
+    distanceFromSurfaceBelow: 5.2030005
     neighbours:
     - {x: 110, y: 11}
     - {x: 110, y: 12}
@@ -30556,7 +30556,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8201256
+    distanceFromSurfaceBelow: 6.0030007
     neighbours:
     - {x: 110, y: 12}
     - {x: 110, y: 13}
@@ -30570,7 +30570,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6201255
+    distanceFromSurfaceBelow: 6.803001
     neighbours:
     - {x: 110, y: 13}
     - {x: 110, y: 14}
@@ -30584,7 +30584,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4201255
+    distanceFromSurfaceBelow: 7.603001
     neighbours:
     - {x: 110, y: 14}
     - {x: 110, y: 15}
@@ -30598,7 +30598,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2201257
+    distanceFromSurfaceBelow: 8.403001
     neighbours:
     - {x: 110, y: 15}
     - {x: 110, y: 16}
@@ -30612,7 +30612,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.020126
+    distanceFromSurfaceBelow: 9.203001
     neighbours:
     - {x: 110, y: 16}
     - {x: 110, y: 17}
@@ -30626,7 +30626,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.820126
+    distanceFromSurfaceBelow: 10.003001
     neighbours:
     - {x: 110, y: 17}
     - {x: 110, y: 18}
@@ -30640,7 +30640,7 @@ MonoBehaviour:
     gridX: 111
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6201262
+    distanceFromSurfaceBelow: 10.803001
     neighbours:
     - {x: 110, y: 18}
     - {x: 110, y: 19}
@@ -31855,8 +31855,8 @@ MonoBehaviour:
   - worldPos: {x: 38.200005, y: 0.20000029}
     gridX: 116
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 115, y: 7}
     - {x: 115, y: 8}
@@ -31870,7 +31870,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3981253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 115, y: 8}
     - {x: 115, y: 9}
@@ -31884,7 +31884,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1981254
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 115, y: 9}
     - {x: 115, y: 10}
@@ -31898,7 +31898,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9981253
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 115, y: 10}
     - {x: 115, y: 11}
@@ -31912,7 +31912,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7981253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 115, y: 11}
     - {x: 115, y: 12}
@@ -31926,7 +31926,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5981252
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 115, y: 12}
     - {x: 115, y: 13}
@@ -31940,7 +31940,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.398125
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 115, y: 13}
     - {x: 115, y: 14}
@@ -31954,7 +31954,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1981254
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 115, y: 14}
     - {x: 115, y: 15}
@@ -31968,7 +31968,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9981256
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 115, y: 15}
     - {x: 115, y: 16}
@@ -31982,7 +31982,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.7981257
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 115, y: 16}
     - {x: 115, y: 17}
@@ -31996,7 +31996,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.598126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 115, y: 17}
     - {x: 115, y: 18}
@@ -32010,7 +32010,7 @@ MonoBehaviour:
     gridX: 116
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.398126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 115, y: 18}
     - {x: 115, y: 19}
@@ -32129,8 +32129,8 @@ MonoBehaviour:
   - worldPos: {x: 39, y: 0.20000029}
     gridX: 117
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 116, y: 7}
     - {x: 116, y: 8}
@@ -32144,7 +32144,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3981253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 116, y: 8}
     - {x: 116, y: 9}
@@ -32158,7 +32158,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1981254
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 116, y: 9}
     - {x: 116, y: 10}
@@ -32172,7 +32172,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9981253
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 116, y: 10}
     - {x: 116, y: 11}
@@ -32186,7 +32186,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7981253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 116, y: 11}
     - {x: 116, y: 12}
@@ -32200,7 +32200,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5981252
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 116, y: 12}
     - {x: 116, y: 13}
@@ -32214,7 +32214,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.398125
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 116, y: 13}
     - {x: 116, y: 14}
@@ -32228,7 +32228,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1981254
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 116, y: 14}
     - {x: 116, y: 15}
@@ -32242,7 +32242,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9981256
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 116, y: 15}
     - {x: 116, y: 16}
@@ -32256,7 +32256,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.7981257
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 116, y: 16}
     - {x: 116, y: 17}
@@ -32270,7 +32270,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.598126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 116, y: 17}
     - {x: 116, y: 18}
@@ -32284,7 +32284,7 @@ MonoBehaviour:
     gridX: 117
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.398126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 116, y: 18}
     - {x: 116, y: 19}
@@ -32403,8 +32403,8 @@ MonoBehaviour:
   - worldPos: {x: 39.800003, y: 0.20000029}
     gridX: 118
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 117, y: 7}
     - {x: 117, y: 8}
@@ -32418,7 +32418,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3981253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 117, y: 8}
     - {x: 117, y: 9}
@@ -32432,7 +32432,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1981254
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 117, y: 9}
     - {x: 117, y: 10}
@@ -32446,7 +32446,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9981253
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 117, y: 10}
     - {x: 117, y: 11}
@@ -32460,7 +32460,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7981253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 117, y: 11}
     - {x: 117, y: 12}
@@ -32474,7 +32474,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5981252
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 117, y: 12}
     - {x: 117, y: 13}
@@ -32488,7 +32488,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.398125
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 117, y: 13}
     - {x: 117, y: 14}
@@ -32502,7 +32502,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1981254
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 117, y: 14}
     - {x: 117, y: 15}
@@ -32516,7 +32516,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9981256
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 117, y: 15}
     - {x: 117, y: 16}
@@ -32530,7 +32530,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.7981257
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 117, y: 16}
     - {x: 117, y: 17}
@@ -32544,7 +32544,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.598126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 117, y: 17}
     - {x: 117, y: 18}
@@ -32558,7 +32558,7 @@ MonoBehaviour:
     gridX: 118
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.398126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 117, y: 18}
     - {x: 117, y: 19}
@@ -32677,8 +32677,8 @@ MonoBehaviour:
   - worldPos: {x: 40.6, y: 0.20000029}
     gridX: 119
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 118, y: 7}
     - {x: 118, y: 8}
@@ -32692,7 +32692,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3981253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 118, y: 8}
     - {x: 118, y: 9}
@@ -32706,7 +32706,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1981254
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 118, y: 9}
     - {x: 118, y: 10}
@@ -32720,7 +32720,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9981253
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 118, y: 10}
     - {x: 118, y: 11}
@@ -32734,7 +32734,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7981253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 118, y: 11}
     - {x: 118, y: 12}
@@ -32748,7 +32748,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5981252
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 118, y: 12}
     - {x: 118, y: 13}
@@ -32762,7 +32762,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.398125
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 118, y: 13}
     - {x: 118, y: 14}
@@ -32776,7 +32776,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1981254
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 118, y: 14}
     - {x: 118, y: 15}
@@ -32790,7 +32790,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9981256
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 118, y: 15}
     - {x: 118, y: 16}
@@ -32804,7 +32804,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.7981257
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 118, y: 16}
     - {x: 118, y: 17}
@@ -32818,7 +32818,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.598126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 118, y: 17}
     - {x: 118, y: 18}
@@ -32832,7 +32832,7 @@ MonoBehaviour:
     gridX: 119
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.398126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 118, y: 18}
     - {x: 118, y: 19}
@@ -32881,8 +32881,8 @@ MonoBehaviour:
   - worldPos: {x: 41.4, y: -3.8}
     gridX: 120
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 119, y: 2}
     - {x: 119, y: 3}
@@ -32895,8 +32895,8 @@ MonoBehaviour:
   - worldPos: {x: 41.4, y: -2.9999998}
     gridX: 120
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 119, y: 3}
     - {x: 119, y: 4}
@@ -32910,7 +32910,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 119, y: 4}
     - {x: 119, y: 5}
@@ -32924,7 +32924,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 119, y: 5}
     - {x: 119, y: 6}
@@ -32938,7 +32938,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 119, y: 6}
     - {x: 119, y: 7}
@@ -32952,7 +32952,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 119, y: 7}
     - {x: 119, y: 8}
@@ -32966,7 +32966,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 119, y: 8}
     - {x: 119, y: 9}
@@ -32980,7 +32980,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 119, y: 9}
     - {x: 119, y: 10}
@@ -32994,7 +32994,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 119, y: 10}
     - {x: 119, y: 11}
@@ -33008,7 +33008,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 119, y: 11}
     - {x: 119, y: 12}
@@ -33022,7 +33022,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 119, y: 12}
     - {x: 119, y: 13}
@@ -33036,7 +33036,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 119, y: 13}
     - {x: 119, y: 14}
@@ -33050,7 +33050,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 119, y: 14}
     - {x: 119, y: 15}
@@ -33064,7 +33064,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.990127
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 119, y: 15}
     - {x: 119, y: 16}
@@ -33078,7 +33078,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.790127
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 119, y: 16}
     - {x: 119, y: 17}
@@ -33092,7 +33092,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.590127
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 119, y: 17}
     - {x: 119, y: 18}
@@ -33106,7 +33106,7 @@ MonoBehaviour:
     gridX: 120
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.390127
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 119, y: 18}
     - {x: 119, y: 19}
@@ -33155,8 +33155,8 @@ MonoBehaviour:
   - worldPos: {x: 42.200005, y: -3.8}
     gridX: 121
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 120, y: 2}
     - {x: 120, y: 3}
@@ -33169,8 +33169,8 @@ MonoBehaviour:
   - worldPos: {x: 42.200005, y: -2.9999998}
     gridX: 121
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 120, y: 3}
     - {x: 120, y: 4}
@@ -33184,7 +33184,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 120, y: 4}
     - {x: 120, y: 5}
@@ -33198,7 +33198,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 120, y: 5}
     - {x: 120, y: 6}
@@ -33212,7 +33212,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 120, y: 6}
     - {x: 120, y: 7}
@@ -33226,7 +33226,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 120, y: 7}
     - {x: 120, y: 8}
@@ -33240,7 +33240,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 120, y: 8}
     - {x: 120, y: 9}
@@ -33254,7 +33254,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 120, y: 9}
     - {x: 120, y: 10}
@@ -33268,7 +33268,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 120, y: 10}
     - {x: 120, y: 11}
@@ -33282,7 +33282,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 120, y: 11}
     - {x: 120, y: 12}
@@ -33296,7 +33296,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 120, y: 12}
     - {x: 120, y: 13}
@@ -33310,7 +33310,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 120, y: 13}
     - {x: 120, y: 14}
@@ -33324,7 +33324,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 120, y: 14}
     - {x: 120, y: 15}
@@ -33338,7 +33338,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.990127
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 120, y: 15}
     - {x: 120, y: 16}
@@ -33352,7 +33352,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.790127
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 120, y: 16}
     - {x: 120, y: 17}
@@ -33366,7 +33366,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.590127
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 120, y: 17}
     - {x: 120, y: 18}
@@ -33380,7 +33380,7 @@ MonoBehaviour:
     gridX: 121
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.390127
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 120, y: 18}
     - {x: 120, y: 19}
@@ -33429,8 +33429,8 @@ MonoBehaviour:
   - worldPos: {x: 43, y: -3.8}
     gridX: 122
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 121, y: 2}
     - {x: 121, y: 3}
@@ -33443,8 +33443,8 @@ MonoBehaviour:
   - worldPos: {x: 43, y: -2.9999998}
     gridX: 122
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 121, y: 3}
     - {x: 121, y: 4}
@@ -33458,7 +33458,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 121, y: 4}
     - {x: 121, y: 5}
@@ -33472,7 +33472,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 121, y: 5}
     - {x: 121, y: 6}
@@ -33486,7 +33486,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 121, y: 6}
     - {x: 121, y: 7}
@@ -33500,7 +33500,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 121, y: 7}
     - {x: 121, y: 8}
@@ -33514,7 +33514,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.3901253
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 121, y: 8}
     - {x: 121, y: 9}
@@ -33528,7 +33528,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.1901255
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 121, y: 9}
     - {x: 121, y: 10}
@@ -33542,7 +33542,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.9901257
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 121, y: 10}
     - {x: 121, y: 11}
@@ -33556,7 +33556,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.790126
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 121, y: 11}
     - {x: 121, y: 12}
@@ -33570,7 +33570,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.590126
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 121, y: 12}
     - {x: 121, y: 13}
@@ -33584,7 +33584,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.390126
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 121, y: 13}
     - {x: 121, y: 14}
@@ -33598,7 +33598,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.190126
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 121, y: 14}
     - {x: 121, y: 15}
@@ -33612,7 +33612,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.990127
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 121, y: 15}
     - {x: 121, y: 16}
@@ -33626,7 +33626,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.790127
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 121, y: 16}
     - {x: 121, y: 17}
@@ -33640,7 +33640,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.590127
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 121, y: 17}
     - {x: 121, y: 18}
@@ -33654,7 +33654,7 @@ MonoBehaviour:
     gridX: 122
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.390127
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 121, y: 18}
     - {x: 121, y: 19}
@@ -33731,8 +33731,8 @@ MonoBehaviour:
   - worldPos: {x: 43.800003, y: -2.1999998}
     gridX: 123
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 122, y: 4}
     - {x: 122, y: 5}
@@ -33746,7 +33746,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 122, y: 5}
     - {x: 122, y: 6}
@@ -33760,7 +33760,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 122, y: 6}
     - {x: 122, y: 7}
@@ -33773,8 +33773,8 @@ MonoBehaviour:
   - worldPos: {x: 43.800003, y: 0.20000029}
     gridX: 123
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 122, y: 7}
     - {x: 122, y: 8}
@@ -33788,7 +33788,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 122, y: 8}
     - {x: 122, y: 9}
@@ -33802,7 +33802,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 122, y: 9}
     - {x: 122, y: 10}
@@ -33816,7 +33816,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 122, y: 10}
     - {x: 122, y: 11}
@@ -33830,7 +33830,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 122, y: 11}
     - {x: 122, y: 12}
@@ -33844,7 +33844,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 122, y: 12}
     - {x: 122, y: 13}
@@ -33858,7 +33858,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 122, y: 13}
     - {x: 122, y: 14}
@@ -33872,7 +33872,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 122, y: 14}
     - {x: 122, y: 15}
@@ -33886,7 +33886,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 122, y: 15}
     - {x: 122, y: 16}
@@ -33900,7 +33900,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 122, y: 16}
     - {x: 122, y: 17}
@@ -33914,7 +33914,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 122, y: 17}
     - {x: 122, y: 18}
@@ -33928,7 +33928,7 @@ MonoBehaviour:
     gridX: 123
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 122, y: 18}
     - {x: 122, y: 19}
@@ -34005,8 +34005,8 @@ MonoBehaviour:
   - worldPos: {x: 44.6, y: -2.1999998}
     gridX: 124
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 123, y: 4}
     - {x: 123, y: 5}
@@ -34020,7 +34020,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 123, y: 5}
     - {x: 123, y: 6}
@@ -34034,7 +34034,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 123, y: 6}
     - {x: 123, y: 7}
@@ -34047,8 +34047,8 @@ MonoBehaviour:
   - worldPos: {x: 44.6, y: 0.20000029}
     gridX: 124
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 123, y: 7}
     - {x: 123, y: 8}
@@ -34062,7 +34062,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 123, y: 8}
     - {x: 123, y: 9}
@@ -34076,7 +34076,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 123, y: 9}
     - {x: 123, y: 10}
@@ -34090,7 +34090,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 123, y: 10}
     - {x: 123, y: 11}
@@ -34104,7 +34104,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 123, y: 11}
     - {x: 123, y: 12}
@@ -34118,7 +34118,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 123, y: 12}
     - {x: 123, y: 13}
@@ -34132,7 +34132,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 123, y: 13}
     - {x: 123, y: 14}
@@ -34146,7 +34146,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 123, y: 14}
     - {x: 123, y: 15}
@@ -34160,7 +34160,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 123, y: 15}
     - {x: 123, y: 16}
@@ -34174,7 +34174,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 123, y: 16}
     - {x: 123, y: 17}
@@ -34188,7 +34188,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 123, y: 17}
     - {x: 123, y: 18}
@@ -34202,7 +34202,7 @@ MonoBehaviour:
     gridX: 124
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 123, y: 18}
     - {x: 123, y: 19}
@@ -34279,8 +34279,8 @@ MonoBehaviour:
   - worldPos: {x: 45.4, y: -2.1999998}
     gridX: 125
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 124, y: 4}
     - {x: 124, y: 5}
@@ -34294,7 +34294,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 124, y: 5}
     - {x: 124, y: 6}
@@ -34308,7 +34308,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 124, y: 6}
     - {x: 124, y: 7}
@@ -34321,8 +34321,8 @@ MonoBehaviour:
   - worldPos: {x: 45.4, y: 0.20000029}
     gridX: 125
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 124, y: 7}
     - {x: 124, y: 8}
@@ -34336,7 +34336,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 124, y: 8}
     - {x: 124, y: 9}
@@ -34350,7 +34350,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 124, y: 9}
     - {x: 124, y: 10}
@@ -34364,7 +34364,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 124, y: 10}
     - {x: 124, y: 11}
@@ -34378,7 +34378,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 124, y: 11}
     - {x: 124, y: 12}
@@ -34392,7 +34392,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 124, y: 12}
     - {x: 124, y: 13}
@@ -34406,7 +34406,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 124, y: 13}
     - {x: 124, y: 14}
@@ -34420,7 +34420,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 124, y: 14}
     - {x: 124, y: 15}
@@ -34434,7 +34434,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 124, y: 15}
     - {x: 124, y: 16}
@@ -34448,7 +34448,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 124, y: 16}
     - {x: 124, y: 17}
@@ -34462,7 +34462,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 124, y: 17}
     - {x: 124, y: 18}
@@ -34476,7 +34476,7 @@ MonoBehaviour:
     gridX: 125
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 124, y: 18}
     - {x: 124, y: 19}
@@ -34553,8 +34553,8 @@ MonoBehaviour:
   - worldPos: {x: 46.200005, y: -2.1999998}
     gridX: 126
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 125, y: 4}
     - {x: 125, y: 5}
@@ -34568,7 +34568,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 125, y: 5}
     - {x: 125, y: 6}
@@ -34582,7 +34582,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 125, y: 6}
     - {x: 125, y: 7}
@@ -34595,8 +34595,8 @@ MonoBehaviour:
   - worldPos: {x: 46.200005, y: 0.20000029}
     gridX: 126
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 125, y: 7}
     - {x: 125, y: 8}
@@ -34610,7 +34610,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 125, y: 8}
     - {x: 125, y: 9}
@@ -34624,7 +34624,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 125, y: 9}
     - {x: 125, y: 10}
@@ -34638,7 +34638,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 125, y: 10}
     - {x: 125, y: 11}
@@ -34652,7 +34652,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 125, y: 11}
     - {x: 125, y: 12}
@@ -34666,7 +34666,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 125, y: 12}
     - {x: 125, y: 13}
@@ -34680,7 +34680,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 125, y: 13}
     - {x: 125, y: 14}
@@ -34694,7 +34694,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 125, y: 14}
     - {x: 125, y: 15}
@@ -34708,7 +34708,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 125, y: 15}
     - {x: 125, y: 16}
@@ -34722,7 +34722,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 125, y: 16}
     - {x: 125, y: 17}
@@ -34736,7 +34736,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 125, y: 17}
     - {x: 125, y: 18}
@@ -34750,7 +34750,7 @@ MonoBehaviour:
     gridX: 126
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 125, y: 18}
     - {x: 125, y: 19}
@@ -34827,8 +34827,8 @@ MonoBehaviour:
   - worldPos: {x: 47, y: -2.1999998}
     gridX: 127
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 126, y: 4}
     - {x: 126, y: 5}
@@ -34842,7 +34842,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 126, y: 5}
     - {x: 126, y: 6}
@@ -34856,7 +34856,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 126, y: 6}
     - {x: 126, y: 7}
@@ -34869,8 +34869,8 @@ MonoBehaviour:
   - worldPos: {x: 47, y: 0.20000029}
     gridX: 127
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 126, y: 7}
     - {x: 126, y: 8}
@@ -34884,7 +34884,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 126, y: 8}
     - {x: 126, y: 9}
@@ -34898,7 +34898,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 126, y: 9}
     - {x: 126, y: 10}
@@ -34912,7 +34912,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 126, y: 10}
     - {x: 126, y: 11}
@@ -34926,7 +34926,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 126, y: 11}
     - {x: 126, y: 12}
@@ -34940,7 +34940,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 126, y: 12}
     - {x: 126, y: 13}
@@ -34954,7 +34954,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 126, y: 13}
     - {x: 126, y: 14}
@@ -34968,7 +34968,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 126, y: 14}
     - {x: 126, y: 15}
@@ -34982,7 +34982,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 126, y: 15}
     - {x: 126, y: 16}
@@ -34996,7 +34996,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 126, y: 16}
     - {x: 126, y: 17}
@@ -35010,7 +35010,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 126, y: 17}
     - {x: 126, y: 18}
@@ -35024,7 +35024,7 @@ MonoBehaviour:
     gridX: 127
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 126, y: 18}
     - {x: 126, y: 19}
@@ -35073,8 +35073,8 @@ MonoBehaviour:
   - worldPos: {x: 47.800003, y: -3.8}
     gridX: 128
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 127, y: 2}
     - {x: 127, y: 3}
@@ -35088,7 +35088,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 4
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 127, y: 3}
     - {x: 127, y: 4}
@@ -35101,8 +35101,8 @@ MonoBehaviour:
   - worldPos: {x: 47.800003, y: -2.1999998}
     gridX: 128
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 127, y: 4}
     - {x: 127, y: 5}
@@ -35116,7 +35116,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 127, y: 5}
     - {x: 127, y: 6}
@@ -35130,7 +35130,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 127, y: 6}
     - {x: 127, y: 7}
@@ -35143,8 +35143,8 @@ MonoBehaviour:
   - worldPos: {x: 47.800003, y: 0.20000029}
     gridX: 128
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 127, y: 7}
     - {x: 127, y: 8}
@@ -35158,7 +35158,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 127, y: 8}
     - {x: 127, y: 9}
@@ -35172,7 +35172,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 127, y: 9}
     - {x: 127, y: 10}
@@ -35186,7 +35186,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 127, y: 10}
     - {x: 127, y: 11}
@@ -35200,7 +35200,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 127, y: 11}
     - {x: 127, y: 12}
@@ -35214,7 +35214,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 127, y: 12}
     - {x: 127, y: 13}
@@ -35228,7 +35228,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 127, y: 13}
     - {x: 127, y: 14}
@@ -35242,7 +35242,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 127, y: 14}
     - {x: 127, y: 15}
@@ -35256,7 +35256,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 127, y: 15}
     - {x: 127, y: 16}
@@ -35270,7 +35270,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 127, y: 16}
     - {x: 127, y: 17}
@@ -35284,7 +35284,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 127, y: 17}
     - {x: 127, y: 18}
@@ -35298,7 +35298,7 @@ MonoBehaviour:
     gridX: 128
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 127, y: 18}
     - {x: 127, y: 19}
@@ -35347,8 +35347,8 @@ MonoBehaviour:
   - worldPos: {x: 48.6, y: -3.8}
     gridX: 129
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 128, y: 2}
     - {x: 128, y: 3}
@@ -35362,7 +35362,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 4
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 128, y: 3}
     - {x: 128, y: 4}
@@ -35375,8 +35375,8 @@ MonoBehaviour:
   - worldPos: {x: 48.6, y: -2.1999998}
     gridX: 129
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 128, y: 4}
     - {x: 128, y: 5}
@@ -35390,7 +35390,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    distanceFromSurfaceBelow: 0.56012535
     neighbours:
     - {x: 128, y: 5}
     - {x: 128, y: 6}
@@ -35404,7 +35404,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 1.3601253
     neighbours:
     - {x: 128, y: 6}
     - {x: 128, y: 7}
@@ -35417,8 +35417,8 @@ MonoBehaviour:
   - worldPos: {x: 48.6, y: 0.20000029}
     gridX: 129
     gridY: 8
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.1601253
     neighbours:
     - {x: 128, y: 7}
     - {x: 128, y: 8}
@@ -35432,7 +35432,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4101249
+    distanceFromSurfaceBelow: 2.9601252
     neighbours:
     - {x: 128, y: 8}
     - {x: 128, y: 9}
@@ -35446,7 +35446,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.210125
+    distanceFromSurfaceBelow: 3.7601252
     neighbours:
     - {x: 128, y: 9}
     - {x: 128, y: 10}
@@ -35460,7 +35460,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.010125
+    distanceFromSurfaceBelow: 4.5601254
     neighbours:
     - {x: 128, y: 10}
     - {x: 128, y: 11}
@@ -35474,7 +35474,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8101249
+    distanceFromSurfaceBelow: 5.3601255
     neighbours:
     - {x: 128, y: 11}
     - {x: 128, y: 12}
@@ -35488,7 +35488,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6101248
+    distanceFromSurfaceBelow: 6.1601257
     neighbours:
     - {x: 128, y: 12}
     - {x: 128, y: 13}
@@ -35502,7 +35502,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.410125
+    distanceFromSurfaceBelow: 6.960126
     neighbours:
     - {x: 128, y: 13}
     - {x: 128, y: 14}
@@ -35516,7 +35516,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.210125
+    distanceFromSurfaceBelow: 7.760126
     neighbours:
     - {x: 128, y: 14}
     - {x: 128, y: 15}
@@ -35530,7 +35530,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.010125
+    distanceFromSurfaceBelow: 8.560126
     neighbours:
     - {x: 128, y: 15}
     - {x: 128, y: 16}
@@ -35544,7 +35544,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8101254
+    distanceFromSurfaceBelow: 9.3601265
     neighbours:
     - {x: 128, y: 16}
     - {x: 128, y: 17}
@@ -35558,7 +35558,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6101255
+    distanceFromSurfaceBelow: 10.160127
     neighbours:
     - {x: 128, y: 17}
     - {x: 128, y: 18}
@@ -35572,7 +35572,7 @@ MonoBehaviour:
     gridX: 129
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.960127
     neighbours:
     - {x: 128, y: 18}
     - {x: 128, y: 19}
@@ -35621,8 +35621,8 @@ MonoBehaviour:
   - worldPos: {x: 49.4, y: -3.8}
     gridX: 130
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 129, y: 2}
     - {x: 129, y: 3}
@@ -35636,7 +35636,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 4
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.3901255
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 129, y: 3}
     - {x: 129, y: 4}
@@ -35650,7 +35650,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.1901255
+    distanceFromSurfaceBelow: 2.1670682
     neighbours:
     - {x: 129, y: 4}
     - {x: 129, y: 5}
@@ -35663,8 +35663,8 @@ MonoBehaviour:
   - worldPos: {x: 49.4, y: -1.3999996}
     gridX: 130
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.9901254
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 129, y: 5}
     - {x: 129, y: 6}
@@ -35678,7 +35678,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.7901254
+    distanceFromSurfaceBelow: 0.49012506
     neighbours:
     - {x: 129, y: 6}
     - {x: 129, y: 7}
@@ -35692,7 +35692,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.5901253
+    distanceFromSurfaceBelow: 1.2901251
     neighbours:
     - {x: 129, y: 7}
     - {x: 129, y: 8}
@@ -35705,8 +35705,8 @@ MonoBehaviour:
   - worldPos: {x: 49.4, y: 1}
     gridX: 130
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.090125
     neighbours:
     - {x: 129, y: 8}
     - {x: 129, y: 9}
@@ -35720,7 +35720,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4001255
+    distanceFromSurfaceBelow: 2.890125
     neighbours:
     - {x: 129, y: 9}
     - {x: 129, y: 10}
@@ -35734,7 +35734,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2001255
+    distanceFromSurfaceBelow: 3.690125
     neighbours:
     - {x: 129, y: 10}
     - {x: 129, y: 11}
@@ -35748,7 +35748,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0001254
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 129, y: 11}
     - {x: 129, y: 12}
@@ -35762,7 +35762,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8001254
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 129, y: 12}
     - {x: 129, y: 13}
@@ -35776,7 +35776,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6001253
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 129, y: 13}
     - {x: 129, y: 14}
@@ -35790,7 +35790,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4001255
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 129, y: 14}
     - {x: 129, y: 15}
@@ -35804,7 +35804,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2001257
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 129, y: 15}
     - {x: 129, y: 16}
@@ -35818,7 +35818,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.000126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 129, y: 16}
     - {x: 129, y: 17}
@@ -35832,7 +35832,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.800126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 129, y: 17}
     - {x: 129, y: 18}
@@ -35846,7 +35846,7 @@ MonoBehaviour:
     gridX: 130
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6001263
+    distanceFromSurfaceBelow: 10.090126
     neighbours:
     - {x: 129, y: 18}
     - {x: 129, y: 19}
@@ -35909,8 +35909,8 @@ MonoBehaviour:
   - worldPos: {x: 50.200005, y: -2.9999998}
     gridX: 131
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 130, y: 3}
     - {x: 130, y: 4}
@@ -35924,7 +35924,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4615004
+    distanceFromSurfaceBelow: 2.1670682
     neighbours:
     - {x: 130, y: 4}
     - {x: 130, y: 5}
@@ -35937,8 +35937,8 @@ MonoBehaviour:
   - worldPos: {x: 50.200005, y: -1.3999996}
     gridX: 131
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.2615004
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 130, y: 5}
     - {x: 130, y: 6}
@@ -35952,7 +35952,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0615003
+    distanceFromSurfaceBelow: 0.49012506
     neighbours:
     - {x: 130, y: 6}
     - {x: 130, y: 7}
@@ -35966,7 +35966,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8615003
+    distanceFromSurfaceBelow: 1.2901251
     neighbours:
     - {x: 130, y: 7}
     - {x: 130, y: 8}
@@ -35979,8 +35979,8 @@ MonoBehaviour:
   - worldPos: {x: 50.200005, y: 1}
     gridX: 131
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.090125
     neighbours:
     - {x: 130, y: 8}
     - {x: 130, y: 9}
@@ -35994,7 +35994,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4001255
+    distanceFromSurfaceBelow: 2.890125
     neighbours:
     - {x: 130, y: 9}
     - {x: 130, y: 10}
@@ -36008,7 +36008,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2001255
+    distanceFromSurfaceBelow: 3.690125
     neighbours:
     - {x: 130, y: 10}
     - {x: 130, y: 11}
@@ -36022,7 +36022,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0001254
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 130, y: 11}
     - {x: 130, y: 12}
@@ -36036,7 +36036,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8001254
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 130, y: 12}
     - {x: 130, y: 13}
@@ -36050,7 +36050,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6001253
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 130, y: 13}
     - {x: 130, y: 14}
@@ -36064,7 +36064,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4001255
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 130, y: 14}
     - {x: 130, y: 15}
@@ -36078,7 +36078,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2001257
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 130, y: 15}
     - {x: 130, y: 16}
@@ -36092,7 +36092,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.000126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 130, y: 16}
     - {x: 130, y: 17}
@@ -36106,7 +36106,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.800126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 130, y: 17}
     - {x: 130, y: 18}
@@ -36120,7 +36120,7 @@ MonoBehaviour:
     gridX: 131
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6001263
+    distanceFromSurfaceBelow: 10.090126
     neighbours:
     - {x: 130, y: 18}
     - {x: 130, y: 19}
@@ -36183,8 +36183,8 @@ MonoBehaviour:
   - worldPos: {x: 51, y: -2.9999998}
     gridX: 132
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 131, y: 3}
     - {x: 131, y: 4}
@@ -36198,7 +36198,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4615004
+    distanceFromSurfaceBelow: 2.1670682
     neighbours:
     - {x: 131, y: 4}
     - {x: 131, y: 5}
@@ -36211,8 +36211,8 @@ MonoBehaviour:
   - worldPos: {x: 51, y: -1.3999996}
     gridX: 132
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.2615004
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 131, y: 5}
     - {x: 131, y: 6}
@@ -36226,7 +36226,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0615003
+    distanceFromSurfaceBelow: 0.49012506
     neighbours:
     - {x: 131, y: 6}
     - {x: 131, y: 7}
@@ -36240,7 +36240,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8615003
+    distanceFromSurfaceBelow: 1.2901251
     neighbours:
     - {x: 131, y: 7}
     - {x: 131, y: 8}
@@ -36253,8 +36253,8 @@ MonoBehaviour:
   - worldPos: {x: 51, y: 1}
     gridX: 132
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.090125
     neighbours:
     - {x: 131, y: 8}
     - {x: 131, y: 9}
@@ -36268,7 +36268,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4001255
+    distanceFromSurfaceBelow: 2.890125
     neighbours:
     - {x: 131, y: 9}
     - {x: 131, y: 10}
@@ -36282,7 +36282,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2001255
+    distanceFromSurfaceBelow: 3.690125
     neighbours:
     - {x: 131, y: 10}
     - {x: 131, y: 11}
@@ -36296,7 +36296,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0001254
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 131, y: 11}
     - {x: 131, y: 12}
@@ -36310,7 +36310,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8001254
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 131, y: 12}
     - {x: 131, y: 13}
@@ -36324,7 +36324,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6001253
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 131, y: 13}
     - {x: 131, y: 14}
@@ -36338,7 +36338,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4001255
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 131, y: 14}
     - {x: 131, y: 15}
@@ -36352,7 +36352,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2001257
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 131, y: 15}
     - {x: 131, y: 16}
@@ -36366,7 +36366,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.000126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 131, y: 16}
     - {x: 131, y: 17}
@@ -36380,7 +36380,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.800126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 131, y: 17}
     - {x: 131, y: 18}
@@ -36394,7 +36394,7 @@ MonoBehaviour:
     gridX: 132
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6001263
+    distanceFromSurfaceBelow: 10.090126
     neighbours:
     - {x: 131, y: 18}
     - {x: 131, y: 19}
@@ -36457,8 +36457,8 @@ MonoBehaviour:
   - worldPos: {x: 51.800003, y: -2.9999998}
     gridX: 133
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 132, y: 3}
     - {x: 132, y: 4}
@@ -36472,7 +36472,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4615004
+    distanceFromSurfaceBelow: 2.1670682
     neighbours:
     - {x: 132, y: 4}
     - {x: 132, y: 5}
@@ -36485,8 +36485,8 @@ MonoBehaviour:
   - worldPos: {x: 51.800003, y: -1.3999996}
     gridX: 133
     gridY: 6
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.2615004
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 132, y: 5}
     - {x: 132, y: 6}
@@ -36500,7 +36500,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0615003
+    distanceFromSurfaceBelow: 0.49012506
     neighbours:
     - {x: 132, y: 6}
     - {x: 132, y: 7}
@@ -36514,7 +36514,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8615003
+    distanceFromSurfaceBelow: 1.2901251
     neighbours:
     - {x: 132, y: 7}
     - {x: 132, y: 8}
@@ -36527,8 +36527,8 @@ MonoBehaviour:
   - worldPos: {x: 51.800003, y: 1}
     gridX: 133
     gridY: 9
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 2.090125
     neighbours:
     - {x: 132, y: 8}
     - {x: 132, y: 9}
@@ -36542,7 +36542,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4001255
+    distanceFromSurfaceBelow: 2.890125
     neighbours:
     - {x: 132, y: 9}
     - {x: 132, y: 10}
@@ -36556,7 +36556,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2001255
+    distanceFromSurfaceBelow: 3.690125
     neighbours:
     - {x: 132, y: 10}
     - {x: 132, y: 11}
@@ -36570,7 +36570,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0001254
+    distanceFromSurfaceBelow: 4.490125
     neighbours:
     - {x: 132, y: 11}
     - {x: 132, y: 12}
@@ -36584,7 +36584,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8001254
+    distanceFromSurfaceBelow: 5.2901254
     neighbours:
     - {x: 132, y: 12}
     - {x: 132, y: 13}
@@ -36598,7 +36598,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6001253
+    distanceFromSurfaceBelow: 6.0901256
     neighbours:
     - {x: 132, y: 13}
     - {x: 132, y: 14}
@@ -36612,7 +36612,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4001255
+    distanceFromSurfaceBelow: 6.8901258
     neighbours:
     - {x: 132, y: 14}
     - {x: 132, y: 15}
@@ -36626,7 +36626,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2001257
+    distanceFromSurfaceBelow: 7.690126
     neighbours:
     - {x: 132, y: 15}
     - {x: 132, y: 16}
@@ -36640,7 +36640,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.000126
+    distanceFromSurfaceBelow: 8.490126
     neighbours:
     - {x: 132, y: 16}
     - {x: 132, y: 17}
@@ -36654,7 +36654,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.800126
+    distanceFromSurfaceBelow: 9.290126
     neighbours:
     - {x: 132, y: 17}
     - {x: 132, y: 18}
@@ -36668,7 +36668,7 @@ MonoBehaviour:
     gridX: 133
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6001263
+    distanceFromSurfaceBelow: 10.090126
     neighbours:
     - {x: 132, y: 18}
     - {x: 132, y: 19}
@@ -36760,7 +36760,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300046
+    distanceFromSurfaceBelow: 0.40300035
     neighbours:
     - {x: 133, y: 5}
     - {x: 133, y: 6}
@@ -36774,7 +36774,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2130005
+    distanceFromSurfaceBelow: 1.2030003
     neighbours:
     - {x: 133, y: 6}
     - {x: 133, y: 7}
@@ -36788,7 +36788,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0130005
+    distanceFromSurfaceBelow: 2.0030003
     neighbours:
     - {x: 133, y: 7}
     - {x: 133, y: 8}
@@ -36802,7 +36802,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8130004
+    distanceFromSurfaceBelow: 2.8030002
     neighbours:
     - {x: 133, y: 8}
     - {x: 133, y: 9}
@@ -36816,7 +36816,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130004
+    distanceFromSurfaceBelow: 3.6030002
     neighbours:
     - {x: 133, y: 9}
     - {x: 133, y: 10}
@@ -36830,7 +36830,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4130006
+    distanceFromSurfaceBelow: 4.4030004
     neighbours:
     - {x: 133, y: 10}
     - {x: 133, y: 11}
@@ -36844,7 +36844,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.213001
+    distanceFromSurfaceBelow: 5.2030005
     neighbours:
     - {x: 133, y: 11}
     - {x: 133, y: 12}
@@ -36858,7 +36858,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.013001
+    distanceFromSurfaceBelow: 6.0030007
     neighbours:
     - {x: 133, y: 12}
     - {x: 133, y: 13}
@@ -36872,7 +36872,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.813001
+    distanceFromSurfaceBelow: 6.803001
     neighbours:
     - {x: 133, y: 13}
     - {x: 133, y: 14}
@@ -36886,7 +36886,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6130013
+    distanceFromSurfaceBelow: 7.603001
     neighbours:
     - {x: 133, y: 14}
     - {x: 133, y: 15}
@@ -36900,7 +36900,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.413001
+    distanceFromSurfaceBelow: 8.403001
     neighbours:
     - {x: 133, y: 15}
     - {x: 133, y: 16}
@@ -36914,7 +36914,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.213001
+    distanceFromSurfaceBelow: 9.203001
     neighbours:
     - {x: 133, y: 16}
     - {x: 133, y: 17}
@@ -36928,7 +36928,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.013001
+    distanceFromSurfaceBelow: 10.003001
     neighbours:
     - {x: 133, y: 17}
     - {x: 133, y: 18}
@@ -36942,7 +36942,7 @@ MonoBehaviour:
     gridX: 134
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.813002
+    distanceFromSurfaceBelow: 10.803001
     neighbours:
     - {x: 133, y: 18}
     - {x: 133, y: 19}
@@ -37034,7 +37034,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300046
+    distanceFromSurfaceBelow: 0.40300035
     neighbours:
     - {x: 134, y: 5}
     - {x: 134, y: 6}
@@ -37048,7 +37048,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2130005
+    distanceFromSurfaceBelow: 1.2030003
     neighbours:
     - {x: 134, y: 6}
     - {x: 134, y: 7}
@@ -37062,7 +37062,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0130005
+    distanceFromSurfaceBelow: 2.0030003
     neighbours:
     - {x: 134, y: 7}
     - {x: 134, y: 8}
@@ -37076,7 +37076,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8130004
+    distanceFromSurfaceBelow: 2.8030002
     neighbours:
     - {x: 134, y: 8}
     - {x: 134, y: 9}
@@ -37090,7 +37090,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130004
+    distanceFromSurfaceBelow: 3.6030002
     neighbours:
     - {x: 134, y: 9}
     - {x: 134, y: 10}
@@ -37104,7 +37104,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4130006
+    distanceFromSurfaceBelow: 4.4030004
     neighbours:
     - {x: 134, y: 10}
     - {x: 134, y: 11}
@@ -37118,7 +37118,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.213001
+    distanceFromSurfaceBelow: 5.2030005
     neighbours:
     - {x: 134, y: 11}
     - {x: 134, y: 12}
@@ -37132,7 +37132,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.013001
+    distanceFromSurfaceBelow: 6.0030007
     neighbours:
     - {x: 134, y: 12}
     - {x: 134, y: 13}
@@ -37146,7 +37146,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.813001
+    distanceFromSurfaceBelow: 6.803001
     neighbours:
     - {x: 134, y: 13}
     - {x: 134, y: 14}
@@ -37160,7 +37160,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6130013
+    distanceFromSurfaceBelow: 7.603001
     neighbours:
     - {x: 134, y: 14}
     - {x: 134, y: 15}
@@ -37174,7 +37174,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.413001
+    distanceFromSurfaceBelow: 8.403001
     neighbours:
     - {x: 134, y: 15}
     - {x: 134, y: 16}
@@ -37188,7 +37188,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.213001
+    distanceFromSurfaceBelow: 9.203001
     neighbours:
     - {x: 134, y: 16}
     - {x: 134, y: 17}
@@ -37202,7 +37202,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.013001
+    distanceFromSurfaceBelow: 10.003001
     neighbours:
     - {x: 134, y: 17}
     - {x: 134, y: 18}
@@ -37216,7 +37216,7 @@ MonoBehaviour:
     gridX: 135
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.813002
+    distanceFromSurfaceBelow: 10.803001
     neighbours:
     - {x: 134, y: 18}
     - {x: 134, y: 19}
@@ -37308,7 +37308,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41300046
+    distanceFromSurfaceBelow: 0.40300035
     neighbours:
     - {x: 135, y: 5}
     - {x: 135, y: 6}
@@ -37322,7 +37322,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2130005
+    distanceFromSurfaceBelow: 1.2030003
     neighbours:
     - {x: 135, y: 6}
     - {x: 135, y: 7}
@@ -37336,7 +37336,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0130005
+    distanceFromSurfaceBelow: 2.0030003
     neighbours:
     - {x: 135, y: 7}
     - {x: 135, y: 8}
@@ -37350,7 +37350,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8130004
+    distanceFromSurfaceBelow: 2.8030002
     neighbours:
     - {x: 135, y: 8}
     - {x: 135, y: 9}
@@ -37364,7 +37364,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6130004
+    distanceFromSurfaceBelow: 3.6030002
     neighbours:
     - {x: 135, y: 9}
     - {x: 135, y: 10}
@@ -37378,7 +37378,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4130006
+    distanceFromSurfaceBelow: 4.4030004
     neighbours:
     - {x: 135, y: 10}
     - {x: 135, y: 11}
@@ -37392,7 +37392,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.213001
+    distanceFromSurfaceBelow: 5.2030005
     neighbours:
     - {x: 135, y: 11}
     - {x: 135, y: 12}
@@ -37406,7 +37406,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.013001
+    distanceFromSurfaceBelow: 6.0030007
     neighbours:
     - {x: 135, y: 12}
     - {x: 135, y: 13}
@@ -37420,7 +37420,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.813001
+    distanceFromSurfaceBelow: 6.803001
     neighbours:
     - {x: 135, y: 13}
     - {x: 135, y: 14}
@@ -37434,7 +37434,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6130013
+    distanceFromSurfaceBelow: 7.603001
     neighbours:
     - {x: 135, y: 14}
     - {x: 135, y: 15}
@@ -37448,7 +37448,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.413001
+    distanceFromSurfaceBelow: 8.403001
     neighbours:
     - {x: 135, y: 15}
     - {x: 135, y: 16}
@@ -37462,7 +37462,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.213001
+    distanceFromSurfaceBelow: 9.203001
     neighbours:
     - {x: 135, y: 16}
     - {x: 135, y: 17}
@@ -37476,7 +37476,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.013001
+    distanceFromSurfaceBelow: 10.003001
     neighbours:
     - {x: 135, y: 17}
     - {x: 135, y: 18}
@@ -37490,7 +37490,7 @@ MonoBehaviour:
     gridX: 136
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.813002
+    distanceFromSurfaceBelow: 10.803001
     neighbours:
     - {x: 135, y: 18}
     - {x: 135, y: 19}
@@ -37553,8 +37553,8 @@ MonoBehaviour:
   - worldPos: {x: 55, y: -2.9999998}
     gridX: 137
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 136, y: 3}
     - {x: 136, y: 4}
@@ -37568,7 +37568,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 136, y: 4}
     - {x: 136, y: 5}
@@ -37582,7 +37582,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 136, y: 5}
     - {x: 136, y: 6}
@@ -37596,7 +37596,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 136, y: 6}
     - {x: 136, y: 7}
@@ -37610,7 +37610,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.567068
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 136, y: 7}
     - {x: 136, y: 8}
@@ -37624,7 +37624,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.3670683
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 136, y: 8}
     - {x: 136, y: 9}
@@ -37638,7 +37638,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.1670685
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 136, y: 9}
     - {x: 136, y: 10}
@@ -37652,7 +37652,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.9670687
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 136, y: 10}
     - {x: 136, y: 11}
@@ -37666,7 +37666,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.767069
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 136, y: 11}
     - {x: 136, y: 12}
@@ -37680,7 +37680,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.567069
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 136, y: 12}
     - {x: 136, y: 13}
@@ -37694,7 +37694,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.367069
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 136, y: 13}
     - {x: 136, y: 14}
@@ -37708,7 +37708,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.167069
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 136, y: 14}
     - {x: 136, y: 15}
@@ -37722,7 +37722,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.96707
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 136, y: 15}
     - {x: 136, y: 16}
@@ -37736,7 +37736,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.76707
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 136, y: 16}
     - {x: 136, y: 17}
@@ -37750,7 +37750,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.56707
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 136, y: 17}
     - {x: 136, y: 18}
@@ -37764,7 +37764,7 @@ MonoBehaviour:
     gridX: 137
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 13.36707
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 136, y: 18}
     - {x: 136, y: 19}
@@ -37827,8 +37827,8 @@ MonoBehaviour:
   - worldPos: {x: 55.800003, y: -2.9999998}
     gridX: 138
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 137, y: 3}
     - {x: 137, y: 4}
@@ -37842,7 +37842,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 137, y: 4}
     - {x: 137, y: 5}
@@ -37856,7 +37856,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.9670682
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 137, y: 5}
     - {x: 137, y: 6}
@@ -37870,7 +37870,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.7670681
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 137, y: 6}
     - {x: 137, y: 7}
@@ -37884,7 +37884,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.567068
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 137, y: 7}
     - {x: 137, y: 8}
@@ -37898,7 +37898,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.3670683
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 137, y: 8}
     - {x: 137, y: 9}
@@ -37912,7 +37912,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.1670685
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 137, y: 9}
     - {x: 137, y: 10}
@@ -37926,7 +37926,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.9670687
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 137, y: 10}
     - {x: 137, y: 11}
@@ -37940,7 +37940,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.767069
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 137, y: 11}
     - {x: 137, y: 12}
@@ -37954,7 +37954,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.567069
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 137, y: 12}
     - {x: 137, y: 13}
@@ -37968,7 +37968,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.367069
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 137, y: 13}
     - {x: 137, y: 14}
@@ -37982,7 +37982,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.167069
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 137, y: 14}
     - {x: 137, y: 15}
@@ -37996,7 +37996,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.96707
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 137, y: 15}
     - {x: 137, y: 16}
@@ -38010,7 +38010,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.76707
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 137, y: 16}
     - {x: 137, y: 17}
@@ -38024,7 +38024,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.56707
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 137, y: 17}
     - {x: 137, y: 18}
@@ -38038,7 +38038,7 @@ MonoBehaviour:
     gridX: 138
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 13.36707
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 137, y: 18}
     - {x: 137, y: 19}
@@ -38101,8 +38101,8 @@ MonoBehaviour:
   - worldPos: {x: 56.6, y: -2.9999998}
     gridX: 139
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 138, y: 3}
     - {x: 138, y: 4}
@@ -38116,7 +38116,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 138, y: 4}
     - {x: 138, y: 5}
@@ -38129,8 +38129,8 @@ MonoBehaviour:
   - worldPos: {x: 56.6, y: -1.3999996}
     gridX: 139
     gridY: 6
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 138, y: 5}
     - {x: 138, y: 6}
@@ -38144,7 +38144,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41012514
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 138, y: 6}
     - {x: 138, y: 7}
@@ -38158,7 +38158,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2101252
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 138, y: 7}
     - {x: 138, y: 8}
@@ -38172,7 +38172,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0101252
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 138, y: 8}
     - {x: 138, y: 9}
@@ -38186,7 +38186,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.810125
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 138, y: 9}
     - {x: 138, y: 10}
@@ -38200,7 +38200,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.610125
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 138, y: 10}
     - {x: 138, y: 11}
@@ -38214,7 +38214,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4101253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 138, y: 11}
     - {x: 138, y: 12}
@@ -38228,7 +38228,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2101254
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 138, y: 12}
     - {x: 138, y: 13}
@@ -38242,7 +38242,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0101256
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 138, y: 13}
     - {x: 138, y: 14}
@@ -38256,7 +38256,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.810126
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 138, y: 14}
     - {x: 138, y: 15}
@@ -38270,7 +38270,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.610126
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 138, y: 15}
     - {x: 138, y: 16}
@@ -38284,7 +38284,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 138, y: 16}
     - {x: 138, y: 17}
@@ -38298,7 +38298,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.210126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 138, y: 17}
     - {x: 138, y: 18}
@@ -38312,7 +38312,7 @@ MonoBehaviour:
     gridX: 139
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.010126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 138, y: 18}
     - {x: 138, y: 19}
@@ -38375,8 +38375,8 @@ MonoBehaviour:
   - worldPos: {x: 57.4, y: -2.9999998}
     gridX: 140
     gridY: 4
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.3670683
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 139, y: 3}
     - {x: 139, y: 4}
@@ -38390,7 +38390,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 5
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.1670682
+    distanceFromSurfaceBelow: 0.42012548
     neighbours:
     - {x: 139, y: 4}
     - {x: 139, y: 5}
@@ -38403,8 +38403,8 @@ MonoBehaviour:
   - worldPos: {x: 57.4, y: -1.3999996}
     gridX: 140
     gridY: 6
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.2201254
     neighbours:
     - {x: 139, y: 5}
     - {x: 139, y: 6}
@@ -38418,7 +38418,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41012514
+    distanceFromSurfaceBelow: 2.0201254
     neighbours:
     - {x: 139, y: 6}
     - {x: 139, y: 7}
@@ -38432,7 +38432,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2101252
+    distanceFromSurfaceBelow: 2.8201253
     neighbours:
     - {x: 139, y: 7}
     - {x: 139, y: 8}
@@ -38446,7 +38446,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0101252
+    distanceFromSurfaceBelow: 3.6201253
     neighbours:
     - {x: 139, y: 8}
     - {x: 139, y: 9}
@@ -38460,7 +38460,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.810125
+    distanceFromSurfaceBelow: 4.4201255
     neighbours:
     - {x: 139, y: 9}
     - {x: 139, y: 10}
@@ -38474,7 +38474,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.610125
+    distanceFromSurfaceBelow: 5.2201257
     neighbours:
     - {x: 139, y: 10}
     - {x: 139, y: 11}
@@ -38488,7 +38488,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4101253
+    distanceFromSurfaceBelow: 6.020126
     neighbours:
     - {x: 139, y: 11}
     - {x: 139, y: 12}
@@ -38502,7 +38502,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2101254
+    distanceFromSurfaceBelow: 6.820126
     neighbours:
     - {x: 139, y: 12}
     - {x: 139, y: 13}
@@ -38516,7 +38516,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0101256
+    distanceFromSurfaceBelow: 7.6201262
     neighbours:
     - {x: 139, y: 13}
     - {x: 139, y: 14}
@@ -38530,7 +38530,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.810126
+    distanceFromSurfaceBelow: 8.420126
     neighbours:
     - {x: 139, y: 14}
     - {x: 139, y: 15}
@@ -38544,7 +38544,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.610126
+    distanceFromSurfaceBelow: 9.220126
     neighbours:
     - {x: 139, y: 15}
     - {x: 139, y: 16}
@@ -38558,7 +38558,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 10.020126
     neighbours:
     - {x: 139, y: 16}
     - {x: 139, y: 17}
@@ -38572,7 +38572,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.210126
+    distanceFromSurfaceBelow: 10.820127
     neighbours:
     - {x: 139, y: 17}
     - {x: 139, y: 18}
@@ -38586,7 +38586,7 @@ MonoBehaviour:
     gridX: 140
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.010126
+    distanceFromSurfaceBelow: 11.620127
     neighbours:
     - {x: 139, y: 18}
     - {x: 139, y: 19}
@@ -38635,8 +38635,8 @@ MonoBehaviour:
   - worldPos: {x: 58.200005, y: -3.8}
     gridX: 141
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 140, y: 2}
     - {x: 140, y: 3}
@@ -38650,7 +38650,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 4
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4814999
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 140, y: 3}
     - {x: 140, y: 4}
@@ -38663,8 +38663,8 @@ MonoBehaviour:
   - worldPos: {x: 58.200005, y: -2.1999998}
     gridX: 141
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.2814999
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 140, y: 4}
     - {x: 140, y: 5}
@@ -38677,8 +38677,8 @@ MonoBehaviour:
   - worldPos: {x: 58.200005, y: -1.3999996}
     gridX: 141
     gridY: 6
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.48012543
     neighbours:
     - {x: 140, y: 5}
     - {x: 140, y: 6}
@@ -38692,7 +38692,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.41012514
+    distanceFromSurfaceBelow: 1.2801254
     neighbours:
     - {x: 140, y: 6}
     - {x: 140, y: 7}
@@ -38706,7 +38706,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2101252
+    distanceFromSurfaceBelow: 2.0801253
     neighbours:
     - {x: 140, y: 7}
     - {x: 140, y: 8}
@@ -38720,7 +38720,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0101252
+    distanceFromSurfaceBelow: 2.8801253
     neighbours:
     - {x: 140, y: 8}
     - {x: 140, y: 9}
@@ -38734,7 +38734,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.810125
+    distanceFromSurfaceBelow: 3.6801252
     neighbours:
     - {x: 140, y: 9}
     - {x: 140, y: 10}
@@ -38748,7 +38748,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.610125
+    distanceFromSurfaceBelow: 4.4801254
     neighbours:
     - {x: 140, y: 10}
     - {x: 140, y: 11}
@@ -38762,7 +38762,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4101253
+    distanceFromSurfaceBelow: 5.2801256
     neighbours:
     - {x: 140, y: 11}
     - {x: 140, y: 12}
@@ -38776,7 +38776,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2101254
+    distanceFromSurfaceBelow: 6.080126
     neighbours:
     - {x: 140, y: 12}
     - {x: 140, y: 13}
@@ -38790,7 +38790,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0101256
+    distanceFromSurfaceBelow: 6.880126
     neighbours:
     - {x: 140, y: 13}
     - {x: 140, y: 14}
@@ -38804,7 +38804,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.810126
+    distanceFromSurfaceBelow: 7.680126
     neighbours:
     - {x: 140, y: 14}
     - {x: 140, y: 15}
@@ -38818,7 +38818,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.610126
+    distanceFromSurfaceBelow: 8.480126
     neighbours:
     - {x: 140, y: 15}
     - {x: 140, y: 16}
@@ -38832,7 +38832,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.410126
+    distanceFromSurfaceBelow: 9.280127
     neighbours:
     - {x: 140, y: 16}
     - {x: 140, y: 17}
@@ -38846,7 +38846,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.210126
+    distanceFromSurfaceBelow: 10.080127
     neighbours:
     - {x: 140, y: 17}
     - {x: 140, y: 18}
@@ -38860,7 +38860,7 @@ MonoBehaviour:
     gridX: 141
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.010126
+    distanceFromSurfaceBelow: 10.880127
     neighbours:
     - {x: 140, y: 18}
     - {x: 140, y: 19}
@@ -38909,8 +38909,8 @@ MonoBehaviour:
   - worldPos: {x: 59, y: -3.8}
     gridX: 142
     gridY: 3
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.56706834
     neighbours:
     - {x: 141, y: 2}
     - {x: 141, y: 3}
@@ -38924,7 +38924,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 4
     isWalkable: 1
-    distanceFromSurfaceBelow: 0.4814999
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 141, y: 3}
     - {x: 141, y: 4}
@@ -38937,8 +38937,8 @@ MonoBehaviour:
   - worldPos: {x: 59, y: -2.1999998}
     gridX: 142
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 1.2814999
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 141, y: 4}
     - {x: 141, y: 5}
@@ -38951,8 +38951,8 @@ MonoBehaviour:
   - worldPos: {x: 59, y: -1.3999996}
     gridX: 142
     gridY: 6
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 0.48012543
     neighbours:
     - {x: 141, y: 5}
     - {x: 141, y: 6}
@@ -38966,7 +38966,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8815002
+    distanceFromSurfaceBelow: 1.2801254
     neighbours:
     - {x: 141, y: 6}
     - {x: 141, y: 7}
@@ -38980,7 +38980,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6815002
+    distanceFromSurfaceBelow: 2.0801253
     neighbours:
     - {x: 141, y: 7}
     - {x: 141, y: 8}
@@ -38994,7 +38994,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4815
+    distanceFromSurfaceBelow: 2.8801253
     neighbours:
     - {x: 141, y: 8}
     - {x: 141, y: 9}
@@ -39008,7 +39008,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2815003
+    distanceFromSurfaceBelow: 3.6801252
     neighbours:
     - {x: 141, y: 9}
     - {x: 141, y: 10}
@@ -39022,7 +39022,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0815005
+    distanceFromSurfaceBelow: 4.4801254
     neighbours:
     - {x: 141, y: 10}
     - {x: 141, y: 11}
@@ -39036,7 +39036,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8815007
+    distanceFromSurfaceBelow: 5.2801256
     neighbours:
     - {x: 141, y: 11}
     - {x: 141, y: 12}
@@ -39050,7 +39050,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.681501
+    distanceFromSurfaceBelow: 6.080126
     neighbours:
     - {x: 141, y: 12}
     - {x: 141, y: 13}
@@ -39064,7 +39064,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.481501
+    distanceFromSurfaceBelow: 6.880126
     neighbours:
     - {x: 141, y: 13}
     - {x: 141, y: 14}
@@ -39078,7 +39078,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.281501
+    distanceFromSurfaceBelow: 7.680126
     neighbours:
     - {x: 141, y: 14}
     - {x: 141, y: 15}
@@ -39092,7 +39092,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.081501
+    distanceFromSurfaceBelow: 8.480126
     neighbours:
     - {x: 141, y: 15}
     - {x: 141, y: 16}
@@ -39106,7 +39106,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.881501
+    distanceFromSurfaceBelow: 9.280127
     neighbours:
     - {x: 141, y: 16}
     - {x: 141, y: 17}
@@ -39120,7 +39120,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.681501
+    distanceFromSurfaceBelow: 10.080127
     neighbours:
     - {x: 141, y: 17}
     - {x: 141, y: 18}
@@ -39134,7 +39134,7 @@ MonoBehaviour:
     gridX: 142
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 12.481502
+    distanceFromSurfaceBelow: 10.880127
     neighbours:
     - {x: 141, y: 18}
     - {x: 141, y: 19}
@@ -39197,8 +39197,8 @@ MonoBehaviour:
   - worldPos: {x: 59.800003, y: -2.9999998}
     gridX: 143
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 142, y: 3}
     - {x: 142, y: 4}
@@ -39211,8 +39211,8 @@ MonoBehaviour:
   - worldPos: {x: 59.800003, y: -2.1999998}
     gridX: 143
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.49150014
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 142, y: 4}
     - {x: 142, y: 5}
@@ -39226,7 +39226,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2915001
+    distanceFromSurfaceBelow: 0.48012543
     neighbours:
     - {x: 142, y: 5}
     - {x: 142, y: 6}
@@ -39240,7 +39240,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0915
+    distanceFromSurfaceBelow: 1.2801254
     neighbours:
     - {x: 142, y: 6}
     - {x: 142, y: 7}
@@ -39254,7 +39254,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8915
+    distanceFromSurfaceBelow: 2.0801253
     neighbours:
     - {x: 142, y: 7}
     - {x: 142, y: 8}
@@ -39268,7 +39268,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6915
+    distanceFromSurfaceBelow: 2.8801253
     neighbours:
     - {x: 142, y: 8}
     - {x: 142, y: 9}
@@ -39282,7 +39282,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4915
+    distanceFromSurfaceBelow: 3.6801252
     neighbours:
     - {x: 142, y: 9}
     - {x: 142, y: 10}
@@ -39296,7 +39296,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2915
+    distanceFromSurfaceBelow: 4.4801254
     neighbours:
     - {x: 142, y: 10}
     - {x: 142, y: 11}
@@ -39310,7 +39310,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0915003
+    distanceFromSurfaceBelow: 5.2801256
     neighbours:
     - {x: 142, y: 11}
     - {x: 142, y: 12}
@@ -39324,7 +39324,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8915005
+    distanceFromSurfaceBelow: 6.080126
     neighbours:
     - {x: 142, y: 12}
     - {x: 142, y: 13}
@@ -39338,7 +39338,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6915007
+    distanceFromSurfaceBelow: 6.880126
     neighbours:
     - {x: 142, y: 13}
     - {x: 142, y: 14}
@@ -39352,7 +39352,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.491501
+    distanceFromSurfaceBelow: 7.680126
     neighbours:
     - {x: 142, y: 14}
     - {x: 142, y: 15}
@@ -39366,7 +39366,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.291501
+    distanceFromSurfaceBelow: 8.480126
     neighbours:
     - {x: 142, y: 15}
     - {x: 142, y: 16}
@@ -39380,7 +39380,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.091501
+    distanceFromSurfaceBelow: 9.280127
     neighbours:
     - {x: 142, y: 16}
     - {x: 142, y: 17}
@@ -39394,7 +39394,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.891501
+    distanceFromSurfaceBelow: 10.080127
     neighbours:
     - {x: 142, y: 17}
     - {x: 142, y: 18}
@@ -39408,7 +39408,7 @@ MonoBehaviour:
     gridX: 143
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.691502
+    distanceFromSurfaceBelow: 10.880127
     neighbours:
     - {x: 142, y: 18}
     - {x: 142, y: 19}
@@ -39471,8 +39471,8 @@ MonoBehaviour:
   - worldPos: {x: 60.6, y: -2.9999998}
     gridX: 144
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 143, y: 3}
     - {x: 143, y: 4}
@@ -39485,8 +39485,8 @@ MonoBehaviour:
   - worldPos: {x: 60.6, y: -2.1999998}
     gridX: 144
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.49150014
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 143, y: 4}
     - {x: 143, y: 5}
@@ -39500,7 +39500,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2915001
+    distanceFromSurfaceBelow: 0.48012543
     neighbours:
     - {x: 143, y: 5}
     - {x: 143, y: 6}
@@ -39514,7 +39514,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0915
+    distanceFromSurfaceBelow: 1.2801254
     neighbours:
     - {x: 143, y: 6}
     - {x: 143, y: 7}
@@ -39528,7 +39528,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8915
+    distanceFromSurfaceBelow: 2.0801253
     neighbours:
     - {x: 143, y: 7}
     - {x: 143, y: 8}
@@ -39542,7 +39542,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6915
+    distanceFromSurfaceBelow: 2.8801253
     neighbours:
     - {x: 143, y: 8}
     - {x: 143, y: 9}
@@ -39556,7 +39556,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4915
+    distanceFromSurfaceBelow: 3.6801252
     neighbours:
     - {x: 143, y: 9}
     - {x: 143, y: 10}
@@ -39570,7 +39570,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2915
+    distanceFromSurfaceBelow: 4.4801254
     neighbours:
     - {x: 143, y: 10}
     - {x: 143, y: 11}
@@ -39584,7 +39584,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0915003
+    distanceFromSurfaceBelow: 5.2801256
     neighbours:
     - {x: 143, y: 11}
     - {x: 143, y: 12}
@@ -39598,7 +39598,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8915005
+    distanceFromSurfaceBelow: 6.080126
     neighbours:
     - {x: 143, y: 12}
     - {x: 143, y: 13}
@@ -39612,7 +39612,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6915007
+    distanceFromSurfaceBelow: 6.880126
     neighbours:
     - {x: 143, y: 13}
     - {x: 143, y: 14}
@@ -39626,7 +39626,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.491501
+    distanceFromSurfaceBelow: 7.680126
     neighbours:
     - {x: 143, y: 14}
     - {x: 143, y: 15}
@@ -39640,7 +39640,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.291501
+    distanceFromSurfaceBelow: 8.480126
     neighbours:
     - {x: 143, y: 15}
     - {x: 143, y: 16}
@@ -39654,7 +39654,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.091501
+    distanceFromSurfaceBelow: 9.280127
     neighbours:
     - {x: 143, y: 16}
     - {x: 143, y: 17}
@@ -39668,7 +39668,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.891501
+    distanceFromSurfaceBelow: 10.080127
     neighbours:
     - {x: 143, y: 17}
     - {x: 143, y: 18}
@@ -39682,7 +39682,7 @@ MonoBehaviour:
     gridX: 144
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.691502
+    distanceFromSurfaceBelow: 10.880127
     neighbours:
     - {x: 143, y: 18}
     - {x: 143, y: 19}
@@ -39745,8 +39745,8 @@ MonoBehaviour:
   - worldPos: {x: 61.4, y: -2.9999998}
     gridX: 145
     gridY: 4
-    isWalkable: 0
-    distanceFromSurfaceBelow: 0
+    isWalkable: 1
+    distanceFromSurfaceBelow: 1.3670683
     neighbours:
     - {x: 144, y: 3}
     - {x: 144, y: 4}
@@ -39759,8 +39759,8 @@ MonoBehaviour:
   - worldPos: {x: 61.4, y: -2.1999998}
     gridX: 145
     gridY: 5
-    isWalkable: 1
-    distanceFromSurfaceBelow: 0.49150014
+    isWalkable: 0
+    distanceFromSurfaceBelow: 0
     neighbours:
     - {x: 144, y: 4}
     - {x: 144, y: 5}
@@ -39774,7 +39774,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 6
     isWalkable: 1
-    distanceFromSurfaceBelow: 1.2915001
+    distanceFromSurfaceBelow: 0.48012543
     neighbours:
     - {x: 144, y: 5}
     - {x: 144, y: 6}
@@ -39788,7 +39788,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 7
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.0915
+    distanceFromSurfaceBelow: 1.2801254
     neighbours:
     - {x: 144, y: 6}
     - {x: 144, y: 7}
@@ -39802,7 +39802,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 8
     isWalkable: 1
-    distanceFromSurfaceBelow: 2.8915
+    distanceFromSurfaceBelow: 2.0801253
     neighbours:
     - {x: 144, y: 7}
     - {x: 144, y: 8}
@@ -39816,7 +39816,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 9
     isWalkable: 1
-    distanceFromSurfaceBelow: 3.6915
+    distanceFromSurfaceBelow: 2.8801253
     neighbours:
     - {x: 144, y: 8}
     - {x: 144, y: 9}
@@ -39830,7 +39830,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 10
     isWalkable: 1
-    distanceFromSurfaceBelow: 4.4915
+    distanceFromSurfaceBelow: 3.6801252
     neighbours:
     - {x: 144, y: 9}
     - {x: 144, y: 10}
@@ -39844,7 +39844,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 11
     isWalkable: 1
-    distanceFromSurfaceBelow: 5.2915
+    distanceFromSurfaceBelow: 4.4801254
     neighbours:
     - {x: 144, y: 10}
     - {x: 144, y: 11}
@@ -39858,7 +39858,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 12
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.0915003
+    distanceFromSurfaceBelow: 5.2801256
     neighbours:
     - {x: 144, y: 11}
     - {x: 144, y: 12}
@@ -39872,7 +39872,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 13
     isWalkable: 1
-    distanceFromSurfaceBelow: 6.8915005
+    distanceFromSurfaceBelow: 6.080126
     neighbours:
     - {x: 144, y: 12}
     - {x: 144, y: 13}
@@ -39886,7 +39886,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 14
     isWalkable: 1
-    distanceFromSurfaceBelow: 7.6915007
+    distanceFromSurfaceBelow: 6.880126
     neighbours:
     - {x: 144, y: 13}
     - {x: 144, y: 14}
@@ -39900,7 +39900,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 15
     isWalkable: 1
-    distanceFromSurfaceBelow: 8.491501
+    distanceFromSurfaceBelow: 7.680126
     neighbours:
     - {x: 144, y: 14}
     - {x: 144, y: 15}
@@ -39914,7 +39914,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 16
     isWalkable: 1
-    distanceFromSurfaceBelow: 9.291501
+    distanceFromSurfaceBelow: 8.480126
     neighbours:
     - {x: 144, y: 15}
     - {x: 144, y: 16}
@@ -39928,7 +39928,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 17
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.091501
+    distanceFromSurfaceBelow: 9.280127
     neighbours:
     - {x: 144, y: 16}
     - {x: 144, y: 17}
@@ -39942,7 +39942,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 18
     isWalkable: 1
-    distanceFromSurfaceBelow: 10.891501
+    distanceFromSurfaceBelow: 10.080127
     neighbours:
     - {x: 144, y: 17}
     - {x: 144, y: 18}
@@ -39956,7 +39956,7 @@ MonoBehaviour:
     gridX: 145
     gridY: 19
     isWalkable: 1
-    distanceFromSurfaceBelow: 11.691502
+    distanceFromSurfaceBelow: 10.880127
     neighbours:
     - {x: 144, y: 18}
     - {x: 144, y: 19}

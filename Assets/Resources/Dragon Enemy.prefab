@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: 50
+  fov: 60
   viewDistance: 25
   viewLayer:
     serializedVersion: 2
