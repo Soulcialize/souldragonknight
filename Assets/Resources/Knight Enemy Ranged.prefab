@@ -591,7 +591,7 @@ MonoBehaviour:
   photonView: {fileID: 2315394145704112158}
   combat: {fileID: 1860061280274303189}
   pathfinder: {fileID: 8024515209172871131}
-  hideVisibility: 0
+  hideVisibility: 1
   detection: {fileID: 4901196210689690255}
   visibility: {fileID: 8145762069085459480}
   hurtRevealDuration: 0.6
@@ -617,7 +617,7 @@ MonoBehaviour:
   actorTransform: {fileID: 2936445182765803178}
   movementSpeedData: {fileID: 11400000, guid: 08485bd91ab59254892666caae2310e9, type: 2}
   defaultMovementMode: 0
-  isDefaultFacingRight: 1
+  isDefaultFacingRight: 0
   defaultStoppingDistanceFromNavTargets: 1.4
   navSlowDistanceThreshold: 8
   navFastDistanceThreshold: 10
@@ -804,8 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: 50
-  viewDistance: 15
+  fov: 180
+  viewDistance: 20
   viewLayer:
     serializedVersion: 2
     m_Bits: 131264
