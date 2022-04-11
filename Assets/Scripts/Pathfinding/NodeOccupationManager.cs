@@ -9,8 +9,6 @@ namespace Pathfinding
         private static NodeOccupationManager _instance;
         public static NodeOccupationManager Instance { get => _instance; }
 
-        private HashSet<Node> occupiedNodes = new HashSet<Node>();
-
         private void Awake()
         {
             // singleton
@@ -26,17 +24,17 @@ namespace Pathfinding
 
         public bool IsNodeOccupied(Node node)
         {
-            return occupiedNodes.Contains(node);
+            return node.IsOccupied;
         }
 
         public void MarkNodeAsOccupied(Node node)
         {
-            occupiedNodes.Add(node);
+            node.IsOccupied = true;
         }
 
         public void MarkNodeAsUnoccupied(Node node)
         {
-            occupiedNodes.Remove(node);
+            node.IsOccupied = false;
         }
     }
 }

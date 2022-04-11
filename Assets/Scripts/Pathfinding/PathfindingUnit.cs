@@ -40,7 +40,7 @@ public class PathfindingUnit : MonoBehaviour
         commonHardNeighbourFilters = new List<NodeNeighbourFilter>()
         {
             new NodeNeighbourFilter((node, neighbour) => NodeGrid.Instance.AreNodesBelowWalkable(neighbour, unitHeightInNodes - 1)),
-            new NodeNeighbourFilter((node, neighbour) => !NodeOccupationManager.Instance.IsNodeOccupied(neighbour))
+            // new NodeNeighbourFilter((node, neighbour) => !NodeOccupationManager.Instance.IsNodeOccupied(neighbour))
         };
 
         timeOfLastPathfind = 0f;
@@ -117,6 +117,10 @@ public class PathfindingUnit : MonoBehaviour
         while (targetNodeIndex < path.Count)
         {
             newCurrentPosNode = GetCurrentPositionAsNode();
+            if (currentPosNode == null)
+            {
+                currentPosNode = newCurrentPosNode;
+            }
             if (newCurrentPosNode != currentPosNode)
             {
                 NodeOccupationManager.Instance.MarkNodeAsUnoccupied(currentPosNode);
