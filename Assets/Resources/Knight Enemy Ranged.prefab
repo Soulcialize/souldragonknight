@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100489199290508864}
-  - component: {fileID: 3812630226607940506}
+  - component: {fileID: 5660218932601129566}
   m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
@@ -277,8 +277,8 @@ Transform:
   m_Father: {fileID: 2936445182765803178}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3812630226607940506
-BoxCollider2D:
+--- !u!70 &5660218932601129566
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -291,18 +291,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.01, y: -0.53}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.125, y: 2.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.32}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.45, y: 1.325}
+  m_Direction: 0
 --- !u!1 &1217784505746131563
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 402555776587635658}
-  - component: {fileID: 3605390426886313221}
+  - component: {fileID: 7940514389288403732}
   - component: {fileID: 276739738191126824}
   m_Layer: 0
   m_Name: Wall Collision Detector
@@ -329,14 +319,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217784505746131563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.015, y: -0.24199998, z: 0}
+  m_LocalPosition: {x: 0.005, y: 0.269, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2936445182765803178}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3605390426886313221
-BoxCollider2D:
+--- !u!70 &7940514389288403732
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -348,19 +338,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.58, y: 1.275}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.01, y: -0.53}
+  m_Size: {x: 0.48, y: 1.325}
+  m_Direction: 0
 --- !u!114 &276739738191126824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +476,6 @@ GameObject:
   - component: {fileID: 4948305080866607028}
   - component: {fileID: 2369876310287700112}
   - component: {fileID: 8145762069085459480}
-  - component: {fileID: 4278666393519259490}
   - component: {fileID: 8024515209172871131}
   - component: {fileID: 4901196210689690255}
   - component: {fileID: 2315394145704112158}
@@ -575,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 2315394145704112158}
-  collider2d: {fileID: 3812630226607940506}
+  collider2d: {fileID: 5660218932601129566}
 --- !u!114 &5301393953282103243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +575,7 @@ MonoBehaviour:
   visibility: {fileID: 8145762069085459480}
   hurtRevealDuration: 0.6
   movement: {fileID: 2080431000792514480}
-  projectileLauncherVisibility: {fileID: 4278666393519259490}
+  projectileLauncherVisibility: {fileID: 8145762069085459480}
 --- !u!114 &2080431000792514480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 2315394145704112158}
-  collider2d: {fileID: 3812630226607940506}
+  collider2d: {fileID: 5660218932601129566}
   rigidbody2d: {fileID: 9072196668915215803}
   animator: {fileID: 271088900839404577}
   spriteLayer: {fileID: 5796386325133325074}
@@ -765,19 +744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4826769299319132632}
---- !u!114 &4278666393519259490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4861795074019271563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 871c65cdc75e72345ba7ab47a3c13620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1119147474727389363}
 --- !u!114 &8024515209172871131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ddd954f97d6564a895de2a7a4427bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider2d: {fileID: 3812630226607940506}
+  collider2d: {fileID: 5660218932601129566}
   movement: {fileID: 2080431000792514480}
 --- !u!114 &4901196210689690255
 MonoBehaviour:
