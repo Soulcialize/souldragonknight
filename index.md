@@ -62,18 +62,26 @@ be clickable and both players may start the game.
 
 ## About Us
 
-### Team members
-<img src="images/team_members_new.png">
+### Kenneth Fung Chen Yu
+<img src="images/kenneth.png">
+Roles: Programming, Level Design, Game Mechanics, UI, AI, Sound
 
-### Roles
-* Kenneth Fung Chen Yu: Programming, Level Design, Game Mechanics, UI, AI, Sound
+### Low Kang Ngee
+<img src="images/kang_ngee.png">
+Roles: Programming, Level Design, Game Mechanics, UI, Sound, Trailer.
 
-* Low Kang Ngee: Programming, Level Design, Game Mechanics, UI, Sound, Trailer.
+### Ng Tze Wei Bruce Mitchell
+<img src="images/bruce.png">
+Roles: Programming, Level Design, Animation, UI
 
-* Ng Tze Wei Bruce Mitchell: Programming, Level Design, Animation, UI
+### Nguyen Duc Danh
+<img src="images/danh.png">
+Roles: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
 
-* Nguyen Duc Danh: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
+### Raja Dishafnya Achadi
+<img src="images/raja.png">
+Roles: Character Sprites, Animation.
 
-* Raja Dishafnya Achadi: Character Sprites, Animation.
-
-* Yurtoglu Ayda: Environment Art, Other Sprites, Poster.
+### Yurtoglu Ayda
+<img src="images/ayda.png">
+Roles: Environment Art, Other Sprites, Poster.
