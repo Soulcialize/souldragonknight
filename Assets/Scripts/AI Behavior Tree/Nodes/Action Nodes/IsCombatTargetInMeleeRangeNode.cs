@@ -28,7 +28,8 @@ namespace AiBehaviorTreeNodes
         {
             Collider2D targetCollider = ((ActorController)Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET)).Combat.Collider2d;
             
-            if (ownerMovement is GroundMovement groundMovement && targetCollider.bounds.center.y > groundMovement.MaxReachableHeight)
+            if (ownerMovement is GroundMovement groundMovement
+                && targetCollider.bounds.center.y > ownerCombat.Collider2d.bounds.max.y + groundMovement.MaxReachableHeight)
             {
                 // target is too high above grounded actor
                 return NodeState.FAILURE;

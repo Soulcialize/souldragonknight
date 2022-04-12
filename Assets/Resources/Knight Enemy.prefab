@@ -441,7 +441,7 @@ MonoBehaviour:
   spriteLayer: {fileID: 693705184267070998}
   jumpForce: 12
   airborneHorizontalMoveSpeed: 1
-  maxReachableHeight: 1
+  maxReachableHeight: 0.77
   mountAnimatorOverride: {fileID: 0}
 --- !u!114 &7568959259614269199
 MonoBehaviour:
