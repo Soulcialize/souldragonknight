@@ -10,7 +10,7 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Hurt);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Hurt);
             Debug.Log($"{owner.gameObject.name} hurt");
             owner.Animator.SetBool("isHurt", true);
         }

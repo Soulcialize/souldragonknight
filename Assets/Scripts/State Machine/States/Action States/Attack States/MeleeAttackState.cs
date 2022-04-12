@@ -18,7 +18,7 @@ namespace CombatStates
         public override void Enter()
         {
             base.Enter();
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Attack);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Attack);
         }
 
         public override void ExecuteAttackEffect()

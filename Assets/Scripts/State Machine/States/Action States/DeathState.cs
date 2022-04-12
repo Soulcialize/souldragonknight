@@ -10,7 +10,6 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Die);
             Debug.Log($"{owner.gameObject.name} died");
 
             owner.Debuff();
@@ -18,6 +17,7 @@ namespace CombatStates
             owner.SpriteLayer.SetLayer(SpriteLayer.Layer.DEAD);
             owner.Animator.SetBool("isDead", true);
             owner.Resource.EmptyAndStopRegen();
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Die);
         }
 
         public override void Execute()
