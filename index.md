@@ -8,7 +8,7 @@ When a benevolent King's rule is overthrown by his scheming brother in a coup, t
 
 You and your friend will play as the young prince and the soul dragon. Your job is to defeat all enemies and solve puzzles to save your parents. But the interesting thing is the young prince has soul eyes while his soul dragon has normal eyes. Hence, you will only be able to see the enemies that are targeting your partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
 
-Trailer: https://www.youtube.com/watch?v=qphiPRm8LQU
+Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/watch?v=qphiPRm8LQU)
 
 ## Contents
   * [Requirements](#requirements)
