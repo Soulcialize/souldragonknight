@@ -103,6 +103,7 @@ public class Detection : MonoBehaviour
         {
             RangedAttackAbility combatTargetRangedAttackAbility = (RangedAttackAbility)target.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
             combatTargetRangedAttackAbility.FireRangedProjectileEvent.AddListener(combat.OnProjectileFiredEvent);
+            Debug.Log($"{combat.gameObject} added listener to {target}");
         }
     }
 

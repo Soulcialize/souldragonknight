@@ -580,6 +580,12 @@ MonoBehaviour:
   viewLayer:
     serializedVersion: 2
     m_Bits: 131264
+  combatTargetDetectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  combatTargetLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5693331145748344914
 MonoBehaviour:
   m_ObjectHideFlags: 0
