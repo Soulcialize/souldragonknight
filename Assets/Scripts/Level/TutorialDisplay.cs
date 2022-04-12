@@ -23,9 +23,7 @@ public class TutorialDisplay : MonoBehaviour
         PlayerType localPlayerType = PlayerSpawner.GetLocalPlayerType();
         foreach (var typeToTutorials in playerTypeToTutorialsDictionary)
         {
-            bool isEnabled = (bool)PhotonNetwork.CurrentRoom
-                .CustomProperties[LevelSelectManager.ROOM_PROPERTIES_HINTS_ENABLED];
-            bool isActive = isEnabled && (localPlayerType == typeToTutorials.Key);
+            bool isActive = localPlayerType == typeToTutorials.Key;
 
             foreach (GameObject tutorialObj in typeToTutorials.Value)
             {
