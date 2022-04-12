@@ -15,6 +15,9 @@ namespace AiBehaviorTreeNodes
         private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) aerialNavTargetPositionFilters;
         private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) groundNavTargetPositionFilters;
 
+        private readonly float groundedHeight;
+        private readonly float dropHeight;
+
         public SetMeleePosNode(ActorController owner)
         {
             this.owner = owner;
@@ -23,6 +26,9 @@ namespace AiBehaviorTreeNodes
 
             aerialNavTargetPositionFilters = GetAerialNavTargetPositionFilters();
             groundNavTargetPositionFilters = GetGroundNavTargetPositionFilters();
+
+            groundedHeight = NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+            dropHeight = groundedHeight * 1.5f;
         }
 
         public override NodeState Execute()
@@ -87,9 +93,9 @@ namespace AiBehaviorTreeNodes
             {
                 new NodeNeighbourFilter((node, neighbour) =>
                 {
-                    // make sure the path only involves jumping up a step or going off a drop
-                    return neighbour.GridY <= node.GridY
-                        || neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+                    // make sure the path only involves going off a short drop or jumping up a step
+                    return (neighbour.GridY <= node.GridY && neighbour.DistanceFromSurfaceBelow <= dropHeight)
+                        || (neighbour.GridY >= node.GridY && neighbour.DistanceFromSurfaceBelow <= groundedHeight);
                 })
             };
 
