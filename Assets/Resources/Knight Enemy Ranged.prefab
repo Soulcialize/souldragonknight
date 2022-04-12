@@ -784,11 +784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2315394145704112158}
+  combat: {fileID: 1860061280274303189}
   fov: 180
   viewDistance: 20
   viewLayer:
     serializedVersion: 2
     m_Bits: 131264
+  combatTargetDetectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  combatTargetLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2315394145704112158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
+            AudioManagerSynced.Instance.PlaySoundFx(false, owner.SoundFXIndexLibrary.ReadyAttack);
             StartTime = Time.time;
             owner.Animator.SetBool("isReadyingAttack", true);
         }

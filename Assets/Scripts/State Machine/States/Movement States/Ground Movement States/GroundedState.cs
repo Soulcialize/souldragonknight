@@ -28,9 +28,9 @@ namespace GroundMovementStates
             }
             else if (isJumpRequestPending)
             {
-                AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Jump);
                 isJumpRequestPending = false;
                 owner.Rigidbody2d.velocity = new Vector2(owner.Rigidbody2d.velocity.x, owner.JumpForce);
+                AudioManager.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Jump);
                 owner.MovementStateMachine.ChangeState(new AirborneState(owner));
             }
             else if (isMoveRequestPending)
