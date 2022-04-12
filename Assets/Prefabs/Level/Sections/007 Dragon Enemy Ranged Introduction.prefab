@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4697770371068912277}
   - component: {fileID: 2836799280188640520}
   - component: {fileID: 3654595365472319828}
+  - component: {fileID: 2119240715813218735}
   m_Layer: 0
   m_Name: 007 Dragon Enemy Ranged Introduction
   m_TagString: Untagged
@@ -65,8 +66,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 9069603037446768548}
-        m_TargetAssemblyTypeName: GameHint, Assembly-CSharp
+      - m_Target: {fileID: 2119240715813218735}
+        m_TargetAssemblyTypeName: HintDisplay, Assembly-CSharp
         m_MethodName: StopTimerIfRunning
         m_Mode: 1
         m_Arguments:
@@ -99,6 +100,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2119240715813218735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697770371068912276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13c607552941ab4bbba90959985379f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToTimeout: 30
+  photonView: {fileID: 3654595365472319828}
+  knightHints:
+  - {fileID: 8880130968605533397}
+  dragonHints:
+  - {fileID: 8880130968605533397}
 --- !u!1 &4697770371721036982
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,9 +372,29 @@ PrefabInstance:
       value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: isTimed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
       propertyPath: secondsToTimeout
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: dragonHints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: knightHints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: dragonHints.Array.data[0]
+      value: 
+      objectReference: {fileID: 8880130968605533397}
+    - target: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: knightHints.Array.data[0]
+      value: 
+      objectReference: {fileID: 8880130968605533397}
     - target: {fileID: 7293839603464412397, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -448,24 +487,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
 --- !u!224 &7879635901189162566 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8313200099849813630, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
   m_PrefabInstance: {fileID: 2162990510174746680}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9069603037446768548 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7195010029828718492, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+--- !u!1 &8880130968605533397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7293839603464412397, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
   m_PrefabInstance: {fileID: 2162990510174746680}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13c607552941ab4bbba90959985379f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3344980450722618156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -613,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 6075862162565295499, guid: 0c20959a9431be64b8148a1fa0fb216d, type: 3}
       propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 9069603037446768548}
+      objectReference: {fileID: 2119240715813218735}
     - target: {fileID: 6075862162565295499, guid: 0c20959a9431be64b8148a1fa0fb216d, type: 3}
       propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -636,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075862162565295499, guid: 0c20959a9431be64b8148a1fa0fb216d, type: 3}
       propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameHint, Assembly-CSharp
+      value: HintDisplay, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6075862162565295499, guid: 0c20959a9431be64b8148a1fa0fb216d, type: 3}
       propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
