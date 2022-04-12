@@ -63,7 +63,7 @@ be clickable and both players may start the game.
 ## About Us
 
 ### Team members
-<img src="images/team_members.png">
+<img src="images/team_members_new.png">
 
 ### Roles
 * Kenneth Fung Chen Yu: Programming, Level Design, Game Mechanics, UI, AI, Sound
