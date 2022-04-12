@@ -127,9 +127,9 @@ Transform:
   - {fileID: 5693331146666542378}
   - {fileID: 5693331146226388551}
   - {fileID: 2862898516975400696}
-  - {fileID: 5167242016382952994}
+  - {fileID: 5400105552975984391}
   m_Father: {fileID: 5693331145748344923}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5382369022817847302
 GameObject:
@@ -338,6 +338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1750192537020340053}
+  - {fileID: 5167242016382952994}
   - {fileID: 7596657803369997891}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -580,6 +581,8 @@ MonoBehaviour:
   viewLayer:
     serializedVersion: 2
     m_Bits: 131264
+  frontalBoxCenter: {fileID: 5400105552975984391}
+  frontalBoxSize: {x: 1.2, y: 1.4}
   combatTargetDetectedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -778,6 +781,36 @@ MonoBehaviour:
   surfacesLayerMask:
     serializedVersion: 2
     m_Bits: 131136
+--- !u!1 &6622590223425085317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5400105552975984391}
+  m_Layer: 0
+  m_Name: Frontal Box Detection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5400105552975984391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622590223425085317}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.384, y: -0.473, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7596657803369997891}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6708621580835892495
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,12 +835,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708621580835892495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7596657803369997891}
-  m_RootOrder: 5
+  m_Father: {fileID: 5693331145748344923}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &400359374148292433
 MonoBehaviour:

@@ -28,6 +28,7 @@ namespace AiBehaviorTreeNodes
         public override NodeState Execute()
         {
             Collider2D targetCollider = Physics2D.OverlapCircle(ownerTransform.position, ownerDetection.ViewDistance, ownerCombat.AttackEffectLayer);
+            if (targetCollider != null) Debug.Log($"{ownerDetection.IsVisible(targetCollider)}");
             return targetCollider != null && ownerDetection.IsVisible(targetCollider)
                 ? NodeState.SUCCESS
                 : NodeState.FAILURE;
