@@ -489,6 +489,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -810
       objectReference: {fileID: 0}
+    - target: {fileID: 858557869753705614, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 530
+      objectReference: {fileID: 0}
     - target: {fileID: 892042831530638150, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
       propertyPath: m_Name
       value: Game Hint
@@ -619,22 +623,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
---- !u!224 &7046249336742006276 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8313200099849813630, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
-  m_PrefabInstance: {fileID: 1339580106718113914}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8624333345518578839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7293839603464412397, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
   m_PrefabInstance: {fileID: 1339580106718113914}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a13c607552941ab4bbba90959985379f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+--- !u!224 &7046249336742006276 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8313200099849813630, guid: 2dec4d4ad17d49e4a8dac719477af53c, type: 3}
+  m_PrefabInstance: {fileID: 1339580106718113914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4116087556045656076
 PrefabInstance:
   m_ObjectHideFlags: 0
