@@ -13,7 +13,7 @@ namespace AiBehaviorTrees
             // get visible combat target
             return new SelectorNode(new List<BehaviorNode>()
             {
-                new GetCombatTargetNode(combat, detection, false),
+                new GetRadialCombatTargetNode(combat, detection),
                 // failed to get visible combat target; fail out of tree
                 new InverterNode(new SequenceNode(new List<BehaviorNode>()
                 {
