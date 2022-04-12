@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 public class BreakableWall : MonoBehaviour
 {
     [SerializeField] private PhotonView photonView;
     [SerializeField] private Collider2D collider2d;
+    [SerializeField] private UnityEvent wallBrokenEvent;
 
     public void HandleHit()
     {
         AudioManagerSynced.Instance.PlaySoundFx(true, SoundFx.LibraryIndex.WALL_DESTROY);
         photonView.RPC("RPC_HandleHit", RpcTarget.All);
+        wallBrokenEvent.Invoke();
     }
 
     [PunRPC]
