@@ -106,6 +106,7 @@ public class RangedProjectile : MonoBehaviour
         {
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.PROJECTILE_EXPLOSION);
+            CameraShake.Instance.Shake(2f, 1f);
         }
 
         Destroy(gameObject);
