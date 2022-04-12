@@ -75,7 +75,7 @@ be clickable and both players may start the game.
 * Roles: Programming, Level Design, Animation, UI
 
 ### Nguyen Duc Danh
-![](mages/danh.png)
+![](images/danh.png)
 * Roles: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
 
 ### Raja Dishafnya Achadi
