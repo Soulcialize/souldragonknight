@@ -1,37 +1,43 @@
-## Welcome to GitHub Pages
+#  Soul Dragon Knight
 
-You can use the [editor on GitHub](https://github.com/Soulcialize/souldragonknight/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Developed by Team Socialize for NUS CS3247: Game Development using Unity 2020.3.26f1
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<img src="https://i.imgur.com/awNoDAg.png" width="1920" height="1080">
 
-### Markdown
+When a benevolent King's rule is overthrown by his scheming brother in a coup, the young prince and his soul dragon companion must embark on an epic quest to defeat the tyrant and save his parents.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+You and your friend will play as the young prince and the soul dragon. Your job is to defeat all enemies and solve puzzles to save your parents. But the interesting thing is the young prince has soul eyes while his soul dragon has normal eyes. Hence, you will only be able to see the enemies that are targeting your partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
 
-```markdown
-Syntax highlighted code block
+To find out full story behind the game and the reasons why they have such eyes, please see [Storyline](*storyline)
 
-# Header 1
-## Header 2
-### Header 3
+Trailer: https://www.youtube.com/watch?v=qphiPRm8LQU
 
-- Bulleted
-- List
+## Contents
+  * [Requirements](#requirements)
+  * [Download Instructions](#download-instructions)
+  * [Creating and Joining a Room](#creating-and-joining-a-room)
+  * [Control Instructions](#control-instructions)
+      - [Knight](#knight)
+      - [Dragon](#dragon)
+  * [Storyline](#storyline)
+  * [Concept Arts](#concept-art)
+  * [About Us](#about-us)
 
-1. Numbered
-2. List
+## Requirements
 
-**Bold** and _Italic_ and `Code` text
+## Download Instructions
 
-[Link](url) and ![Image](src)
-```
+## Creating and Joining a Room
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+## Control Instructions
 
-### Jekyll Themes
+### Knight
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Soulcialize/souldragonknight/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Dragon
 
-### Support or Contact
+## Storyline
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Concept Arts
+
+## About Us
+
