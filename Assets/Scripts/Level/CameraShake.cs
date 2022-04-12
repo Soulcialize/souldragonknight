@@ -8,14 +8,15 @@ public class CameraShake : MonoBehaviour
     private static CameraShake _instance;
     private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannel;
 
-    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera CVCamera;
+    [SerializeField] private float defaultCameraSize = 7f;
 
     public static CameraShake Instance { get => _instance; }
 
     private void Awake()
     {
         _instance = this;
-        cinemachineBasicMultiChannel = cinemachineVirtualCamera
+        cinemachineBasicMultiChannel = CVCamera
             .GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
@@ -26,12 +27,13 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator Shaking(float intensity, float time)
     {
+        float scaledIntensity = CVCamera.m_Lens.OrthographicSize / defaultCameraSize;
         float timeLeft = time;
 
         while (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
-            cinemachineBasicMultiChannel.m_AmplitudeGain = Mathf.Lerp(0f, intensity, timeLeft / time);
+            cinemachineBasicMultiChannel.m_AmplitudeGain = Mathf.Lerp(0f, scaledIntensity, timeLeft / time);
             yield return new WaitForFixedUpdate();
         }
 
