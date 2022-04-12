@@ -51,6 +51,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     public void OnHintToggleChange()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         SetHintsEnabled(hintsToggle.isOn);
         photonView.RPC("RPC_FlipHintToggle", RpcTarget.Others);
     }
@@ -165,6 +166,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_FlipHintToggle()
     {
+        AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         hintsToggle.SetIsOnWithoutNotify(!hintsToggle.isOn);
     }
 }
