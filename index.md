@@ -26,10 +26,10 @@ Trailer: https://www.youtube.com/watch?v=qphiPRm8LQU
 - A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat
 
 ## Getting Started
-1) Download the latest release for your platform (Windows10, MacOS) [here]().
-2) Unzip the file.
-3) Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
-4) After the above setup is done, you and your partner can run the executable with name "Soul Dragon Knight" to launch the game.
+- Download the latest release for your platform (Windows10, MacOS) [here]().
+- Unzip the file.
+- Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
+- After the above setup is done, you and your partner can run the executable with name "Soul Dragon Knight" to launch the game.
 
 ## Creating and Joining a Room
 - Upon launching the game, both players must enter a room to play the game. On the menu
@@ -66,8 +66,13 @@ be clickable and both players may start the game.
 
 ### Roles
 * Kenneth Fung Chen Yu: Programming, Level Design, Game Mechanics, UI, AI, Sound
+
 * Low Kang Ngee: Programming, Level Design, Game Mechanics, UI, Sound, Trailer.
+
 * Ng Tze Wei Bruce Mitchell: Programming, Level Design, Animation, UI
+
 * Nguyen Duc Danh: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
+
 * Raja Dishafnya Achadi: Character Sprites, Animation.
+
 * Yurtoglu Ayda: Environment Art, Other Sprites, Poster.
