@@ -285,7 +285,7 @@ public class AudioManager : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < fadeLength)
         {
-            sound.Volume = Mathf.Lerp(fromVolume, toVolume, elapsedTime);
+            sound.Volume = Mathf.Lerp(fromVolume, toVolume, elapsedTime / fadeLength);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
