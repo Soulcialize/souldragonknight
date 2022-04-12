@@ -10,7 +10,7 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Revive);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Revive);
             owner.Health.SetMax();
             owner.SpriteLayer.ResetLayer();
             owner.Animator.SetBool("isReviving", true);

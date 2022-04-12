@@ -38,7 +38,7 @@ namespace CombatStates
                 owner.Animator.SetBool("isAttackingDown", true);
             }
 
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Attack);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Attack);
         }
 
         public override void ExecuteAttackEffect()

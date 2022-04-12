@@ -33,6 +33,7 @@ public class RuneInteractable : Interactable
         currentRuneIndex = (currentRuneIndex + 1) % runeCount;
         currentRune.sprite = puzzleManager.knightRuneSprites[currentRuneIndex];
         RuneUpdateEvent.Invoke();
+        AudioManagerSynced.Instance.PlaySoundFx(true, SoundFx.LibraryIndex.RUNE_SWITCH);
         endInteractionCallback();
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CombatStates;
 using AiBehaviorTreeNodes;
 
 namespace AiBehaviorTrees
@@ -16,7 +15,7 @@ namespace AiBehaviorTrees
                     // check for visible combat target
                     new SequenceNode(new List<BehaviorNode>()
                     {
-                        new GetCombatTargetNode(combat, detection, true),
+                        new CheckForVisibleCombatTargetNode(combat, detection),
                         new SwitchTreeNode(actor, BehaviorTree.Function.COMBAT)
                     }),
                     // no visible combat target

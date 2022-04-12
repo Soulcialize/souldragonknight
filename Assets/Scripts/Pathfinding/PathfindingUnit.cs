@@ -26,6 +26,8 @@ public class PathfindingUnit : MonoBehaviour
     private List<Node> path;
     private int targetNodeIndex;
 
+    private Node currentPosNode;
+
     public int HeightInNodes { get => unitHeightInNodes; }
     public Pathfinder.PathfindResult LastPathfindResult { get; private set; }
     public bool HasReachedFinalPathNode { get; private set; }
@@ -109,11 +111,23 @@ public class PathfindingUnit : MonoBehaviour
 
     private IEnumerator MoveAlongPath()
     {
-        Node currentPosNode;
+        Node newCurrentPosNode;
         targetNodeIndex = 0;
         while (targetNodeIndex < path.Count)
         {
-            currentPosNode = GetCurrentPositionAsNode();
+            newCurrentPosNode = GetCurrentPositionAsNode();
+            if (currentPosNode == null)
+            {
+                currentPosNode = newCurrentPosNode;
+            }
+            if (newCurrentPosNode != currentPosNode)
+            {
+                NodeOccupationManager.Instance.MarkNodeAsUnoccupied(currentPosNode);
+                currentPosNode = newCurrentPosNode;
+            }
+
+            NodeOccupationManager.Instance.MarkNodeAsOccupied(currentPosNode);
+
             if (currentPosNode == path[targetNodeIndex])
             {
                 // reached current target node; advance to next node
@@ -127,7 +141,11 @@ public class PathfindingUnit : MonoBehaviour
 
             Node currentTargetNode = path[targetNodeIndex];
             if (movement is GroundMovement groundMovement
-                && currentTargetNode.WorldPos.y > currentPosNode.WorldPos.y)
+                && currentTargetNode.WorldPos.y > currentPosNode.WorldPos.y
+                && currentTargetNode.DistanceFromSurfaceBelow <= currentPosNode.DistanceFromSurfaceBelow + NodeGrid.Instance.NodeRadius
+                && Mathf.Abs(currentTargetNode.WorldPos.x - GetCurrentPosForPathfinding().x) < NodeGrid.Instance.NodeDiameter
+                && (movement.IsFacingRight && currentTargetNode.WorldPos.x > currentPosNode.WorldPos.x
+                    || !movement.IsFacingRight && currentTargetNode.WorldPos.x < currentPosNode.WorldPos.x))
             {
                 groundMovement.Jump();
             }

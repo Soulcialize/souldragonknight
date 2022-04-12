@@ -38,10 +38,10 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.BlockHit);
             startTime = Time.time;
             WillReturnToBlock = true;
             owner.Animator.SetBool("isBlockingHit", true);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.BlockHit);
             blockHitEvent.Invoke();
         }
 

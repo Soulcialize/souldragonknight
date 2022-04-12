@@ -111,13 +111,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3305746518971361396}
-  m_LocalRotation: {x: -0, y: -0, z: -0.24055049, w: 0.97063667}
-  m_LocalPosition: {x: 0.011, y: -0.072, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.011, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4723123055580141543}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.838}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5589157046206611286
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.58}
+  m_Size: {x: 0.8, y: 1.5}
   m_Direction: 0
 --- !u!114 &8923394087307039422
 MonoBehaviour:
@@ -173,13 +173,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827914912565096677}
-  m_LocalRotation: {x: -0, y: -0, z: -0.24055049, w: 0.97063667}
-  m_LocalPosition: {x: 0.011, y: -0.072, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.011, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4723123055580141543}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.838}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &8193614583936664184
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.75, y: 1.53}
+  m_Size: {x: 0.75, y: 1.45}
   m_Direction: 0
 --- !u!1 &3846438749809270026
 GameObject:
@@ -511,6 +511,7 @@ MonoBehaviour:
   photonView: {fileID: 6640825776839568949}
   combat: {fileID: 7213589635427211298}
   pathfinder: {fileID: 7462624240792649142}
+  hideVisibility: 1
   detection: {fileID: 5898158873989056398}
   visibility: {fileID: 7404829110624881476}
   hurtRevealDuration: 0.6
@@ -673,11 +674,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: 50
-  viewDistance: 10
+  photonView: {fileID: 6640825776839568949}
+  combat: {fileID: 7213589635427211298}
+  fov: 60
+  viewDistance: 25
   viewLayer:
     serializedVersion: 2
     m_Bits: 131392
+  combatTargetDetectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  combatTargetLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6640825776839568949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9211207551564226715}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.302, y: -0.89100003, z: 0}
+  m_LocalPosition: {x: 0.314, y: -0.948, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4723123055580141543}

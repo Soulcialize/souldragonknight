@@ -23,11 +23,11 @@ namespace CombatStates
 
         public override void Enter()
         {
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.Dodge);
             startPos = owner.transform.position;
             startTime = Time.time;
             maxDodgeTime = distance / speed;
             owner.Animator.SetBool("isDodging", true);
+            AudioManagerSynced.Instance.PlaySoundFx(true, owner.SoundFXIndexLibrary.Dodge);
         }
 
         public override void Execute()
