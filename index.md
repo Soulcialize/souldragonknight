@@ -2,7 +2,7 @@
 
 Developed by Team Socialize for NUS CS3247: Game Development using Unity 2020.3.26f1
 
-<img src="https://i.imgur.com/awNoDAg.png">
+<img src="images/game_poster.png">
 
 When a benevolent King's rule is overthrown by his scheming brother in a coup, the young prince and his soul dragon companion must embark on an epic quest to defeat the tyrant and save his parents.
 
@@ -63,6 +63,7 @@ be clickable and both players may start the game.
 ## About Us
 
 ### Team members
+<img src="images/team_members.png">
 
 ### Roles
 * Kenneth Fung Chen Yu: Programming, Level Design, Game Mechanics, UI, AI, Sound
