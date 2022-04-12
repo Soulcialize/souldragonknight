@@ -805,6 +805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8145c2f150814d44ead8d0ecfb970f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2580839893817942634}
+  combat: {fileID: 2580839893817942632}
   fov: 180
   viewDistance: 20
   viewLayer:

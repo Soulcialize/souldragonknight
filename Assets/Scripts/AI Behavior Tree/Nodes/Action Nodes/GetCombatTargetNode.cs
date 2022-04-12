@@ -34,14 +34,26 @@ namespace AiBehaviorTreeNodes
 
         public override NodeState Execute()
         {
+            object currentTargetObj = Blackboard.GetData(CombatBlackboardKeys.COMBAT_TARGET);
             Collider2D targetCollider = Physics2D.OverlapCircle(ownerTransform.position, ownerDetection.ViewDistance, ownerCombat.AttackEffectLayer);
             if (targetCollider == null || isVisibilityNeeded && !ownerDetection.IsVisible(targetCollider))
             {
+                if (currentTargetObj != null)
+                {
+                    ownerDetection.CombatTargetLostEvent.Invoke((ActorController)currentTargetObj);
+                }
+
                 Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, null);
                 return NodeState.FAILURE;
             }
 
-            Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, ActorController.GetActorFromCollider(targetCollider));
+            ActorController target = ActorController.GetActorFromCollider(targetCollider);
+            if (currentTargetObj == null || (ActorController)currentTargetObj != target)
+            {
+                Blackboard.SetData(CombatBlackboardKeys.COMBAT_TARGET, target);
+                ownerDetection.CombatTargetDetectedEvent.Invoke(target);
+            }
+
             return NodeState.SUCCESS;
         }
     }
