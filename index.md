@@ -8,8 +8,6 @@ When a benevolent King's rule is overthrown by his scheming brother in a coup, t
 
 You and your friend will play as the young prince and the soul dragon. Your job is to defeat all enemies and solve puzzles to save your parents. But the interesting thing is the young prince has soul eyes while his soul dragon has normal eyes. Hence, you will only be able to see the enemies that are targeting your partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
 
-To find out full story behind the game and the reasons why they have such eyes, please see [Storyline](#storyline)
-
 Trailer: https://www.youtube.com/watch?v=qphiPRm8LQU
 
 ## Contents
@@ -20,24 +18,56 @@ Trailer: https://www.youtube.com/watch?v=qphiPRm8LQU
       - [Knight](#knight)
       - [Dragon](#dragon)
   * [Storyline](#storyline)
-  * [Concept Arts](#concept-arts)
   * [About Us](#about-us)
 
 ## Requirements
+- Space required: 100MB
+- Platforms Supported: Windows10, MacOS
+- A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat
 
-## Download Instructions
+## Getting Started
+1) Download the latest release for your platform (Windows10, MacOS) [here]().
+2) Unzip the file.
+3) Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
+4) After the above setup is done, you and your partner can run the executable with name "Soul Dragon Knight" to launch the game.
 
 ## Creating and Joining a Room
+- Upon launching the game, both players must enter a room to play the game. On the menu
+screen, one player first enters a room name of their choice before clicking “Create” to create a
+new room. Once the room has been created, the other player can join that room by entering the
+same room name and clicking “Join”.
+- Each player now has the choice of who will play as the Knight and who will play as the Dragon.
+The same role cannot be chosen by both players. Once each player has chosen their role, the
+“Select Level” button should now be clickable and both players may proceed to the level select
+screen.
+- When selecting a level, both players must agree on a level to play. Currently, only Level 1 is
+available. Once both players have selected the same level, the “Start Game” button should now
+be clickable and both players may start the game.
 
 ## Control Instructions
 
 ### Knight
+* AD - Run
+* Space - Jump
+* Left Click - Melee Attack
+* Right Click - Block
+* E - Interact
 
 ### Dragon
-
-## Storyline
-
-## Concept Arts
+* WASD - Fly
+* Space - Dash
+* Left Click - Horizontal Ranged Attack
+* Right Click - Vertical Ranged Attack
+* E - Interact
 
 ## About Us
 
+### Team members
+
+### Roles
+* Kenneth Fung Chen Yu: Programming, Level Design, Game Mechanics, UI, AI, Sound
+* Low Kang Ngee: Programming, Level Design, Game Mechanics, UI, Sound, Trailer.
+* Ng Tze Wei Bruce Mitchell: Programming, Level Design, Animation, UI
+* Nguyen Duc Danh: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
+* Raja Dishafnya Achadi: Character Sprites, Animation.
+* Yurtoglu Ayda: Environment Art, Other Sprites, Poster.
