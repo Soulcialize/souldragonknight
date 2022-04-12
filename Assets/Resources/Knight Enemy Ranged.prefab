@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 4948305080866607028}
   - component: {fileID: 2369876310287700112}
   - component: {fileID: 8145762069085459480}
+  - component: {fileID: 5104341060262041882}
   - component: {fileID: 8024515209172871131}
   - component: {fileID: 4901196210689690255}
   - component: {fileID: 2315394145704112158}
@@ -575,7 +576,7 @@ MonoBehaviour:
   visibility: {fileID: 8145762069085459480}
   hurtRevealDuration: 0.6
   movement: {fileID: 2080431000792514480}
-  projectileLauncherVisibility: {fileID: 8145762069085459480}
+  projectileLauncherVisibility: {fileID: 5104341060262041882}
 --- !u!114 &2080431000792514480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +745,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4826769299319132632}
+--- !u!114 &5104341060262041882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861795074019271563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871c65cdc75e72345ba7ab47a3c13620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1119147474727389363}
 --- !u!114 &8024515209172871131
 MonoBehaviour:
   m_ObjectHideFlags: 0
