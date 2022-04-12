@@ -6,7 +6,7 @@ Developed by Team Socialize for NUS CS3247: Game Development using Unity 2020.3.
 
 When a benevolent King's rule is overthrown by his scheming brother in a coup, the young prince and his soul dragon companion must embark on an epic quest to defeat the tyrant and save his parents.
 
-You and your friend will play as the young prince and the soul dragon. Your job is to defeat all enemies and solve puzzles to save your parents. But the interesting thing is the young prince has soul eyes while his soul dragon has normal eyes. Hence, you will only be able to see the enemies that are targeting your partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
+You and your friend will play as the young Prince and the Soul Dragon. Your job is to defeat all enemies and solve puzzles to save your parents. However, the interesting thing is Prince has soul eyes while his Soul Dragon has normal eyes. Hence, you will only be able to see the enemies that are targeting your partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
 
 Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/watch?v=qphiPRm8LQU)
 
@@ -47,14 +47,14 @@ be clickable and both players may start the game.
 ## Control Instructions
 
 ### Knight
-* AD - Run
+* A,D - Run
 * Space - Jump
 * Left Click - Melee Attack
 * Right Click - Block
 * E - Interact
 
 ### Dragon
-* WASD - Fly
+* W,A,S,D - Fly
 * Space - Dash
 * Left Click - Horizontal Ranged Attack
 * Right Click - Vertical Ranged Attack
@@ -64,7 +64,7 @@ be clickable and both players may start the game.
 
 ### Kenneth Fung Chen Yu
 ![](images/kenneth.png)
-* Roles: Programming, Level Design, Game Mechanics, UI, AI, Sound
+* Roles: Programming, Level Design, Game Mechanics, UI, AI, Animation, Sound
 
 ### Low Kang Ngee
 ![](images/kang_ngee.png)
@@ -76,11 +76,11 @@ be clickable and both players may start the game.
 
 ### Nguyen Duc Danh
 ![](images/danh.png)
-* Roles: Original Game Design, Programming, Concept Arts, Character Sprites, Other Sprites, Environment Art, Animation, UI, Sound, Project Homepage.
+* Roles: Original Game Concept, Programming, Concept Arts, Character Sprites, Other Sprites, Animation, UI, Sound, Project Homepage
 
 ### Raja Dishafnya Achadi
 ![](images/raja.png)
-* Roles: Character Sprites, Animation.
+* Roles: Character Sprites, Concept Arts, Animation
 
 ### Yurtoglu Ayda
 ![](images/ayda.png)
