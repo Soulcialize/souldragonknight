@@ -94,7 +94,7 @@ public class Buff : MonoBehaviour
         defaultTargetLayer = combat.AttackEffectLayer;
         defaultColor = spriteRenderer.color;
 
-        combat.AttackEffectLayer = buffedTargetLayer;
+        combat.AttackEffectLayer = defaultTargetLayer | buffedTargetLayer;
         spriteRenderer.color = buffedColor;
         IsBuffed = true;
 

@@ -860,7 +860,7 @@ MonoBehaviour:
   combat: {fileID: 4584270387848782332}
   buffedTargetLayer:
     serializedVersion: 2
-    m_Bits: 132608
+    m_Bits: 1024
   buffDuration: 3
   spriteRenderer: {fileID: 7134467020418318920}
   buffedColor: {r: 0.09411766, g: 1, b: 1, a: 1}
