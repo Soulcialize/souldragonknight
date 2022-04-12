@@ -27,7 +27,7 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator Shaking(float intensity, float time)
     {
-        float scaledIntensity = CVCamera.m_Lens.OrthographicSize / defaultCameraSize;
+        float scaledIntensity = intensity * (CVCamera.m_Lens.OrthographicSize / defaultCameraSize);
         float timeLeft = time;
 
         while (timeLeft > 0)
