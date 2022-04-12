@@ -26,12 +26,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Sets the volume of the main mix to the given volume.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="toVolume">The target volume.</param>
     /// <param name="doFade">Whether to fade towards the target volume.</param>
     /// <param name="fadeLength">Duration of the fade. Only applicable if <c>doFade</c> is <c>true</c>.</param>
-    public void SetAudioVolume(float toVolume, bool doFade = false, float fadeLength = 3f)
+    public void SetAudioVolume(bool isLocalIncluded, float toVolume, bool doFade = false, float fadeLength = 3f)
     {
-        photonView.RPC("RPC_SetAudioVolume", RpcTarget.All, toVolume, doFade, fadeLength);
+        photonView.RPC("RPC_SetAudioVolume", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, toVolume, doFade, fadeLength);
     }
 
     [PunRPC]
@@ -43,12 +44,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Plays the sound FX with the given name.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="index">The index of the sound FX to play.</param>
     /// <param name="doFade">If true, fades the sound FX in. Else, it starts at default volume.</param>
     /// <param name="fadeLength">The length of the fade in.</param>
-    public void PlaySoundFx(SoundFx.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
+    public void PlaySoundFx(bool isLocalIncluded, SoundFx.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
     {
-        photonView.RPC("RPC_PlaySoundFx", RpcTarget.All, (byte)index, doFade, fadeLength);
+        photonView.RPC("RPC_PlaySoundFx", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, (byte)index, doFade, fadeLength);
     }
 
     [PunRPC]
@@ -60,12 +62,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Stops the sound FX with the given name.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="index">The index of the sound FX to stop.</param>
     /// <param name="doFade">If true, fades the sound FX out before stopping. Else, it simply stops.</param>
     /// <param name="fadeLength">The length of the fade out.</param>
-    public void StopSoundFx(SoundFx.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
+    public void StopSoundFx(bool isLocalIncluded, SoundFx.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
     {
-        photonView.RPC("RPC_StopSoundFx", RpcTarget.All, (byte)index, doFade, fadeLength);
+        photonView.RPC("RPC_StopSoundFx", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, (byte)index, doFade, fadeLength);
     }
 
     [PunRPC]
@@ -77,12 +80,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Plays the music with the given name.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="index">The index of the music to play.</param>
     /// <param name="doFade">If true, fades the music in. Else, music starts at default volume.</param>
     /// <param name="fadeLength">The length of the fade in.</param>
-    public void PlayMusic(Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
+    public void PlayMusic(bool isLocalIncluded, Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
     {
-        photonView.RPC("RPC_PlayMusic", RpcTarget.All, (byte)index, doFade, fadeLength);
+        photonView.RPC("RPC_PlayMusic", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, (byte)index, doFade, fadeLength);
     }
 
     [PunRPC]
@@ -94,12 +98,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Pauses the given music.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="index">The index of the music to pause.</param>
     /// <param name="doFade">If true, fades the music out before pausing. Else, music simply pauses.</param>
     /// <param name="fadeLength">The length of the fade out.</param>
-    public void PauseMusic(Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
+    public void PauseMusic(bool isLocalIncluded, Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
     {
-        photonView.RPC("RPC_PauseMusic", RpcTarget.All, (byte)index, doFade, fadeLength);
+        photonView.RPC("RPC_PauseMusic", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, (byte)index, doFade, fadeLength);
     }
 
     [PunRPC]
@@ -111,12 +116,13 @@ public class AudioManagerSynced : MonoBehaviour
     /// <summary>
     /// Stops the given music.
     /// </summary>
+    /// <param name="isLocalIncluded">Whether to play the sound locally.</param>
     /// <param name="index">The index of the music to stop.</param>
     /// <param name="doFade">If true, fades the music out before stopping. Else, music simply stops.</param>
     /// <param name="fadeLength">The length of the fade out.</param>
-    public void StopMusic(Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
+    public void StopMusic(bool isLocalIncluded, Music.LibraryIndex index, bool doFade = false, float fadeLength = 1f)
     {
-        photonView.RPC("RPC_StopMusic", RpcTarget.All, (byte)index, doFade, fadeLength);
+        photonView.RPC("RPC_StopMusic", isLocalIncluded ? RpcTarget.All : RpcTarget.Others, (byte)index, doFade, fadeLength);
     }
 
     [PunRPC]

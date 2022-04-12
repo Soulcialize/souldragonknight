@@ -38,7 +38,7 @@ namespace CombatStates
                 projectileLauncher.StartAimingProjectileLauncher(target);
             }
 
-            AudioManagerSynced.Instance.PlaySoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
+            AudioManagerSynced.Instance.PlaySoundFx(false, owner.SoundFXIndexLibrary.ReadyAttack);
         }
 
         public override void Execute()
@@ -54,7 +54,7 @@ namespace CombatStates
         {
             base.Exit();
             projectilePathDisplay.StopDrawingProjectilePath();
-            AudioManagerSynced.Instance.StopSoundFx(owner.SoundFXIndexLibrary.ReadyAttack);
+            AudioManagerSynced.Instance.StopSoundFx(false, owner.SoundFXIndexLibrary.ReadyAttack);
         }
 
         private void LockTargetPosition()

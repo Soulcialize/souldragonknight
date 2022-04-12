@@ -34,6 +34,8 @@ public class RangedProjectile : MonoBehaviour
     private Vector2 startPos;
     private Vector2 direction;
 
+    private bool hasHit = false;
+
     public Vector2 Direction
     {
         get => direction;
@@ -111,13 +113,14 @@ public class RangedProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || hasHit)
         {
             return;
         }
 
         if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, ActorTargetsLayer))
         {
+            hasHit = true;
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
             actorHit.Movement.UpdateMovement(Vector2.zero);
 
@@ -138,6 +141,7 @@ public class RangedProjectile : MonoBehaviour
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, friendliesLayer))
         {
+            hasHit = true;
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
 
             // projectile hit friendly
@@ -147,6 +151,7 @@ public class RangedProjectile : MonoBehaviour
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))
         {
             // projectile hit obstacle
+            hasHit = true;
             BreakableWall breakableWall = collision.GetComponent<BreakableWall>();
             if (breakableWall != null)
             {

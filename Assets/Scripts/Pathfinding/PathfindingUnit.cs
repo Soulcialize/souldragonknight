@@ -143,6 +143,7 @@ public class PathfindingUnit : MonoBehaviour
             if (movement is GroundMovement groundMovement
                 && currentTargetNode.WorldPos.y > currentPosNode.WorldPos.y
                 && currentTargetNode.DistanceFromSurfaceBelow <= currentPosNode.DistanceFromSurfaceBelow + NodeGrid.Instance.NodeRadius
+                && Mathf.Abs(currentTargetNode.WorldPos.x - GetCurrentPosForPathfinding().x) < NodeGrid.Instance.NodeDiameter
                 && (movement.IsFacingRight && currentTargetNode.WorldPos.x > currentPosNode.WorldPos.x
                     || !movement.IsFacingRight && currentTargetNode.WorldPos.x < currentPosNode.WorldPos.x))
             {
