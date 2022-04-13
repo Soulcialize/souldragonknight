@@ -4,7 +4,7 @@ Developed by Team Socialize for NUS CS3247: Game Development using Unity 2020.3.
 
 <img src="images/game_poster.png">
 
-When a benevolent King's rule is overthrown by his scheming brother in a coup, the young prince and his soul dragon companion must embark on an epic quest to defeat the tyrant and save his parents.
+When a benevolent King's rule is overthrown by his scheming brother in a coup, the young Prince and his Soul Dragon companion must embark on an epic quest to defeat the tyrant and save his parents.
 
 You and your friend will play as the young Prince and the Soul Dragon. Your job is to defeat all enemies and solve puzzles to save your parents. However, the interesting thing is the Prince has soul eyes while his Soul Dragon has normal eyes. Hence, each player will only be able to see the enemies that are targeting their partner. You must work closely with your partner to help them defeat the enemies they cannot see - just as they will help you!
 
