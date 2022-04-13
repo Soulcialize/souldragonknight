@@ -30,22 +30,21 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
 ![](images/real_world.png)
 
 ### Unique enemies
-- You will fight against our powerful AI enemies.
-- They all have uniques abilities and kill methods; try everything you got, otherwise you will get bullied by them.
-- And remember, you cannot see your enemies, so communication with your partner is very important.
+- Face off against our powerful AI enemies, each with unique abilities and attacks.
+- Remember, you cannot see your enemies, so communication with your partner is very important.
 - As the Knight, your enemies are:
 ![](images/knight_enemies.png)
 - As the Dragon, your enemies are:
 ![](images/dragon_enemies.png)
-- You cannot kill all enemies by yourself, no more smurfing in co-op 😂.
+- You cannot attack enemies that are not targeting you.
 
 ## Requirements
 - Space required: 100MB
-- Platforms Supported: Windows10, MacOS
-- A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat
+- Platforms Supported: Windows 10, MacOS
+- A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat.
 
 ## Download Instructions
-- Download the latest release for your platform (Windows10, MacOS) [here]().
+- Download the latest release for your platform (Windows 10, MacOS) [here]().
 - Unzip the file.
 - Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
 - After the above setup is done, you and your partner can run the executable with name "Soul Dragon Knight" to launch the game.
@@ -83,7 +82,7 @@ be clickable and both players may start the game.
 
 ### Kenneth Fung Chen Yu
 ![](images/kennethh.png)
-* Roles: Programming, Level Design, Game Mechanics, UI, AI, Animation, Sound
+* Roles: Programming, Level Design, Game Mechanics, UI, AI, Animation, Sound.
 
 ### Low Kang Ngee
 ![](images/kang_ngee.png)
@@ -91,15 +90,15 @@ be clickable and both players may start the game.
 
 ### Ng Tze Wei Bruce Mitchell
 ![](images/bruce.png)
-* Roles: Programming, Level Design, Animation, UI
+* Roles: Programming, Level Design, Animation, UI.
 
 ### Nguyen Duc Danh
 ![](images/danh.png)
-* Roles: Original Game Concept, Programming, Concept Arts, Character Sprites, Other Sprites, Animation, UI, Sound, Project Homepage
+* Roles: Original Game Concept, Programming, Concept Arts, Character Sprites, Other Sprites, Animation, UI, Sound, Project Homepage.
 
 ### Raja Dishafnya Achadi
 ![](images/raja.png)
-* Roles: Character Sprites, Concept Arts, Animation
+* Roles: Character Sprites, Concept Arts, Animation.
 
 ### Yurtoglu Ayda
 ![](images/ayda.png)
