@@ -5,83 +5,44 @@ using Photon.Pun;
 
 public class ConsumableResourceUI : MonoBehaviour
 {
-    [SerializeField] private ResourceBar staminaBar;
-    [SerializeField] private ResourceBar manaBar;
+    [SerializeField] private ResourceBar resourceBar;
     [SerializeField] private PhotonView photonView;
 
-    public void UpdateStaminaUI(float currAmount)
+    public void UpdateAmount(float currAmount)
     {
-        photonView.RPC("RPC_UpdateStaminaUI", RpcTarget.All, currAmount);
+        photonView.RPC("RPC_UpdateAmount", RpcTarget.All, currAmount);
     }
 
-    public void UpdateManaUI(float currAmount)
+    public void Regenerate(float regenSpeed)
     {
-        photonView.RPC("RPC_UpdateManaUI", RpcTarget.All, currAmount);
+        photonView.RPC("RPC_Regenerate", RpcTarget.All, regenSpeed);
     }
 
-    public void RegenerateStaminaUI(float regenSpeed)
+    public void StopRegenerate()
     {
-        photonView.RPC("RPC_RegenerateStaminaUI", RpcTarget.All, regenSpeed);
+        photonView.RPC("RPC_StopRegenerate", RpcTarget.All);
     }
 
-    public void RegenerateManaUI(float regenSpeed)
+    public void FlashWarning()
     {
-        photonView.RPC("RPC_RegenerateManaUI", RpcTarget.All, regenSpeed);
-    }
-
-    public void StopRegenStaminaUI()
-    {
-        photonView.RPC("RPC_StopRegenStaminaUI", RpcTarget.All);
-    }
-
-    public void StopRegenManaUI()
-    {
-        photonView.RPC("RPC_StopRegenManaUI", RpcTarget.All);
-    }
-
-    public void FlashStaminaWarning()
-    {
-        staminaBar.FlashWarningIfNotRunning();
-    }
-
-    public void FlashManaWarning()
-    {
-        manaBar.FlashWarningIfNotRunning();
+        resourceBar.FlashWarningIfNotRunning();
     }
 
     [PunRPC]
-    private void RPC_UpdateStaminaUI(float currAmount)
+    private void RPC_UpdateAmount(float currAmount)
     {
-        staminaBar.UpdateValue(currAmount);
+        resourceBar.UpdateValue(currAmount);
     }
 
     [PunRPC]
-    private void RPC_UpdateManaUI(float currAmount)
+    private void RPC_Regenerate(float regenSpeed)
     {
-        manaBar.UpdateValue(currAmount);
+        resourceBar.StartRegeneration(regenSpeed);
     }
 
     [PunRPC]
-    private void RPC_RegenerateStaminaUI(float regenSpeed)
+    private void RPC_StopRegenerate()
     {
-        staminaBar.StartRegeneration(regenSpeed);
-    }
-
-    [PunRPC]
-    private void RPC_RegenerateManaUI(float regenSpeed)
-    {
-        manaBar.StartRegeneration(regenSpeed);
-    }
-
-    [PunRPC]
-    private void RPC_StopRegenStaminaUI()
-    {
-        staminaBar.StopRegeneration();
-    }
-
-    [PunRPC]
-    private void RPC_StopRegenManaUI()
-    {
-        manaBar.StopRegeneration();
+        resourceBar.StopRegeneration();
     }
 }

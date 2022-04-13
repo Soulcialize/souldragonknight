@@ -35,7 +35,7 @@ public class DragonPlayerController : PlayerController
         stopInteractionAction = playerInput.actions["InteractAirStop"];
 
         healthUI = FindObjectOfType<HealthUI>();
-        manaUI = FindObjectOfType<ConsumableResourceUI>();
+        manaUI = FindObjectOfType<ResourceUIManager>().ManaUI;
     }
 
     protected override void FixedUpdate()
@@ -54,10 +54,10 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateDragonHealthUI);
-            Combat.Resource.UpdateResourceEvent.AddListener(manaUI.UpdateManaUI);
-            Combat.Resource.RegenerateResourceEvent.AddListener(manaUI.RegenerateManaUI);
-            Combat.Resource.StopRegenResourceEvent.AddListener(manaUI.StopRegenManaUI);
-            Combat.Resource.InsufficientResourceEvent.AddListener(manaUI.FlashManaWarning);
+            Combat.Resource.UpdateResourceEvent.AddListener(manaUI.UpdateAmount);
+            Combat.Resource.RegenerateResourceEvent.AddListener(manaUI.Regenerate);
+            Combat.Resource.StopRegenResourceEvent.AddListener(manaUI.StopRegenerate);
+            Combat.Resource.InsufficientResourceEvent.AddListener(manaUI.FlashWarning);
         }
     }
 
@@ -68,10 +68,10 @@ public class DragonPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateDragonHealthUI);
-            Combat.Resource.UpdateResourceEvent.RemoveListener(manaUI.UpdateManaUI);
-            Combat.Resource.RegenerateResourceEvent.RemoveListener(manaUI.RegenerateManaUI);
-            Combat.Resource.StopRegenResourceEvent.RemoveListener(manaUI.StopRegenManaUI);
-            Combat.Resource.InsufficientResourceEvent.RemoveListener(manaUI.FlashManaWarning);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(manaUI.UpdateAmount);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(manaUI.Regenerate);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(manaUI.StopRegenerate);
+            Combat.Resource.InsufficientResourceEvent.RemoveListener(manaUI.FlashWarning);
         }
     }
 
