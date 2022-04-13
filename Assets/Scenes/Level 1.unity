@@ -2363,30 +2363,6 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 29
       objectReference: {fileID: 0}
-    - target: {fileID: 6944191582568134727, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944191582568134727, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944191582568134727, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944191582568134727, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6995649834107194186, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6995649834107194186, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7985023402645834922, guid: 27e2d56f47de6084ebd2a25523bcd331, type: 3}
       propertyPath: sceneViewId
       value: 38
