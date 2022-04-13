@@ -37,7 +37,7 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
 ![](images/knight_enemies.png)
 - As the Dragon, your enemies are:
 ![](images/dragon_enemies.png)
-- You cannot kill all enemies by yourself, no more smurfing in co-op.
+- You cannot kill all enemies by yourself, no more smurfing in co-op 😂.
 
 ## Requirements
 - Space required: 100MB
