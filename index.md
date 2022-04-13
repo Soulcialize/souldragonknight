@@ -24,9 +24,9 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
 
 ### Different Worlds
 - Depending on the character you choose, you will see a completely different world.
-- The Knight (Young Prince) will see the soul world.
+- The Knight (Young Prince) will see the soul world, with a cold color theme.
 ![](images/soul_world.png)
-- The Soul Dragon will see the real world.
+- The Soul Dragon will see the real world, with a warm color theme.
 ![](images/real_world.png)
 
 ### Unique enemies
