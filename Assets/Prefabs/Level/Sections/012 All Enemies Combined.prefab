@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 6671034376502394785}
   - component: {fileID: 8565705061797002542}
   m_Layer: 0
-  m_Name: 011 All Enemies Combined
+  m_Name: 012 All Enemies Combined
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
