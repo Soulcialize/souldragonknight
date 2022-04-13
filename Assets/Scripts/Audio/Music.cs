@@ -6,7 +6,8 @@ public class Music : Sound
     public enum LibraryIndex
     {
         MENU_BACKGROUND_MUSIC,
-        INGAME_BACKGROUND_MUSIC
+        INGAME_BACKGROUND_MUSIC,
+        DEFEAT_MUSIC
     }
 
     [Space(10)]

@@ -9,10 +9,4 @@ public class LevelEntryFx : MonoBehaviour
     {
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.LEVEL_START);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

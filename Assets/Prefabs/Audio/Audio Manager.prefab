@@ -261,6 +261,10 @@ MonoBehaviour:
     loop: 1
     libraryIndex: 1
     audioClip: {fileID: 8300000, guid: f0320d7bc61384944b33d6211a2c24fd, type: 3}
+  - defaultVolume: 0.75
+    loop: 1
+    libraryIndex: 2
+    audioClip: {fileID: 8300000, guid: dbcd8691175e686438255a186309082a, type: 3}
 --- !u!114 &2460436164896918737
 MonoBehaviour:
   m_ObjectHideFlags: 0
