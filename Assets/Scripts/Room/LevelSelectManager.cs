@@ -119,7 +119,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
-        AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC, true, 0.1f);
         Debug.Log("Starting game...");
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }
