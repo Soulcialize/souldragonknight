@@ -19,12 +19,6 @@ public class CameraShake : MonoBehaviour
         cinemachineBasicMultiChannel = CVCamera
             .GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
-
-    private void Update()
-    {
-        Debug.Log(cinemachineBasicMultiChannel.m_AmplitudeGain);
-    }
-
     public void Shake(float intensity, float time)
     {
         StartCoroutine(Shaking(intensity, time));

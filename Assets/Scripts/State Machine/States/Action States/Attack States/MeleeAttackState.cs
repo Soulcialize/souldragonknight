@@ -31,23 +31,42 @@ namespace CombatStates
 
             owner.Resource.Consume(attackCost);
 
+            ActorController actorHit = null;
+            BreakableWall breakableWall = null;
             foreach (Collider2D hit in hits)
             {
-                ActorController actorHit = ActorController.GetActorFromCollider(hit);
-                if (actorHit != null)
+                // prioritize hit collider if it is in attacker's buffed target layer
+                if (owner.Buff != null && GeneralUtility.IsLayerInLayerMask(hit.gameObject.layer, owner.Buff.BuffedTargetLayer))
                 {
-                    owner.Debuff();
-                    actorHit.Combat.HandleAttackHit(owner);
+                    owner.RemoveBuff();
+                    // assuming only actors are in the buffed target layer
+                    ActorController.GetActorFromCollider(hit).Combat.HandleAttackHit(owner);
+                    break;
+                }
+
+                if (actorHit == null)
+                {
+                    actorHit = ActorController.GetActorFromCollider(hit);
                     continue;
                 }
 
-                BreakableWall breakableWall = hit.GetComponent<BreakableWall>();
-                if (breakableWall != null)
+                if (actorHit != null && breakableWall == null)
                 {
-                    owner.Debuff();
-                    breakableWall.HandleHit();
+                    breakableWall = hit.GetComponent<BreakableWall>();
                     continue;
                 }
+            }
+
+            // only execute hit after looping through the whole list, since we want to prioritize buff targets
+            if (actorHit != null)
+            {
+                owner.RemoveBuff();
+                actorHit.Combat.HandleAttackHit(owner);
+            }
+            else if (breakableWall != null)
+            {
+                owner.RemoveBuff();
+                breakableWall.HandleHit();
             }
         }
     }

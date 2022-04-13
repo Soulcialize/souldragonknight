@@ -146,7 +146,7 @@ public class RangedProjectile : MonoBehaviour
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
 
             // projectile hit friendly
-            actorHit.Combat.Buff();
+            actorHit.Combat.ApplyBuff();
             EndLifecycle(false);
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))

@@ -28,6 +28,8 @@ public class Buff : MonoBehaviour
 
     [SerializeField] private PhotonView photonView;
 
+    public LayerMask BuffedTargetLayer { get => buffedTargetLayer; }
+
     public bool IsBuffed { get; private set; }
 
     public void ApplyBuff()
