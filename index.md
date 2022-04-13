@@ -17,7 +17,6 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
   * [Control Instructions](#control-instructions)
       - [Knight](#knight)
       - [Dragon](#dragon)
-  * [Storyline](#storyline)
   * [About Us](#about-us)
 
 ## Requirements
@@ -25,7 +24,7 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
 - Platforms Supported: Windows10, MacOS
 - A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat
 
-## Getting Started
+## Download instructions
 - Download the latest release for your platform (Windows10, MacOS) [here]().
 - Unzip the file.
 - Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
