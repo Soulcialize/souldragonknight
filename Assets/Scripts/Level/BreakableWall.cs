@@ -10,6 +10,11 @@ public class BreakableWall : MonoBehaviour
     [SerializeField] private Collider2D collider2d;
     [SerializeField] private UnityEvent wallBrokenEvent;
 
+    public bool CanAttackerBreak(Combat attacker)
+    {
+        return attacker.Buff.IsBuffed;
+    }
+
     public void HandleHit()
     {
         AudioManagerSynced.Instance.PlaySoundFx(true, SoundFx.LibraryIndex.WALL_DESTROY);

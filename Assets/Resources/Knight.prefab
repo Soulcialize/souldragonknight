@@ -738,7 +738,7 @@ MonoBehaviour:
   soundFXIndexLibrary: {fileID: 532688599575579423}
   attackEffectLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 131648
   combatAbilities:
   - abilityIdentifier: 0
     ability: {fileID: 5102135582045005520}
@@ -860,7 +860,7 @@ MonoBehaviour:
   combat: {fileID: 4584270387848782332}
   buffedTargetLayer:
     serializedVersion: 2
-    m_Bits: 132608
+    m_Bits: 1024
   buffDuration: 3
   spriteRenderer: {fileID: 7134467020418318920}
   buffedColor: {r: 0.09411766, g: 1, b: 1, a: 1}

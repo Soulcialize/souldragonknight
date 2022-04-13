@@ -12,7 +12,7 @@ namespace CombatStates
         {
             Debug.Log($"{owner.gameObject.name} died");
 
-            owner.Debuff();
+            owner.RemoveBuff();
             owner.CollisionLayer.SetLayer(LayerMask.NameToLayer("Dead"));
             owner.SpriteLayer.SetLayer(SpriteLayer.Layer.DEAD);
             owner.Animator.SetBool("isDead", true);

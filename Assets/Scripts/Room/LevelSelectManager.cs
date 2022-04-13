@@ -70,7 +70,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         photonView.RPC("RPC_FlipHintToggle", RpcTarget.Others);
     }
 
-
     public static void SetHintsEnabled(bool isEnabled)
     {
         RoomManager.UpdateRoomProperty(ROOM_PROPERTIES_HINTS_ENABLED, isEnabled);

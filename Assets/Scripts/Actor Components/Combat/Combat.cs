@@ -63,6 +63,7 @@ public class Combat : MonoBehaviour
 
     public LayerMask AttackEffectLayer { get => attackEffectLayer; set => attackEffectLayer = value; }
     public Health Health { get => health; }
+    public Buff Buff { get => buff; }
     public ConsumableResource Resource { get => resource; }
 
     public SurfaceDetector WallCollisionDetector { get => wallCollisionDetector; }
@@ -154,6 +155,7 @@ public class Combat : MonoBehaviour
     protected void LocalHandleAttackHit(float attackerPosX, float attackerPosY)
     {
         movement.UpdateMovement(Vector2.zero);
+        CameraShake.Instance.Shake(1.75f, 1f);
         if (ActionStateMachine.CurrState is BlockState blockState)
         {
             blockState.HandleHit(movement.IsFacingRight, ((Vector2)transform.position - new Vector2(attackerPosX, attackerPosY)).normalized);
@@ -189,7 +191,7 @@ public class Combat : MonoBehaviour
         }
     }
 
-    public void Buff()
+    public void ApplyBuff()
     {
         if (buff != null)
         {
@@ -197,7 +199,7 @@ public class Combat : MonoBehaviour
         }
     }
 
-    public void Debuff()
+    public void RemoveBuff()
     {
         if (buff != null)
         {

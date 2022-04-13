@@ -1663,15 +1663,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Soul Dragon Knight
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
-  m_sharedMaterial: {fileID: 4567519300188514924, guid: a86ae438b5796084fbb835c1c14b12e7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bdd0e3f396cfd1948ac8ac45d2809450, type: 2}
+  m_sharedMaterial: {fileID: 4567519300188514924, guid: bdd0e3f396cfd1948ac8ac45d2809450, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

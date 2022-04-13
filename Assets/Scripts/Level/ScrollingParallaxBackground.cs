@@ -11,10 +11,6 @@ public class ScrollingParallaxBackground : MonoBehaviour
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
 
-    // for background scaling
-    private float defaultCameraSize;
-    private Vector3 defaultBackgroundLocalScale;
-
     // for infinite scrolling
     private float textureUnitSizeX;
 
@@ -25,15 +21,10 @@ public class ScrollingParallaxBackground : MonoBehaviour
         lastCameraPosition = cameraTransform.position;
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         textureUnitSizeX = sprite.texture.width / sprite.pixelsPerUnit;
-
-        defaultCameraSize = cam.orthographicSize;
-        defaultBackgroundLocalScale = transform.localScale;
     }
 
     private void LateUpdate()
     {
-        ScaleBackgroundToCameraSize();
-
         // scroll on horizontal axis; parallax on vertical axis
         transform.position += new Vector3(
             scrollSpeed * Time.deltaTime,
@@ -47,16 +38,5 @@ public class ScrollingParallaxBackground : MonoBehaviour
             float offsetPosX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
             transform.position = new Vector3(cameraTransform.position.x + offsetPosX, transform.position.y);
         }
-    }
-
-    /// <summary>
-    /// Scales the background to match the camera size.
-    /// </summary>
-    /// <remarks>
-    /// This is needed due to the camera's size being different for each player.
-    /// </remarks>
-    private void ScaleBackgroundToCameraSize()
-    {
-        transform.localScale = defaultBackgroundLocalScale * cam.orthographicSize / defaultCameraSize;
     }
 }
