@@ -152,6 +152,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_LoadGameLevel()
     {
+        LevelAudioManager.Instance.StopLastPlayedMusic(false);
         PhotonNetwork.LoadLevel(gameSceneName);
     }
 

@@ -34,6 +34,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
             levelSelectButtons[i].SetInteractable(true);
         }
     }
+
     public void SelectLevel(int levelNumber)
     {
         AudioManagerSynced.Instance.PlaySoundFx(true, SoundFx.LibraryIndex.ROLE_LEVEL_BUTTON);
@@ -78,9 +79,8 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
     private bool CanStart()
     {
-        return selectedLevel > 0 && (selectedLevel == partnerSelectedLevel);
+        return PhotonNetwork.IsMasterClient && selectedLevel > 0 && (selectedLevel == partnerSelectedLevel);
     }
-
 
     public void StartGame()
     {
