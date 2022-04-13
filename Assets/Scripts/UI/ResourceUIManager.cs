@@ -5,10 +5,10 @@ using UnityEngine;
 public class ResourceUIManager : MonoBehaviour
 {
     private static ResourceUIManager _instance;
+    public static ResourceUIManager Instance { get => _instance; }
 
     public ConsumableResourceUI ManaUI  { get => manaUI; }
     public ConsumableResourceUI StaminaUI { get => staminaUI; }
-    public ResourceUIManager Instance { get => _instance; }
 
     [SerializeField] private ConsumableResourceUI manaUI;
     [SerializeField] private ConsumableResourceUI staminaUI;

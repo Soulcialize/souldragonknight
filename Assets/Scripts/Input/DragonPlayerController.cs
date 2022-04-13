@@ -35,7 +35,7 @@ public class DragonPlayerController : PlayerController
         stopInteractionAction = playerInput.actions["InteractAirStop"];
 
         healthUI = FindObjectOfType<HealthUI>();
-        manaUI = FindObjectOfType<ResourceUIManager>().ManaUI;
+        manaUI = ResourceUIManager.Instance.ManaUI;
     }
 
     protected override void FixedUpdate()

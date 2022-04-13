@@ -34,7 +34,7 @@ public class KnightPlayerController : PlayerController
         stopInteractionAction = playerInput.actions["InteractStop"];
 
         healthUI = FindObjectOfType<HealthUI>();
-        staminaUI = FindObjectOfType<ResourceUIManager>().StaminaUI;
+        staminaUI = ResourceUIManager.Instance.StaminaUI;
     }
 
     protected override void FixedUpdate()
