@@ -20,6 +20,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     [SerializeField] private string[] gameSceneNames;
 
     private int selectedLevel;
+    private int partnerSelectedLevel;
 
     private void Start()
     {
@@ -33,15 +34,28 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         {
             levelSelectButtons[i].SetInteractable(true);
         }
-        SetSelectedLevels();
-        startButton.interactable = CanStart();
     }
-    public static void SelectLevel(int levelNumber)
+    public void SelectLevel(int levelNumber)
     {
         AudioManagerSynced.Instance.PlaySoundFx(true, SoundFx.LibraryIndex.ROLE_LEVEL_BUTTON);
-        Hashtable playerProperties = new Hashtable();
-        playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = levelNumber;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+
+        if (selectedLevel != levelNumber)
+        {
+            Hashtable playerProperties = new Hashtable();
+            playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = levelNumber;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+
+            if (selectedLevel > 0)
+            {
+                levelSelectButtons[selectedLevel - 1].UpdateClientIndicator(false);
+            }
+
+            selectedLevel = levelNumber;
+            levelSelectButtons[levelNumber - 1].UpdateClientIndicator(true);
+            startButton.interactable = CanStart();
+
+            photonView.RPC("RPC_UpdatePartnerIndicator", RpcTarget.Others, levelNumber);
+        }
     }
 
     public static void SetLevelsCleared(int levelsCleared)
@@ -62,50 +76,16 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         RoomManager.UpdateRoomProperty(ROOM_PROPERTIES_HINTS_ENABLED, isEnabled);
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
-    {
-        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
-
-        int levelNumber = (int)targetPlayer.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
-        bool isLocalPlayer = (targetPlayer == PhotonNetwork.LocalPlayer);
-        Debug.Log($"Player {targetPlayer.ActorNumber} chose level {levelNumber}");
-
-        if (isLocalPlayer)
-        {
-            selectedLevel = levelNumber;
-        }
-
-        startButton.interactable = CanStart();
-        foreach (LevelButton button in levelSelectButtons)
-        {
-            button.UpdateIndicators(levelNumber, isLocalPlayer);
-        }
-    }
-
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-
         PhotonNetwork.LoadLevel(roleSelectSceneName);
         ResetLevelChoice();
     }
 
     private bool CanStart()
     {
-        HashSet<int> selectedLevels = new HashSet<int>();
-
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            object playerTypeObj = player.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
-            if (playerTypeObj == null)
-            {
-                return false;
-            }
-
-            selectedLevels.Add((int)playerTypeObj);
-        }
-
-        return selectedLevels.Count == 1 && PhotonNetwork.CurrentRoom.PlayerCount == 2;
+        return selectedLevel > 0 && (selectedLevel == partnerSelectedLevel);
     }
 
     public static void ResetLevelChoice()
@@ -120,6 +100,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+
         Debug.Log("Starting game...");
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }
@@ -130,23 +111,17 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         photonView.RPC("RPC_LoadRoleSelectLevel", RpcTarget.All);
     }
 
-    private void SetSelectedLevels()
+    [PunRPC]
+    private void RPC_UpdatePartnerIndicator(int levelNumber)
     {
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        if (partnerSelectedLevel > 0)
         {
-            object playerTypeObj = player.CustomProperties[PLAYER_PROPERTIES_LEVEL_SELECTED];
-            if (playerTypeObj != null)
-            {
-                int levelNumber = (int)playerTypeObj;
-                bool isLocalPlayer = (player == PhotonNetwork.LocalPlayer);
-                levelSelectButtons[levelNumber - 1].UpdateIndicators(levelNumber, isLocalPlayer);
-
-                if (isLocalPlayer)
-                {
-                    selectedLevel = levelNumber;
-                }
-            }
+            levelSelectButtons[partnerSelectedLevel - 1].UpdatePartnerIndicator(false);   
         }
+
+        partnerSelectedLevel = levelNumber;
+        levelSelectButtons[levelNumber - 1].UpdatePartnerIndicator(true);
+        startButton.interactable = CanStart();
     }
 
     [PunRPC]

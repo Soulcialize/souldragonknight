@@ -31,24 +31,18 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         if (HadDisconnect) {
             UpdateRoomMessage(ROOM_MESSAGE_PLAYER_LEFT);
         }
-
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            if (player.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
-            {
-                PlayerType playerType = (PlayerType)player.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-                UpdateIndicator(player, playerType);
-            }
-        }
-
+        InitialiseRoleSelection();
         levelSelectButton.interactable = CanPickLevel();
     }
 
-    public static void SelectRole(PlayerType playerType)
+    public void SelectRole(PlayerType playerType)
     {
         Hashtable playerProperties = new Hashtable();
         playerProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY] = playerType;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+
+        UpdateSelfIndicator(playerType);
+        photonView.RPC("RPC_UpdatePartnerIndicator", RpcTarget.Others, playerType);
     }
 
     public static void ResetRole()
@@ -61,15 +55,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
-
-        if (targetPlayer.CustomProperties.ContainsKey(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY))
-        {
-            PlayerType playerType = (PlayerType)targetPlayer.CustomProperties[PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY];
-            Debug.Log($"Player {targetPlayer.ActorNumber} chose {System.Enum.GetName(typeof(PlayerType), playerType)}");
-
-            levelSelectButton.interactable = CanPickLevel();
-            UpdateIndicator(targetPlayer, playerType);
-        }
+        levelSelectButton.interactable = CanPickLevel();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -84,9 +70,7 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
 
         levelSelectButton.interactable = false;
-        partnerRoleIndicator[0].SetActive(false);
-        partnerRoleIndicator[1].SetActive(false);
-
+        ResetPartnerIndicators();
         UpdateRoomMessage(ROOM_MESSAGE_PLAYER_LEFT);
     }
 
@@ -132,18 +116,6 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         partnerRoleIndicator[1 - (int)type].SetActive(false);
     }
 
-    private void UpdateIndicator(Player player, PlayerType type)
-    {
-        if (player == PhotonNetwork.LocalPlayer)
-        {
-            UpdateSelfIndicator(type);
-        } 
-        else
-        {
-            UpdatePartnerIndicator(type);
-        }
-    }
-
     public void MoveToLevelSelect()
     {
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
@@ -160,12 +132,46 @@ public class RoleSelectManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(menuSceneName);
     }
 
+    private void InitialiseRoleSelection()
+    {
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            object playerType;
+
+            if (player.CustomProperties
+                .TryGetValue(PlayerSpawner.PLAYER_PROPERTIES_TYPE_KEY, out playerType))
+            {
+                if (player == PhotonNetwork.LocalPlayer)
+                {
+                    UpdateSelfIndicator((PlayerType)playerType);
+                }
+                else
+                {
+                    UpdatePartnerIndicator((PlayerType)playerType);
+                }
+            }
+            
+        }
+    }
+
+    private void ResetPartnerIndicators()
+    {
+        partnerRoleIndicator[0].SetActive(false);
+        partnerRoleIndicator[1].SetActive(false);
+    }
+
     private IEnumerator DisplayMessageWithTimeout(string message)
     {
         roomMessage.text = message;
         yield return new WaitForSeconds(3);
         roomMessage.text = "";
         messageTimeout = null;
+    }
+
+    [PunRPC]
+    private void RPC_UpdatePartnerIndicator(PlayerType playerType)
+    {
+        UpdatePartnerIndicator(playerType);
     }
 
     [PunRPC]

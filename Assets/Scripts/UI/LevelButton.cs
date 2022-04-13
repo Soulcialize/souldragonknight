@@ -16,18 +16,14 @@ public class LevelButton : MonoBehaviourPunCallbacks
         button.interactable = isInteractable;
     }
 
-    public void UpdateIndicators(int number, bool isLocalPlayer)
+    public void UpdateClientIndicator(bool isSelected)
     {
-        bool isSameNumber = (number == levelNumber);
+        clientIndicator.SetActive(isSelected);
+    }
 
-        if (isLocalPlayer)
-        {
-            clientIndicator.SetActive(isSameNumber);
-        }
-        else
-        {
-            partnerIndicator.SetActive(isSameNumber);
-        }
+    public void UpdatePartnerIndicator(bool isSelected)
+    {
+        partnerIndicator.SetActive(isSelected);
     }
 
     public void DisablePartnerIndicator()
