@@ -106,11 +106,11 @@ public class LevelAudioManager : MonoBehaviour
     {
         if (isSynced)
         {
-            AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC, true, 3f);
+            AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.FINALE_MUSIC, true, 3f);
         }
         else
         {
-            AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC, true, 3f);
+            AudioManager.Instance.StopMusic(Music.LibraryIndex.FINALE_MUSIC, true, 3f);
         }
     }
 
