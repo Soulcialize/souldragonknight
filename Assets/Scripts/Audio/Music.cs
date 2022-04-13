@@ -7,7 +7,10 @@ public class Music : Sound
     {
         MENU_BACKGROUND_MUSIC,
         INGAME_BACKGROUND_MUSIC,
-        DEFEAT_MUSIC
+        DEFEAT_MUSIC,
+        PUZZLE_MUSIC,
+        FINALE_MUSIC,
+        VICTORY_MUSIC
     }
 
     [Space(10)]

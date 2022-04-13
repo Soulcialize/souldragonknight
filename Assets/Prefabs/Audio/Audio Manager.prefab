@@ -253,7 +253,7 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 6d8a2185101c8654082c433fca089605, type: 3}
   musicTracks:
-  - defaultVolume: 1
+  - defaultVolume: 0.8
     loop: 1
     libraryIndex: 0
     audioClip: {fileID: 8300000, guid: 89b4a6fc41e1f924c8233c1e9420793e, type: 3}
@@ -261,10 +261,22 @@ MonoBehaviour:
     loop: 1
     libraryIndex: 1
     audioClip: {fileID: 8300000, guid: 5a2e50eb159891343b069094f8d88350, type: 3}
-  - defaultVolume: 0.75
+  - defaultVolume: 0.5
     loop: 1
     libraryIndex: 2
     audioClip: {fileID: 8300000, guid: dbcd8691175e686438255a186309082a, type: 3}
+  - defaultVolume: 0.4
+    loop: 1
+    libraryIndex: 3
+    audioClip: {fileID: 8300000, guid: 8556c4d64014f53479cc6b86a1a19046, type: 3}
+  - defaultVolume: 0.4
+    loop: 1
+    libraryIndex: 4
+    audioClip: {fileID: 8300000, guid: 86b50a5b43c83f64a9805fccb6d71360, type: 3}
+  - defaultVolume: 0.4
+    loop: 1
+    libraryIndex: 5
+    audioClip: {fileID: 8300000, guid: bad9339952430854e815c42b4742c132, type: 3}
 --- !u!114 &2460436164896918737
 MonoBehaviour:
   m_ObjectHideFlags: 0
