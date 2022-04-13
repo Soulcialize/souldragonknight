@@ -2052,11 +2052,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6646830660512496571, guid: 49fac4ad845d71248892a1306c17895c, type: 3}
       propertyPath: center.x
-      value: 101
+      value: 118.5
       objectReference: {fileID: 0}
     - target: {fileID: 6646830660512496571, guid: 49fac4ad845d71248892a1306c17895c, type: 3}
       propertyPath: worldSize.x
-      value: 328
+      value: 363
       objectReference: {fileID: 0}
     - target: {fileID: 6646830660512496571, guid: 49fac4ad845d71248892a1306c17895c, type: 3}
       propertyPath: drawGridInEditor
