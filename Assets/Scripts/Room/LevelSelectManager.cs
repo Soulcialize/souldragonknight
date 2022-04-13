@@ -11,7 +11,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 {
     public static readonly string ROOM_PROPERTIES_LEVELS_CLEARED = "levelsCleared";
     public static readonly string ROOM_PROPERTIES_HINTS_ENABLED = "hintsEnabled";
-    public static readonly string PLAYER_PROPERTIES_LEVEL_SELECTED = "levelSelected";
 
     [SerializeField] private Button startButton;
     [SerializeField] private Toggle hintsToggle;
@@ -41,10 +40,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
 
         if (selectedLevel != levelNumber)
         {
-            Hashtable playerProperties = new Hashtable();
-            playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = levelNumber;
-            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
-
             if (selectedLevel > 0)
             {
                 levelSelectButtons[selectedLevel - 1].UpdateClientIndicator(false);
@@ -79,7 +74,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         base.OnPlayerLeftRoom(otherPlayer);
         PhotonNetwork.LoadLevel(roleSelectSceneName);
-        ResetLevelChoice();
     }
 
     private bool CanStart()
@@ -87,12 +81,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         return selectedLevel > 0 && (selectedLevel == partnerSelectedLevel);
     }
 
-    public static void ResetLevelChoice()
-    {
-        Hashtable playerProperties = new Hashtable();
-        playerProperties[PLAYER_PROPERTIES_LEVEL_SELECTED] = null;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
-    }
 
     public void StartGame()
     {
@@ -127,14 +115,12 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     private void RPC_LoadGameLevel()
     {
         PhotonNetwork.LoadLevel(gameSceneNames[selectedLevel - 1]);
-        ResetLevelChoice();
     }
 
     [PunRPC]
     private void RPC_LoadRoleSelectLevel()
     {
         PhotonNetwork.LoadLevel(roleSelectSceneName);
-        ResetLevelChoice();
     }
 
     [PunRPC]
