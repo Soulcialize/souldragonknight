@@ -34,7 +34,7 @@ public class KnightPlayerController : PlayerController
         stopInteractionAction = playerInput.actions["InteractStop"];
 
         healthUI = FindObjectOfType<HealthUI>();
-        staminaUI = FindObjectOfType<ConsumableResourceUI>();
+        staminaUI = ResourceUIManager.Instance.StaminaUI;
     }
 
     protected override void FixedUpdate()
@@ -53,10 +53,10 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.AddListener(healthUI.UpdateKnightHealthUI);
-            Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateStaminaUI);
-            Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.RegenerateStaminaUI);
-            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenStaminaUI);
-            Combat.Resource.InsufficientResourceEvent.AddListener(staminaUI.FlashStaminaWarning);
+            Combat.Resource.UpdateResourceEvent.AddListener(staminaUI.UpdateAmount);
+            Combat.Resource.RegenerateResourceEvent.AddListener(staminaUI.Regenerate);
+            Combat.Resource.StopRegenResourceEvent.AddListener(staminaUI.StopRegenerate);
+            Combat.Resource.InsufficientResourceEvent.AddListener(staminaUI.FlashWarning);
         }
     }
 
@@ -67,10 +67,10 @@ public class KnightPlayerController : PlayerController
         if (photonView.IsMine)
         {
             Combat.Health.UpdateHealthEvent.RemoveListener(healthUI.UpdateKnightHealthUI);
-            Combat.Resource.UpdateResourceEvent.RemoveListener(staminaUI.UpdateStaminaUI);
-            Combat.Resource.RegenerateResourceEvent.RemoveListener(staminaUI.RegenerateStaminaUI);
-            Combat.Resource.StopRegenResourceEvent.RemoveListener(staminaUI.StopRegenStaminaUI);
-            Combat.Resource.InsufficientResourceEvent.RemoveListener(staminaUI.FlashStaminaWarning);
+            Combat.Resource.UpdateResourceEvent.RemoveListener(staminaUI.UpdateAmount);
+            Combat.Resource.RegenerateResourceEvent.RemoveListener(staminaUI.Regenerate);
+            Combat.Resource.StopRegenResourceEvent.RemoveListener(staminaUI.StopRegenerate);
+            Combat.Resource.InsufficientResourceEvent.RemoveListener(staminaUI.FlashWarning);
         }
     }
 

@@ -39,83 +39,60 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - LoadLevel
-  - RPC_LoadLevel
-  - RPC_IndicatorUpdate
-  - RPC_AdjustColor
-  - RPC_LoadLevelSelect
-  - RPC_LoadGameLevel
-  - RPC_LoadRoomLevel
-  - RPC_EndLifecycle
-  - RPC_EndProjectileLifecycle
-  - RPC_Decrement
-  - RPC_DecrementDragonHealthUI
-  - RPC_DecrementKnightHealthUI
-  - RPC_DrawProjectilePath
-  - RPC_StopDrawingProjectilePath
-  - RPC_StartDrawingProjectilePath
-  - RPC_StopUpdatingProjectilePath
-  - RPC_LoadMenu
-  - RPC_LoadRoleSelectLevel
-  - RPC_UpdatePartnerIndicator
-  - RPC_RemovePartnerIndicator
-  - RPC_Mount
+  - RPC_ApplyBuff
+  - RPC_CancelExitRequest
+  - RPC_CancelRestartRequest
+  - RPC_DecrementDeath
   - RPC_Dismount
   - RPC_DismountMountedRider
-  - RPC_ApplyBuff
-  - RPC_HandleAttackHit
-  - RPC_RemoveBuff
-  - RPC_SpawnAllEnemies
+  - RPC_DismountRider
+  - RPC_EndProjectileLifecycle
   - RPC_EnemyDeathHandler
   - RPC_EnemySpawnHandler
-  - RPC_SignalLevelCleared
-  - RPC_PlayerEnteredTriggerHandler
-  - RPC_HandleHit
-  - RPC_CancelRestartRequest
-  - RPC_RequestRestart
-  - RPC_UpdateMessage
-  - RPC_ResetMessage
-  - RPC_SetLayer
-  - RPC_SetCollisionLayer
-  - RPC_SetSpriteRendererLayer
-  - RPC_Revive
-  - RPC_UpdateDragonHealthUI
-  - RPC_UpdateKnightHealthUI
-  - RPC_DismountRider
-  - RPC_MountRider
-  - RPC_SetIsEnabled
-  - RPC_ToggleAllInteractables
-  - RPC_EnableInteractable
-  - RPC_SetInteractableIsEnabled
-  - RPC_RegenerateManaUI
-  - RPC_RegenerateStaminaUI
-  - RPC_UpdateManaUI
-  - RPC_UpdateStaminaUI
-  - RPC_StopRegenManaUI
-  - RPC_StopRegenStaminaUI
   - RPC_FlipDirection
-  - RPC_ApplyBuffColor
-  - RPC_RemoveBuffColor
-  - RPC_StartBlinking
-  - RPC_SetPuzzleAnswer
-  - RPC_SetAudioVolume
+  - RPC_FlipHintToggle
+  - RPC_HandleAttackHit
+  - RPC_HandleHit
+  - RPC_HideProjectileLauncher
+  - RPC_IncrementDeath
+  - RPC_LoadGameLevel
+  - RPC_LoadLevelSelect
+  - RPC_LoadRoleSelectLevel
+  - RPC_LoadRoomLevel
+  - RPC_Mount
+  - RPC_MountRider
   - RPC_PauseMusic
+  - RPC_PlayerEnteredTriggerHandler
   - RPC_PlayMusic
   - RPC_PlaySoundFx
-  - RPC_StopMusic
-  - RPC_StopSoundFx
-  - RPC_SyncPuzzleCompleted
-  - RPC_DecrementDeath
-  - RPC_IncrementDeath
-  - RPC_SyncMessage
-  - RPC_CancelExitRequest
+  - RPC_Regenerate
+  - RPC_RemoveBuff
   - RPC_RequestExit
-  - RPC_HideProjectileLauncher
-  - RPC_ShowProjectileLauncher
-  - RPC_StartAimingProjectileLauncher
-  - RPC_StopAimingProjectileLauncher
+  - RPC_RequestRestart
   - RPC_RevealHint
-  - RPC_FlipHintToggle
+  - RPC_Revive
+  - RPC_SetAudioVolume
+  - RPC_SetCollisionLayer
+  - RPC_SetInteractableIsEnabled
+  - RPC_SetPuzzleAnswer
+  - RPC_SetSpriteRendererLayer
+  - RPC_SignalLevelCleared
+  - RPC_SpawnAllEnemies
+  - RPC_StartAimingProjectileLauncher
+  - RPC_StartBlinking
+  - RPC_StartDrawingProjectilePath
+  - RPC_StopAimingProjectileLauncher
+  - RPC_StopDrawingProjectilePath
+  - RPC_StopMusic
+  - RPC_StopRegenerate
+  - RPC_StopSoundFx
+  - RPC_StopUpdatingProjectilePath
+  - RPC_SyncMessage
+  - RPC_SyncPuzzleCompleted
+  - RPC_UpdateAmount
+  - RPC_UpdateDragonHealthUI
+  - RPC_UpdateKnightHealthUI
+  - RPC_UpdatePartnerIndicator
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
