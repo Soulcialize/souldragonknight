@@ -11,6 +11,7 @@ You and your friend will play as the young Prince and the Soul Dragon. Your job 
 Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/watch?v=qphiPRm8LQU)
 
 ## Contents
+  * [Gameplay](#gameplay)
   * [Requirements](#requirements)
   * [Download Instructions](#download-instructions)
   * [Creating and Joining a Room](#creating-and-joining-a-room)
@@ -19,12 +20,31 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
       - [Dragon](#dragon)
   * [About Us](#about-us)
 
+## Gameplay
+
+### Different Worlds
+- Depending on the character you choose, you will see a completely different world.
+- The Knight (Young Prince) will see the soul world.
+![](images/soul_world.png)
+- The Soul Dragon will see the real world.
+![](images/real_world.png)
+
+### Unique enemies
+- You will fight against our powerful AI enemies.
+- They all have uniques abilities and kill methods; try everything you got, otherwise you will get bullied by them.
+- And remember, you cannot see your enemies, so communication with your partner is very important.
+- As the Knight, your enemies are:
+![](images/knight_enemies.png)
+- As the Dragon, your enemies are:
+![](images/dragon_enemies.png)
+- You cannot kill all enemies by yourself, no more smurfing in co-op.
+
 ## Requirements
 - Space required: 100MB
 - Platforms Supported: Windows10, MacOS
 - A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat
 
-## Download instructions
+## Download Instructions
 - Download the latest release for your platform (Windows10, MacOS) [here]().
 - Unzip the file.
 - Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
