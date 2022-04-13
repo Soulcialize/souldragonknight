@@ -16,6 +16,9 @@ namespace AiBehaviorTreeNodes
         private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) aerialReadyPositionFilters;
         private readonly (List<NodeNeighbourFilter> hardFilters, List<NodeNeighbourFilter> softFilters) groundReadyPositionFilters;
 
+        private readonly float groundedHeight;
+        private readonly float dropHeight;
+
         public SetRangedAttackPosNode(ActorController owner)
         {
             this.owner = owner;
@@ -26,6 +29,9 @@ namespace AiBehaviorTreeNodes
 
             aerialReadyPositionFilters = GetAerialReadyPositionFilters();
             groundReadyPositionFilters = GetGroundReadyPositionFilters();
+
+            groundedHeight = NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+            dropHeight = groundedHeight * 1.5f;
         }
 
         public override NodeState Execute()
@@ -88,8 +94,8 @@ namespace AiBehaviorTreeNodes
                 new NodeNeighbourFilter((node, neighbour) =>
                 {
                     // make sure the path only involves jumping up a step or going off a drop
-                    return neighbour.GridY <= node.GridY
-                        || neighbour.DistanceFromSurfaceBelow <= NodeGrid.Instance.NodeDiameter * owner.Pathfinder.HeightInNodes;
+                    return (neighbour.GridY <= node.GridY && neighbour.DistanceFromSurfaceBelow <= dropHeight)
+                        || (neighbour.GridY >= node.GridY && neighbour.DistanceFromSurfaceBelow <= groundedHeight);
                 })
             };
 

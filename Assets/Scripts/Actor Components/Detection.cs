@@ -15,13 +15,18 @@ public class Detection : MonoBehaviour
     [SerializeField] private PhotonView photonView;
     [SerializeField] private Combat combat;
     
-    [Space(10)]
+    [Header("Cone")]
 
     [SerializeField] private float fov;
     [SerializeField] private float viewDistance;
     [SerializeField] private LayerMask viewLayer;
 
-    [Space(10)]
+    [Header("Frontal Box Detection")]
+
+    [SerializeField] private Transform frontalBoxCenter;
+    [SerializeField] private Vector2 frontalBoxSize;
+
+    [Header("Combat Target Detection Events")]
 
     [SerializeField] private CombatTargetEvent combatTargetDetectedEvent;
     [SerializeField] private CombatTargetEvent combatTargetLostEvent;
@@ -73,6 +78,13 @@ public class Detection : MonoBehaviour
             return false;
         }
 
+        // check if target is directly in front of actor (which could result in cone not seeing it)
+        Collider2D colliderInFrontalBox = Physics2D.OverlapBox(frontalBoxCenter.position, frontalBoxSize, 0f, viewLayer);
+        if (colliderInFrontalBox == target)
+        {
+            return true;
+        }
+
         Vector2 directionToTarget = (targetPosition - actorPosition);
         float angleToTarget = GeneralUtility.ConvertDirectionToAngle(directionToTarget);
         if (angleToTarget < CurrViewAngle - halfFov || angleToTarget > CurrViewAngle + halfFov)
@@ -103,7 +115,6 @@ public class Detection : MonoBehaviour
         {
             RangedAttackAbility combatTargetRangedAttackAbility = (RangedAttackAbility)target.Combat.GetCombatAbility(CombatAbilityIdentifier.ATTACK_RANGED);
             combatTargetRangedAttackAbility.FireRangedProjectileEvent.AddListener(combat.OnProjectileFiredEvent);
-            Debug.Log($"{combat.gameObject} added listener to {target}");
         }
     }
 

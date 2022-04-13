@@ -106,7 +106,7 @@ public class RangedProjectile : MonoBehaviour
         {
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.PROJECTILE_EXPLOSION);
-            CameraShake.Instance.Shake(2f, 1f);
+            CameraShake.Instance.Shake(1.5f, 1f);
         }
 
         Destroy(gameObject);
@@ -146,7 +146,7 @@ public class RangedProjectile : MonoBehaviour
             ActorController actorHit = ActorController.GetActorFromCollider(collision);
 
             // projectile hit friendly
-            actorHit.Combat.Buff();
+            actorHit.Combat.ApplyBuff();
             EndLifecycle(false);
         }
         else if (GeneralUtility.IsLayerInLayerMask(collision.gameObject.layer, obstaclesLayer))

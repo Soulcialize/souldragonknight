@@ -28,6 +28,8 @@ public class Buff : MonoBehaviour
 
     [SerializeField] private PhotonView photonView;
 
+    public LayerMask BuffedTargetLayer { get => buffedTargetLayer; }
+
     public bool IsBuffed { get; private set; }
 
     public void ApplyBuff()
@@ -94,7 +96,7 @@ public class Buff : MonoBehaviour
         defaultTargetLayer = combat.AttackEffectLayer;
         defaultColor = spriteRenderer.color;
 
-        combat.AttackEffectLayer = buffedTargetLayer;
+        combat.AttackEffectLayer = defaultTargetLayer | buffedTargetLayer;
         spriteRenderer.color = buffedColor;
         IsBuffed = true;
 

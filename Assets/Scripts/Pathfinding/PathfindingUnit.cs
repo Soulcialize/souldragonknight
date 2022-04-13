@@ -57,6 +57,11 @@ public class PathfindingUnit : MonoBehaviour
         return new Vector2(unitTransform.position.x, collider2d.bounds.max.y);
     }
 
+    public Node GetCurrentPositionAsNode()
+    {
+        return NodeGrid.Instance.GetNodeFromWorldPoint(GetCurrentPosForPathfinding());
+    }
+
     /// <summary>
     /// Moves the unit along a path to the given target.
     /// </summary>
@@ -87,11 +92,6 @@ public class PathfindingUnit : MonoBehaviour
         {
             StopCoroutine(pathfindProcess);
         }
-    }
-
-    private Node GetCurrentPositionAsNode()
-    {
-        return NodeGrid.Instance.GetNodeFromWorldPoint(GetCurrentPosForPathfinding());
     }
 
     private void ProcessPathfindResult(Pathfinder.PathfindResult result, List<Node> newPath)

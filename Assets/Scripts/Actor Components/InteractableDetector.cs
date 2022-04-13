@@ -30,6 +30,7 @@ public class InteractableDetector : MonoBehaviour
         else if (!IsEnabled && CurrentNearestInteractable != null)
         {
             CurrentNearestInteractable.HidePrompt();
+            CurrentNearestInteractable = null;
         }
     }
 
@@ -104,11 +105,6 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsEnabled)
-        {
-            return;
-        }
-
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {
@@ -125,11 +121,6 @@ public class InteractableDetector : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!IsEnabled)
-        {
-            return;
-        }
-
         Interactable[] interactables = collision.GetComponents<Interactable>();
         foreach (Interactable interactable in interactables)
         {

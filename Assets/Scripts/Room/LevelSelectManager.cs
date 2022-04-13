@@ -33,6 +33,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         {
             levelSelectButtons[i].SetInteractable(true);
         }
+
         SetSelectedLevels();
         startButton.interactable = CanStart();
     }
@@ -55,7 +56,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         SetHintsEnabled(hintsToggle.isOn);
         photonView.RPC("RPC_FlipHintToggle", RpcTarget.Others);
     }
-
 
     public static void SetHintsEnabled(bool isEnabled)
     {
@@ -119,7 +119,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
     {
         AudioManager.Instance.PlaySoundFx(SoundFx.LibraryIndex.MENU_BUTTON);
         AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
-        AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
         Debug.Log("Starting game...");
         photonView.RPC("RPC_LoadGameLevel", RpcTarget.All);
     }

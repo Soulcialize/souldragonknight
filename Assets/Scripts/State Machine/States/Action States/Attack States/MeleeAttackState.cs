@@ -31,23 +31,48 @@ namespace CombatStates
 
             owner.Resource.Consume(attackCost);
 
+
+            ActorController actorHit = null;
+            BreakableWall breakableWall = null;
             foreach (Collider2D hit in hits)
             {
-                ActorController actorHit = ActorController.GetActorFromCollider(hit);
-                if (actorHit != null)
+                // prioritize hit collider if it is in attacker's buffed target layer
+                if (owner.Buff != null && GeneralUtility.IsLayerInLayerMask(hit.gameObject.layer, owner.Buff.BuffedTargetLayer))
                 {
-                    owner.Debuff();
-                    actorHit.Combat.HandleAttackHit(owner);
-                    continue;
+                    owner.RemoveBuff();
+                    // assuming only actors are in the buffed target layer
+                    ActorController.GetActorFromCollider(hit).Combat.HandleAttackHit(owner);
+                    break;
                 }
 
-                BreakableWall breakableWall = hit.GetComponent<BreakableWall>();
-                if (breakableWall != null)
+                if (actorHit == null)
                 {
-                    owner.Debuff();
-                    breakableWall.HandleHit();
+                    actorHit = ActorController.GetActorFromCollider(hit);
+                    // move on to check for breakable wall if actor not found
+                    if (actorHit != null)
+                    {
+                        Debug.Log("actor found");
+                        continue;
+                    }
+                }
+
+                if (breakableWall == null)
+                {
+                    breakableWall = hit.GetComponent<BreakableWall>();
                     continue;
                 }
+            }
+
+            // only execute hit after looping through the whole list, since we want to prioritize buff targets
+            if (actorHit != null)
+            {
+                owner.RemoveBuff();
+                actorHit.Combat.HandleAttackHit(owner);
+            }
+            else if (breakableWall != null && breakableWall.CanAttackerBreak(owner))
+            {
+                owner.RemoveBuff();
+                breakableWall.HandleHit();
             }
         }
     }
