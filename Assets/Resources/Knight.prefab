@@ -738,7 +738,7 @@ MonoBehaviour:
   soundFXIndexLibrary: {fileID: 532688599575579423}
   attackEffectLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 131648
   combatAbilities:
   - abilityIdentifier: 0
     ability: {fileID: 5102135582045005520}

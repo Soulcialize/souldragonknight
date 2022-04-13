@@ -31,6 +31,7 @@ namespace CombatStates
 
             owner.Resource.Consume(attackCost);
 
+
             ActorController actorHit = null;
             BreakableWall breakableWall = null;
             foreach (Collider2D hit in hits)
@@ -47,10 +48,15 @@ namespace CombatStates
                 if (actorHit == null)
                 {
                     actorHit = ActorController.GetActorFromCollider(hit);
-                    continue;
+                    // move on to check for breakable wall if actor not found
+                    if (actorHit != null)
+                    {
+                        Debug.Log("actor found");
+                        continue;
+                    }
                 }
 
-                if (actorHit != null && breakableWall == null)
+                if (breakableWall == null)
                 {
                     breakableWall = hit.GetComponent<BreakableWall>();
                     continue;
@@ -63,7 +69,7 @@ namespace CombatStates
                 owner.RemoveBuff();
                 actorHit.Combat.HandleAttackHit(owner);
             }
-            else if (breakableWall != null)
+            else if (breakableWall != null && breakableWall.CanAttackerBreak(owner))
             {
                 owner.RemoveBuff();
                 breakableWall.HandleHit();

@@ -155,6 +155,7 @@ public class Combat : MonoBehaviour
     protected void LocalHandleAttackHit(float attackerPosX, float attackerPosY)
     {
         movement.UpdateMovement(Vector2.zero);
+        CameraShake.Instance.Shake(1.75f, 1f);
         if (ActionStateMachine.CurrState is BlockState blockState)
         {
             blockState.HandleHit(movement.IsFacingRight, ((Vector2)transform.position - new Vector2(attackerPosX, attackerPosY)).normalized);
