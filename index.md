@@ -44,7 +44,7 @@ Trailer: [https://www.youtube.com/watch?v=qphiPRm8LQU](https://www.youtube.com/w
 - A separate platform such as Discord for voiced communication with your partner, as the game does not currently include any voice or text chat.
 
 ## Download Instructions
-- Download the latest release for your platform (Windows 10, MacOS) [here]().
+- Download the latest release for your platform (Windows 10, MacOS) [here](https://github.com/Soulcialize/souldragonknight/releases/tag/v1.0.0).
 - Unzip the file.
 - Ensure that you and your partner have a working internet connection and a platform for voice communication before launching the game.
 - After the above setup is done, you and your partner can run the executable with name "Soul Dragon Knight" to launch the game.
