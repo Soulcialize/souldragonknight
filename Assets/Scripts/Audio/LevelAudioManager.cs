@@ -32,11 +32,11 @@ public class LevelAudioManager : MonoBehaviour
     {
         if (isSynced)
         {
-            AudioManagerSynced.Instance.StopMusic(true, LastPlayedMusic, true);
+            AudioManagerSynced.Instance.StopMusic(true, LastPlayedMusic, false);
         }
         else
         {
-            AudioManager.Instance.StopMusic(LastPlayedMusic, true);
+            AudioManager.Instance.StopMusic(LastPlayedMusic, false);
         }
     }
 
@@ -94,11 +94,11 @@ public class LevelAudioManager : MonoBehaviour
         LastPlayedMusic = Music.LibraryIndex.FINALE_MUSIC;
         if (isSynced)
         {
-            AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.FINALE_MUSIC, true, 0.1f);
+            AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.FINALE_MUSIC);
         }
         else
         {
-            AudioManager.Instance.PlayMusic(Music.LibraryIndex.FINALE_MUSIC, true, 0.1f);
+            AudioManager.Instance.PlayMusic(Music.LibraryIndex.FINALE_MUSIC);
         }
     }
 
