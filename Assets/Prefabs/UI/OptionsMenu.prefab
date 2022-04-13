@@ -423,15 +423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 44c5ff27ad3b29f42a967ad43a7687d1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -673,6 +673,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8801704057317152156, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
       propertyPath: m_text
       value: 'Music
@@ -786,6 +806,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8801704057317152156, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
       propertyPath: m_text
       value: 'Sound Effects
@@ -893,6 +933,26 @@ PrefabInstance:
     - target: {fileID: 8725182674427577703, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056004913681, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801704056431757661, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8801704057317152156, guid: ad2483dd52a62b542936caf8ec27f8c8, type: 3}
       propertyPath: m_text
