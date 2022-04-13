@@ -39,7 +39,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.LoadLevel(roomSceneName);
         RoleSelectManager.HadDisconnect = true;
-        AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        LevelAudioManager.Instance.StopLastPlayedMusic(false);
         AudioManager.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
 
         base.OnPlayerLeftRoom(otherPlayer);
@@ -54,7 +54,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
-        AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        LevelAudioManager.Instance.StopLastPlayedMusic(false);
         AudioManager.Instance.PlayMusic(Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         PhotonNetwork.LoadLevel(mainMenuSceneName);
     }
@@ -114,7 +114,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void ExitToRoom()
     {
-        AudioManagerSynced.Instance.StopMusic(true, Music.LibraryIndex.INGAME_BACKGROUND_MUSIC);
+        LevelAudioManager.Instance.StopLastPlayedMusic(true);
         AudioManagerSynced.Instance.PlayMusic(true, Music.LibraryIndex.MENU_BACKGROUND_MUSIC);
         photonView.RPC("RPC_LoadRoomLevel", RpcTarget.All);
     }

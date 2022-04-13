@@ -474,6 +474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 135351476481702318, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: sceneViewId
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 1223135382425087919, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
       propertyPath: sceneViewId
       value: 32
@@ -481,6 +485,38 @@ PrefabInstance:
     - target: {fileID: 2699595388063280666, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
       propertyPath: sceneViewId
       value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayLevelPuzzleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850415668521176628, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5835481215182549816, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
       propertyPath: sceneViewId
@@ -533,6 +569,34 @@ PrefabInstance:
     - target: {fileID: 6991227341289546159, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
       propertyPath: m_Name
       value: 012 Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopLevelPuzzleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023216017546148753, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
+      propertyPath: puzzleCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8097335617364255646, guid: 914cc94fc65cf904283d5c854160ca47, type: 3}
       propertyPath: sceneViewId
@@ -1884,7 +1948,7 @@ GameObject:
   - component: {fileID: 354378147}
   - component: {fileID: 354378148}
   m_Layer: 0
-  m_Name: LevelEntryFx
+  m_Name: Level Audio Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,6 +2203,34 @@ PrefabInstance:
     - target: {fileID: 808907534768298728, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
       propertyPath: sceneViewId
       value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopLevelDefaultMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991955894657995028, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2778384195340772457, guid: 75fb2735042a68345b2caf001429ad8d, type: 3}
       propertyPath: sceneViewId
@@ -2704,6 +2796,78 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 765560308}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopLevelFinaleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DeclareVictory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StopLevelFinaleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VictoryManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671034376502394785, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: levelClearedEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6991227341289546158, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -2752,12 +2916,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: 011 All Enemies Combined
       objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 354378148}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayLevelFinaleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelAudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434842103388331149, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+      propertyPath: playerEnteredEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8565705061797002542, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
       propertyPath: sceneViewId
       value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+--- !u!1 &757736271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7605769123190659423, guid: 330766b3f48aa5746bb30babcd38ed6b, type: 3}
+  m_PrefabInstance: {fileID: 622063511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &765560303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,6 +2970,7 @@ GameObject:
   - component: {fileID: 765560305}
   - component: {fileID: 765560306}
   - component: {fileID: 765560304}
+  - component: {fileID: 765560308}
   - component: {fileID: 765560307}
   m_Layer: 0
   m_Name: GameManager
@@ -2909,6 +3111,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &765560308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765560303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23277982b07d6664cb8647b81fe926c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryCanvas: {fileID: 757736271}
 --- !u!1 &794630386
 GameObject:
   m_ObjectHideFlags: 0

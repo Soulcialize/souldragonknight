@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
 
         if (deadPlayerCount >= deadPlayerLimit)
         {
-            StartCoroutine(InitateGameOver());
+            StartCoroutine(InitiateGameOver());
         }
     }
 
@@ -55,9 +55,9 @@ public class PlayerManager : MonoBehaviour
         deadPlayerCount--;
     }
 
-    private IEnumerator InitateGameOver()
+    private IEnumerator InitiateGameOver()
     {
-        AudioManager.Instance.StopMusic(Music.LibraryIndex.INGAME_BACKGROUND_MUSIC, true);
+        LevelAudioManager.Instance.StopLastPlayedMusic(false);
         deathScreen.SetActive(true);
 
         yield return new WaitForSeconds(2f);
