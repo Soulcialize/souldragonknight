@@ -33,6 +33,7 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         {
             levelSelectButtons[i].SetInteractable(true);
         }
+
         SetSelectedLevels();
         startButton.interactable = CanStart();
     }
@@ -55,7 +56,6 @@ public class LevelSelectManager : MonoBehaviourPunCallbacks
         SetHintsEnabled(hintsToggle.isOn);
         photonView.RPC("RPC_FlipHintToggle", RpcTarget.Others);
     }
-
 
     public static void SetHintsEnabled(bool isEnabled)
     {
